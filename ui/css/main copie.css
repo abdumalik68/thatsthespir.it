@@ -1,0 +1,326 @@
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+* {
+  margin:0;
+  padding:0;
+  font-size:1em;
+  font-weight:200;
+  font-style:normal;
+	color: #4A4A4A;
+
+}
+
+
+/* ==========================================================================
+   PROJECT media style
+   ========================================================================== */
+
+
+/*
+	ANIMATION 
+*/
+/*Animation Prefs*/
+@-webkit-keyframes pulse {
+      0% {background: #E9E8DB;}
+     25% {background: #E0F3DF;}
+     50% {background: #D2DADC;}
+     75% {background: #BCE8BF;}
+     100% {background: #D7E6FF;} 
+}
+
+
+@keyframes pulse {
+      0% {background: #E9E8DB;}
+     25% {background: #E0F3DF;}
+     50% {background: #D2DADC;}
+     75% {background: #BCE8BF;}
+     100% {background: #D7E6FF;}
+}
+
+
+body{
+    color: #222;
+    font-size: 1em;
+    line-height: 1.4;
+	padding:2em;
+	padding:0;
+	background: #E7E7E7;
+    font-family: "acuta", serif;
+	color: #4A4A4A;
+	overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-animation: pulse 40s infinite alternate;
+/*     animation: pulse 40s infinite alternate; */
+    -webkit-transform: translate3d(0,0,0);
+	-webkit-perspective: 1000;
+    -webkit-backface-visibility: hidden;	
+	-webkit-transform-style: preserve-3d;
+}
+
+a{
+	text-decoration: none;
+	border-bottom:1px dotted #4A4A4A;
+}
+
+a:hover,a:focus{
+	border-bottom:1px solid #4A4A4A;
+}
+
+.logo{
+	height:auto;
+	margin:2em auto;
+	display:inline-block;
+	border:none;
+}
+.logo:hover{
+	border:none;
+	
+}
+.logo svg{
+	max-width:100%;
+	height:auto;
+}
+
+.ui-title{
+	font-family: "jaf-bernino-sans",sans-serif;
+	font-size: 14px;
+	color: #979797;
+	line-height: 25px;
+	text-transform: uppercase;
+	font-weight:lighter;
+	margin-bottom:2em;
+	display:block;
+}
+.topline:before{
+	width: 50%;
+	max-width:30px;
+	margin-right: 50%;
+	border-top: 1px solid rgba(0,0,0,0.15);
+	display: block;
+	content: "";
+	margin-bottom: 5px;
+}
+
+.portrait{
+	width:200px;
+	height:200px;
+	display:block;
+	background:#fff;
+	background-position: center center;
+	background-size: cover;
+	border-radius: 200px;
+	border:7px solid white;
+	box-shadow: 1px 1px 9px #DDD;
+	-webkit-transition : all .3s ease-out;
+	transition : all .3s ease-out;
+
+
+}
+.button{
+	font-family: "jaf-bernino-sans",sans-serif;
+	border-radius: 10px;
+	background:#4A4A4A;
+	color: white;
+	display: inline-block;
+	margin:1em auto;
+	padding: 0 10px;
+	height:40px;
+	line-height: 40px;
+	text-decoration: none;
+	-webkit-transition : all .3s ease-out;
+	transition : all .3s ease-out;
+}
+.button:hover,
+.button:focus{
+	background:white;
+	color: #4A4A4A;
+	animation: all .6s ease-out;
+}
+
+.quote{
+		padding:1em;
+	background:white;
+	border-radius:25px;
+	margin-bottom:1em;
+}
+.quote .portrait{
+	margin:auto;
+	box-shadow: none;
+}
+figcaption{
+	text-align: center;
+}
+.quote blockquote{
+	font-size:140%;
+	padding:1em;
+}
+.center{text-align: center}
+
+.all-authors{
+	width:100%;
+	list-style: none;
+/*
+	display: flex;
+	flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+*/
+    font-family: "jaf-bernino-sans",sans-serif;
+
+}
+
+.all-authors li{
+	margin:0 10px 20px;
+	list-style: none;
+}
+.all-authors a{
+	color:#4A4A4A;
+	text-decoration: none;
+}
+.all-authors a:hover{
+	text-decoration: underline;
+}
+.all-authors a:hover .portrait{
+	border-color:#4A4A4A;
+}
+.author figcaption{
+	color: #4A4A4A;
+	text-align: left;
+}
+
+
+footer{
+	margin-top:6em;
+	font-family: "jaf-bernino-sans",sans-serif;
+	
+}
+.hand{
+	display:block;
+	margin:6em auto 3em;
+	
+}
+
+
+body.by-author header figure.author{
+	margin:auto;
+	text-align:center;
+	width: 220px;
+}
+
+.bubble-wrapper{margin-top:2em;position:relative;}
+
+/* For the bubble tail */
+.bubble:after {
+content: "";
+position: absolute;
+top: -14px;
+left: calc(50% - 15px);
+border-style: solid;
+border-width: 0 15px 15px;
+border-color: #FFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+
+/* 	==========================================================================
+	DESKTOP
+	========================================================================== */
+
+@media all and (min-width: 966px){
+	body{
+		max-width:80%;
+		margin:auto;
+	}
+	.quote{
+		overflow:hidden;
+	}
+	.quote blockquote{
+		font-size:200%;
+		float:right;
+		width:74%;
+	}
+	.quote figcaption{
+		float:left;
+		width:25%;
+	}
+}
+
+@media all and (min-width: 1144px){
+	body{
+		max-width:66.66%;
+	}
+}
+
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+
+@media print {
+    *,
+    *:before,
+    *:after {
+        background: transparent !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+
+    img {
+        max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+}

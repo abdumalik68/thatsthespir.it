@@ -1,0 +1,515 @@
+<?php
+
+// Start FatFreeFramework
+$f3 = require 'lib/base.php';
+
+if ((float)PCRE_VERSION<7.9)
+	trigger_error('PCRE version is out of date');
+// Load configuration
+$f3->config('config.ini');
+$f3->set('AUTOLOAD', 'classes/');
+/*
+
+		that's the spirit.
+
+		URLS:
+
+		/
+			=> homepage
+
+		/search/<keywords>
+			=> GET search form
+			=> POST search results
+
+
+	*/
+
+require 'functions.inc.php';
+require 'config.inc.php';
+
+
+$f3->set('DEBUG', DEBUG);
+$f3->set('UPLOADS', UPLOADS);
+$f3->set('image_width', 100);
+
+$metatags = array(
+	'title'=>"That's the spirit!",
+	'description'=>'Inspiring quotes for the creative soul.',
+	'site_name'=>'That\'s the spirit!',
+	'image'=>WWWROOT.'/ui/img/thatsthespirit-cover-image.jpg',
+	'image:width'=>1200,
+	'image:height'=>630,
+	'url' => WWWROOT);
+
+$db=new DB\SQL(
+	'mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME,
+	DB_USER,
+	DB_PASSWORD
+);
+
+
+
+$authors = $db->exec('SELECT * FROM authors ORDER BY total DESC, slug ASC' );
+$f3->set('all_authors', $authors);
+$f3->set('upload_folder', $f3->get('UPLOADS'));
+
+
+$f3->route('GET @home: /',
+	function($f3) {
+		global $db, $metatags;
+		$f3->set('user', $f3->get('SESSION.user') );
+
+		// Get random quote
+		$quote=new Spirit();
+		$random = $quote->get('random');
+
+		$author = new DB\SQL\Mapper($db, 'authors');
+		$author->load( array('id=?', $random['author_id']) );
+		$f3->set('author', $author);
+		$f3->set('quote', $random);
+		/*
+		$author_chart = $quote->get('author_chart');
+		$f3->set('author_chart', $author_chart);
+*/
+
+		$f3->set('body_class', "home");
+		$f3->set('content', 'home.php');
+		$f3->set('metatags', $metatags);
+		$view=new View;
+		echo $view->render('layout.php');
+	}
+
+
+);
+
+$f3->route('GET|POST @author_edit: /author/edit/@slug', function($f3){
+
+		global $db, $metatags;
+
+		$f3->set('user', $f3->get('SESSION.user') );
+		$f3->set('upload_folder', $f3->get('UPLOADS'));
+		$slug= $f3->get('PARAMS.slug');
+		if ($f3->get('SESSION.logged_in') != 'ok'){
+			// User not logged in, redirect to login page.
+			$f3->set('SESSION.goto', '@author_edit(@slug='.$slug.')' ) ;
+			$f3->reroute('@login');
+		}
+
+		$author=new DB\SQL\Mapper($db, 'authors');
+		$author->load(array('slug=?', $slug ));
+		$web = \Web::instance();
+		if($_POST){
+			$author->copyFrom('POST');
+			//$author->slug = $web->slug($f3->get('POST.fullname'));
+			if($_FILES){
+
+				$photo = new upload($_FILES['photo']);
+				$photo->allowed = array('image/*');
+				if ($photo->uploaded) {
+					// save uploaded image with no changes
+					$photo->process($f3->get('UPLOADS'));
+					if ($photo->processed) {
+
+						$photo->image_default_color= '#FFFFFF';
+						$photo->image_greyscale= true;
+						$photo->file_name_body_pre = 'greyscale_';
+						$photo->process($f3->get('UPLOADS'));
+						if ($photo->processed) {
+							$author->photo = $photo->file_dst_name;
+						}else{
+							die('error : ' . $photo->error);
+						}
+
+					} else {
+						die('error : ' . $photo->error);
+					}
+				}
+			}
+
+			$author->save();
+			$f3->set('SESSION.message',  "Thanks! Author updated.");
+		}
+		$author->copyTo('POST');
+		$metatags['title'] = "Edit Author ".$author->fullname;
+		$metatags['description'] = "Edit info about Author". $author->fullname;
+		$metatags['url']= WWWROOT.'/author/edit/'.$slug;
+
+
+
+		$f3->set('post', $f3->get('POST'));
+		$f3->set('content', 'author.edit.php');
+		$f3->set('body_class', "quote-edit");
+		$f3->set('metatags', $metatags);
+		$view=new View;
+		echo $view->render('layout.php');
+	});
+
+$f3->route('GET|POST @author_add: /author/add', function($f3){
+		global $db, $metatags;
+		$f3->set('user', $f3->get('SESSION.user') );
+
+		$f3->set('content', 'author.edit.php');
+		$f3->set('body_class', "quote-add");
+
+		$f3->set('upload_folder', $f3->get('UPLOADS'));
+
+		$author=new DB\SQL\Mapper($db, 'authors');
+		$web = \Web::instance();
+		if($_POST){
+			$errors = array();
+			$author->copyFrom('POST');
+
+			if(empty(trim($author->fullname))){
+				$errors['fullname']= 'Please enter the full name of this author';
+			}
+
+			$dups = $author->count(array('fullname = ?', $author->fullname));
+			if($dups >0){
+				$errors['fullname']= 'This author\'s Spirit has already been instantiated. Thank you nonetheless!';
+			}
+			if(count($errors)<1){
+				$author->slug = $web->slug($f3->get('POST.fullname'));
+				if($_FILES){
+
+					$photo = new upload($_FILES['photo']);
+					$photo->allowed = array('image/*');
+					if ($photo->uploaded) {
+						// save uploaded image with no changes
+						$photo->process($f3->get('UPLOADS'));
+						if ($photo->processed) {
+
+							$photo->image_default_color= '#FFFFFF';
+							$photo->image_greyscale= true;
+							$photo->file_name_body_pre = 'greyscale_';
+							$photo->process($f3->get('UPLOADS'));
+							if ($photo->processed) {
+								$author->photo = $photo->file_dst_name;
+							}else{
+								die('error : ' . $photo->error);
+							}
+
+						} else {
+							die('error : ' . $photo->error);
+						}
+					}
+				}
+				$author->save();
+				$f3->set('SESSION.message',  "Thanks! Author added.");
+				$f3->reroute('@quote_add');
+			} else{
+				$f3->set('errors', $errors);
+			}
+		}
+		$f3->set('post', $author->cast());
+
+		$metatags['title'] = "Add an Author ";
+		$metatags['description'] = "Add info about an Author";
+		$metatags['url']= WWWROOT.'/author/add/';
+		$f3->set('metatags', $metatags);
+		$view=new View;
+		echo $view->render('layout.php');
+	});
+
+$f3->route('GET|POST @quote_add: /quote/add', function($f3){
+		global $db, $metatags;
+
+		$f3->set('user', $f3->get('SESSION.user') );
+		$f3->set('body_class', "quote-add");
+
+		$quote=new DB\SQL\Mapper($db, 'quotes');
+		if($_POST){
+			//overwrite with values just submitted
+			$quote->copyFrom('POST');
+			//echo '<pre>';
+			//print_r($_POST);
+			//exit;
+			$quote->save();
+
+			// lorsque ajout d'une quote, incrémenter le total de l'author
+			$author=new DB\SQL\Mapper($db, 'authors');
+			$author->load(array('id=?', $quote->author_id));
+			if (!$author->dry()){
+				$author->total++;
+				$author->save();
+			}
+			$f3->set('SESSION.message',  "Thanks! Quote added.");
+
+			// Email to admin
+			$smtp = new SMTP ( 'smtp.gmail.com', 465, 'SSL', 'aplennevaux@gmail.com', 'iluvrocknroll' );
+
+			$smtp->set('From', '"pixeline" <alexandre@pixeline.be>');
+			$smtp->set('To', '<aplennevaux@gmail.com>');
+			$smtp->set('Subject', "That's The Spirit: New Quote submitted to your attention, master");
+			$smtp->set('Errors-to', '<alexandre@pixeline.be>');
+
+			$message = 'On '.date('d.m.Y at H:i:s').', a new quote was submitted to your attention, kind master.'."\n---\n";
+			$message .= $quote->quote . ' by '. $author->fullname;
+			$message .="\n---\nReview it here: ".WWWROOT.'/quotes/pending'."\nSee you,\n\nThe Spirit.";
+			$sent = $smtp->send($message, TRUE);
+			$f3->reroute('@quote_action(action=view,id='.$quote->id.')');
+		}
+
+		$authors = $db->exec('SELECT DISTINCT id, fullname, slug FROM authors ORDER BY slug ASC');
+
+
+		$f3->set('quote', $quote);
+		$f3->set('authors', $authors);
+		$quote->copyTo('POST');
+		$f3->set('content', 'quote.edit.php');
+
+		$metatags['title'] = "Add a quote";
+		$metatags['description'] = "Add a quote";
+		$metatags['url']= WWWROOT.'/quote/add/';
+
+		$view=new View;
+		$f3->set('metatags', $metatags);
+		echo $view->render('layout.php');
+		$f3->clear('SESSION.message');
+	});
+
+
+$f3->route('GET|POST @quote_action: /quote/@action/@id',
+	function($f3) {
+		global $db, $metatags;
+
+		$action = $f3->get('PARAMS.action');
+		$id = $f3->get('PARAMS.id');
+
+		// Admin-restricted areas
+		$restricted = array('edit', 'delete', 'validate');
+
+		if (in_array($action, $restricted) && $f3->get('SESSION.logged_in') != 'ok'){
+			// User not logged in, redirect to login page.
+			$f3->set('SESSION.goto', '@quote_action(@id='.$id.',@action='.$action.')' ) ;
+			$f3->reroute('@login');
+		}
+
+		// Fetch the quote data
+		$quote=new DB\SQL\Mapper($db, 'quotes');
+		if ($id) {
+			$quote->load(array('id=?', $id));
+		}
+
+		if($quote->dry()){
+			//  No quote found with that id, return 404
+			$f3->error(404);
+		}
+
+		// Common to all actions
+		$f3->set('user', $f3->get('SESSION.user') );
+		$f3->set('body_class', "quote-$action");
+		$metatags['title'] = "$action quote $id";
+		switch ($action){
+
+		case 'validate':
+
+			$quote->status='online';
+			$quote->save();
+			$f3->reroute('@quote_action(action=view,id='.$quote->id.')');
+			break;
+
+		case 'edit':
+
+			if($_POST){
+				//overwrite with values just submitted
+				$quote->copyFrom('POST');
+				//create a timestamp in MySQL format
+				$quote->save();
+				$f3->set('SESSION.message', "Quote updated.");
+			}
+
+			$f3->set('quote', $quote);
+
+			$authors = $db->exec('SELECT DISTINCT id, fullname, slug, photo FROM authors ORDER BY slug ASC');
+			//$f3->set('upload_folder', $f3->get('UPLOADS'));
+			$f3->set('authors', $authors);
+
+			$quote->copyTo('POST');
+			$f3->set('content', 'quote.edit.php');
+			break;
+
+		case 'delete':
+
+			// lorsque ajout d'une quote, incrémenter le total de l'author
+			$author=new DB\SQL\Mapper($db, 'authors');
+			$author->load(array('id=?', $quote->author_id));
+			if (!$author->dry()){
+				$author->total--;
+				$author->save();
+			}
+			$quote->erase();
+			$f3->reroute('@home');
+
+			break;
+
+		case 'view':
+			$metatags['title'] = $quote->quote;
+
+			$f3->set('quote', $quote);
+			$author = new DB\SQL\Mapper($db, 'authors');
+			$author->load( array('id=?', $quote->author_id) );
+			$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.'/'.$author->photo;
+			if(!empty($author->photo) && is_file($filename)){
+				$metatags['image'] = WWWROOT.'/'.UPLOADS.'/'.$author->photo;
+				$size = getimagesize($filename);
+				$metatags['image:width'] = $size[0];
+				$metatags['image:height'] = $size[1];
+			}
+			$f3->set('author', $author);
+			$f3->set('content', 'quote.view.php');
+
+
+			break;
+		default:
+
+			$f3->error(404);
+			break;
+		}
+
+
+		$metatags['description'] = "$action quote $id:". $quote->quote;
+		$metatags['url']= WWWROOT.'/quote/'.$action.'/'.$id.'/';
+
+
+		$view=new View;
+		$f3->set('metatags', $metatags);
+		echo $view->render('layout.php');
+
+	});
+
+
+
+
+
+
+$f3->route('GET @pending_quotes: /quotes/pending',
+	function($f3) {
+		global $metatags;
+		if ($f3->get('SESSION.logged_in') != 'ok'){
+			$f3->set('SESSION.goto', '@pending_quotes');
+			$f3->reroute('@login');
+		}
+		$f3->set('user', $f3->get('SESSION.user') );
+		$quote=new Spirit();
+		$pending = $quote->get('pending');
+		$f3->set('pending_quotes', $pending);
+		$f3->set('body_class', "pending");
+		$f3->set('content', 'pending.php');
+		$view=new View;
+		$f3->set('metatags', $metatags);
+		echo $view->render('layout.php');
+	}
+
+
+);
+
+$f3->route('GET /of/@author',
+	function($f3) {
+		global $db, $metatags;
+
+		$author=new DB\SQL\Mapper($db, 'authors');
+		$author->load(array('slug=?', $f3->get('PARAMS.author')));
+		if($author->dry()){
+			$f3->error(404);
+			exit;
+		}
+		$quotes = new DB\SQL\Mapper($db, 'quotes');
+		$hisquotes = $quotes->select('id,quote,source,author_id', 'author_id='.$author->id.' and status ="online"' );
+
+
+		$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.'/'.$author->photo;
+		if(!empty($author->photo) && is_file($filename)){
+			$metatags['image'] = WWWROOT.'/'.UPLOADS.'/'.$author->photo;
+			$size = getimagesize($filename);
+			$metatags['image:width'] = $size[0];
+			$metatags['image:height'] = $size[1];
+		}
+		$metatags['title'] = $author->fullname;
+		$metatags['url'] = WWWROOT.'/of/'.$f3->get('PARAMS.author');
+		$metatags['description'] = "Quotes by ".$author->fullname;
+		$f3->set('user', $f3->get('SESSION.user') );
+		$f3->set('author', $author);
+		$f3->set('his_quotes', $hisquotes);
+		$f3->set('content', 'author.php');
+		$f3->set('body_class', "of-author");
+
+		$view=new View;
+		$f3->set('metatags', $metatags);
+		echo $view->render('layout.php');
+
+	}
+
+
+);
+$f3->route('GET|HEAD /@id', function($f3) {
+		$id = '/quote/view/'.$f3->get('PARAMS.id');
+		$f3->reroute($id);
+	});
+$f3->route('GET @logout: /logout',
+	function($f3) {
+		$f3->clear('SESSION');
+		$f3->reroute('/');
+	}
+
+
+);
+$f3->route('GET @login: /login',
+	function($f3) {
+		global $metatags;
+		if ($f3->get('SESSION.logged_in') == 'ok'){
+			$f3->reroute('/');
+		}
+		$f3->set('user', $f3->get('SESSION.user') );
+
+		$f3->set('content', 'login.php');
+		$f3->set('body_class', "login");
+		$metatags['title'] = "Login";
+		$metatags['url'] = WWWROOT.'/login';
+		$template=new View;
+		$f3->set('metatags', $metatags);
+		echo $template->render('layout.php');
+	}
+
+
+);
+
+$f3->route('POST /login',
+	function($f3) {
+		if ($f3->get('SESSION.logged_in') == 'ok'){
+			$f3->reroute('/');
+		}
+
+		global $db, $metatags;
+		// sanitization
+		$username = trim(htmlspecialchars($f3->get('POST.username')));
+		$password = trim(htmlspecialchars($f3->get('POST.password')));
+		// validation
+		$errors = array();
+		if(empty($username)){
+			$errors['username'] = 'Please indicate your username';
+		}
+		if(empty($password)){
+			$errors['password'] = 'Please indicate your password';
+		}
+		if(count($errors)<1){
+			// check for user
+			//$password = crypt($f3->get('password'), SALT);
+			$user = new DB\SQL\Mapper($db, 'users');
+			$user->load(array('email = :username and password = :password  LIMIT 0,1', ':username'=>$username, ':password'=>$password));
+			if($db->count()==1){
+				$f3->set('SESSION.logged_in', 'ok');
+				$f3->set('SESSION.user',  array('email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role));
+				if(!empty($f3->get('SESSION.goto'))){
+					$f3->reroute($f3->get('SESSION.goto'));
+				}else{
+					$f3->reroute('/');
+				}
+			}
+		} else{
+			$f3->set('SESSION.errors', $errors);
+		}
+		$f3->reroute('@login');
+	});
+
+
+$f3->run();
