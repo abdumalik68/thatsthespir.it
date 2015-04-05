@@ -1466,6 +1466,18 @@ figcaption {
 .quote-meta a:hover {
   color: #4A4A4A; }
 
+.social {
+  background: transparent;
+  display: inline-block;
+  text-align: center;
+  border-radius: 3px;
+  padding: 0px 3px;
+  width: 20px; }
+  .social img {
+    vertical-align: middle; }
+  .social:hover {
+    background: white; }
+
 /* RESPONSIVE MENU */
 /*
 .custom-wrapper.open {

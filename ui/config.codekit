@@ -36,15 +36,6 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/css\/main copie.css": {
-		"fileType": 16,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/css\/main copie.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/css\/main.css": {
 		"fileType": 16,
 		"ignore": 1,
@@ -86,6 +77,17 @@
 		"initialSize": 37961,
 		"inputAbbreviatedPath": "\/img\/portrait.jpg",
 		"outputAbbreviatedPath": "\/img\/portrait.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/img\/thatsthespirit-cover-image.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 130723,
+		"inputAbbreviatedPath": "\/img\/thatsthespirit-cover-image.jpg",
+		"outputAbbreviatedPath": "\/img\/thatsthespirit-cover-image.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -231,15 +233,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/quote.view copie.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/quote.view copie.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/quote.view.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -266,8 +259,8 @@
 	},
 "projectAttributes": {
 	"bowerAbbreviatedPath": "",
-	"displayValue": "ui",
-	"displayValueWasSetByUser": 0,
+	"displayValue": "That's The Spirit (github)",
+	"displayValueWasSetByUser": 1,
 	"iconImageName": "brackets_blue"
 	},
 "projectSettings": {

@@ -104,6 +104,7 @@ $f3->route('GET|POST @author_edit: /author/edit/@slug', function($f3){
 			if($_FILES){
 
 				$photo = new upload($_FILES['photo']);
+				$photo->file_safe_name = true;
 				$photo->allowed = array('image/*');
 				if ($photo->uploaded) {
 					// save uploaded image with no changes
@@ -299,6 +300,8 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 		$f3->set('user', $f3->get('SESSION.user') );
 		$f3->set('body_class', "quote-$action");
 		$metatags['title'] = "$action quote $id";
+		$metatags['description'] = "$action quote $id:". $quote->quote;
+
 		switch ($action){
 
 		case 'validate':
@@ -343,7 +346,6 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 			break;
 
 		case 'view':
-			$metatags['title'] = $quote->quote;
 
 			$f3->set('quote', $quote);
 			$author = new DB\SQL\Mapper($db, 'authors');
@@ -355,6 +357,9 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 				$metatags['image:width'] = $size[0];
 				$metatags['image:height'] = $size[1];
 			}
+			$metatags['title'] = $quote->quote;
+			$metatags['description'] = $quote->quote ." – ". $author->fullname;
+
 			$f3->set('author', $author);
 			$f3->set('content', 'quote.view.php');
 
@@ -366,8 +371,6 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 			break;
 		}
 
-
-		$metatags['description'] = "$action quote $id:". $quote->quote;
 		$metatags['url']= WWWROOT.'/quote/'.$action.'/'.$id.'/';
 
 

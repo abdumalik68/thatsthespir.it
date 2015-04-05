@@ -20,7 +20,7 @@
         <script src="//use.typekit.net/opz3npz.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
-        <link rel="stylesheet" href="ui/css/main.css">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.0">
 
         <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -82,6 +82,6 @@
 
 
 	<script src="https://www.google.com/jsapi"></script>
-	<script src="ui/js/min/main-min.js"></script>
+	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.0"></script>
 	</body>
 </html>
