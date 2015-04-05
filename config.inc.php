@@ -10,7 +10,7 @@ case 'dev':
 	define('DB_USER', 'pixeline');
 	define('DB_PASSWORD', '5270L');
 	define('DB_HOST', 'localhost');
-	define('DEBUG', '3');
+	define('DEBUG', 3);
 	break;
 
 
@@ -20,7 +20,7 @@ default:
 	define('DB_USER', 'ttspirit');
 	define('DB_PASSWORD', 'Q5p2HqJcjaDaLqep');
 	define('DB_HOST', 'localhost');
-	define('DEBUG', '0');
+	define('DEBUG', 0);
 
 	break;
 }

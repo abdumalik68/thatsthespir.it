@@ -350,9 +350,9 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 			$f3->set('quote', $quote);
 			$author = new DB\SQL\Mapper($db, 'authors');
 			$author->load( array('id=?', $quote->author_id) );
-			$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.'/'.$author->photo;
+			$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.$author->photo;
 			if(!empty($author->photo) && is_file($filename)){
-				$metatags['image'] = WWWROOT.'/'.UPLOADS.'/'.$author->photo;
+				$metatags['image'] = WWWROOT.'/'.UPLOADS. $author->photo;
 				$size = getimagesize($filename);
 				$metatags['image:width'] = $size[0];
 				$metatags['image:height'] = $size[1];
@@ -420,9 +420,9 @@ $f3->route('GET /of/@author',
 		$hisquotes = $quotes->select('id,quote,source,author_id', 'author_id='.$author->id.' and status ="online"' );
 
 
-		$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.'/'.$author->photo;
+		$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS. $author->photo;
 		if(!empty($author->photo) && is_file($filename)){
-			$metatags['image'] = WWWROOT.'/'.UPLOADS.'/'.$author->photo;
+			$metatags['image'] = WWWROOT.'/'.UPLOADS.$author->photo;
 			$size = getimagesize($filename);
 			$metatags['image:width'] = $size[0];
 			$metatags['image:height'] = $size[1];
@@ -512,6 +512,29 @@ $f3->route('POST /login',
 			$f3->set('SESSION.errors', $errors);
 		}
 		$f3->reroute('@login');
+	});
+
+
+$f3->route('GET @fix_totals: /fix-author-totals', function($f3){
+		/*
+	FIX TOTAL value for each author
+	*/
+		global $db;
+		$totals = $db->exec("SELECT count(*) as total, author_id FROM `quotes` as q group by q.author_id order by total desc");
+		if(count($totals)>0){
+			$db->begin();
+			foreach($totals as $a){
+				$db->exec("UPDATE authors set total='".$a['total']."' WHERE id='".$a['author_id']."'");
+			}
+			$db->commit();
+		}
+
+		if($f3->get('DEBUG') > 1){
+			echo '<pre>';
+			echo $db->log();
+		} else{
+			$f3->reroute('/');
+		}
 	});
 
 

@@ -1,7 +1,6 @@
 
 <form method="post" class="pure-form pure-form-stacked" >
-<h1>Edit this quote</h1>
-
+	<h1><?php echo ($body_class=='quote-edit') ? 'Edit this quote': 'Suggest a quote'; ?></h1>
 <?php
 if(!empty($message)){
 ?>
@@ -15,6 +14,7 @@ if(!empty($message)){
 	<datalist id="author-list">
 -->
 <select name="author_id" id="author_id" required >
+	<optgroup label="Pick the author of your quote in this list">
 <?php
 
 if(count($authors)>0){
@@ -24,6 +24,7 @@ if(count($authors)>0){
 	}
 }
 ?>
+	</optgroup>
 </select>
 <p>Not in this list? <a href="/author/add">Create a new Author</a></p>
 <label>Source: <small>(a url)</small> <br><input name="source" placeholder="Don't forget the http://" class="pure-input-1-3" type="url" value="<?php echo (isset($quote['source'])) ? $quote['source']: '';  ?>"></label>

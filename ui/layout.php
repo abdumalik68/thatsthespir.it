@@ -40,6 +40,7 @@
 					<ul id="global-menu" class="pure-menu-list">
             <?php
 			if ($user['role']==='admin'){ ?>
+						<li class="pure-menu-item"><a href="/fix-author-totals" class="pure-menu-link">Fix totals</a></li>
 						<li class="pure-menu-item" id="review-pending-quotes"><a href="/quotes/pending" class="pure-menu-link">Review Pending quotes</a></li>
 			<?php
 			}

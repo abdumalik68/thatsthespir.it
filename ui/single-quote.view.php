@@ -29,6 +29,9 @@ $permalink = WWWROOT.'/quote/view/' . $quote['id'];
 <a class="social facebook" href="//www.facebook.com/sharer/sharer.php?u=<?php echo $permalink ?>"><img src="/ui/img/facebook.svg" alt="share this quote on Facebook"></a>
 <a class="social twitter" href="http://twitter.com/share?text=<?php echo $tweet_version ?>&url=<?php echo $permalink ?>&hashtags=design_quote"><img src="/ui/img/twitter.svg" alt="share this quote on Twitter"></a>
 <a class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&media=<?php echo $metatags['image'] ?>&description=<?php echo urlencode($share_message) ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
+<a class="social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $permalink ?>&title=<?php echo $author['fullname'] ?>&summary=<?php echo $share_message ?>&source=<?php echo $permalink ?>"><img src="/ui/img/linkedin.svg" alt="share this quote on LinkedIn"></a>
+<a class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a>
+
 
 <?php if ($user['role']==='admin'){ ?> | <a href="/author/edit/<?php echo $author['slug'] ?>">Edit author</a> <? }?>
 	<?php
