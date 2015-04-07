@@ -59,6 +59,17 @@
 	</div>
 </div>
 <div class="white-background">
+
+<section class="search">
+	<div class="content">
+		<h1 class="ui-title topline">search</h1>
+		<div style="position: relative; height: 80px;">
+            <input type="text" name="s" id="autocomplete-ajax" style="position: absolute; z-index: 2; background: transparent;width:100%;max-width:95%" placeholder="✍ Search for a quote or author..." value="<?php echo $query ?>">
+            <input type="text" name="s" id="autocomplete-ajax-x" disabled="disabled" style="color: #CCC; position: absolute; background: transparent; z-index: 1;width:95%;max-width:100%;">
+        </div>
+	</div>
+</section>
+
 <section class="all-authors">
 	<div class="content">
 	<h1 class="ui-title topline">All authors</h1>
@@ -83,6 +94,14 @@
 
 
 	<script src="https://www.google.com/jsapi"></script>
+<?php if (SERVER =='dev') {
+?>
+<script src="ui/js/jquery.1.10.2.min.js"></script>
+<script src="ui/js/jquery.autocomplete.min.js"></script>
+<?php
+}
+
+?>
 	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.0"></script>
 	</body>
 </html>

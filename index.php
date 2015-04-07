@@ -52,6 +52,7 @@ $db=new DB\SQL(
 $authors = $db->exec('SELECT * FROM authors ORDER BY total DESC, slug ASC' );
 $f3->set('all_authors', $authors);
 $f3->set('upload_folder', $f3->get('UPLOADS'));
+$f3->set('query', $f3->get('SESSION.query'));
 
 
 $f3->route('GET @home: /',
@@ -77,10 +78,20 @@ $f3->route('GET @home: /',
 		$f3->set('metatags', $metatags);
 		$view=new View;
 		echo $view->render('layout.php');
+		$f3->clear('SESSION.query');
 	}
-
-
 );
+$f3->route('GET @search: /search [ajax]',
+	function($f3) {
+		global $db, $metatags;
+		$query = $f3->get('REQUEST.query');
+		
+		$result = $db->exec("SELECT * FROM (SELECT LOWER(quote) as value, CONCAT('quotes:',id) as data FROM quotes UNION SELECT LOWER(fullname) as value, CONCAT('authors:',slug) as data FROM authors) AS U WHERE U.value like LOWER(:query)", array( ':query' => "%$query%") );
+		$f3->set('SESSION.query', $query);
+		$result = array("suggestions"=> $result );
+		echo json_encode($result);
+		exit;
+});
 
 $f3->route('GET|POST @author_edit: /author/edit/@slug', function($f3){
 
@@ -377,7 +388,7 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 		$view=new View;
 		$f3->set('metatags', $metatags);
 		echo $view->render('layout.php');
-
+		$f3->clear('SESSION.query');
 	});
 
 
@@ -439,6 +450,8 @@ $f3->route('GET /of/@author',
 		$view=new View;
 		$f3->set('metatags', $metatags);
 		echo $view->render('layout.php');
+
+		$f3->clear('SESSION.query');
 
 	}
 

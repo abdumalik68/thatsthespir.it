@@ -16,9 +16,8 @@ if($body_class!=='of-author'){
 }
 ?>
 	</figcaption>
-<p class="ui-title quote-meta topline">quote <a href="/quote/view/<?php echo $quote['id']?>">#<?php echo $quote['id']?></a> | 
-<?php echo (!empty($quote['source'])) ? '<span class="source"><a href="'.$quote['source'].'" target="_blank">source</a></span>': '';  ?>
-| 
+<p class="ui-title quote-meta topline">quote <a href="/quote/view/<?php echo $quote['id']?>">#<?php echo $quote['id']?></a>
+<?php echo (!empty($quote['source'])) ? ' | <span class="source"><a href="'.$quote['source'].'" target="_blank">source</a></span> | ': ' | 	';  ?>
 
 <?php
 $share_message = $quote['quote']. "\n– ". $author['fullname'] ;
@@ -36,7 +35,7 @@ $permalink = WWWROOT.'/quote/view/' . $quote['id'];
 <?php if ($user['role']==='admin'){ ?> | <a href="/author/edit/<?php echo $author['slug'] ?>">Edit author</a> <? }?>
 	<?php
 if(($user['role']==='admin')){
-?> | 
+?>
 <?php
 if(($quote['status']=='pending')){
 ?>

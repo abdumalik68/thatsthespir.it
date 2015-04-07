@@ -5,5 +5,4 @@
 <p class="center"><a href="/" id="another-quote-button">Another quote, please</a></p>
 
 </section>
-		
 	

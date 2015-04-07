@@ -1409,7 +1409,7 @@ body {
 
 #another-quote-button {
   display: inline-block;
-  margin: 2em auto;
+  margin: 1em auto 2em;
   background: #4A4A4A;
   color: white;
   border-radius: 10px;
@@ -1478,6 +1478,75 @@ figcaption {
   .social:hover {
     background: white; }
 
+/* SEARCH FORM */
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #FFF;
+  overflow: auto; }
+
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden; }
+
+.autocomplete-selected {
+  background: #F0F0F0; }
+
+.autocomplete-suggestions strong {
+  font-weight: normal;
+  color: #3399FF; }
+
+.autocomplete-group {
+  padding: 2px 5px; }
+
+.autocomplete-group strong {
+  display: block;
+  border-bottom: 1px solid #000; }
+
+.autocomplete-suggestions {
+  border: 1px solid #999;
+  background: #FFF;
+  cursor: default;
+  overflow: auto;
+  -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
+  -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64);
+  box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); }
+
+.autocomplete-suggestion {
+  padding: 2px 5px;
+  white-space: nowrap;
+  overflow: hidden; }
+
+.autocomplete-no-suggestion {
+  padding: 2px 5px; }
+
+.autocomplete-selected {
+  background: #F0F0F0; }
+
+.autocomplete-suggestions strong {
+  font-weight: bold;
+  color: #000; }
+
+.autocomplete-group {
+  padding: 2px 5px; }
+
+.autocomplete-group strong {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  display: block;
+  border-bottom: 1px solid #000; }
+
+.search input {
+  font-size: 28px;
+  padding: 10px;
+  border: 1px solid #CCC;
+  display: block;
+  margin: 20px 0; }
+
+.search {
+  margin-bottom: 2em; }
+
 /* RESPONSIVE MENU */
 /*
 .custom-wrapper.open {
@@ -1537,16 +1606,6 @@ figcaption {
 form {
   padding: 2em; }
 
-/*
-textarea, input[type="text"],input[type="url"]{
-	max-width:800px;
-	width:100%;
-}
-textarea{
-	min-height:200px;
-
-}
-*/
 @media (min-width: 48em) {
   blockquote {
     font-size: 64px;
