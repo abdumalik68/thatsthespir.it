@@ -154,6 +154,7 @@ $f3->route('GET|POST @author_edit: /author/edit/@slug', function($f3){
 		$f3->set('metatags', $metatags);
 		$view=new View;
 		echo $view->render('layout.php');
+		$f3->clear('SESSION.message');
 	});
 
 $f3->route('GET|POST @author_add: /author/add', function($f3){

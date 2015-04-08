@@ -20,7 +20,7 @@ if(isset($errors) && count($errors)>0){
 	<input type="text" id="fullname" size="20" name="fullname" value="<?php echo $post['fullname']; ?>"></li>
 
 	<label for="gender">Gender:</label>
-	<select>
+	<select name="gender" id="gender">
 		<option value="f" <?php echo (!empty($post['gender']) && $post['gender']==='f') ? 'selected':'';  ?>>Female</option>
 		<option value="m" <?php echo (!empty($post['gender']) && $post['gender']==='m') ? 'selected':'';  ?>>Male</option>
 		<option value="unknown" <?php echo (!empty($post['gender']) && $post['gender']==='unknown') ? 'selected':'';  ?>>Unknown</option>
