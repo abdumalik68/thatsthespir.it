@@ -80,18 +80,80 @@ $f3->route('GET @home: /',
 		echo $view->render('layout.php');
 		$f3->clear('SESSION.query');
 	}
+
+
 );
+
+$f3->route('GET @feed: /feed',
+	function($f3) {
+		global $db;
+
+		header('Content-Type: text/xml; charset=utf-8');
+
+		$quote=new Spirit();
+		$items = $quote->get('latest');
+		$rss1 = array();
+		if(count($items)>0){
+			foreach($items as $i){
+				//print_r($i);
+
+				$rss1[] = (object)[
+					'title' => truncate($i['quote'], 250)
+					, 'description' => $i['fullname'].' – ' .$i['quote']
+					, 'url' => WWWROOT.'/quote/view/'.$i['id']
+					, 'category' => ''
+					, 'date' => date("r", strtotime($i['creation_date']))
+				];
+			}
+
+		}
+
+		$rss = new RSS;
+		$rss->title = "That's The Spirit!";
+		$rss->url = WWWROOT.'/feed';
+		$rss->description = $rss->title;
+		$rss->date = $rss1[0]->date;
+		$rss->items = $rss1;
+		echo $rss->generate();
+		exit;
+	}
+);
+$f3->route('GET @sitemap: /sitemap',
+	function($f3) {
+		global $db;
+
+		header('Content-Type: text/xml; charset=UTF-8'); 
+
+		$quote=new Spirit();
+		$quotes = $quote->get('sitemap');
+
+		echo '<?xml version="1.0" encoding="UTF-8"?>';?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?php
+foreach($quotes as $quote){
+	$priority = '1';
+	$changefreq = 'monthly';
+	?><url>
+		<loc><?php echo WWWROOT . $quote['url'] ?></loc>
+		<changefreq><?php echo $changefreq ?></changefreq>
+		<priority><?php echo $priority ?></priority>
+	</url><?php
+}
+?></urlset><?php
+
+});
+
+
 $f3->route('GET @search: /search [ajax]',
 	function($f3) {
 		global $db, $metatags;
 		$query = $f3->get('REQUEST.query');
-		
+
 		$result = $db->exec("SELECT * FROM (SELECT LOWER(quote) as value, CONCAT('quotes:',id) as data FROM quotes UNION SELECT LOWER(fullname) as value, CONCAT('authors:',slug) as data FROM authors) AS U WHERE U.value like LOWER(:query)", array( ':query' => "%$query%") );
 		$f3->set('SESSION.query', $query);
 		$result = array("suggestions"=> $result );
 		echo json_encode($result);
 		exit;
-});
+	});
 
 $f3->route('GET|POST @author_edit: /author/edit/@slug', function($f3){
 

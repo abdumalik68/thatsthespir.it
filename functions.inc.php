@@ -21,7 +21,7 @@ function display_error($errors, $input){
 Create an excerpt
 source: http://www.internoetics.com/2010/01/04/php-function-to-truncate-text-into-a-preview-or-excerpt-with-trailing-dots/
 */
-function truncate($text, $numb) {
+function truncate($text, $numb=200) {
 	if (strlen($text) > $numb) {
 		$text = substr($text, 0, $numb);
 		$text = substr($text, 0, strrpos($text, " "));

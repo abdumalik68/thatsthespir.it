@@ -13,6 +13,7 @@
 		<meta property="og:url" content="<?php echo $metatags['url']; ?>">
 		<meta property="og:description" content="<?php echo $metatags['description']; ?>">
 		<meta property="og:type" content="article">
+		<meta name="google-site-verification" content="N00zI7PD13iyNPB3-1T6o2J-TrU6S2nXH-Nl522Vhi0" />
 
 		<base href="<?php echo $SCHEME.'://'.$HOST.'/'; ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1">

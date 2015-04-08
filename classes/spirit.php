@@ -13,9 +13,11 @@ class Spirit {
 			break;
 
 		case 'latest':
-			return $db->exec('SELECT * FROM quotes WHERE status="online"  ORDER BY id DESC LIMIT 20');
+			return $db->exec('SELECT *, quotes.id as quote_id FROM quotes LEFT JOIN authors on quotes.author_id=authors.id WHERE status="online"  ORDER BY quotes.id DESC LIMIT 20');
 			break;
-			
+		case 'sitemap':
+			return $db->exec("SELECT CONCAT('/quote/view/',id) as url FROM quotes WHERE status='online' UNION SELECT CONCAT('/of/',slug) as url FROM authors");
+			break;			
 		case 'author_chart':
 			return $db->exec('SELECT * FROM authors ORDER BY total DESC');
 		
