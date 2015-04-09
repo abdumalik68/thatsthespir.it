@@ -10,7 +10,8 @@
 if($body_class!=='of-author'){
 ?>
 		<div id="photo" data-author="<?php echo $author['fullname'];?>" <?php echo (!empty($author['photo'])) ? 'style="background-image: url('.$upload_folder.'/'. $author['photo'] .');"':'data-photo="none"'; ?>  <?php echo ($author['gender']=='f') ? 'class="woman"':'' ?>>&nbsp;</div>
-		<p class="author">– <?php echo ucfirst($author['fullname']);  ?> (<a title="All quotes by <?php echo ucfirst($author['fullname']);  ?>" href="/of/<?= $author['slug']; ?>"><?php echo $author['total'];?></a>)</p>
+		<p class="author">– <?php echo ucfirst($author['fullname']);  ?><br><small class="meta"><a title="All quotes by <?php echo ucfirst($author['fullname']);  ?>" href="/of/<?= $author['slug']; ?>"><?= $author['total'] ?> quote<?php echo ((int)$author['total']>1) ? 's':''; ?></a></small>
+</p>
 
 <?php
 }

@@ -351,6 +351,18 @@ text-align:center;}
 	padding-top:0px;
 	font-size:80%;
 }
+.meta{
+	color:$light-grey;
+	a{
+		color:$light-grey;
+		text-decoration: none;
+		&:hover{
+			color:$black;
+			text-decoration: underline;
+		}
+	}
+	
+}
 .quote-meta {
 	a:hover{
 		color:$black;
