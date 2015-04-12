@@ -49,7 +49,8 @@ $db=new DB\SQL(
 
 
 
-$authors = $db->exec('SELECT * FROM authors ORDER BY total DESC, slug ASC' );
+// all authors, cached for 5 minutes.
+$authors = $db->exec('SELECT * FROM authors ORDER BY total DESC, slug ASC' ,NULL, 300);
 $f3->set('all_authors', $authors);
 $f3->set('upload_folder', $f3->get('UPLOADS'));
 $f3->set('query', $f3->get('SESSION.query'));
@@ -98,11 +99,11 @@ $f3->route('GET @feed: /feed',
 				//print_r($i);
 
 				$rss1[] = (object)[
-					'title' => truncate($i['quote'], 250)
-					, 'description' => $i['fullname'].' – ' .$i['quote']
-					, 'url' => WWWROOT.'/quote/view/'.$i['id']
-					, 'category' => ''
-					, 'date' => date("r", strtotime($i['creation_date']))
+				'title' => truncate($i['quote'], 250)
+				, 'description' => $i['quote']. '<br>– '.$i['fullname']
+				, 'url' => WWWROOT.'/quote/view/'.$i['id']
+				, 'category' => ''
+				, 'date' => date("r", strtotime($i['creation_date']))
 				];
 			}
 
@@ -122,25 +123,25 @@ $f3->route('GET @sitemap: /sitemap',
 	function($f3) {
 		global $db;
 
-		header('Content-Type: text/xml; charset=UTF-8'); 
+		header('Content-Type: text/xml; charset=UTF-8');
 
 		$quote=new Spirit();
 		$quotes = $quote->get('sitemap');
 
 		echo '<?xml version="1.0" encoding="UTF-8"?>';?><urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <?php
-foreach($quotes as $quote){
-	$priority = '1';
-	$changefreq = 'monthly';
-	?><url>
+		foreach($quotes as $quote){
+			$priority = '1';
+			$changefreq = 'monthly';
+			?><url>
 		<loc><?php echo WWWROOT . $quote['url'] ?></loc>
 		<changefreq><?php echo $changefreq ?></changefreq>
 		<priority><?php echo $priority ?></priority>
 	</url><?php
-}
-?></urlset><?php
+		}
+		?></urlset><?php
 
-});
+	});
 
 
 $f3->route('GET @search: /search [ajax]',
@@ -295,6 +296,9 @@ $f3->route('GET|POST @quote_add: /quote/add', function($f3){
 		if($_POST){
 			//overwrite with values just submitted
 			$quote->copyFrom('POST');
+			if(!isset($_POST['status'])){
+				$quote->status='pending';
+			}
 			//echo '<pre>';
 			//print_r($_POST);
 			//exit;

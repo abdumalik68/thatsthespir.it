@@ -17,7 +17,7 @@ if($body_class!=='of-author'){
 }
 ?>
 	</figcaption>
-<p class="ui-title quote-meta topline">quote <a href="/quote/view/<?php echo $quote['id']?>">#<?php echo $quote['id']?></a>
+<p class="ui-title quote-meta topline"> &nbsp;&nbsp;quote <a href="/quote/view/<?php echo $quote['id']?>">#<?php echo $quote['id']?></a>
 <?php echo (!empty($quote['source'])) ? ' | <span class="source"><a href="'.$quote['source'].'" target="_blank">source</a></span> | ': ' | 	';  ?>
 
 <?php

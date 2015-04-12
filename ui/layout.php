@@ -88,6 +88,7 @@
 
 <footer class="footer l-box is-center">
         This garden of lights is made by a <a href="https://pixeline.be">guy</a> whose mind needed a place to bathe in all the beautifulities the human mind came up with during our time on Earth. May this place be as enthralling for you as it is for me.<br>
+        You can <a href="http://eepurl.com/bjCZ6f">receive the latest quotes added to the Spirit in your mailbox</a>.<br>
 		<img src="ui/img/hand.svg" alt="V for Victory hand sign" class="hand">
     </footer>
 

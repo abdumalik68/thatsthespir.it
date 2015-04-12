@@ -3,7 +3,15 @@
 
 if ($quote['status']==='pending'){
 ?>
-	<p class="message">This quote has yet to be accepted into the Spirit. <a href="/quote/validate/<?php echo $quote['id'];?>/">Accept it now!</a> </p>
+	<p class="message">This quote has yet to be accepted into the Spirit.
+		<?php
+			if($user['role']==='admin'){
+				?>
+				<a href="/quote/validate/<?php echo $quote['id'];?>/">Accept it now!</a>
+				<?
+			}
+			?>
+	</p>
 <?php
 }
 if (!empty($_SESSION['message'])){
