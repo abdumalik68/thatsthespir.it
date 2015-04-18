@@ -56,6 +56,31 @@ $f3->set('upload_folder', $f3->get('UPLOADS'));
 $f3->set('query', $f3->get('SESSION.query'));
 
 
+$f3->route('GET @api: /api',
+	function($f3) {
+		global $db, $metatags;
+		//$f3->set('user', $f3->get('SESSION.user') );
+
+		// Get random quote
+		if(!isset($_SESSION['used_quotes'])){
+			$_SESSION['used_quotes'] = array();
+		}
+		$quote=new Spirit();
+		$random = $quote->get('random_unique');
+
+		$author = new DB\SQL\Mapper($db, 'authors');
+		$author->load( array('id=?', $random['author_id']) );
+	
+		// Using SESSION, let's try not to show twice the same quote.
+		$_SESSION['used_quotes'][]= $random['id'];
+		$photo = (!empty($author->photo)) ? WWWROOT.'/uploads/'.$author->photo : '' ;
+		$result = array('quote'=> $random['quote'], 'author'=> $author->fullname, 'id'=>$random['id'], 'photo'=> $photo, 'gender'=>$author->gender, 'slug'=>$author->slug, 'total_quotes'=>$author->total );
+		header('content-type: application/json; charset=utf-8');
+		echo json_encode($result);
+		exit;
+	});
+
+
 $f3->route('GET @home: /',
 	function($f3) {
 		global $db, $metatags;

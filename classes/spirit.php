@@ -26,6 +26,14 @@ class Spirit {
 		case 'random':
 			$quotes = $db->exec('SELECT * FROM quotes WHERE status="online"  ORDER BY RAND() LIMIT 1');
 			return $quotes[0];
+			
+		case 'random_unique':
+			$not_in = implode(', ', $_SESSION['used_quotes']);
+			if(strlen($not_in)>0){
+				$not_in = " AND id NOT IN ($not_in)";
+			}
+			$quotes = $db->exec('SELECT * FROM quotes WHERE status="online" '.$not_in.'  ORDER BY RAND() LIMIT 1');
+			return $quotes[0];
 
 			break;
 		default:
