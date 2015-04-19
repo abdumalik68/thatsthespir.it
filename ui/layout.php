@@ -21,7 +21,7 @@
         <script src="//use.typekit.net/opz3npz.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
-        <link rel="stylesheet" href="ui/css/main.css?v=1.0.2">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.3">
 
         <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -46,7 +46,9 @@
 			<?php
 			}
 			?>
-						<li class="pure-menu-item" id="suggest-quote"><a href="/quote/add" class="pure-menu-link"><img id="add-button-icon" src="/ui/img/add-button.svg" alt="Suggest a quote"><b>Suggest a quote</b></a></li>
+						<li class="pure-menu-item">
+							<a href="/quote/add" id="suggest-quote" class="pure-menu-link">Suggest a quote</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -58,6 +60,8 @@
 			<?php echo $this->render($content); ?>
     	</div>
 	</div>
+	<p class="center"><a href="/" id="another-quote-button">Another quote, please</a></p>
+
 </div>
 <div class="white-background">
 
