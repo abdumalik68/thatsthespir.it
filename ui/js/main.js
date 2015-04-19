@@ -17,8 +17,6 @@
 
 
 // SHARE: OPEN POPUPS
-
-
 function pop(url)
 {
 	var newwindow = window.open(url, 'pixeline_share', 'height=220,width=500');
@@ -32,6 +30,18 @@ $('a.social').bind('click', function(e)
 	e.preventDefault();
 	return false;
 });
+
+// Bind CTRL+F (or CMD+F) to focus on search input field.
+$(document).keydown(function(event) {        
+        if((event.ctrlKey || event.metaKey) && event.which == 70) {
+            // Save Function
+            event.preventDefault();
+            $('#autocomplete-ajax').focus();
+            return false;
+        };
+    }
+);
+
 
 // Search _ autocomplete
 $('#autocomplete-ajax').autocomplete(

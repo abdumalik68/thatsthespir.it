@@ -74,7 +74,7 @@ $f3->route('GET @api: /api',
 		// Using SESSION, let's try not to show twice the same quote.
 		$_SESSION['used_quotes'][]= $random['id'];
 		$photo = (!empty($author->photo)) ? WWWROOT.'/uploads/'.$author->photo : '' ;
-		$result = array('quote'=> $random['quote'], 'author'=> $author->fullname, 'id'=>$random['id'], 'photo'=> $photo, 'gender'=>$author->gender, 'slug'=>$author->slug, 'total_quotes'=>$author->total );
+		$result = array('quote'=> $random['quote'], 'author'=> $author->fullname, 'id'=>$random['id'], 'permalink'=> WWWROOT.'/quote/view/'.$random['id'], 'photo'=> $photo, 'gender'=>$author->gender, 'slug'=>$author->slug, 'total_quotes'=>$author->total );
 		header('content-type: application/json; charset=utf-8');
 		echo json_encode($result);
 		exit;
