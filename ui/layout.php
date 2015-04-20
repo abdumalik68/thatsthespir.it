@@ -21,7 +21,7 @@
         <script src="//use.typekit.net/opz3npz.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
-        <link rel="stylesheet" href="ui/css/main.css?v=1.0.3">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.4">
 
         <!--[if lt IE 9]>
             <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
