@@ -126,7 +126,7 @@ $f3->route('GET @feed: /feed',
 				$rss1[] = (object)[
 				'title' => truncate($i['quote'], 250)
 				, 'description' => $i['quote']. '<br>– '.$i['fullname']
-				, 'url' => WWWROOT.'/quote/view/'.$i['id']
+				, 'url' => WWWROOT.'/quote/view/'.$i['quote_id']
 				, 'category' => ''
 				, 'date' => date("r", strtotime($i['creation_date']))
 				];
