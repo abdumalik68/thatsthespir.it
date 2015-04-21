@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <title><?php echo $metatags['title']; ?></title>
@@ -13,10 +13,9 @@
 		<meta property="og:description" content="<?php echo $metatags['description']; ?>">
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary">
-		<meta name="twitter:site" content="@pixeline">
-		<meta name="twitter:title" content="<?php echo $metatags['title']; ?>">
+		<meta name="twitter:title" content="<?php echo $metatags['site_name']; ?>">
 		<meta name="twitter:description" content="<?php echo $metatags['description']; ?>">
-		<meta name="twitter:image:src" content="<?php echo $metatags['image']; ?>">
+		<meta name="twitter:image" content="<?php echo $metatags['image']; ?>">
 
 		<meta name="google-site-verification" content="N00zI7PD13iyNPB3-1T6o2J-TrU6S2nXH-Nl522Vhi0">
 		<meta name="msvalidate.01" content="84BB1D2AE4A4E377438FF21FDA9B95EF">
