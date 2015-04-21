@@ -34,7 +34,7 @@ $f3->set('image_width', 100);
 
 $metatags = array(
 	'title'=>"That's the spirit!",
-	'description'=>'Inspiring quotes for the creative soul.',
+	'description'=>'A collection of the most inspirational quotes for the creative soul. Mostly from designers, artists, scientists and writers.',
 	'site_name'=>'That\'s the spirit!',
 	'image'=>WWWROOT.'/ui/img/thatsthespirit-cover-image.jpg',
 	'image:width'=>1200,
@@ -94,10 +94,6 @@ $f3->route('GET @home: /',
 		$author->load( array('id=?', $random['author_id']) );
 		$f3->set('author', $author);
 		$f3->set('quote', $random);
-		/*
-		$author_chart = $quote->get('author_chart');
-		$f3->set('author_chart', $author_chart);
-*/
 
 		$f3->set('body_class', "home");
 		$f3->set('content', 'home.php');
@@ -106,8 +102,6 @@ $f3->route('GET @home: /',
 		echo $view->render('layout.php');
 		$f3->clear('SESSION.query');
 	}
-
-
 );
 
 $f3->route('GET @feed: /feed',
@@ -231,7 +225,7 @@ $f3->route('GET|POST @author_edit: /author/edit/@slug', function($f3){
 		}
 		$author->copyTo('POST');
 		$metatags['title'] = "Edit Author ".$author->fullname;
-		$metatags['description'] = "Edit info about Author". $author->fullname;
+		$metatags['description'] = "Edit info about Author ". $author->fullname;
 		$metatags['url']= WWWROOT.'/author/edit/'.$slug;
 
 
@@ -348,7 +342,7 @@ $f3->route('GET|POST @quote_add: /quote/add', function($f3){
 
 			$message = 'On '.date('d.m.Y at H:i:s').', a new quote was submitted to your attention, kind master.'."\n---\n";
 			$message .= $quote->quote . ' by '. $author->fullname;
-			$message .="\n---\nReview it here: ".WWWROOT.'/quotes/pending'."\nSee you,\n\nThe Spirit.";
+			$message .="\n---\nReview it here: ".WWWROOT . $f3->alias('pending_quotes') . "\nSee you,\n\nThe Spirit.";
 			$sent = $smtp->send($message, TRUE);
 			$f3->reroute('@quote_action(action=view,id='.$quote->id.')');
 		}
@@ -361,8 +355,8 @@ $f3->route('GET|POST @quote_add: /quote/add', function($f3){
 		$quote->copyTo('POST');
 		$f3->set('content', 'quote.edit.php');
 
-		$metatags['title'] = "Add a quote";
-		$metatags['description'] = "Add a quote";
+		$metatags['title'] = "Suggest a new inspirational quote";
+		$metatags['description'] = "Suggest a new inspirational quote on Design or creativity";
 		$metatags['url']= WWWROOT.'/quote/add/';
 
 		$view=new View;
@@ -488,7 +482,7 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 
 
 
-$f3->route('GET @pending_quotes: /quotes/pending',
+$f3->route('GET @pending_quotes: /pending',
 	function($f3) {
 		global $metatags;
 		if ($f3->get('SESSION.logged_in') != 'ok'){
@@ -532,7 +526,7 @@ $f3->route('GET /of/@author',
 		}
 		$metatags['title'] = $author->fullname;
 		$metatags['url'] = WWWROOT.'/of/'.$f3->get('PARAMS.author');
-		$metatags['description'] = "Quotes by ".$author->fullname;
+		$metatags['description'] = $author->total. " inspirational quotes by ".$author->fullname;
 		$f3->set('user', $f3->get('SESSION.user') );
 		$f3->set('author', $author);
 		$f3->set('his_quotes', $hisquotes);
@@ -549,6 +543,10 @@ $f3->route('GET /of/@author',
 
 
 );
+
+/*
+	Redirect previous permalink scheme to current one.
+*/
 $f3->route('GET|HEAD /@id', function($f3) {
 		$id = '/quote/view/'.$f3->get('PARAMS.id');
 		$f3->reroute($id);
@@ -642,5 +640,20 @@ $f3->route('GET @fix_totals: /fix-author-totals', function($f3){
 		}
 	});
 
+$f3->route('GET @privacy_policy: /privacy-policy',
+	function($f3) {
+		global $metatags;
+		$f3->set('user', $f3->get('SESSION.user') );
+
+		$f3->set('body_class', "layout-page");
+		$f3->set('content', 'privacy-policy.php');
+		$f3->set('metatags', $metatags);
+		$view=new View;
+		echo $view->render('layout-page.php');
+	}
+);
+
+$f3->set('pending_url', $f3->alias('pending_quotes') );
+$f3->set('privacy_url', $f3->alias('privacy_policy') );
 
 $f3->run();

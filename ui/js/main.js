@@ -117,7 +117,7 @@ if (condition1 || condition2 || condition3)
 				// Loop through our results, printing them to the page.
 				var result = imageSearch.results[0];
 				url = result.unescapedUrl; //result.url | result.tbUrl | result.unescapedUrl;
-				console.log("image url " + url);
+				// console.log("image url " + url);
 				$("#photo").css('background-image', 'url(' + url + ')');
 				$('figcaption:first').append('<p class="image-provided-by-google">"Best guess" image provided by <a target="_blank" href="https://www.google.com/search?q=' + author_name + '&es_sm=91&source=lnms&tbm=isch&sa=X&ei=okNEVJeuIMqwPLChgaAL&ved=0CAgQ_AUoAQ&biw=1279&bih=679#q=' + author_name + '&tbs=ic:gray,itp:face,islt:vga,isz:m&tbm=isch">Google Images</a></p>');
 			}

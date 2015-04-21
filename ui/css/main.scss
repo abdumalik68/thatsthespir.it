@@ -31,6 +31,9 @@ $black: #4A4A4A;
 
 
 @import 'purecss.0.6.0';
+
+/* fixes to purecss */
+address{font-style: normal;}
 /* Adriane Lux Regular Font*/
 @font-face {
   font-family: 'Adriane Lux';
@@ -97,6 +100,13 @@ body{
 		padding:0 0 .5em;
 }
 
+.layout-page .content{
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 1em;
+	padding-right: 1em;
+	max-width: 768px;
+}
 
 .header{
 	background:white;
@@ -341,6 +351,9 @@ figcaption{
 
 	.author{
 		font-size:120%;
+		a{
+			text-decoration:none;
+		}
 	}
 }
 .center{
