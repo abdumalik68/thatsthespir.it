@@ -7,6 +7,9 @@
 		</p>
 </footer>
 
+<div id="awwwards" class="nominee black bottom right">
+<a href="http://www.awwwards.com/best-websites/that-s-the-spirit/" target="_blank">Awwwards</a>
+</div>
 
 	<script src="https://www.google.com/jsapi"></script>
 <?php if (SERVER =='dev') {
