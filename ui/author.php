@@ -13,6 +13,9 @@ if ($user['role']==='admin'){
 		<figure class="author">
 			<div id="photo" <?php echo ($author['gender']=='f') ? 'class="woman"':'' ?> data-author="<?php echo $author['fullname'];?>" <?php echo (!empty($author['photo'])) ? 'style="background-image: url('.$upload_folder.'/'. $author['photo'] .');"':'data-photo="none"'; ?> ></div>
 			<figcaption><?= $author['fullname'] ?> <br><small class="meta contribution"><?= $author['total'] ?> quote<?php echo ((int)$author['total']>1) ? 's':''; ?></small></figcaption>
+			
+			<?php if ($user['role']==='admin'){ ?>
+			<p class="quote-meta"><a href="/author/delete/<?php echo $author['slug'] ?>">[ X ] kill author</a></p><?php }?>
 		</figure>
 	</header>
 <?php

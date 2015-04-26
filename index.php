@@ -50,7 +50,7 @@ $db=new DB\SQL(
 
 
 // all authors, cached for 5 minutes.
-$authors = $db->exec('SELECT * FROM authors ORDER BY total DESC, slug ASC' ,NULL, 300);
+$authors = $db->exec('SELECT * FROM authors WHERE total > 0 ORDER BY total DESC, slug ASC' ,NULL, 300);
 $f3->set('all_authors', $authors);
 $f3->set('upload_folder', $f3->get('UPLOADS'));
 $f3->set('query', $f3->get('SESSION.query'));
@@ -70,7 +70,7 @@ $f3->route('GET @api: /api',
 
 		$author = new DB\SQL\Mapper($db, 'authors');
 		$author->load( array('id=?', $random['author_id']) );
-	
+
 		// Using SESSION, let's try not to show twice the same quote.
 		$_SESSION['used_quotes'][]= $random['id'];
 		$photo = (!empty($author->photo)) ? WWWROOT.'/uploads/'.$author->photo : '' ;
@@ -175,13 +175,14 @@ $f3->route('GET @search: /search [ajax]',
 		exit;
 	});
 
-$f3->route('GET|POST @author_edit: /author/edit/@slug', function($f3){
+$f3->route('GET|POST @author_edit: /author/@action/@slug', function($f3){
 
 		global $db, $metatags;
 
 		$f3->set('user', $f3->get('SESSION.user') );
 		$f3->set('upload_folder', $f3->get('UPLOADS'));
 		$slug= $f3->get('PARAMS.slug');
+
 		if ($f3->get('SESSION.logged_in') != 'ok'){
 			// User not logged in, redirect to login page.
 			$f3->set('SESSION.goto', '@author_edit(@slug='.$slug.')' ) ;
@@ -191,44 +192,60 @@ $f3->route('GET|POST @author_edit: /author/edit/@slug', function($f3){
 		$author=new DB\SQL\Mapper($db, 'authors');
 		$author->load(array('slug=?', $slug ));
 		$web = \Web::instance();
-		if($_POST){
-			$author->copyFrom('POST');
-			//$author->slug = $web->slug($f3->get('POST.fullname'));
-			if($_FILES){
 
-				$photo = new upload($_FILES['photo']);
-				$photo->file_safe_name = true;
-				$photo->allowed = array('image/*');
-				if ($photo->uploaded) {
-					// save uploaded image with no changes
-					$photo->process($f3->get('UPLOADS'));
-					if ($photo->processed) {
+		switch($f3->get('PARAMS.action')){
 
-						$photo->image_default_color= '#FFFFFF';
-						$photo->image_greyscale= true;
-						$photo->file_name_body_pre = 'greyscale_';
+		case 'delete':
+
+			if (!$author->dry()){
+				// Effacer les quotes de l'auteur ?
+				$author->erase();
+			}
+			$f3->reroute('@home');
+		break;
+
+		case  'edit':
+			if($_POST){
+				$author->copyFrom('POST');
+				//$author->slug = $web->slug($f3->get('POST.fullname'));
+				if($_FILES){
+
+					$photo = new upload($_FILES['photo']);
+					$photo->file_safe_name = true;
+					$photo->allowed = array('image/*');
+					if ($photo->uploaded) {
+						// save uploaded image with no changes
 						$photo->process($f3->get('UPLOADS'));
 						if ($photo->processed) {
-							$author->photo = $photo->file_dst_name;
-						}else{
+
+							$photo->image_default_color= '#FFFFFF';
+							$photo->image_greyscale= true;
+							$photo->file_name_body_pre = 'greyscale_';
+							$photo->process($f3->get('UPLOADS'));
+							if ($photo->processed) {
+								$author->photo = $photo->file_dst_name;
+							}else{
+								die('error : ' . $photo->error);
+							}
+
+						} else {
 							die('error : ' . $photo->error);
 						}
-
-					} else {
-						die('error : ' . $photo->error);
 					}
 				}
+
+				$author->save();
+				$f3->set('SESSION.message',  "Thanks! Author updated.");
 			}
+			$author->copyTo('POST');
+			$metatags['title'] = "Edit Author ".$author->fullname;
+			$metatags['description'] = "Edit info about Author ". $author->fullname;
+			$metatags['url']= WWWROOT.'/author/edit/'.$slug;
 
-			$author->save();
-			$f3->set('SESSION.message',  "Thanks! Author updated.");
+
+
+			break;
 		}
-		$author->copyTo('POST');
-		$metatags['title'] = "Edit Author ".$author->fullname;
-		$metatags['description'] = "Edit info about Author ". $author->fullname;
-		$metatags['url']= WWWROOT.'/author/edit/'.$slug;
-
-
 
 		$f3->set('post', $f3->get('POST'));
 		$f3->set('content', 'author.edit.php');
@@ -430,7 +447,7 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 
 		case 'delete':
 
-			// lorsque ajout d'une quote, incrémenter le total de l'author
+			// lorsque suppression d'une quote, décrémenter le total de l'author
 			$author=new DB\SQL\Mapper($db, 'authors');
 			$author->load(array('id=?', $quote->author_id));
 			if (!$author->dry()){

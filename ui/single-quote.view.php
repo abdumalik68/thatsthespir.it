@@ -46,7 +46,7 @@ if(($user['role']==='admin')){
 <?php
 	}
 ?>
-| <a href="/quote/delete/<?php echo $quote['id'];?>">Delete quote</a>
+| <a href="/quote/delete/<?php echo $quote['id'];?>">X Delete quote</a>
 | <a href="/quote/edit/<?php echo $quote['id'];?>">Edit quote</a>
 <?php
 }
