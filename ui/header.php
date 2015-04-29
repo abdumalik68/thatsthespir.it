@@ -22,7 +22,7 @@
 		<base href="<?php echo $SCHEME.'://'.$HOST.'/'; ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <script src="//use.typekit.net/opz3npz.js"></script>
+        <script rel="dns-prefetch prerender" src="//use.typekit.net/opz3npz.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
         <link rel="stylesheet" href="ui/css/main.css?v=1.0.6">
