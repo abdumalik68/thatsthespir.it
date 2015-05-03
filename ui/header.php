@@ -2,19 +2,19 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
-        <title><?php echo $metatags['title']; ?></title>
-        <meta name="description" content="<?php echo $metatags['description']; ?>">
-		<meta property="og:title" content="<?php echo $metatags['title']; ?>">
-		<meta property="og:site_name" content="<?php echo $metatags['site_name']; ?>">
+        <title><?php echo strip_tags(html_entity_decode($metatags['title'])); ?></title>
+        <meta name="description" content="<?php echo strip_tags(html_entity_decode($metatags['description'])); ?>">
+		<meta property="og:title" content="<?php echo strip_tags(html_entity_decode($metatags['title'])); ?>">
+		<meta property="og:site_name" content="<?php echo strip_tags(html_entity_decode($metatags['site_name'])); ?>">
 		<meta property="og:image" content="<?php echo $metatags['image']; ?>">
 		<meta property="og:image:width" content="<?php echo $metatags['image:width']; ?>">
 		<meta property="og:image:height" content="<?php echo $metatags['image:height']; ?>">
 		<meta property="og:url" content="<?php echo $metatags['url']; ?>">
-		<meta property="og:description" content="<?php echo $metatags['description']; ?>">
+		<meta property="og:description" content="<?php echo strip_tags(html_entity_decode($metatags['description'])); ?>">
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary">
-		<meta name="twitter:title" content="<?php echo $metatags['site_name']; ?>">
-		<meta name="twitter:description" content="<?php echo $metatags['description']; ?>">
+		<meta name="twitter:title" content="<?php echo strip_tags(html_entity_decode($metatags['site_name'])); ?>">
+		<meta name="twitter:description" content="<?php echo strip_tags(html_entity_decode($metatags['description'])); ?>">
 		<meta name="twitter:image" content="<?php echo $metatags['image']; ?>">
 
 		<meta name="google-site-verification" content="N00zI7PD13iyNPB3-1T6o2J-TrU6S2nXH-Nl522Vhi0">
