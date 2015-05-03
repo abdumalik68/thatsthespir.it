@@ -104,6 +104,26 @@ $f3->route('GET @home: /',
 	}
 );
 
+$f3->route('GET @latest: /latest',
+	function($f3) {
+		global $db, $metatags;
+		$f3->set('user', $f3->get('SESSION.user') );
+
+		// Get random quote
+		$quote =new Spirit();
+		$quotes = $quote->get('latest');
+
+		$f3->set('quotes', $quotes);
+
+		$f3->set('body_class', "latest");
+		$f3->set('content', 'latest.php');
+		$f3->set('metatags', $metatags);
+		$view=new View;
+		echo $view->render('layout-page.php');
+		$f3->clear('SESSION.query');
+	}
+);
+
 $f3->route('GET @feed: /feed',
 	function($f3) {
 		global $db;
@@ -669,7 +689,7 @@ $f3->route('GET @privacy_policy: /privacy-policy',
 		echo $view->render('layout-page.php');
 	}
 );
-
+$f3->set('latest_url', $f3->alias('latest') );
 $f3->set('pending_url', $f3->alias('pending_quotes') );
 $f3->set('privacy_url', $f3->alias('privacy_policy') );
 

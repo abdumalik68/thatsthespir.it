@@ -1,7 +1,7 @@
 <figure class="quote">
 
 
-	<blockquote cite="<?php echo (isset($quote['source'])) ? $quote['source']: '/quote/'.$quote['id'];  ?>">
+	<blockquote cite="<?php echo (isset($quote['source'])) ? $quote['source']: '/quote/'.$quote['id'];  ?>" class="large">
 		<?php echo (isset($quote['quote'])) ? html_entity_decode($quote['quote']): '';  ?>
 	</blockquote>
 	<figcaption>

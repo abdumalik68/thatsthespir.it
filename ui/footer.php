@@ -1,5 +1,6 @@
+<footer class="footer">
+<h1 class="ui-title topline" style="background:white; text-align: left;">Why / Who / What?</h1>
 
-<footer class="footer l-box is-center">
 	<p>This garden of lights is made for unicorns by a <a href="https://pixeline.be">web designer in Brussels</a>, whose mind needed a place to bathe in all the beautifulities the human mind came up with during our time on Earth. May this place be as enthralling for you as it is for me.<br><img src="ui/img/hand.svg" alt="V for Victory hand sign" class="hand">
 	</p>
 	<p>

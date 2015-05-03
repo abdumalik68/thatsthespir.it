@@ -34,6 +34,15 @@ $black: #4A4A4A;
 
 /* fixes to purecss */
 address{font-style: normal;}
+
+.pure-menu-link{
+	padding:1em;
+	margin:1em 0 2em;
+	text-transform: none;
+	border-radius:10px;
+
+}
+
 /* Adriane Lux Regular Font*/
 @font-face {
   font-family: 'Adriane Lux';
@@ -335,8 +344,11 @@ body{
 #photo.woman{
 	background-image: url('../img/woman.svg');
 }
-
 blockquote{
+	font-family: 'Adriane Lux', serif;
+	line-height: 1.3;
+}
+blockquote.large{
 	padding:0;
 	font-family: 'Adriane Lux', serif;
 	font-size:32px;
@@ -416,75 +428,58 @@ text-align:center;}
 .search{
 margin-bottom:2em;
 }
-/* RESPONSIVE MENU */
-/*
-.custom-wrapper.open {
-    height: 14em;
+
+
+.latest-quotes-list{
+	text-align: center;
+	list-style: none;
+	
+	time{
+		display: block;
+	}
+}
+.avatar-small{
+	@extend #photo;
+	width:44px;
+	height:44px;
+	display: inline-block;
+	border-radius:50%;
+	vertical-align: middle;
+	border:1px solid #DDD;
+}
+.quote-short{
+	margin-bottom: 6em;
+}
+.quote-short blockquote{
+	font-size:24px;
+	line-height: 1.4;
+	max-width: 33%;
+	margin:1em auto 0;
+}
+.quote-short strong{
+	font-weight: bolder;
+}
+.quote-short a{
+	text-decoration: none;
+	color:$black;
 }
 
-.custom-menu-3 {
-    text-align: left;
-}
 
-.custom-toggle {
-    width: 34px;
-    height: 34px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: block;
-}
-
-.custom-toggle .bar {
-    background-color: #777;
-    display: block;
-    width: 20px;
-    height: 2px;
-    border-radius: 100px;
-    position: absolute;
-    top: 18px;
-    right: 7px;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -ms-transition: all 0.5s;
-    transition: all 0.5s;
-}
-
-.custom-toggle .bar:first-child {
-    -webkit-transform: translateY(-6px);
-    -moz-transform: translateY(-6px);
-    -ms-transform: translateY(-6px);
-    transform: translateY(-6px);
-}
-
-.custom-toggle.x .bar {
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
-}
-
-.custom-toggle.x .bar:first-child {
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
-*/
 
 /* FORM ELEMENTS */
 form{padding:2em;}
 
 
 @media (min-width: 48em) {
-
-
-	blockquote{
+	blockquote.large{
 		font-size:64px;
 		line-height: 1.4;
 	}
 
 }
+
+
+
 
 /* Base */
 
@@ -540,7 +535,6 @@ form{padding:2em;}
 }
 
 /* NOMINEE */
-
 #awwwards.nominee.black a{
 	background-image: url(../img/ribbons/awwwards_nominee_black.png);
 }
@@ -553,6 +547,10 @@ form{padding:2em;}
 #awwwards.nominee.green a{
 	background-image: url(../img/ribbons/awwwards_nominee_green.png);
 }
+
+
+
+
 
 @media only screen and (-Webkit-min-device-pixel-ratio: 1.5), only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2),	only screen and (min-device-pixel-ratio: 1.5) {
 
