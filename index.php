@@ -326,6 +326,7 @@ $f3->route('GET|POST @author_add: /author/add', function($f3){
 					}
 				}
 				$author->save();
+				$f3->set('SESSION.author.id', $author->id);
 				$f3->set('SESSION.message',  "Thanks! Author added.");
 				$f3->reroute('@quote_add');
 			} else{
@@ -381,14 +382,18 @@ $f3->route('GET|POST @quote_add: /quote/add', function($f3){
 			$message .= $quote->quote . ' by '. $author->fullname;
 			$message .="\n---\nReview it here: ".WWWROOT . $f3->alias('pending_quotes') . "\nSee you,\n\nThe Spirit.";
 			$sent = $smtp->send($message, TRUE);
+			// Quote saved, redirecting...
 			$f3->reroute('@quote_action(action=view,id='.$quote->id.')');
+			exit;
 		}
 
 		$authors = $db->exec('SELECT DISTINCT id, fullname, slug FROM authors ORDER BY slug ASC');
 
-
+		$quote->author_id = $f3->get('SESSION.author.id');
+		$quote->status = ($f3->get('SESSION.logged_in') != 'ok') ? 'pending' : 'online';
 		$f3->set('quote', $quote);
 		$f3->set('authors', $authors);
+		
 		$quote->copyTo('POST');
 		$f3->set('content', 'quote.edit.php');
 
@@ -534,7 +539,7 @@ $f3->route('GET @pending_quotes: /pending',
 		$f3->set('content', 'pending.php');
 		$view=new View;
 		$f3->set('metatags', $metatags);
-		echo $view->render('layout.php');
+		echo $view->render('layout-page.php');
 	}
 
 

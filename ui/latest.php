@@ -1,5 +1,5 @@
 <section class="latest-quotes">
-	<h1 class="ui-title topline" style="background:white;">The Last Twenty</h1>
+	<h1 class="ui-title topline" style="background:white;">Newcomers.</h1>
 	
 	<ol class="latest-quotes-list">
 	<?php 

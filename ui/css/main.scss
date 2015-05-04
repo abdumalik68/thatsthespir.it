@@ -448,7 +448,7 @@ margin-bottom:2em;
 	border:1px solid #DDD;
 }
 .quote-short{
-	margin-bottom: 6em;
+	margin-bottom: 10em;
 }
 .quote-short blockquote{
 	font-size:24px;
@@ -462,6 +462,9 @@ margin-bottom:2em;
 .quote-short a{
 	text-decoration: none;
 	color:$black;
+	&:hover{
+		text-decoration: underline;
+	}
 }
 
 

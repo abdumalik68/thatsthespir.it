@@ -5,7 +5,9 @@
 	$avatar = (!empty($author['photo'])) ? $upload_folder.'/'. $author['photo'] : 'ui/img/'.$no_avatar;
 	$avatar = WWWROOT.'/'. $avatar;
 ?>
-<div class="quote-short"><em><time datetime="<?php echo date(DATE_W3C); ?>">On <?php echo date('F j, Y', strtotime($quote['creation_date'])); ?></time></em><a title="See all quotes by <?php echo ucfirst($author['fullname']);  ?>" href="/of/<?php echo $author['slug']; ?>" rel="author"><div class="avatar-small" style="background-image: url(<?php echo $avatar;?>)"></div>
+<div class="quote-short">
+	<div class="avatar-small" style="background-image: url(<?php echo $avatar;?>)"></div><br><br>
+	<em><time datetime="<?php echo date(DATE_W3C); ?>">On <?php echo date('F j, Y', strtotime($quote['creation_date'])); ?></time></em><a title="See all quotes by <?php echo ucfirst($author['fullname']);  ?>" href="/of/<?php echo $author['slug']; ?>" rel="author">
 <strong><?php
 	// Mr. or Ms. ? 
 	echo ($author['gender']=='f') ? 'Ms.' : 'Mr.'; ?> <?php echo ucfirst($author['fullname']);  ?></strong></a> <em>said:</em> 

@@ -25,7 +25,7 @@
         <script rel="dns-prefetch prerender" src="//use.typekit.net/opz3npz.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
-        <link rel="stylesheet" href="ui/css/main.css?v=1.0.9">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.11">
 		<link rel="alternate" title="RSS of That's The Spirit!" href="/feed" type="application/rss+xml">
 
         <!--[if lt IE 9]>
