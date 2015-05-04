@@ -44,7 +44,7 @@ $(document).keydown(function(event) {
 
 
 // Search _ autocomplete
-$('#autocomplete-ajax').autocomplete(
+$('#autocomplete-ajax, .autocomplete-ajax').autocomplete(
 {
 	serviceUrl: '/search',
 	minChars: 3,

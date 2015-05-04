@@ -348,17 +348,23 @@ $f3->route('GET|POST @quote_add: /quote/add', function($f3){
 
 		$f3->set('user', $f3->get('SESSION.user') );
 		$f3->set('body_class', "quote-add");
-
+		$tags = $db->exec('SELECT * FROM tags ORDER By name ASC');
+		$f3->set('tags', $tags);
+		
 		$quote=new DB\SQL\Mapper($db, 'quotes');
+		
 		if($_POST){
 			//overwrite with values just submitted
 			$quote->copyFrom('POST');
 			if(!isset($_POST['status'])){
 				$quote->status='pending';
 			}
-			//echo '<pre>';
-			//print_r($_POST);
-			//exit;
+/*
+			echo '<pre>';
+			print_r($_POST);
+			exit;
+*/
+			$quote->tags_id = implode(',', $f3->get('POST.tags_id'));
 			$quote->save();
 
 			// lorsque ajout d'une quote, incrémenter le total de l'author
@@ -403,7 +409,7 @@ $f3->route('GET|POST @quote_add: /quote/add', function($f3){
 
 		$view=new View;
 		$f3->set('metatags', $metatags);
-		echo $view->render('layout.php');
+		echo $view->render('layout-page.php');
 		$f3->clear('SESSION.message');
 	});
 
@@ -434,8 +440,13 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 			//  No quote found with that id, return 404
 			$f3->error(404);
 		}
+		
+		// Tags
+		$tags= new DB\SQL\Mapper($db, 'tags');
+		$tags->load(array('id=?', $quote->tags_id));
 
 		// Common to all actions
+		$f3->set('tags', $tags);
 		$f3->set('user', $f3->get('SESSION.user') );
 		$f3->set('body_class', "quote-$action");
 		$metatags['title'] = "$action quote $id";
@@ -455,15 +466,15 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 			if($_POST){
 				//overwrite with values just submitted
 				$quote->copyFrom('POST');
-				//create a timestamp in MySQL format
+				$quote->tags_id = implode(',', $f3->get('POST.tags_id'));
 				$quote->save();
 				$f3->set('SESSION.message', "Quote updated.");
 			}
 
 			$f3->set('quote', $quote);
-
+			$tags = $db->exec('SELECT * FROM tags ORDER By name ASC');
+			$f3->set('tags', $tags);
 			$authors = $db->exec('SELECT DISTINCT id, fullname, slug, photo FROM authors ORDER BY slug ASC');
-			//$f3->set('upload_folder', $f3->get('UPLOADS'));
 			$f3->set('authors', $authors);
 
 			$quote->copyTo('POST');

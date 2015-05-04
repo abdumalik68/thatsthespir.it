@@ -36,6 +36,7 @@ $black: #4A4A4A;
 address{font-style: normal;}
 
 .pure-menu-link{
+	font-family: "jaf-bernino-sans",sans-serif;
 	padding:1em;
 	margin:1em 0 2em;
 	text-transform: none;
@@ -313,7 +314,6 @@ body{
 }
 
 .ui-title{
-	
 	font-size: 12px;
 	color: $light-grey;
 	line-height: 25px;
@@ -334,7 +334,19 @@ body{
 	content: "";
 	margin-bottom: 5px;
 }
-
+h2.topic-title{
+	font-size:18px;
+	color: $black;
+	color: white;
+	padding-left:2em;
+// 	font-family: 'Adriane Lux';
+	display:inline-block;
+	text-transform: uppercase;
+	&:before{
+		border-color: $black;
+		border-color: white;
+	}
+}
 
 /* ---  A QUOTE CARD --- */
 .quote{padding:2em 0;margin:1em 0;}
@@ -501,9 +513,13 @@ form{padding:2em;}
 	text-indent: -666em;
 	overflow: hidden;
 	z-index: 999;
-
 	-webkit-transition: all 1s ease;
     transition: all 1s ease; 
+    opacity: 0.1;
+    transition: all 300ms ease-in;
+    &:hover{
+	    opacity:1;
+    }
 }
 
 #awwwards.top{
@@ -581,5 +597,29 @@ form{padding:2em;}
 	}
 
 }
-
+@media print {
+	@import 'print';
+	.content-wrapper{background:white;}
+	section.search,
+	section.all-authors,
+	.quote-meta,
+	#another-quote-button,
+	#suggest-quote,
+	footer,
+	#awwwards,
+	#global-menu {
+		display:none;
+	}
+	figure.quote{padding:0}
+	h2.topic-title, #logo, address.author, .image-provided-by-google{
+		color:$light-grey;
+		font-weight: 100;
+		font-family: "jaf-bernino-sans",sans-serif;
+		*{
+			color:$light-grey !important;
+			font-weight: 100 !important;
+			font-family: "jaf-bernino-sans",sans-serif;
+		}
+	}
+}
 	
