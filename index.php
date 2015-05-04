@@ -694,6 +694,8 @@ $f3->route('GET @privacy_policy: /privacy-policy',
 		echo $view->render('layout-page.php');
 	}
 );
+
+$f3->set('current_url', $f3->PATH);
 $f3->set('latest_url', $f3->alias('latest') );
 $f3->set('pending_url', $f3->alias('pending_quotes') );
 $f3->set('privacy_url', $f3->alias('privacy_policy') );

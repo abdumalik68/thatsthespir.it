@@ -40,6 +40,15 @@ address{font-style: normal;}
 	margin:1em 0 2em;
 	text-transform: none;
 	border-radius:10px;
+	&:hover{
+		background:transparent;
+		text-decoration: underline;
+	}
+}
+
+.pure-menu-selected a{
+	text-decoration: underline;
+	color: $black;
 
 }
 
@@ -136,7 +145,6 @@ body{
 /* UI DETAILS */
 .hand{display:inline-block;margin:2em;}
 #global-menu li{
-	text-transform: lowercase;
 	font-size:80%;
 }
 
