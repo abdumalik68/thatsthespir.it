@@ -56,6 +56,8 @@ $f3->set('upload_folder', $f3->get('UPLOADS'));
 $f3->set('query', $f3->get('SESSION.query'));
 
 
+//header('X-Frame-Options: GOFORIT');
+
 $f3->route('GET @api: /api',
 	function($f3) {
 		global $db, $metatags;
@@ -84,6 +86,8 @@ $f3->route('GET @api: /api',
 $f3->route('GET @home: /',
 	function($f3) {
 		global $db, $metatags;
+
+		header_remove('X-Frame-Options');
 		$f3->set('user', $f3->get('SESSION.user') );
 
 		// Get random quote
@@ -108,6 +112,7 @@ $f3->route('GET @latest: /latest',
 	function($f3) {
 		global $db, $metatags;
 		$f3->set('user', $f3->get('SESSION.user') );
+		header_remove('X-Frame-Options');
 
 		// Get random quote
 		$quote =new Spirit();
@@ -186,6 +191,8 @@ $f3->route('GET @sitemap: /sitemap',
 $f3->route('GET @search: /search [ajax]',
 	function($f3) {
 		global $db, $metatags;
+		header_remove('X-Frame-Options');
+
 		$query = $f3->get('REQUEST.query');
 
 		$result = $db->exec("SELECT * FROM (SELECT LOWER(quote) as value, CONCAT('quotes:',id) as data FROM quotes UNION SELECT LOWER(fullname) as value, CONCAT('authors:',slug) as data FROM authors) AS U WHERE U.value like LOWER(:query)", array( ':query' => "%$query%") );
@@ -496,6 +503,7 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 			break;
 
 		case 'view':
+		header_remove('X-Frame-Options');
 
 			$f3->set('quote', $quote);
 			$author = new DB\SQL\Mapper($db, 'authors');
