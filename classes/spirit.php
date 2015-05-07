@@ -42,8 +42,18 @@ class Spirit {
 			$quotes = $db->exec($selected_query_base.' WHERE status="online" '.$not_in.'  ORDER BY RAND() LIMIT 1');
 			//die($selected_query_base.' WHERE status="online" '.$not_in.'  ORDER BY RAND() LIMIT 1');
 			return (object) $quotes[0];
-
 			break;
+		
+		case 'random_unique_with_photo':
+			$not_in = implode(', ', $_SESSION['used_quotes']);
+			if(strlen($not_in)>0){
+				$not_in = " AND id NOT IN ($not_in)";
+			}
+			$quotes = $db->exec($selected_query_base.' WHERE status="online" AND photo !="" '.$not_in.'  ORDER BY RAND() LIMIT 1');
+			//die($selected_query_base.' WHERE status="online" '.$not_in.'  ORDER BY RAND() LIMIT 1');
+			return (object) $quotes[0];
+			break;
+			
 		default:
 			$quotes =  $db->exec($selected_query_base.' WHERE id=:id AND status="online"',  array(':id'=>$what));
 			return (object) $quotes[0];

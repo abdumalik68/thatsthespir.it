@@ -177,19 +177,19 @@ $f3->route('GET @feed: /feed_random',
 			$_SESSION['used_quotes'] = array();
 		}
 		$quote = new Spirit();
-		$item = $quote->get('random_unique');
+		$item = $quote->get('random_unique_with_photo');
 		$rss1 = array();
 		if(is_object($item)){
 			$permalink = WWWROOT.'/quote/view/' . $item->quote_id;
 			$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.$item->photo;
 			$photo='';
 			if(!empty($item->photo) && is_file($filename)){
-				$photo = '<img src="'.WWWROOT.'/'.UPLOADS.$item->photo.'">';
+				$photo = '<div class="avatar" title="'.ucfirst($item->fullname). '" style="margin:1em auto;border-radius:50%;width:200px;height:200px;background-color:white;background-position: center center;background-repeat: no-repeat;background-size:cover;background-image: url('.WWWROOT.'/'.UPLOADS.$item->photo.');-webkit-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);-moz-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);"></div>';
 			}
 			// Mr. or Ms. ?
-			$description = '<div>'.$photo;
-			$description .= ($item->gender=='f') ? 'Ms. ' : 'Mr. ';
-			$description .= '<strong>'.ucfirst($item->fullname). '</strong></a> <em>once said:</em><blockquote cite="'.$permalink.'">';
+			$description = '<div style="text-align:center">';
+			$description .= ($item->gender=='f') ? 'Ms. ' : '';
+			$description .= '<strong>'.ucfirst($item->fullname). '</strong></a> <em>once said:</em><blockquote cite="'.$permalink.'" style="font-family:georgia, serif;font-size:32px;line-height:1.4">'.$photo;
 			$description .= (isset($item->quote)) ? html_entity_decode($item->quote): '';
 			$description .= '</blockquote></div>';
 

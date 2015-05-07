@@ -4,7 +4,7 @@
 	<p>This garden of lights is made for unicorns by a <a href="https://pixeline.be">web designer in Brussels</a>, whose mind needed a place to bathe in all the beautifulities the human mind came up with during our time on Earth. May this place be as enthralling for you as it is for me.<br><img src="ui/img/hand.svg" alt="V for Victory hand sign" class="hand">
 	</p>
 	<p>
-		<a href="http://eepurl.com/bjCZ6f" title="Receive the latest quotes added to the Spirit in your mailbox">Newsletter</a> - <a href="<?php echo $privacy_url ?>">Privacy policy</a>
+		<a href="http://eepurl.com/bjCZ6f" title="Receive a daily quote from the Spirit in your mailbox">Would you like a Daily quote by email ?</a> - <a href="<?php echo $privacy_url ?>">Privacy policy</a>
 		</p>
 </footer>
 
