@@ -111,6 +111,8 @@ body{
 	-moz-animation: backgroundgradientfade 24s ease infinite;
 	-o-animation: backgroundgradientfade 24s ease infinite;
 	animation: backgroundgradientfade 24s ease infinite;
+	min-height: 400px;
+	min-height: 70%;
 	min-height: 70vh;
 	
 }
@@ -360,6 +362,9 @@ h2.topic-title{
 	background-repeat: no-repeat;
 	background-size:cover;
 	background-image: url('../img/man.svg');
+	-webkit-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);
+	-moz-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);
+	box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);
 }
 #photo.woman{
 	background-image: url('../img/woman.svg');

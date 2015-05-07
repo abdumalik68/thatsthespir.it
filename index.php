@@ -63,10 +63,6 @@ $f3->route('GET @api: /api',
 		global $db, $metatags;
 		//$f3->set('user', $f3->get('SESSION.user') );
 
-		// Get random quote
-		if(!isset($_SESSION['used_quotes'])){
-			$_SESSION['used_quotes'] = array();
-		}
 		$quote=new Spirit();
 		$random = $quote->get('random_unique');
 
@@ -74,6 +70,7 @@ $f3->route('GET @api: /api',
 		$author->load( array('id=?', $random['author_id']) );
 
 		// Using SESSION, let's try not to show twice the same quote.
+
 		$_SESSION['used_quotes'][]= $random['id'];
 		$photo = (!empty($author->photo)) ? WWWROOT.'/uploads/'.$author->photo : '' ;
 		$result = array('quote'=> $random['quote'], 'author'=> $author->fullname, 'id'=>$random['id'], 'permalink'=> WWWROOT.'/quote/view/'.$random['id'], 'photo'=> $photo, 'gender'=>$author->gender, 'slug'=>$author->slug, 'total_quotes'=>$author->total );
@@ -94,10 +91,15 @@ $f3->route('GET @home: /',
 		$quote=new Spirit();
 		$random = $quote->get('random');
 
+		// Tags
+		$tags= new DB\SQL\Mapper($db, 'tags');
+		$tags->load(array('id=?', $random->tags_id));
+
 		$author = new DB\SQL\Mapper($db, 'authors');
-		$author->load( array('id=?', $random['author_id']) );
+		$author->load( array('id=?', $random->author_id) );
 		$f3->set('author', $author);
 		$f3->set('quote', $random);
+		$f3->set('tags', $tags);
 
 		$f3->set('body_class', "home");
 		$f3->set('content', 'home.php');
@@ -163,6 +165,54 @@ $f3->route('GET @feed: /feed',
 		exit;
 	}
 );
+
+$f3->route('GET @feed: /feed_random',
+	function($f3) {
+		global $db;
+
+		header('Content-Type: text/xml; charset=utf-8');
+
+		// Get random quote
+		if(!isset($_SESSION['used_quotes'])){
+			$_SESSION['used_quotes'] = array();
+		}
+		$quote = new Spirit();
+		$item = $quote->get('random_unique');
+		$rss1 = array();
+		if(is_object($item)){
+			$permalink = WWWROOT.'/quote/view/' . $item->quote_id;
+			$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.$item->photo;
+			$photo='';
+			if(!empty($item->photo) && is_file($filename)){
+				$photo = '<img src="'.WWWROOT.'/'.UPLOADS.$item->photo.'">';
+			}
+			// Mr. or Ms. ?
+			$description = '<div>'.$photo;
+			$description .= ($item->gender=='f') ? 'Ms. ' : 'Mr. ';
+			$description .= '<strong>'.ucfirst($item->fullname). '</strong></a> <em>once said:</em><blockquote cite="'.$permalink.'">';
+			$description .= (isset($item->quote)) ? html_entity_decode($item->quote): '';
+			$description .= '</blockquote></div>';
+
+			$rss1[] = (object)[
+			'title' => truncate($item->quote, 250)
+			, 'description' => $description
+			, 'url' => $permalink
+			, 'category' => $item->tags
+			, 'date' => date("r", strtotime($item->creation_date))
+			];
+		}
+
+		$rss = new RSS;
+		$rss->title = "That's The Spirit! - a random quote";
+		$rss->url = WWWROOT.'/feed_random';
+		$rss->description = $rss->title;
+		$rss->date = $rss1[0]->date;
+		$rss->items = $rss1;
+		echo $rss->generate();
+		exit;
+	}
+);
+
 $f3->route('GET @sitemap: /sitemap',
 	function($f3) {
 		global $db;
@@ -229,7 +279,7 @@ $f3->route('GET|POST @author_edit: /author/@action/@slug', function($f3){
 				$author->erase();
 			}
 			$f3->reroute('@home');
-		break;
+			break;
 
 		case  'edit':
 			if($_POST){
@@ -357,16 +407,16 @@ $f3->route('GET|POST @quote_add: /quote/add', function($f3){
 		$f3->set('body_class', "quote-add");
 		$tags = $db->exec('SELECT * FROM tags ORDER By name ASC');
 		$f3->set('tags', $tags);
-		
+
 		$quote=new DB\SQL\Mapper($db, 'quotes');
-		
+
 		if($_POST){
 			//overwrite with values just submitted
 			$quote->copyFrom('POST');
 			if(!isset($_POST['status'])){
 				$quote->status='pending';
 			}
-/*
+			/*
 			echo '<pre>';
 			print_r($_POST);
 			exit;
@@ -406,7 +456,7 @@ $f3->route('GET|POST @quote_add: /quote/add', function($f3){
 		$quote->status = ($f3->get('SESSION.logged_in') != 'ok') ? 'pending' : 'online';
 		$f3->set('quote', $quote);
 		$f3->set('authors', $authors);
-		
+
 		$quote->copyTo('POST');
 		$f3->set('content', 'quote.edit.php');
 
@@ -447,7 +497,7 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 			//  No quote found with that id, return 404
 			$f3->error(404);
 		}
-		
+
 		// Tags
 		$tags= new DB\SQL\Mapper($db, 'tags');
 		$tags->load(array('id=?', $quote->tags_id));
@@ -503,7 +553,7 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id',
 			break;
 
 		case 'view':
-		header_remove('X-Frame-Options');
+			header_remove('X-Frame-Options');
 
 			$f3->set('quote', $quote);
 			$author = new DB\SQL\Mapper($db, 'authors');
