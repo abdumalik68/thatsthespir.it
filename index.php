@@ -198,15 +198,17 @@ $f3->route('GET @feed: /feed_random',
 			, 'description' => $description
 			, 'url' => $permalink
 			, 'category' => $item->tags
-			, 'date' => date("r", strtotime($item->creation_date))
+			//, 'date' => date("r", strtotime($item->creation_date))
+			, 'date' => date("r", strtotime("-2 hour"))
 			];
 		}
 
 		$rss = new RSS;
-		$rss->title = "That's The Spirit! - a random quote";
+		$rss->title = "The Spirit! of the day";
 		$rss->url = WWWROOT.'/feed_random';
 		$rss->description = $rss->title;
-		$rss->date = $rss1[0]->date;
+		//$rss->date = $rss1[0]->date;
+		$rss->date = date('D, d M Y H:i:s O', strtotime("-1 hour"));
 		$rss->items = $rss1;
 		echo $rss->generate();
 		exit;
