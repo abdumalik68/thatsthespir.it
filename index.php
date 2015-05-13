@@ -47,11 +47,6 @@ $db=new DB\SQL(
 	DB_PASSWORD
 );
 
-
-
-// all authors, cached for 5 minutes.
-$authors = $db->exec('SELECT * FROM authors WHERE total > 0 ORDER BY total DESC, slug ASC' ,NULL, 300);
-$f3->set('all_authors', $authors);
 $f3->set('upload_folder', $f3->get('UPLOADS'));
 $f3->set('query', $f3->get('SESSION.query'));
 
@@ -131,6 +126,26 @@ $f3->route('GET @latest: /latest',
 	}
 );
 
+$f3->route('GET @archive: /human-channels',
+	function($f3) {
+		global $db, $metatags;
+		$f3->set('user', $f3->get('SESSION.user') );
+		header_remove('X-Frame-Options');
+
+		// all authors, cached for 5 minutes.
+		$authors = $db->exec('SELECT * FROM authors WHERE total > 0 ORDER BY total DESC, slug ASC' ,NULL, 300);
+		$f3->set('all_authors', $authors);
+
+		$f3->set('body_class', "human-channels");
+		$f3->set('content', 'all-authors.php');
+		$f3->set('metatags', $metatags);
+		$view=new View;
+		echo $view->render('layout-page.php');
+		$f3->clear('SESSION.query');
+	}
+);
+
+
 $f3->route('GET @feed: /feed',
 	function($f3) {
 		global $db;
@@ -184,21 +199,17 @@ $f3->route('GET @feed: /feed_random',
 			$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.$item->photo;
 			$photo='';
 			if(!empty($item->photo) && is_file($filename)){
-				$photo = '<div class="avatar" title="'.ucfirst($item->fullname). '" style="margin:1em auto;border-radius:50%;width:200px;height:200px;background-color:white;background-position: center center;background-repeat: no-repeat;background-size:cover;background-image: url('.WWWROOT.'/'.UPLOADS.$item->photo.');-webkit-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);-moz-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);"></div>';
+				$photo = '<div class="avatar" title="'.ucfirst($item->fullname). '" style="margin:1em auto;border-radius:50%;width:200px;height:200px;background-color:white;background-position: center center;background-repeat: no-repeat;background-size:cover;background-image: url('.WWWROOT.'/'.UPLOADS.$item->photo.'); background:url('.WWWROOT.'/'.UPLOADS.$item->photo.') center center / cover no-repeat ; -webkit-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);-moz-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);"></div>';
 			}
-			// Mr. or Ms. ?
 			$description = '<div style="text-align:center">';
-			$description .= ($item->gender=='f') ? 'Ms. ' : '';
-			$description .= '<strong>'.ucfirst($item->fullname). '</strong></a> <em>once said:</em><blockquote cite="'.$permalink.'" style="font-family:georgia, serif;font-size:32px;line-height:1.4">'.$photo;
-			$description .= (isset($item->quote)) ? html_entity_decode($item->quote): '';
-			$description .= '</blockquote></div>';
+			$description .= '<blockquote cite="'.$permalink.'" style="font-family:georgia, serif;font-size:32px;line-height:1.4">' . html_entity_decode($item->quote).'</blockquote>';
+			$description .= $photo.'<strong>'.ucfirst($item->fullname). '</strong></a></div>';
 
 			$rss1[] = (object)[
 			'title' => truncate($item->quote, 250)
 			, 'description' => $description
 			, 'url' => $permalink
 			, 'category' => $item->tags
-			//, 'date' => date("r", strtotime($item->creation_date))
 			, 'date' => date("r", strtotime("-2 hour"))
 			];
 		}
@@ -775,5 +786,6 @@ $f3->set('current_url', $f3->PATH);
 $f3->set('latest_url', $f3->alias('latest') );
 $f3->set('pending_url', $f3->alias('pending_quotes') );
 $f3->set('privacy_url', $f3->alias('privacy_policy') );
+$f3->set('archive_url', $f3->alias('archive') );
 
 $f3->run();
