@@ -300,6 +300,9 @@ $f3->route('GET|POST @author_edit: /author/@action/@slug', function($f3){
 							$photo->image_default_color= '#FFFFFF';
 							$photo->image_greyscale= true;
 							$photo->file_name_body_pre = 'greyscale_';
+							$photo->image_resize = true;
+							$photo->image_x = 400;
+							$photo->image_ratio_y = true;
 							$photo->process($f3->get('UPLOADS'));
 							if ($photo->processed) {
 								$author->photo = $photo->file_dst_name;
@@ -368,10 +371,12 @@ $f3->route('GET|POST @author_add: /author/add', function($f3){
 						// save uploaded image with no changes
 						$photo->process($f3->get('UPLOADS'));
 						if ($photo->processed) {
-
 							$photo->image_default_color= '#FFFFFF';
 							$photo->image_greyscale= true;
 							$photo->file_name_body_pre = 'greyscale_';
+							$photo->image_resize = true;
+							$photo->image_x = 400;
+							$photo->image_ratio_y = true;
 							$photo->process($f3->get('UPLOADS'));
 							if ($photo->processed) {
 								$author->photo = $photo->file_dst_name;
