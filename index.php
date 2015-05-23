@@ -50,8 +50,9 @@ $db=new DB\SQL(
 $f3->set('upload_folder', $f3->get('UPLOADS'));
 $f3->set('query', $f3->get('SESSION.query'));
 
-
-//header('X-Frame-Options: GOFORIT');
+if (!isset($_SESSION['used_quotes'])){
+	$_SESSION['used_quotes']= array();
+}
 
 $f3->route('GET @api: /api',
 	function($f3) {
@@ -102,6 +103,19 @@ $f3->route('GET @home: /',
 		$view=new View;
 		echo $view->render('layout.php');
 		$f3->clear('SESSION.query');
+	}
+);
+
+$f3->route('GET @random: /random',
+	function($f3) {
+		global $db;
+		//$f3->set('user', $f3->get('SESSION.user') );
+
+		$quote=new Spirit();
+		$random = $quote->get('random_unique');
+		$_SESSION['used_quotes'][]= $random->id;
+		header("Location: /quote/view/".$random->id);
+		exit;
 	}
 );
 
