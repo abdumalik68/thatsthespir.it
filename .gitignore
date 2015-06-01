@@ -6,3 +6,5 @@ uploads/*
 *.codekit
 
 *.codekit
+
+ui/config.codekit
