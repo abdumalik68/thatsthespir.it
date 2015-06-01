@@ -2,3 +2,7 @@ app/core/config.php
 .DS_Store
 uploads/*
 *.codekit
+
+*.codekit
+
+*.codekit
