@@ -19,14 +19,23 @@ if ($user['role']==='admin'){
 		</figure>
 	</header>
 <?php
-if (count($his_quotes)>0){
-	foreach($his_quotes as $quote){
+$total = count($his_quotes);
+if ($total>0){
+	foreach($his_quotes as $k=>$quote){
 		?>
 	<div class="content">
 		<?php include 'single-quote.view.php'; ?>
 	</div>
+<?php if ($k <($total-1)){
+	?>
+	<span class="sep">⤫</span>
 <?php
 	}
+
+	}
+	?>
+
+<?
 }
 else{
 ?>

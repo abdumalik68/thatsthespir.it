@@ -7,16 +7,17 @@
 		<a href="http://eepurl.com/bjCZ6f" title="Receive a daily quote from the Spirit in your mailbox">Would you like a Daily quote by email ?</a> - <a href="<?php echo $privacy_url ?>" title="In short: Google Analytics cookies, that's about it.">Privacy policy</a> - <a href="<?php echo $archive_url ?>" title="The Spirit! choses humans as channels. Also known as &lsquo;Authors&rsquo;">All Authors</a>
 		</p>
 </footer>
-
+<script>var google;</script>
 	<script src="https://www.google.com/jsapi"></script>
 <?php if (SERVER =='dev') {
 ?>
 <script src="ui/js/jquery.1.10.2.min.js"></script>
 <script src="ui/js/jquery.autocomplete.min.js"></script>
+<script src="ui/js/jquery.shuffleLetters.js"></script>
 <?php
 }
 
 ?>
-	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.2"></script>
+	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.4"></script>
 	</body>
 </html>

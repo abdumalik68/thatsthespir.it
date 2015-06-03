@@ -137,6 +137,9 @@ $f3->route('GET @latest: /latest',
 
 		$f3->set('body_class', "latest");
 		$f3->set('content', 'latest.php');
+
+		$metatags['title'] = 'The Spirit\'s latest.';
+
 		$f3->set('metatags', $metatags);
 		$view=new View;
 		echo $view->render('layout-page.php');
@@ -799,6 +802,28 @@ $f3->route('GET @privacy_policy: /privacy-policy',
 		echo $view->render('layout-page.php');
 	}
 );
+
+
+$f3->route('GET @mailinglist: /daily',
+	function($f3) {
+		global $metatags;
+		$f3->set('user', $f3->get('SESSION.user') );
+
+		$f3->set('body_class', "layout-page");
+		$f3->set('content', 'daily.php');
+		$f3->set('metatags', $metatags);
+		$view=new View;
+		echo $view->render('layout-page.php');
+	}
+);
+
+
+// Error 404
+$f3->set('ONERROR',function($f3){
+	$view=new View;
+	echo $view->render('404.php');
+});
+
 
 $f3->set('current_url', $f3->PATH);
 $f3->set('latest_url', $f3->alias('latest') );

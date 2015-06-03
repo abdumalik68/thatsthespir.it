@@ -1,4 +1,6 @@
 <section class="quote">
+<ol class="latest-quotes-list">
+<li>
 <?php
 
 if ($quote['status']==='pending'){
@@ -20,8 +22,11 @@ if (!empty($_SESSION['message'])){
 <?php
 }
 ?>
-<?php include 'single-quote.view.php'; ?>
-
+<?php 
+$showLargeAvatar = true;
+include 'single-quote.view.php'; ?>
+</li>
+</ol>
 </section>
 <?php
 unset($_SESSION['message']);

@@ -2,18 +2,28 @@
 	<h1 class="ui-title topline" style="background:white;">Newcomers.</h1>
 	
 	<ol class="latest-quotes-list">
-	<?php 
-	foreach ($quotes as $q){
+	<?php
+	$total = count((array)$quotes);
+
+	foreach ($quotes as $k=>$q){
 		?>
 		<li>
-		<?
-		$quote = $q;
-		$author = $q;
-		$quote['id'] = $quote['quote_id'];
-		include 'single-quote-abstract.view.php';
+		<?php
+		
+
+		$quote = (object)$q;
+		$author = (object)$q;
+		//$quote['id'] = $quote->quote_id;
+		$showLargeAvatar = false;
+		include 'single-quote.view.php';
+		if ($k<($total-1)){
+		?>
+			<span class="sep">⤫</span>
+		<?php
+		}
 		?>
 		</li>
-		<?
+		<?php
 	}	
 	?>
 	</ol>

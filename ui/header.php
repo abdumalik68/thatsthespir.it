@@ -25,7 +25,7 @@
         <script rel="dns-prefetch prerender" src="//use.typekit.net/opz3npz.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
 
-        <link rel="stylesheet" href="ui/css/main.css?v=1.0.20">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.26">
 		<link rel="alternate" title="RSS of That's The Spirit!" href="/feed" type="application/rss+xml">
 
         <!--[if lt IE 9]>
@@ -51,6 +51,9 @@
 			<?php
 			}
 			?>
+			<li class="pure-menu-item <?= ($current_url=='/daily') ? 'pure-menu-selected': '';?>" >
+				<a href="/daily" class="pure-menu-link" title="Receive a daily quote from the Spirit in your mailbox">Daily</a>
+			</li>
 			<li class="pure-menu-item <?= ($current_url=='/latest') ? 'pure-menu-selected': '';?>"><a href="<?php echo $latest_url;?>" id="latest-quotes" class="pure-menu-link">Latest</a></li>
 						<li class="pure-menu-item">
 							<a href="/quote/add" id="suggest-quote" class="pure-menu-link">Suggest a quote</a>

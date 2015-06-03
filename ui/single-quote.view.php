@@ -7,33 +7,31 @@
 	}
 	?>
 <figure class="quote">
-	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source: '/quote/'.$quote->id;  ?>" class="large">
-		<?php echo (isset($quote->quote)) ? html_entity_decode($quote->quote): '';  ?>
+	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source: '/quote/'.$quote->id;  ?>" >
+		<span class="guillemets"></span>
+		<span class="the-quote"><?php echo (isset($quote->quote)) ? html_entity_decode($quote->quote): '';  ?></span>
+		<span class="pilcrow">|</span>
 	</blockquote>
 	<figcaption>
 
 <?php
 if($body_class!=='of-author'){
 ?>
-		<div id="photo" data-author="<?php echo $author->fullname;?>" <?php echo (!empty($author->photo)) ? 'style="background-image: url('.$upload_folder.'/'. $author->photo .');"':'data-photo="none"'; ?>  <?php echo ($author->gender=='f') ? 'class="woman"':'' ?>>&nbsp;</div>
+		<div class="photo <?php echo (!$showLargeAvatar) ? 'avatar-small':''; ?>"  data-author="<?php echo $author->fullname;?>" <?php echo (!empty($author->photo)) ? 'style="background-image: url('.$upload_folder.'/'. $author->photo .');"':'data-photo="none"'; ?>  <?php echo ($author->gender=='f') ? 'class="woman"':'' ?>>&nbsp;</div>
 
 		<address  class="author">– <a title="All quotes by <?php echo ucfirst($author->fullname);  ?>" href="/of/<?php echo $author->slug; ?>" rel="author"><?php echo ucfirst($author->fullname);  ?><br><small class="meta"><?php echo $author->total ?> quote<?php echo ((int)$author->total>1) ? 's':''; ?></small></a></address>
-
 
 <?php
 }
 ?>
-	</figcaption>
-</figure>
-<p class="ui-title quote-meta topline"> &nbsp;&nbsp;quote <a href="/quote/view/<?php echo $quote->id?>">#<?php echo $quote->id?></a>
-<?php echo (!empty($quote->source)) ? ' | <span class="source"><a href="'.$quote->source.'" target="_blank">source</a></span> | ': ' | 	';  ?>
-
-<?php
+<p><?php
 $share_message = urlencode($quote->quote. "\n– ". $author->fullname );
 $tweet_version = urlencode(truncate($author->fullname. ': '.$quote->quote, 90));
 $permalink = WWWROOT.'/quote/view/' . $quote->id;
 ?>
-
+<p class="ui-title quote-meta topline"><a href="<?php echo $permalink ?>">#<?php echo $quote->id?></a>
+<?php echo (!empty($quote->source)) ? ' | <span class="source"><a href="'.$quote->source.'" target="_blank">source</a></span>': '';  ?>
+&nbsp;&nbsp;|&nbsp;&nbsp;
 <a class="social facebook" href="//www.facebook.com/sharer/sharer.php?u=<?php echo $permalink ?>"><img src="/ui/img/facebook.svg" alt="share this quote on Facebook"></a>
 <a class="social twitter" href="http://twitter.com/share?text=<?php echo $tweet_version ?>&amp;url=<?php echo $permalink ?>&amp;hashtags=design_quote"><img src="/ui/img/twitter.svg" alt="share this quote on Twitter"></a>
 <a class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&amp;media=<?php echo $metatags['image'] ?>&amp;description=<?php echo $share_message ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
@@ -58,3 +56,8 @@ if(($user['role']==='admin')){
 }
 ?>
 </p>
+
+</p>	
+
+	</figcaption>
+</figure>
