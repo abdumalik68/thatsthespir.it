@@ -6,14 +6,12 @@
 if(count($pending_quotes)>0){
 
 
-	foreach($pending_quotes as $quote){
-		$author['fullname']=$quote['fullname'];
-		$author['slug']=$quote['slug'];
-		$author['total']=$quote['total'];
-		$author['id']=$quote['author_id'];
-		$author['photo']=$quote['photo'];
-		$author['gender']=$quote['gender'];
-		$quote['id']= $quote['quote_id'];
+
+	foreach($pending_quotes as $q){
+		$quote = (object)$q;
+		$author = (object)$q;
+		//$quote['id'] = $quote->quote_id;
+		$showLargeAvatar = true;
 
 		include 'single-quote.view.php';
 	}

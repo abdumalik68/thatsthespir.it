@@ -6,7 +6,6 @@
 			<?php echo $this->render($content); ?>
     	</div>
 	</div>
-	<p class="center"><a href="/" id="another-quote-button">Another quote, please</a></p>
 </div>
 
 <div class="white-background">

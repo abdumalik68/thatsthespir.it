@@ -2,14 +2,14 @@
 
 	if(isset($tags) && !empty($tags) && strlen(trim($tags->name))>0){
 		?>
-		<h2 class="topline topic-title">On <?php echo html_entity_decode($tags->name) ; ?></h2>
+		<h2 class="ui-title topline topic-title">On <?php echo html_entity_decode($tags->name) ; ?></h2>
 		<?
 	}
 	?>
 <figure class="quote">
 	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source: '/quote/'.$quote->id;  ?>" >
 		<span class="guillemets"></span>
-		<span class="the-quote"><?php echo (isset($quote->quote)) ? html_entity_decode($quote->quote): '';  ?></span>
+		<span class="the-quote"><?php echo (isset($quote->quote)) ? $quote->quote: '';  ?></span>
 		<span class="pilcrow">|</span>
 	</blockquote>
 	<figcaption>
@@ -29,7 +29,7 @@ $share_message = urlencode($quote->quote. "\n– ". $author->fullname );
 $tweet_version = urlencode(truncate($author->fullname. ': '.$quote->quote, 90));
 $permalink = WWWROOT.'/quote/view/' . $quote->id;
 ?>
-<p class="ui-title quote-meta topline"><a href="<?php echo $permalink ?>">#<?php echo $quote->id?></a>
+<p class="ui-title quote-meta"><a href="<?php echo $permalink ?>">#<?php echo $quote->id?></a>
 <?php echo (!empty($quote->source)) ? ' | <span class="source"><a href="'.$quote->source.'" target="_blank">source</a></span>': '';  ?>
 &nbsp;&nbsp;|&nbsp;&nbsp;
 <a class="social facebook" href="//www.facebook.com/sharer/sharer.php?u=<?php echo $permalink ?>"><img src="/ui/img/facebook.svg" alt="share this quote on Facebook"></a>

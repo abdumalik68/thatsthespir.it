@@ -13,12 +13,11 @@ class Spirit {
 			break;
 
 		case 'pending':
-			return $db->exec($selected_query_base.' WHERE q.status="pending"  ORDER BY q.id DESC');
-
+			return (object)$db->exec($selected_query_base.' WHERE q.status="pending"  ORDER BY q.id DESC');
 			break;
 
 		case 'latest':
-			return (object) $db->exec($selected_query_base.' WHERE status="online"  ORDER BY q.id DESC LIMIT 20');
+			return (object)$db->exec($selected_query_base.' WHERE status="online"  ORDER BY q.id DESC LIMIT 20');
 
 			break;
 
