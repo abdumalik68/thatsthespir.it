@@ -1,4 +1,4 @@
-// @codekit-prepend "jquery.1.10.2.min.js", "jquery.autocomplete.min.js", "jquery.shuffleLetters.js";
+// @codekit-prepend "jquery.1.10.2.min.js", "jquery.autocomplete.min.js";
 
 
 // SHARE: OPEN POPUPS
@@ -51,15 +51,14 @@ $('#autocomplete-ajax, .autocomplete-ajax').autocomplete(
 
 
 // TEXT EFFECT
-var options = {
-	"text": "Hello World"
-};
+/*
 $('blockquote span.the-quote').shuffleLetters(
 {
 	'step': 1,
 	'fps': 30,
 	'pool': "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 });
+*/
 
 // GOOGLE ANALYTICS
 (function(i, s, o, g, r, a, m)

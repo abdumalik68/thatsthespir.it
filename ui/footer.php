@@ -18,6 +18,6 @@
 }
 
 ?>
-	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.4"></script>
+	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.5"></script>
 	</body>
 </html>

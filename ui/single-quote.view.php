@@ -9,7 +9,7 @@
 <figure class="quote">
 	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source: '/quote/'.$quote->id;  ?>" >
 		<span class="guillemets"></span>
-		<span class="the-quote"><?php echo (isset($quote->quote)) ? $quote->quote: '';  ?></span>
+		<span class="the-quote"><?php echo (isset($quote->quote)) ? html_entity_decode($quote->quote) : '';  ?></span>
 		<span class="pilcrow">|</span>
 	</blockquote>
 	<figcaption>

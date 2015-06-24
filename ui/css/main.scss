@@ -3,7 +3,27 @@ $lighter-grey: #EFEFEF;
 $light-grey: #979797;
 $black: #4A4A4A;
 $sans-serif: "jaf-bernino-sans",sans-serif;
+//
+
+/* Adriane Lux Regular Font*/
+/*
+@font-face {
+  font-family: 'Adriane Lux';
+  src: url("AdrianeLux-RgWeb.eot");
+}
+@font-face {
+  font-family: 'Adriane Lux';
+  src: url("AdrianeLux-RgWeb.woff") format("woff");
+}
+
 $serif: 'Adriane Lux', serif;
+*/
+
+
+
+$serif: "adriane", Georgia, serif;
+
+
 /*****************************************************
 
 
@@ -119,15 +139,6 @@ address{font-style: normal;}
 
 }
 
-/* Adriane Lux Regular Font*/
-@font-face {
-  font-family: 'Adriane Lux';
-  src: url("AdrianeLux-RgWeb.eot");
-}
-@font-face {
-  font-family: 'Adriane Lux';
-  src: url("AdrianeLux-RgWeb.woff") format("woff");
-}
 
 @-webkit-keyframes backgroundgradientfade {
     0%{background-position:4% 0%}
