@@ -2,7 +2,7 @@
 $author['fullname'] = ucfirst($author['fullname']);
 ?>
 <article class="latest-quote">
-	<header>
+	<header class="sticky">
 		<h1 class="ui-title topline" style="background:white">Quotes by <?= $author['fullname'] ?> <?php
 if ($user['role']==='admin'){
 ?>

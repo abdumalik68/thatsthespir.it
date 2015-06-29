@@ -1,4 +1,4 @@
-// @codekit-prepend "jquery.1.10.2.min.js", "jquery.autocomplete.min.js";
+// @codekit-prepend "jquery.1.10.2.min.js", "jquery.autocomplete.min.js", "headhesive.js";
 
 
 // SHARE: OPEN POPUPS
@@ -49,46 +49,24 @@ $('#autocomplete-ajax, .autocomplete-ajax').autocomplete(
 	}
 });
 
+// on Author page Sticky Menu
 
-// TEXT EFFECT
-/*
-$('blockquote span.the-quote').shuffleLetters(
-{
-	'step': 1,
-	'fps': 30,
-	'pool': "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+$('body.of-author').each(function(){
+	//$('.sticky').sticky({topSpacing:0});
+
+	var header = new Headhesive('.sticky', { offset: 500});
 });
-*/
-
-// GOOGLE ANALYTICS
-(function(i, s, o, g, r, a, m)
-{
-	i['GoogleAnalyticsObject'] = r;
-	i[r] = i[r] ||
-	function()
-	{
-		(i[r].q = i[r].q || []).push(arguments);
-	}, i[r].l = 1 * new Date();
-	a = s.createElement(o), m = s.getElementsByTagName(o)[0];
-	a.async = 1;
-	a.src = g;
-	m.parentNode.insertBefore(a, m);
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-
-ga('create', 'UA-162823-28', 'auto');
-ga('send', 'pageview');
-
 
 // FETCH GOOGLE IMAGE WHEREVER NECESSARY
 // Conditions to be met to actually go fetch.
-$('.photo').each(function()
-{
+$('.photo').each(function() {
 	var $this = $(this);
 	var condition1 = ($('body.quote-view').length && $this.data('photo') === 'none');
 	var condition2 = ($('body.of-author').length && $this.data('photo') === 'none');
 	var condition3 = ($('body.home').length && $this.data('photo') === 'none');
+	var condition4 = ($('body.latest').length && $this.data('photo') === 'none');
 
-	if (condition1 || condition2 || condition3)
+	if (condition1 || condition2 || condition3 || condition4)
 	{
 		var author_name = $this.data('author');
 		var imageSearch;
@@ -118,7 +96,7 @@ $('.photo').each(function()
 					url = result.unescapedUrl; //result.url | result.tbUrl | result.unescapedUrl;
 					// console.log("image url " + url);
 					$this.css('background-image', 'url(' + url + ')');
-					$('figcaption:first').append('<p class="image-provided-by-google">"Best guess" image provided by <a target="_blank" href="https://www.google.com/search?q=' + author_name + '&es_sm=91&source=lnms&tbm=isch&sa=X&ei=okNEVJeuIMqwPLChgaAL&ved=0CAgQ_AUoAQ&biw=1279&bih=679#q=' + author_name + '&tbs=ic:gray,itp:face,islt:vga,isz:m&tbm=isch">Google Images</a></p>');
+					$this.parents('figcaption').append('<p class="image-provided-by-google">"Best guess" image provided by <a target="_blank" href="https://www.google.com/search?q=' + author_name + '&es_sm=91&source=lnms&tbm=isch&sa=X&ei=okNEVJeuIMqwPLChgaAL&ved=0CAgQ_AUoAQ&biw=1279&bih=679#q=' + author_name + '&tbs=ic:gray,itp:face,islt:vga,isz:m&tbm=isch">Google Images</a></p>');
 				}
 			}, null);
 
@@ -126,3 +104,26 @@ $('.photo').each(function()
 		});
 	}
 });
+
+
+
+
+// GOOGLE ANALYTICS
+(function(i, s, o, g, r, a, m)
+{
+	i['GoogleAnalyticsObject'] = r;
+	i[r] = i[r] ||
+	function()
+	{
+		(i[r].q = i[r].q || []).push(arguments);
+	}, i[r].l = 1 * new Date();
+	a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+	a.async = 1;
+	a.src = g;
+	m.parentNode.insertBefore(a, m);
+})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-162823-28', 'auto');
+ga('send', 'pageview');
+
+

@@ -13,11 +13,11 @@
 ?>
 <script src="ui/js/jquery.1.10.2.min.js"></script>
 <script src="ui/js/jquery.autocomplete.min.js"></script>
-<script src="ui/js/jquery.shuffleLetters.js"></script>
+<script src="ui/js/headhesive.js"></script>
 <?php
 }
 
 ?>
-	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.5"></script>
+	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.11"></script>
 	</body>
 </html>
