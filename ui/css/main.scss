@@ -725,9 +725,54 @@ body.of-author{
 	}
 }
 
+
+/* BADGE CTA */
+.badge-cta{
+	position:relative;
+	.badge {
+		display: block;
+		position: absolute;
+		top: -2px;
+		right: -2px;
+		line-height: 16px;
+		height: 16px;
+		padding: 0 5px;
+		font-size:12px;
+		color: white;
+		border: 1px solid;
+		border-radius: 10px;
+		background: white;
+		background-color:red;
+		border-color: white;
+		opacity:0;
+		-webkit-animation:pop-in 0.5s;
+		-moz-animation:pop-in 0.5s;
+		-ms-animation:pop-in 0.5s;
+		-webkit-animation:pop-in 0.5s ease-in-out 3s forwards;
+		-moz-animation:pop-in 0.5s ease-in-out 3s forwards;
+		-ms-animation:pop-in 0.5s ease-in-out 3s forwards;
+		animation:pop-in 0.5s ease-in-out 3s forwards;
+}
+
+}
+
+
+@-webkit-keyframes pop-in {
+0% { opacity: 0; -webkit-transform: scale(0.5); }
+100% { opacity: 1; -webkit-transform: scale(1); }
+}
+@-moz-keyframes pop-in {
+0% { opacity: 0; -moz-transform: scale(0.5); }
+100% { opacity: 1; -moz-transform: scale(1); }
+}
+@keyframes pop-in {
+0% { opacity: 0;  transform: scale(0.5); }
+100% { opacity: 1;transform: scale(1); }
+}
+
+/* STICKY HEADER */
+
 .headhesive{
-
-
   /* Required styles */
   position: fixed;
   z-index: 1;
