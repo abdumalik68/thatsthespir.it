@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title><?php echo strip_tags(html_entity_decode($metatags['title'])); ?></title>
+        <?php //include 'newrelic.tracking-speed.php'; ?>
         <meta name="description" content="<?php echo strip_tags(html_entity_decode($metatags['description'])); ?>">
 		<meta property="og:title" content="<?php echo strip_tags(html_entity_decode($metatags['title'])); ?>">
 		<meta property="og:site_name" content="<?php echo strip_tags(html_entity_decode($metatags['site_name'])); ?>">
