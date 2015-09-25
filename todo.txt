@@ -4,7 +4,9 @@ A DEVELOPPER
 
 
 - web page screenshot
-http://grabz.it/api/php/download.aspx
+
+	- via google api pagespeed insight
+	https://pixeline.eu/image.php?url=http://thatsthespir.it/quote/view/19
 
 voir aussi wkhtmltoimage
 https://github.com/wkhtmltopdf/wkhtmltopdf
