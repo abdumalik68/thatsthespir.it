@@ -84,7 +84,7 @@ $f3->route('GET @archive: /human-channels', function($f3) { require 'controllers
 
 $f3->route('GET @feed: /feed', function($f3) { require 'controllers/feed.get.php'; });
 
-$f3->route('GET @feed: /feed_random', function($f3) { require 'controllers/feed_random.get.php'; });
+$f3->route('GET @feed_random: /feed_random', function($f3) { require 'controllers/feed_random.get.php'; });
 
 $f3->route('GET @sitemap: /sitemap', function($f3) { require 'controllers/sitemap.get.php'; });
 

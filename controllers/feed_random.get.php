@@ -1,7 +1,7 @@
 <?php
 		global $db;
 
-		header('Content-Type: text/xml; charset=utf-8');
+		
 
 		// Get random quote
 		if(!isset($_SESSION['used_quotes'])){
@@ -37,7 +37,7 @@
 			, 'date' => date("r", strtotime("-2 hour"))
 			];
 		}
-
+		header('Content-Type: text/xml; charset=utf-8');
 		$rss = new RSS;
 		$rss->title = "The Spirit! of the day";
 		$rss->url = WWWROOT.'/feed_random';
@@ -46,4 +46,9 @@
 		$rss->date = date('D, d M Y H:i:s O', strtotime("-1 hour"));
 		$rss->items = $rss1;
 		echo $rss->generate();
+		
+		// update database
+		$now = date('Y-m-d h:i:s');
+		 $db->exec("UPDATE quotes SET last_sent='$now' WHERE id='".$item->quote_id."';");
+		
 		exit;

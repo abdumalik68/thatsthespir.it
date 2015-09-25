@@ -31,7 +31,7 @@ class Spirit {
 			break;
 
 		case 'random':
-			$quotes = $db->exec($selected_query_base.' WHERE status="online" ORDER BY RAND() LIMIT 1');
+			$quotes = $db->exec($selected_query_base.' WHERE status="online" ORDER BY  last_sent ASC, RAND() LIMIT 1');
 			return (object) $quotes[0];
 
 		case 'random_unique':
@@ -50,7 +50,7 @@ class Spirit {
 			if(strlen($not_in)>0){
 				$not_in = " AND id NOT IN ($not_in)";
 			}
-			$quotes = $db->exec($selected_query_base.' WHERE status="online" AND photo !="" '.$not_in.'  ORDER BY RAND() LIMIT 1');
+			$quotes = $db->exec($selected_query_base.' WHERE status="online" AND photo !="" '.$not_in.'  ORDER BY  last_sent ASC, RAND() LIMIT 1');
 			//die($selected_query_base.' WHERE status="online" '.$not_in.'  ORDER BY RAND() LIMIT 1');
 			return (object) $quotes[0];
 			break;

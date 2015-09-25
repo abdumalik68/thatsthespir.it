@@ -2,27 +2,9 @@
 A DEVELOPPER
 .................
 
-# suggest a quote
-- /add
-	L if 'is_admin' > status = 'online'  ELSE status='pending'
 
-# admin area
+- web page screenshot
+http://grabz.it/api/php/download.aspx
 
-> Vérifier si user != Logged_in => le rediriger vers /login
-
-pour:
-- quote/<quote-slug>/edit
-- quotes/pending
-- author/<author-slug/edit
-- author/add
-
-.................
-TO DO
-.................
-- ajouter une table users
-	L id
-	L email
-	L password
-	L role ('admin' | 'editor' | 'subscriber')
-	L created
-	
+voir aussi wkhtmltoimage
+https://github.com/wkhtmltopdf/wkhtmltopdf
