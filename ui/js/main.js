@@ -2,8 +2,6 @@
 
 
 // SHARE: OPEN POPUPS
-
-
 function pop(url)
 {
 	window.open(url, 'pixeline_share', 'height=220,width=500');
@@ -58,6 +56,21 @@ $('body.of-author').each(function(){
 });
 
 // FETCH GOOGLE IMAGE WHEREVER NECESSARY
+/*
+	API Key AIzaSyAYmkJ_zGi5di66aia-wjzslCaY3hpOd4A
+	
+	url = https://www.googleapis.com/customsearch/v1?key=AIzaSyAYmkJ_zGi5di66aia-wjzslCaY3hpOd4A
+	cx = 001445870329049885378:2xrk1tlw22u
+	
+	example url (found via generator https://developers.google.com/apis-explorer/?hl=en_US#p/customsearch/v1/search.cse.list )
+	
+	https://www.googleapis.com/customsearch/v1?q=SEARCH_TERM&cx=001445870329049885378%3A2xrk1tlw22u&fileType=png%2Cjpg%2Cgif&imgColorType=gray&imgSize=medium&imgType=face&num=1&searchType=image&fields=items(formattedUrl%2ChtmlFormattedUrl%2Cimage(byteSize%2Cheight%2CthumbnailHeight%2CthumbnailLink%2CthumbnailWidth%2Cwidth)%2Clink)&key={YOUR_API_KEY}
+	
+	or simpler (only returns items.link
+	https://www.googleapis.com/customsearch/v1?q=Albert+Einstein&cx=001445870329049885378%3A2xrk1tlw22u&fileType=png%2Cjpg%2Cgif&imgColorType=gray&imgSize=medium&imgType=face&num=1&searchType=image&fields=items(formattedUrl%2ChtmlFormattedUrl%2Clink)&key={YOUR_API_KEY}
+	
+	
+*/
 // Conditions to be met to actually go fetch.
 $('.photo').each(function() {
 	var $this = $(this);
@@ -65,43 +78,30 @@ $('.photo').each(function() {
 	var condition2 = ($('body.of-author').length && $this.data('photo') === 'none');
 	var condition3 = ($('body.home').length && $this.data('photo') === 'none');
 	var condition4 = ($('body.latest').length && $this.data('photo') === 'none');
-
+	console.log("fetch image? "+ (condition1 || condition2 || condition3 || condition4));
 	if (condition1 || condition2 || condition3 || condition4)
 	{
 		var author_name = $this.data('author');
-		var imageSearch;
-		google.load('search', '1');
-		var url = '';
-		google.setOnLoadCallback(function()
-		{
-			// Create an Image Search instance.
-			imageSearch = new google.search.ImageSearch();
-			imageSearch.setRestriction(
-			google.search.Search.RESTRICT_SAFESEARCH, google.search.Search.SAFESEARCH_OFF);
-			imageSearch.setRestriction(
-			google.search.ImageSearch.RESTRICT_IMAGESIZE, google.search.ImageSearch.IMAGESIZE_MEDIUM);
-			imageSearch.setRestriction(
-			google.search.ImageSearch.RESTRICT_COLORIZATION, google.search.ImageSearch.COLORIZATION_GRAYSCALE);
-			imageSearch.setRestriction(
-			google.search.ImageSearch.RESTRICT_IMAGETYPE, google.search.ImageSearch.IMAGETYPE_FACES);
-			// Set searchComplete as the callback function when a search is
-			// complete.  The imageSearch object will have results in it.
-			imageSearch.setSearchCompleteCallback(this, function()
-			{
+		var apiKey ='AIzaSyAYmkJ_zGi5di66aia-wjzslCaY3hpOd4A';
+		
+		var url = 'https://www.googleapis.com/customsearch/v1?q='+author_name+'&cx=001445870329049885378%3A2xrk1tlw22u&fileType=png%2Cjpg%2Cgif&imgColorType=gray&imgSize=medium&imgType=face&num=1&searchType=image&fields=items(formattedUrl%2ChtmlFormattedUrl%2Cimage%2FthumbnailLink%2Clink)&key='+ apiKey;
+		
+		$.ajax({
+			url: url,
+			success: function(imageSearch){
 				// Check that we got results
-				if (imageSearch.results && imageSearch.results.length > 0)
+				if (imageSearch.items && imageSearch.items.length > 0)
 				{
 					// Loop through our results, printing them to the page.
-					var result = imageSearch.results[0];
-					url = result.unescapedUrl; //result.url | result.tbUrl | result.unescapedUrl;
-					// console.log("image url " + url);
+					var url = imageSearch.items[0].link;
+					url = imageSearch.items[0].image.thumbnailLink;
+				 console.log("image url " + url);
 					$this.css('background-image', 'url(' + url + ')');
 					$this.parents('figcaption').append('<p class="image-provided-by-google">"Best guess" image provided by <a target="_blank" href="https://www.google.com/search?q=' + author_name + '&es_sm=91&source=lnms&tbm=isch&sa=X&ei=okNEVJeuIMqwPLChgaAL&ved=0CAgQ_AUoAQ&biw=1279&bih=679#q=' + author_name + '&tbs=ic:gray,itp:face,islt:vga,isz:m&tbm=isch">Google Images</a></p>');
 				}
-			}, null);
-
-			imageSearch.execute(author_name);
-		});
+			},
+			dataType: 'jsonp'
+		}).fail(function() {alert( "failure" );}).error(function() {alert( "error" );});
 	}
 });
 

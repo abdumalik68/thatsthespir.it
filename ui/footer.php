@@ -7,8 +7,6 @@
 		<a href="/daily" title="Receive a daily quote from the Spirit in your mailbox">Would you like a Daily quote by email ?</a> - <a href="<?php echo $privacy_url ?>" title="In short: Google Analytics cookies, that's about it.">Privacy policy</a> - <a href="<?php echo $archive_url ?>" title="The Spirit! choses humans as channels. Also known as &lsquo;Authors&rsquo;">All Authors</a>
 		</p>
 </footer>
-<script>var google;</script>
-	<script src="https://www.google.com/jsapi"></script>
 <?php if (SERVER =='dev') {
 ?>
 <script src="ui/js/jquery.1.10.2.min.js"></script>
@@ -18,6 +16,6 @@
 }
 
 ?>
-	<script src="ui/js/<?php echo (SERVER !='dev')? 'min/main-min':'main';?>.js?v=1.0.11"></script>
+	<script src="ui/js/min/main-min.js?v=1.0.13"></script>
 	</body>
 </html>
