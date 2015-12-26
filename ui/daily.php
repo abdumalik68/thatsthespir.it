@@ -9,7 +9,7 @@
 			<div class="pure-u-1 pure-u-md-2-3">
 				<div style="padding:2em">
 <p>
-Fill the form below to receive a quote from The Spirit! in your mailbox every day in the morning. It won't win your fights for you but it does feel nice.</p>
+Receive a quote from The Spirit! in your mailbox every day in the morning. It will make you feel...</p>
 <p style="display:block;font-size:160%;font-style: italic;">Mmmmmmmmmh, nice.</p>
 <p>Like that.</p>
 	
@@ -19,10 +19,8 @@ Fill the form below to receive a quote from The Spirit! in your mailbox every da
 <form action="//pixeline.us2.list-manage.com/subscribe/post?u=47aa7bd611cb197be236cd3b2&amp;id=8a917f2ce3" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
     <div id="mc_embed_signup_scroll">
 	
-<div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
 <div class="mc-field-group">
-	<label for="mce-EMAIL">Your Email Address <span class="asterisk">*</span>
-</label>
+	<label for="mce-EMAIL">Your Email Address</label>
 	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
 </div>
 <p class="meta">Powered by <a href="http://eepurl.com/N-Z79" title="MailChimp - email marketing made easy and fun">MailChimp</a><br><small>
