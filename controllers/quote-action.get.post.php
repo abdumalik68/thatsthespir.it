@@ -105,7 +105,7 @@ default:
 	break;
 }
 
-$metatags['url']= WWWROOT.'/quote/'.$action.'/'.$id.'/';
+$metatags['url']= WWWROOT.'/quote/'.$action.'/'.$id;
 
 
 $view=new View;

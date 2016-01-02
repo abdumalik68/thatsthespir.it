@@ -30,11 +30,11 @@ $tweet_version = urlencode(truncate($author['fullname']. ': '.$quote['quote'], 9
 $permalink = WWWROOT.'/quote/view/' . $quote['id'];
 ?>
 
-<a class="social facebook" href="//www.facebook.com/sharer/sharer.php?u=<?php echo $permalink ?>"><img src="/ui/img/facebook.svg" alt="share this quote on Facebook"></a>
-<a class="social twitter" href="http://twitter.com/share?text=<?php echo $tweet_version ?>&amp;url=<?php echo $permalink ?>&amp;hashtags=design_quote"><img src="/ui/img/twitter.svg" alt="share this quote on Twitter"></a>
-<a class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&amp;media=<?php echo $metatags['image'] ?>&amp;description=<?php echo $share_message ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
-<a class="social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $permalink ?>&amp;title=<?php echo urlencode($author['fullname']) ?>&amp;summary=<?php echo $share_message ?>&amp;source=<?php echo $permalink ?>" ><img src="/ui/img/linkedin.svg" alt="share this quote on LinkedIn"></a>
-<a class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a>
+<a  rel="nofollow" class="social facebook" href="//www.facebook.com/sharer/sharer.php?u=<?php echo $permalink ?>"><img src="/ui/img/facebook.svg" alt="share this quote on Facebook"></a>
+<a rel="nofollow" class="social twitter" href="http://twitter.com/share?text=<?php echo $tweet_version ?>&amp;url=<?php echo $permalink ?>&amp;hashtags=design_quote"><img src="/ui/img/twitter.svg" alt="share this quote on Twitter"></a>
+<a rel="nofollow" class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&amp;media=<?php echo $metatags['image'] ?>&amp;description=<?php echo $share_message ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
+<a rel="nofollow" class="social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $permalink ?>&amp;title=<?php echo urlencode($author['fullname']) ?>&amp;summary=<?php echo $share_message ?>&amp;source=<?php echo $permalink ?>" ><img src="/ui/img/linkedin.svg" alt="share this quote on LinkedIn"></a>
+<a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a>
 
 
 	<?php

@@ -10,7 +10,7 @@ if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
 }
 
 // either new or old, it should live at most for another hour
-$_SESSION['discard_after'] = $now + 3600;
+$_SESSION['discard_after'] = $now + (24*3600);
 
 // Start FatFreeFramework
 $f3 = require 'lib/base.php';
@@ -51,11 +51,11 @@ $f3->set('image_width', 100);
 
 $metatags = array(
 	'title'=>"That's the spirit!",
-	'description'=>'A collection of the most inspirational quotes for the creative soul. Mostly from designers, artists, scientists and writers.',
-	'site_name'=>'That\'s the spirit!',
-	'image'=>WWWROOT.'/ui/img/thatsthespirit-cover-image.jpg',
-	'image:width'=>1200,
-	'image:height'=>630,
+	'description'=>'Inspirational and motivational quotes for the creative soul.',
+	'site_name'=>'That\'s The Spirit!',
+	'image'=>WWWROOT.'/ui/img/tts-og-cover-image.png',
+	'image:width'=>800,
+	'image:height'=>574,
 	'url' => WWWROOT);
 
 $db=new DB\SQL(
@@ -87,6 +87,7 @@ $f3->route('GET @feed: /feed', function($f3) { require 'controllers/feed.get.php
 $f3->route('GET @feed_random: /feed_random', function($f3) { require 'controllers/feed_random.get.php'; });
 
 $f3->route('GET @sitemap: /sitemap', function($f3) { require 'controllers/sitemap.get.php'; });
+$f3->redirect('GET|HEAD /sitemap.xml', '/sitemap');
 
 $f3->route('GET @search: /search [ajax]', function($f3) { require 'controllers/search.ajax.php'; });
 

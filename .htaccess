@@ -7,6 +7,9 @@ Options -Indexes
 	RewriteEngine On
 	RewriteBase /
 
+	# sitemap
+	RewriteRule ^sitemap.xml$ sitemap [L]
+
 	# Force to exclude the trailing slash
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_URI} (.*)/$
