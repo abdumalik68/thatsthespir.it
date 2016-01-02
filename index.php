@@ -53,7 +53,7 @@ $metatags = array(
 	'title'=>"That's the spirit!",
 	'description'=>'Inspirational and motivational quotes for the creative soul.',
 	'site_name'=>'That\'s The Spirit!',
-	'image'=>WWWROOT.'/ui/img/tts-og-cover-image.png',
+	'image'=>WWWROOT.'/ui/img/tts-og-image.png',
 	'image:width'=>800,
 	'image:height'=>574,
 	'url' => WWWROOT);
@@ -116,6 +116,7 @@ $f3->route('GET @fix_totals: /fix-author-totals', function($f3){ require 'contro
 $f3->route('GET @privacy_policy: /privacy-policy', function($f3) { require 'controllers/privacy-policy.get.php'; });
 
 $f3->route('GET @mailinglist: /daily', function($f3) { require 'controllers/daily.get.php'; });
+$f3->route('GET @thankyou: /thank-you-dear', function($f3) { require 'controllers/thank-you.get.php'; });
 
 /*
 	Redirect previous permalink scheme to current one.
