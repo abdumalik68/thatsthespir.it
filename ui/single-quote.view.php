@@ -23,30 +23,27 @@ if($body_class!=='of-author'){
 
 <?php
 }
-?><h1> LIKÉ? <?=$quote->user_likes_it?></h1>
-<p><?php
-/*
 ?>
-<pre>
-	<?
-print_r($quote);
-	?></pre><?
-*/
+<p><?php
+
 $share_message = urlencode($quote->quote. "\n– ". $author->fullname );
 $tweet_version = urlencode(truncate($author->fullname. ': '.$quote->quote, 90));
 $permalink = WWWROOT.'/quote/view/' . $quote->id;
 ?>
-<p class="ui-title quote-meta"><a href="<?php echo $permalink ?>">#<?php echo $quote->id?></a>
+<p class="ui-title quote-meta">
+	<a href="<?php echo $permalink ?>">#<?php echo $quote->id?></a>
 <?php echo (!empty($quote->source)) ? ' | <span class="source"><a href="'.$quote->source.'" target="_blank">source</a></span>': '';  ?>
 &nbsp;&nbsp;|&nbsp;&nbsp;
-<a rel="nofollow" class="social facebook" href="//www.facebook.com/sharer/sharer.php?u=<?php echo $permalink ?>"><img src="/ui/img/facebook.svg" alt="share this quote on Facebook"></a>
-<a rel="nofollow" class="social twitter" href="http://twitter.com/share?text=<?php echo $tweet_version ?>&amp;url=<?php echo $permalink ?>&amp;hashtags=design_quote"><img src="/ui/img/twitter.svg" alt="share this quote on Twitter"></a>
-<a rel="nofollow" class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&amp;media=<?php echo $metatags['image'] ?>&amp;description=<?php echo $share_message ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
-<a rel="nofollow" class="social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $permalink ?>&amp;title=<?php echo urlencode($author->fullname) ?>&amp;summary=<?php echo $share_message ?>&amp;source=<?php echo $permalink ?>" ><img src="/ui/img/linkedin.svg" alt="share this quote on LinkedIn"></a>
-<a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a>
-| 
-<a rel="nofollow" class="favourite <?php echo (LOGGED_IN && $quote->user_likes_it>0) ? 'liked':'' ?>" data-quote="<?php echo $quote->id; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/'.$quote->id : CURRENT_URI.'#login-ui'; ?>"><em>Save it ?</em></a>
-<span class="total_likes"><?php $quote->total_likes ?></span>
+	<a rel="nofollow" class="social facebook" href="//www.facebook.com/sharer/sharer.php?u=<?php echo $permalink ?>"><img src="/ui/img/facebook.svg" alt="share this quote on Facebook"></a>
+	<a rel="nofollow" class="social twitter" href="http://twitter.com/share?text=<?php echo $tweet_version ?>&amp;url=<?php echo $permalink ?>&amp;hashtags=design_quote"><img src="/ui/img/twitter.svg" alt="share this quote on Twitter"></a>
+	<a rel="nofollow" class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&amp;media=<?php echo $metatags['image'] ?>&amp;description=<?php echo $share_message ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
+	<a rel="nofollow" class="social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $permalink ?>&amp;title=<?php echo urlencode($author->fullname) ?>&amp;summary=<?php echo $share_message ?>&amp;source=<?php echo $permalink ?>" ><img src="/ui/img/linkedin.svg" alt="share this quote on LinkedIn"></a>
+	<a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a> | 
+	<a rel="nofollow" class="social favourite <?php echo (LOGGED_IN && $quote->user_likes_it>0) ? 'liked':'' ?>" data-quote="<?php echo $quote->id; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/'.$quote->id : CURRENT_URI.'#login-ui'; ?>" title="Favourite this quote so you can easily find it later.">
+		<em>Save it ?</em>&nbsp;
+		<span class="total_likes"><?php echo $quote->total_likes ?></span>
+		</a>
+
 
 <?php if ($user['role']==='admin'){ ?> <a href="/author/edit/<?php echo $author->slug ?>">Edit author</a> <?php }?>
 	<?php

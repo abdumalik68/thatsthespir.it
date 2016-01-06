@@ -9,7 +9,13 @@ if($author->dry()){
 	exit;
 }
 $quotes = new DB\SQL\Mapper($db, 'quotes');
-$hisquotes = $quotes->select('id,quote,source,author_id', 'author_id='.$author->id.' and status ="online"' );
+
+$quotes->total_likes = 'SELECT COUNT(*) FROM favourites WHERE quotes.id=favourites.quote_id';	
+
+if(LOGGED_IN){
+	$quotes->user_likes_it = 'SELECT COUNT(*) FROM favourites WHERE favourites.quote_id=quotes.id AND user_email="'.$_SESSION['user']['email'].'"';	
+}
+$hisquotes = $quotes->find(array('author_id= ? AND status="online"', $author->id));
 
 
 $filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS. $author->photo;
