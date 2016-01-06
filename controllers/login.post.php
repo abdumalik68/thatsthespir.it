@@ -24,7 +24,9 @@ if(count($errors)<1){
 		$f3->set('SESSION.logged_in', 'ok');
 		$f3->set('SESSION.user',  array('email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role));
 		if(!empty($f3->get('SESSION.goto'))){
-			$f3->reroute($f3->get('SESSION.goto'));
+			$url = $f3->get('SESSION.goto');
+			$f3->set('SESSION.goto', '');
+			$f3->reroute($url);
 		}else{
 			$f3->reroute('/');
 		}

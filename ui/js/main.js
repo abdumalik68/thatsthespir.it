@@ -1,4 +1,4 @@
-// @codekit-prepend "jquery.1.10.2.min.js", "jquery.autocomplete.min.js", "headhesive.js";
+// @codekit-prepend "jquery.1.10.2.min.js", "jquery.autocomplete.min.js", "headhesive.js", "modal.js";
 
 
 // SHARE: OPEN POPUPS
@@ -8,13 +8,51 @@ function pop(url)
 	return false;
 }
 
-$('a.social').bind('click', function(e)
+$('a.social').on('click', function(e)
 {
 	var url = $(this).attr('href');
 	pop(url, 'pixeline_share', 'height=220,width=500');
 	e.preventDefault();
 	return false;
 });
+
+// FAVOURITE
+var logged_in = ($('#login-ui').length<1);
+
+$('.favourite').on('click.favourite',function(e){
+	
+	//
+	var $this = $(this);
+	if (logged_in){
+		e.preventDefault();
+		$.post($this.attr('href'),{quote: $this.data('quote')},function(result){
+			console.log(result.action);
+			switch(result.action){
+				case 'created':
+				$this.addClass('liked');
+				break;
+				
+				case 'deleted':
+				$this.removeClass('liked');
+				break;
+				
+				case 'not-logged-in':
+				$this.removeClass('error');
+				break;
+				
+			}
+		}, "json");
+	}else{
+
+		var append_vars_string = 'next_action=like&quote_id='+ $(this).data('quote') ;
+
+		$('.single-signon-providers a').each(function(){
+			this.href= this.href.split(/[?#]/)[0];
+			this.href += (this.href.indexOf("?") > 0) ?  '&'+append_vars_string : '/?'+append_vars_string;
+		});
+	}
+});
+
 
 // Bind CTRL+F (or CMD+F) to focus on search input field.
 $(document).keydown(function(event)
@@ -100,8 +138,16 @@ $('.photo').each(function() {
 					$this.parents('figcaption').append('<p class="image-provided-by-google">"Best guess" image provided by <a target="_blank" href="https://www.google.com/search?q=' + author_name + '&es_sm=91&source=lnms&tbm=isch&sa=X&ei=okNEVJeuIMqwPLChgaAL&ved=0CAgQ_AUoAQ&biw=1279&bih=679#q=' + author_name + '&tbs=ic:gray,itp:face,islt:vga,isz:m&tbm=isch">Google Images</a></p>');
 				}
 			},
-			dataType: 'jsonp'
-		}).fail(function() {alert( "failure" );}).error(function() {alert( "error" );});
+			dataType: 'jsonp',
+			error: function(){
+				$this.parents('figcaption').append('<p class="image-provided-by-google">Could not retrieve Google image :-(</p>');
+			}
+		}).fail(function() { 
+			$this.parents('figcaption').append('<p class="image-provided-by-google">Could not retrieve Google image :-(</p>');
+		}).error(function() {
+			$this.parents('figcaption').append('<p class="image-provided-by-google">Could not retrieve Google image :-(</p>');
+
+		});
 	}
 });
 

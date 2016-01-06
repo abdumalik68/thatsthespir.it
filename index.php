@@ -1,5 +1,6 @@
 <?php
 session_start(); // ready to go!
+/*
 
 $now = time();
 if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
@@ -8,9 +9,10 @@ if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
     session_destroy();
     session_start();
 }
+*/
 
 // either new or old, it should live at most for another hour
-$_SESSION['discard_after'] = $now + (24*3600);
+//$_SESSION['discard_after'] = $now + (24*3600);
 
 // Start FatFreeFramework
 $f3 = require 'lib/base.php';
@@ -71,6 +73,28 @@ if (!isset($_SESSION['used_quotes'])){
 	$_SESSION['used_quotes']= array();
 }
 
+// LOGGED_IN: Convenience Constant to check whether user is logged in.
+define('LOGGED_IN',($f3->get('SESSION.logged_in') == 'ok'));
+define('CURRENT_URI', $f3->get('PATH')); // ex: "/login" (mind the Slash!)
+
+
+/*
+ STORE QUERY VARS IN SESSION FOR AFTER OPAUTH REDIRECT
+*/
+
+if($f3->get('PARAMS.goto')){
+	$f3->set('SESSION.goto', $f3->get('PARAMS.goto'));
+}
+
+if(isset($_GET['next_action'])){
+	$f3->set('SESSION.next_action', $_GET['next_action']);
+}
+if(isset($_GET['quote_id'])){
+	$f3->set('SESSION.quote_id', $_GET['quote_id']);
+}
+
+
+
 /* ALL ROUTES */
 $f3->route('GET @home: /', function($f3) { require 'controllers/home.get.php'; });
 
@@ -89,6 +113,9 @@ $f3->route('GET @feed_random: /feed_random', function($f3) { require 'controller
 $f3->route('GET @sitemap: /sitemap', function($f3) { require 'controllers/sitemap.get.php'; });
 $f3->redirect('GET|HEAD /sitemap.xml', '/sitemap');
 
+$f3->route('POST @favourite: /favourite/@quote [ajax]', function($f3) { require 'controllers/favourite.ajax.php'; });
+
+
 $f3->route('GET @search: /search [ajax]', function($f3) { require 'controllers/search.ajax.php'; });
 
 $f3->route('GET|POST @author_edit: /author/@action/@slug', function($f3){ require 'controllers/author-edit.get.post.php'; });
@@ -103,7 +130,7 @@ $f3->route('GET @pending_quotes: /pending', function($f3) { require 'controllers
 
 $f3->route('GET /of/@author', function($f3) { require 'controllers/author-single.get.php'; });
 
-$f3->route('GET @auth: /auth', function($f3){ require 'controllers/auth.php';});
+//$f3->route('GET @auth: /auth', function($f3){ require 'controllers/auth.php';});
 $f3->route('GET @auth_action: /auth/@action/*', function($f3){ require 'controllers/auth-action.get.php';});
 $f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});
 
@@ -139,7 +166,6 @@ $f3->set('ONERROR', function($f3){
 		echo $view->render('404.php');
 	});
 */
-
 
 $f3->set('current_url', $f3->PATH);
 $f3->set('latest_url', $f3->alias('latest') );

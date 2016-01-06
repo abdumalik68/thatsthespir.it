@@ -21,6 +21,8 @@ $f3->set('tags', $tags);
 
 $f3->set('body_class', "home");
 $f3->set('content', 'home.php');
+
+$f3->set('SESSION.goto', WWWROOT.'/quote/view/' . $random->id);
 $f3->set('metatags', $metatags);
 $view=new View;
 echo $view->render('layout.php');

@@ -16,6 +16,9 @@ global $db;
  * Define paths
  */
 
+
+
+
 /**
  * Load config
  */
@@ -39,7 +42,6 @@ if($action !== 'callback'){
 
 
 
-
 /**
  * Fetch auth response, based on transport configuration for callback
  */
@@ -59,6 +61,15 @@ default:
 	echo '<strong style="color: red;">Error: </strong>Unsupported callback_transport.'."<br>\n";
 	break;
 }
+
+
+/*
+echo "<pre>";
+print_r($f3->get('SESSION'));
+echo "</pre>";
+exit;
+*/
+
 /**
  * Check if it's an error callback
  */
@@ -94,7 +105,7 @@ else{
 		$user->load(array('email = :username LIMIT 0,1', ':username'=>$username));
 		if($user->dry()){
 			$user->role='subscriber';
-		}    
+		}
 		$user->email = $username;
 		$user->fullname= $response['auth']['info']['name'];
 		$user->image= $response['auth']['info']['image'];
@@ -106,8 +117,31 @@ else{
 
 		$f3->set('SESSION.logged_in', 'ok');
 		$f3->set('SESSION.user',  array('email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role, 'image'=> $user->image, 'urls'=> json_decode($user->urls)));
+
+		if(!empty($f3->get('SESSION.next_action'))){
+			
+			switch($f3->get('SESSION.next_action')){
+
+			case 'like':
+
+				$fav = new DB\SQL\Mapper($db, 'favourites');
+				$fav->quote_id = $f3->get('SESSION.quote_id') ;
+				$fav->user_email = $username;
+				$fav->save();
+
+				$f3->set('SESSION.goto', '/quote/view/'.$f3->get('SESSION.quote_id'));
+
+				break;
+			}
+			$f3->clear('SESSION.next_action');
+			$f3->clear('SESSION.quote_id');
+		}
+
+
 		if(!empty($f3->get('SESSION.goto'))){
 			$f3->reroute($f3->get('SESSION.goto'));
+			$f3->clear('SESSION.goto');
+
 		}else{
 			$f3->reroute('/');
 		}

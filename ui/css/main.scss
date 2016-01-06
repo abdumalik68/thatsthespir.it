@@ -27,8 +27,7 @@ $serif: "adriane", Georgia, serif;
 /*****************************************************
 
 
-/* MAILCHIMP SIGNUP FORM CSS
-*/
+/* MAILCHIMP SIGNUP FORM CSS */
 
 @import 'mailchimp-form';
 
@@ -160,10 +159,12 @@ address{font-style: normal;}
     50%{background-position:97% 100%}
     100%{background-position:4% 0%}
 }
+@import 'modal';
 
 
 html,body{
 	background:white;
+	position:relative;
 // 	-webkit-font-smoothing:subpixel-antialiased;
 }
 html, button, input, select, textarea,
@@ -590,12 +591,25 @@ text-align:center;}
 		@extend .glow;
 	}
 }
+.favourite{
+	display:inline-block;
+	padding:3px 3px;
+	width:20px;
+	height:20px;
+	background:transparent url('../img/heart-sprite.svg') 0 4px no-repeat;
+	em{display:none;}
+	&.liked,
+	&:hover,
+	&:active{
+		background-position-x:-30px;
+	}
+}
 
 .single-signon-providers{
 	list-style: none;
-
 	padding:0;
 	margin:0;
+	text-align: center;
 	li{
 		display:inline-block;
 		text-align: center;

@@ -23,8 +23,15 @@ if($body_class!=='of-author'){
 
 <?php
 }
-?>
+?><h1> LIKÉ? <?=$quote->user_likes_it?></h1>
 <p><?php
+/*
+?>
+<pre>
+	<?
+print_r($quote);
+	?></pre><?
+*/
 $share_message = urlencode($quote->quote. "\n– ". $author->fullname );
 $tweet_version = urlencode(truncate($author->fullname. ': '.$quote->quote, 90));
 $permalink = WWWROOT.'/quote/view/' . $quote->id;
@@ -37,9 +44,11 @@ $permalink = WWWROOT.'/quote/view/' . $quote->id;
 <a rel="nofollow" class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&amp;media=<?php echo $metatags['image'] ?>&amp;description=<?php echo $share_message ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
 <a rel="nofollow" class="social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $permalink ?>&amp;title=<?php echo urlencode($author->fullname) ?>&amp;summary=<?php echo $share_message ?>&amp;source=<?php echo $permalink ?>" ><img src="/ui/img/linkedin.svg" alt="share this quote on LinkedIn"></a>
 <a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a>
+| 
+<a rel="nofollow" class="favourite <?php echo (LOGGED_IN && $quote->user_likes_it>0) ? 'liked':'' ?>" data-quote="<?php echo $quote->id; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/'.$quote->id : CURRENT_URI.'#login-ui'; ?>"><em>Save it ?</em></a>
+<span class="total_likes"><?php $quote->total_likes ?></span>
 
-
-<?php if ($user['role']==='admin'){ ?> | <a href="/author/edit/<?php echo $author->slug ?>">Edit author</a> <?php }?>
+<?php if ($user['role']==='admin'){ ?> <a href="/author/edit/<?php echo $author->slug ?>">Edit author</a> <?php }?>
 	<?php
 if(($user['role']==='admin')){
 ?>

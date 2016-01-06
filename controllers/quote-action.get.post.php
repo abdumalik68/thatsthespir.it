@@ -16,6 +16,12 @@ if (in_array($action, $restricted) && $f3->get('SESSION.logged_in') != 'ok'){
 // Fetch the quote data
 $quote=new DB\SQL\Mapper($db, 'quotes');
 if ($id) {
+	
+	$quote->total_likes = 'SELECT COUNT(*) FROM favourites WHERE favourites.quote_id=quotes.id';	
+
+	if(LOGGED_IN){
+		$quote->user_likes_it = 'SELECT COUNT(*) FROM favourites WHERE favourites.quote_id=quotes.id AND user_email="'.$_SESSION['user']['email'].'"';	
+	}
 	$quote->load(array('id=?', $id));
 }
 
@@ -27,6 +33,10 @@ if($quote->dry()){
 // Tags
 $tags= new DB\SQL\Mapper($db, 'tags');
 $tags->load(array('id=?', $quote->tags_id));
+
+
+
+
 
 // Common to all actions
 $f3->set('tags', $tags);
@@ -82,6 +92,20 @@ case 'view':
 	header_remove('X-Frame-Options');
 
 	$f3->set('quote', $quote);
+
+	// Likes
+/*
+	$favs= new DB\SQL\Mapper($db, 'favourites');
+	$total_likes = $favs->count(array('quote_id=?', $id));
+	$quote->total_likes = $total_likes;
+
+	// user likes it?
+	if(LOGGED_IN){
+		$user_likes_it = $favs->count(array('quote_id=? AND user_email= ?', $id, $_SESSION['user']['email']));
+		$quote->user_likes_it = $user_likes_it;
+	}	
+*/
+	
 	$author = new DB\SQL\Mapper($db, 'authors');
 	$author->load( array('id=?', $quote->author_id) );
 	$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.$author->photo;
@@ -94,6 +118,8 @@ case 'view':
 	$metatags['title'] = $quote->quote;
 	$metatags['description'] = $quote->quote ." – ". $author->fullname;
 
+
+	
 	$f3->set('author', $author);
 	$f3->set('content', 'quote.view.php');
 
@@ -107,6 +133,7 @@ default:
 
 $metatags['url']= WWWROOT.'/quote/'.$action.'/'.$id;
 
+$f3->set('SESSION.goto', $metatags['url']);
 
 $view=new View;
 $f3->set('metatags', $metatags);

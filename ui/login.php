@@ -10,7 +10,6 @@ $errors = (isset($_SESSION['errors'])) ? $_SESSION['errors']  : array();
 
 		<li><a href="/auth/facebook<?php echo (SERVER !== 'live') ? '-test':''; ?>"><img src="/ui/img/facebook.svg"><br>Facebook</a></li>
 		<li><a href="/auth/google"><img src="/ui/img/googleplus.svg"><br>Google</a></li>
-		<li style="display:none;"><a href="/auth/twitter"><img src="/ui/img/twitter.svg"><br>Twitter</a></li>
 		<li><a href="/auth/github"><img src="/ui/img/github.svg"><br>Github</a></li>
 	</ul>
 
