@@ -16,9 +16,9 @@ case 'dev':
 
 default:
 	define('WWWROOT', 'http://thatsthespir.it');
-	define('DB_NAME', 'thatsthespirit');
-	define('DB_USER', 'ttspirit');
-	define('DB_PASSWORD', 'Q5p2HqJcjaDaLqep');
+	define('DB_NAME', 'XXXXXXX');
+	define('DB_USER', 'XXXXXXX');
+	define('DB_PASSWORD', 'XXXXXXX');
 	define('DB_HOST', 'localhost');
 	define('DEBUG', 0);
 
