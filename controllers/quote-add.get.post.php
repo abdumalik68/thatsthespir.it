@@ -15,6 +15,7 @@ if($_POST){
 		$quote->status='pending';
 	}
 	$quote->tags_id = implode(',', $f3->get('POST.tags_id'));
+	$quote->submitted_by = $_SESSION['user']['id'];
 	$quote->save();
 
 	// lorsque ajout d'une quote, incrémenter le total de l'author

@@ -1,4 +1,4 @@
-// @codekit-prepend "jquery.1.10.2.min.js", "jquery.autocomplete.min.js", "headhesive.js", "modal.js";
+// @codekit-prepend "jquery.1.10.2.min.js", "jquery.autocomplete.min.js", "headhesive.js", "modal.js", "_pure-menu.js";
 
 
 // SHARE: OPEN POPUPS
@@ -8,7 +8,7 @@ function pop(url)
 	return false;
 }
 
-$('a.social').on('click', function(e)
+$('a.social:not(.favourite)').on('click', function(e)
 {
 	var url = $(this).attr('href');
 	pop(url, 'pixeline_share', 'height=220,width=500');
@@ -19,14 +19,16 @@ $('a.social').on('click', function(e)
 // FAVOURITE
 var logged_in = ($('#login-ui').length<1);
 
-$('.favourite').on('click.favourite',function(e){
+$('body').on('click.favourite','.favourite',function(e){
 	
 	//
 	var $this = $(this);
+	
 	if (logged_in){
 		e.preventDefault();
+		$this.addClass('loading');
 		$.post($this.attr('href'),{quote: $this.data('quote')},function(result){
-			console.log(result.action);
+			$this.removeClass('loading');
 			switch(result.action){
 				case 'created':
 				$this.addClass('liked');
@@ -41,9 +43,10 @@ $('.favourite').on('click.favourite',function(e){
 				break;
 				
 			}
+			$this.find('.total_likes').text(result.total_likes);
 		}, "json");
 	}else{
-
+		// We show the Login screen with the quote id so we can do the like right after the login is successful.
 		var append_vars_string = 'next_action=like&quote_id='+ $(this).data('quote') ;
 
 		$('.single-signon-providers a').each(function(){

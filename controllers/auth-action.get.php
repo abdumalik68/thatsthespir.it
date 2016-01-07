@@ -103,8 +103,10 @@ else{
 
 		$user = new DB\SQL\Mapper($db, 'users');
 		$user->load(array('email = :username LIMIT 0,1', ':username'=>$username));
+		$new = false;
 		if($user->dry()){
 			$user->role='subscriber';
+			$new= true;
 		}
 		$user->email = $username;
 		$user->fullname= $response['auth']['info']['name'];
@@ -114,9 +116,24 @@ else{
 		$user->created= date('Y-m-d H:i:s');
 		$user->save();
 
+if($new){
+	// Email to admin
+	$smtp = new SMTP ( 'smtp.gmail.com', 465, 'SSL', 'aplennevaux@gmail.com', 'iluvrocknroll' );
+
+	$smtp->set('From', '"pixeline" <alexandre@pixeline.be>');
+	$smtp->set('To', '<aplennevaux@gmail.com>');
+	$smtp->set('Subject', "That's The Spirit: New user registration!");
+	$smtp->set('Errors-to', '<alexandre@pixeline.be>');
+
+	$message = 'On '.date('d.m.Y at H:i:s').', a new user registered, kind master.'."\n---\n";
+	$message .= "email: ". $user->email . "\nname:".$user->fullname;
+	$message .="\n---\nSee you,\n\nThe Spirit.";
+	$sent = $smtp->send($message, TRUE);
+
+}
 
 		$f3->set('SESSION.logged_in', 'ok');
-		$f3->set('SESSION.user',  array('email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role, 'image'=> $user->image, 'urls'=> json_decode($user->urls)));
+		$f3->set('SESSION.user',  array('id'=> $user->id, 'email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role, 'image'=> $user->image, 'urls'=> json_decode($user->urls)));
 
 		if(!empty($f3->get('SESSION.next_action'))){
 			
@@ -147,11 +164,3 @@ else{
 		}
 	}
 }
-/**
- * Auth response dump
- */
-/*
-echo "<pre>";
-print_r($response);
-echo "</pre>";
-*/

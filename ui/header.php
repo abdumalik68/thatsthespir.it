@@ -2,7 +2,7 @@
 <html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
-        <title><?php echo truncate('Inspiring quote: ' . htmlentities(strip_tags(html_entity_decode($metatags['title']))), 45); ?></title>
+        <title><?php echo truncate( htmlentities(strip_tags(html_entity_decode($metatags['title']))), 45); ?></title>
         <link rel="publisher" href="https://plus.google.com/u/0/b/109858177150611361742/+PixelineBe/"/>
         <?php //include 'newrelic.tracking-speed.php'; ?>
         <meta name="description" content="<?php echo htmlentities(strip_tags(html_entity_decode($metatags['description']))); ?>">
@@ -27,7 +27,7 @@
 
         <script rel="dns-prefetch prerender" src="//use.typekit.net/opz3npz.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
-        <link rel="stylesheet" href="ui/css/main.css?v=1.0.32">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.42">
 		<link rel="alternate" title="RSS of That's The Spirit!" href="/feed" type="application/rss+xml">
 
         <!--[if lt IE 9]>
@@ -59,34 +59,44 @@
     </head>
     <body class="<?php echo $body_class ?>">
 	<div class="header">
-		<div class="custom-wrapper pure-g" id="menu">
+		<div class="custom-wrapper pure-g" >
     		<div class="pure-u-1 pure-u-md-1-3">
     	    	<div class="pure-menu">
 					<a id="logo" class="pure-menu-heading custom-brand" href="/">That's the spirit! <br><small>Inspirational quotes for the creative soul.</small></a>
 				</div>
 			</div>	
-			<div class="pure-u-1 pure-u-md-2-3" style="text-align:right;">
-        			<div class="pure-menu pure-menu-horizontal custom-can-transform">
+			<div class="pure-u-1 pure-u-md-2-3 global-menu-wrapper">
+				<div class="pure-menu pure-menu-horizontal">
 					<ul id="global-menu" class="pure-menu-list">
-			<?php
-			if(isset($_SESSION['user']['fullname'])){
-				echo '<li id="user-avatar"><img src="'.$_SESSION['user']['image'].'" ><span class="user-name">'.$_SESSION['user']['fullname'].'</span>
-				<a href="/logout" class="logout-link">Log out</a>
-				</li>';
-			}
+<?php
 
-			if ($user['role']==='admin'){ ?>
+if(LOGGED_IN){
+?>
+						<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+							<a href="#" id="user-avatar"  class="pure-menu-link"><img src="<?= $_SESSION['user']['image']; ?>" ></a>
+							<ul class="pure-menu-children" >
+								<li class="pure-menu-item <?= ($current_url=='/of-mine') ? 'pure-menu-selected': '';?>"><a href="/of-mine" class="pure-menu-link">My quotes</a></li>
+								<li class="pure-menu-item <?= ($current_url=='/latest') ? 'pure-menu-selected': '';?>"><a href="<?php echo $latest_url;?>" id="latest-quotes" class="pure-menu-link">Latest</a></li>
+<?php					
+	if ($user['role']==='admin'){ ?>
 						<li class="pure-menu-item"><a href="/fix-author-totals" class="pure-menu-link">Fix totals</a></li>
 						<li class="pure-menu-item" id="review-pending-quotes"><a href="<?= $pending_url ?>" class="pure-menu-link">Review Pending quotes</a></li>
-			<?php
-			}
-			?>
+<?php
+	}
+?>
+								
+								<li class="pure-menu-item"><a href="/logout" class="pure-menu-link logout-link">Log out</a></li>
+							</ul>
+						</li>
+<?php
+}
+
+?>
 						<li class="pure-menu-item <?= ($current_url=='/daily') ? 'pure-menu-selected': '';?>" >
 							<a href="/daily" class="pure-menu-link badge-cta" title="Receive a daily quote from the Spirit in your mailbox">Daily <?php if(($current_url !='/daily') && (!isset($_COOKIE['badge-clicked']) || $_COOKIE['badge-clicked'] != '1' )){?><span class="badge" title="You (will) have new mail!">1</span><?php } ?></a>
 						</li>
-						<li class="pure-menu-item <?= ($current_url=='/latest') ? 'pure-menu-selected': '';?>"><a href="<?php echo $latest_url;?>" id="latest-quotes" class="pure-menu-link">Latest</a></li>
-						<li class="pure-menu-item"><a href="/quote/add" id="suggest-quotes" class="pure-menu-link">Suggest a quote</a></li>
-						<li class="pure-menu-item"><a href="/" id="another-quote-button">Give me a quote, please</a></li>	
+						<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add': CURRENT_URI.'#login-ui';?>" id="suggest-quotes" class="pure-menu-link" title="Do you know a great quote that's not already in The Spirit?">Suggest a quote</a></li>
+						<li class="pure-menu-item"><a href="/"  class="pure-menu-link" id="another-quote-button" title="Read a random quote">Another quote please</a></li>	
 
 					</ul>
 				</div>

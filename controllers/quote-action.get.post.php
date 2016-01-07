@@ -17,7 +17,7 @@ if (in_array($action, $restricted) && $f3->get('SESSION.logged_in') != 'ok'){
 $quote=new DB\SQL\Mapper($db, 'quotes');
 if ($id) {
 	
-	$quote->total_likes = 'SELECT COUNT(*) FROM favourites WHERE favourites.quote_id=quotes.id';	
+	$quote->total_likes = 'SELECT COUNT(*) FROM favourites WHERE quotes.id=favourites.quote_id';	
 
 	if(LOGGED_IN){
 		$quote->user_likes_it = 'SELECT COUNT(*) FROM favourites WHERE favourites.quote_id=quotes.id AND user_email="'.$_SESSION['user']['email'].'"';	
@@ -93,19 +93,6 @@ case 'view':
 
 	$f3->set('quote', $quote);
 
-	// Likes
-/*
-	$favs= new DB\SQL\Mapper($db, 'favourites');
-	$total_likes = $favs->count(array('quote_id=?', $id));
-	$quote->total_likes = $total_likes;
-
-	// user likes it?
-	if(LOGGED_IN){
-		$user_likes_it = $favs->count(array('quote_id=? AND user_email= ?', $id, $_SESSION['user']['email']));
-		$quote->user_likes_it = $user_likes_it;
-	}	
-*/
-	
 	$author = new DB\SQL\Mapper($db, 'authors');
 	$author->load( array('id=?', $quote->author_id) );
 	$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.$author->photo;

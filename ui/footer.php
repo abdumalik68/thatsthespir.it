@@ -21,7 +21,7 @@ if (!LOGGED_IN && CURRENT_URI != '/login'  ){
 	<a href="<?= CURRENT_URI ?>#!" class="modal-close" title="Click to close this." data-close="Close" data-dismiss="modal">?</a>
 	<div class="modal-inner">
        <div class="modal-content">
-	       <p>To save this quote, you need to log in the Spirit! first via one of these services. It only takes a click and you're good to go.</p>
+	       <p>To do that, you need to log in the Spirit! first via one of these services. It only takes a click and you're good to go.</p>
 	       <ul class="single-signon-providers">
 		       <li><a href="/auth/facebook<?php echo (SERVER !== 'live') ? '-test':''; ?>"><img src="/ui/img/facebook.svg"><br>Facebook</a></li>
 		       <li><a href="/auth/google"><img src="/ui/img/googleplus.svg"><br>Google</a></li>
@@ -46,6 +46,6 @@ if (!LOGGED_IN && CURRENT_URI != '/login'  ){
 }
 
 ?>
-	<script src="ui/js/min/main-min.js?v=1.0.14"></script>
+	<script src="ui/js/min/main-min.js?v=1.0.215"></script>
 	</body>
 </html>
