@@ -23,9 +23,10 @@ $('body').on('click.favourite','.favourite',function(e){
 	
 	//
 	var $this = $(this);
-	$this.addClass('loading');
+	
 	if (logged_in){
 		e.preventDefault();
+		$this.addClass('loading');
 		$.post($this.attr('href'),{quote: $this.data('quote')},function(result){
 			$this.removeClass('loading');
 			switch(result.action){

@@ -27,7 +27,7 @@
 
         <script rel="dns-prefetch prerender" src="//use.typekit.net/opz3npz.js"></script>
         <script>try{Typekit.load();}catch(e){}</script>
-        <link rel="stylesheet" href="ui/css/main.css?v=1.0.32">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.42">
 		<link rel="alternate" title="RSS of That's The Spirit!" href="/feed" type="application/rss+xml">
 
         <!--[if lt IE 9]>
@@ -95,7 +95,7 @@ if(LOGGED_IN){
 						<li class="pure-menu-item <?= ($current_url=='/daily') ? 'pure-menu-selected': '';?>" >
 							<a href="/daily" class="pure-menu-link badge-cta" title="Receive a daily quote from the Spirit in your mailbox">Daily <?php if(($current_url !='/daily') && (!isset($_COOKIE['badge-clicked']) || $_COOKIE['badge-clicked'] != '1' )){?><span class="badge" title="You (will) have new mail!">1</span><?php } ?></a>
 						</li>
-						<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add': CURRENT_URI.'#login-ui';?>" id="suggest-quotes" class="pure-menu-link" title="Know a great quote that's not already in The Spirit! Feel free to contribute.">Suggest a quote</a></li>
+						<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add': CURRENT_URI.'#login-ui';?>" id="suggest-quotes" class="pure-menu-link" title="Do you know a great quote that's not already in The Spirit?">Suggest a quote</a></li>
 						<li class="pure-menu-item"><a href="/"  class="pure-menu-link" id="another-quote-button" title="Read a random quote">Another quote please</a></li>	
 
 					</ul>
