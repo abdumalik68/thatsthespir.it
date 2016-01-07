@@ -8,3 +8,5 @@ uploads/*
 *.codekit
 
 ui/config.codekit
+
+config.inc.php
