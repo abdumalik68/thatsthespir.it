@@ -38,6 +38,11 @@ if (!LOGGED_IN && CURRENT_URI != '/login'  ){
 ?>
 
 <?php if (SERVER =='dev') {
+/*
+	echo '<pre>';
+	print_r($_SESSION);
+	echo '</pre>';
+*/
 ?>
 <script src="ui/js/jquery.1.10.2.min.js"></script>
 <script src="ui/js/jquery.autocomplete.min.js"></script>

@@ -7,7 +7,11 @@ $f3->set('user', $f3->get('SESSION.user') );
 
 // Get random quote
 $quote=new Spirit();
-$random = $quote->get('random');
+$random = $quote->get('random_unique');
+
+if(!in_array($random->id, $_SESSION['used_quotes'])){
+	$_SESSION['used_quotes'][]= $random->id;
+}
 
 // Tags
 $tags= new DB\SQL\Mapper($db, 'tags');

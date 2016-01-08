@@ -59,7 +59,6 @@ exit;
 				$not_in = " AND q.id NOT IN ($not_in)";
 			}
 			$quotes = $db->exec($selected_query_base.' WHERE status="online" '.$not_in.'  ORDER BY RAND() LIMIT 1');
-			//die($selected_query_base.' WHERE status="online" '.$not_in.'  ORDER BY RAND() LIMIT 1');
 			return (object) $quotes[0];
 			break;
 
