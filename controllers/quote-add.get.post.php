@@ -26,6 +26,7 @@ if($_POST){
 		$author->save();
 	}
 	$f3->set('SESSION.message',  "Thanks! Quote added.");
+	$f3->set('SESSION.author.id', $quote->author_id);
 
 	// Email to admin
 	$smtp = new SMTP ( 'smtp.gmail.com', 465, 'SSL', 'aplennevaux@gmail.com', 'iluvrocknroll' );
