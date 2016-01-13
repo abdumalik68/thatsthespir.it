@@ -38,7 +38,14 @@ $permalink = WWWROOT.'/quote/view/' . $quote->id;
 	<a rel="nofollow" class="social twitter" href="http://twitter.com/share?text=<?php echo $tweet_version ?>&amp;url=<?php echo $permalink ?>&amp;hashtags=design_quote"><img src="/ui/img/twitter.svg" alt="share this quote on Twitter"></a>
 	<a rel="nofollow" class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&amp;media=<?php echo $metatags['image'] ?>&amp;description=<?php echo $share_message ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
 	<a rel="nofollow" class="social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $permalink ?>&amp;title=<?php echo urlencode($author->fullname) ?>&amp;summary=<?php echo $share_message ?>&amp;source=<?php echo $permalink ?>" ><img src="/ui/img/linkedin.svg" alt="share this quote on LinkedIn"></a>
-	<a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a> | 
+	<a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a> 
+	
+	
+	<a rel="nofollow" class="social reddit" data-height="420" data-network="reddit" data-width-normal="540" data-width="845" href="http://reddit.com/submit?url=<?= $permalink ?>&amp;title=<?php echo $share_message ?>">
+		<img src="/ui/img/reddit.svg" width="19" height="15" alt="share this quote on LinkedIn">
+	</a>
+	
+	| 
 	<a rel="nofollow" class="social favourite <?php echo (LOGGED_IN && $quote->user_likes_it>0) ? 'liked':'' ?>" data-quote="<?php echo $quote->id; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/'.$quote->id : CURRENT_URI.'#login-ui'; ?>" title="Favourite this quote so you can easily find it later.">
 		<em>Save it ?</em>&nbsp;
 		<span class="total_likes"><?php echo $quote->total_likes ?></span>
