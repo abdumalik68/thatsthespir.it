@@ -79,7 +79,8 @@ $db=new DB\SQL(
 $cron=Cron::instance();
 $cron->log=TRUE;
 $cron->web=TRUE;
-$cron->set('reddit','Evangelist->reddit','* * * * *');
+//$cron->set('reddit','Evangelist->reddit','*/5 * * * *');
+$cron->set('reddit','Evangelist->reddit','@daily');
 
 
 // END CRON TASKS

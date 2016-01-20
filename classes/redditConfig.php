@@ -13,6 +13,8 @@ class redditConfig{
     
     //access token request scopes
     //full list at http://www.reddit.com/dev/api/oauth
-    static $SCOPES = 'client_credentials,save,modposts,mysubreddits,read,report,submit';
+//    static $SCOPES = 'client_credentials,save,modposts,mysubreddits,read,report,submit';
+    static $SCOPES = 'save,modposts,identity,edit,flair,history,modconfig,modflair,modlog,modposts,modwiki,mysubreddits,privatemessages,read,report,submit,subscribe,vote,wikiedit,wikiread';
+
 }
 ?>
