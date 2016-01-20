@@ -40,6 +40,9 @@ $f3->set('AUTOLOAD', 'classes/');
 
 require 'functions.inc.php';
 require 'config.inc.php';
+
+
+
 /* OPAUTH*/
 define('OPAUTH_LIB_DIR', dirname(__FILE__).'/controllers/opauth/');
 define('CONF_FILE', dirname(__FILE__).'/controllers/opauth/opauth.conf.php');
@@ -65,6 +68,22 @@ $db=new DB\SQL(
 	DB_USER,
 	DB_PASSWORD
 );
+
+
+
+/*
+	CRON TASKS
+	Documentation: https://github.com/xfra35/f3-cron
+*/
+
+$cron=Cron::instance();
+$cron->log=TRUE;
+$cron->web=TRUE;
+$cron->set('reddit','Evangelist->reddit','* * * * *');
+
+
+// END CRON TASKS
+
 
 $f3->set('upload_folder', $f3->get('UPLOADS'));
 $f3->set('query', $f3->get('SESSION.query'));
@@ -97,6 +116,10 @@ if(isset($_GET['quote_id'])){
 
 /* ALL ROUTES */
 $f3->route('GET @home: /', function($f3) { require 'controllers/home.get.php'; });
+
+
+$f3->route('GET @reddit_callback: /reddit/callback', 'Evangelist->reddit');
+$f3->route('GET|POST @reddit: /reddit', 'Evangelist->reddit');
 
 $f3->route('GET @api: /api', function($f3) { require 'controllers/api.get.php'; });
 

@@ -2,7 +2,7 @@
 
 global $db, $metatags;
 
-header_remove('X-Frame-Options');
+//header_remove('X-Frame-Options');
 $f3->set('user', $f3->get('SESSION.user') );
 
 // Get random quote
