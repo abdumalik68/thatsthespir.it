@@ -104,6 +104,9 @@ if(LOGGED_IN){
 							<a href="/daily" class="pure-menu-link badge-cta" title="Receive a daily quote from the Spirit in your mailbox">Daily <?php if(($current_url !='/daily') && (!isset($_COOKIE['badge-clicked']) || $_COOKIE['badge-clicked'] != '1' )){?><span class="badge" title="You (will) have new mail!">1</span><?php } ?></a>
 						</li>
 						<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add': CURRENT_URI.'#login-ui';?>" id="suggest-quotes" class="pure-menu-link" title="Do you know a great quote that's not already in The Spirit?">Suggest a quote</a></li>
+
+						<li class="pure-menu-item"><a href="/popular" id="popular-quotes" class="pure-menu-link" title="The Spirit's Twenty most popular quotes.">Favs chart</a></li>
+
 						<li class="pure-menu-item"><a href="/"  class="pure-menu-link" id="another-quote-button" title="Read a random quote">Another quote please</a></li>	
 
 					</ul>

@@ -127,6 +127,7 @@ $f3->route('GET @api: /api', function($f3) { require 'controllers/api.get.php'; 
 $f3->route('GET @random: /random', function($f3) { require 'controllers/random.get.php'; });
 
 $f3->route('GET @latest: /latest', function($f3) { require 'controllers/latest.get.php'; });
+$f3->route('GET @popular: /popular', function($f3) { require 'controllers/popular.get.php'; });
 
 $f3->route('GET @user_favourites: /of-mine', function($f3) { require 'controllers/user-favourites.get.php'; });
 
