@@ -81,7 +81,22 @@
 if(LOGGED_IN){
 ?>
 						<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-							<a href="#" id="user-avatar"  class="pure-menu-link"><img src="<?= $_SESSION['user']['image']; ?>" ></a>
+							<a href="#" id="user-avatar"  class="pure-menu-link">
+								<?php if(!empty($_SESSION['user']['image'])){
+								?>
+								<img src="<?= $_SESSION['user']['image']; ?>" >
+								<?	
+								} else if(!empty($_SESSION['user']['fullname'])){
+									?>
+									<strong><?= $_SESSION['user']['fullname'] ?></strong>
+									<?
+								} else{
+									?>
+									<strong>You</strong>
+									<?
+								}
+								?>
+								</a>
 							<ul class="pure-menu-children" >
 								<li class="pure-menu-item <?= ($current_url=='/of-mine') ? 'pure-menu-selected': '';?>"><a href="/of-mine" class="pure-menu-link">My quotes</a></li>
 								<li class="pure-menu-item <?= ($current_url=='/latest') ? 'pure-menu-selected': '';?>"><a href="<?php echo $latest_url;?>" id="latest-quotes" class="pure-menu-link">Latest</a></li>
@@ -104,6 +119,9 @@ if(LOGGED_IN){
 							<a href="/daily" class="pure-menu-link badge-cta" title="Receive a daily quote from the Spirit in your mailbox">Daily <?php if(($current_url !='/daily') && (!isset($_COOKIE['badge-clicked']) || $_COOKIE['badge-clicked'] != '1' )){?><span class="badge" title="You (will) have new mail!">1</span><?php } ?></a>
 						</li>
 						<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add': CURRENT_URI.'#login-ui';?>" id="suggest-quotes" class="pure-menu-link" title="Do you know a great quote that's not already in The Spirit?">Suggest a quote</a></li>
+
+						<li class="pure-menu-item"><a href="/popular" id="popular-quotes" class="pure-menu-link" title="The Spirit's Twenty most popular quotes.">Favs chart</a></li>
+
 						<li class="pure-menu-item"><a href="/"  class="pure-menu-link" id="another-quote-button" title="Read a random quote">Another quote please</a></li>	
 
 					</ul>
@@ -111,3 +129,10 @@ if(LOGGED_IN){
 			</div>
 		</div>
 	</div>
+	
+	<?php
+	//echo '<!-- ';
+//	print_r($_SESSION);
+//	echo '-->';
+	
+	?>

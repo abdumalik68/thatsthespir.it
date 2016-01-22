@@ -4,7 +4,10 @@ error_reporting(E_WARNING | E_ERROR);
 
 
 class Evangelist {
-
+	function end(Base $f3) {
+		$str =  "\n".strftime('%x %X') . ": posting to $subreddit: Done";
+		$f3->write($f3->TEMP.'evangelist.txt',$str,TRUE);
+	}
 	function reddit(Base $f3) {
 		//global $db;
 		/*
@@ -23,7 +26,7 @@ class Evangelist {
 		$quote=new Spirit();
 		$random = $quote->get('random_unique');
 		$title = strip_tags($random->quote . " – ". $random->fullname);
-		$link = WWWROOT.'quote/view'.$random->quote_id;
+		$link = WWWROOT.'/quote/view/'.$random->quote_id;
 		
 		$reddit = new reddit();
 		$response = $reddit->createStory($title, $link, $subreddit);

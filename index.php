@@ -44,8 +44,8 @@ require 'config.inc.php';
 
 
 /* OPAUTH*/
-define('OPAUTH_LIB_DIR', dirname(__FILE__).'/controllers/opauth/');
-define('CONF_FILE', dirname(__FILE__).'/controllers/opauth/opauth.conf.php');
+//define('OPAUTH_LIB_DIR', dirname(__FILE__).'/controllers/opauth/');
+//define('CONF_FILE', dirname(__FILE__).'/controllers/opauth/opauth.conf.php');
 
 
 // continuing F3...
@@ -79,7 +79,8 @@ $db=new DB\SQL(
 $cron=Cron::instance();
 $cron->log=TRUE;
 $cron->web=TRUE;
-$cron->set('reddit','Evangelist->reddit','* * * * *');
+//$cron->set('reddit','Evangelist->reddit','*/5 * * * *');
+$cron->set('reddit','Evangelist->reddit','@daily');
 
 
 // END CRON TASKS
@@ -126,6 +127,7 @@ $f3->route('GET @api: /api', function($f3) { require 'controllers/api.get.php'; 
 $f3->route('GET @random: /random', function($f3) { require 'controllers/random.get.php'; });
 
 $f3->route('GET @latest: /latest', function($f3) { require 'controllers/latest.get.php'; });
+$f3->route('GET @popular: /popular', function($f3) { require 'controllers/popular.get.php'; });
 
 $f3->route('GET @user_favourites: /of-mine', function($f3) { require 'controllers/user-favourites.get.php'; });
 
@@ -155,9 +157,12 @@ $f3->route('GET @pending_quotes: /pending', function($f3) { require 'controllers
 
 $f3->route('GET /of/@author', function($f3) { require 'controllers/author-single.get.php'; });
 
-//$f3->route('GET @auth: /auth', function($f3){ require 'controllers/auth.php';});
-$f3->route('GET @auth_action: /auth/@action/*', function($f3){ require 'controllers/auth-action.get.php';});
+//$f3->route('GET @auth_action: /auth/@action/*', function($f3){ require 'controllers/auth-action.get.php';});
+//$f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});
+
+$f3->route('GET @auth: /auth', function($f3){ require 'controllers/hybridauth/index.php'; });
 $f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});
+
 
 $f3->route('GET @login: /login', function($f3) { require 'controllers/login.get.php'; });
 
