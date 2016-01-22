@@ -1,4 +1,6 @@
 <?php
+	
+	error_reporting(E_WARNING | E_ERROR);
 global $db;
 /**
  * Callback for Opauth

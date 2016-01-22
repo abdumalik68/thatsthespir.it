@@ -3,7 +3,10 @@ global $db, $metatags;
 header_remove('X-Frame-Options');
 
 $quote = $f3->get('REQUEST.quote');
-
+if(empty($quote)){
+	$action = null;
+	$status = 'no-quote-id';
+}
 if($_SESSION['logged_in']== 'ok' && !empty($_SESSION['user']['email']) && !empty($quote)){
 
 	// save the quote
@@ -20,7 +23,7 @@ if($_SESSION['logged_in']== 'ok' && !empty($_SESSION['user']['email']) && !empty
 		$fav->save();
 		$action = 'created';
 	}
-	$total_likes = $db->exec('SELECT COUNT(*) as total FROM favourites WHERE quote_id='.$quote);	
+	$total_likes = $db->exec('SELECT COUNT(*) as total FROM favourites WHERE quote_id='.$quote);
 	$total_likes = (object)$total_likes[0];
 	$total_likes = ($total_likes) ? $total_likes->total : '0';
 	$status = 'ok';

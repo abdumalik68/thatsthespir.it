@@ -157,7 +157,6 @@ $f3->route('GET @pending_quotes: /pending', function($f3) { require 'controllers
 
 $f3->route('GET /of/@author', function($f3) { require 'controllers/author-single.get.php'; });
 
-//$f3->route('GET @auth: /auth', function($f3){ require 'controllers/auth.php';});
 $f3->route('GET @auth_action: /auth/@action/*', function($f3){ require 'controllers/auth-action.get.php';});
 $f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});
 

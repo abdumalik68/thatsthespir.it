@@ -26,6 +26,7 @@ if (!LOGGED_IN && CURRENT_URI != '/login'  ){
 		       <li><a href="/auth/facebook<?php echo (SERVER !== 'live') ? '-test':''; ?>"><img src="/ui/img/facebook.svg"><br>Facebook</a></li>
 		       <li><a href="/auth/google"><img src="/ui/img/googleplus.svg"><br>Google</a></li>
 		       <li><a href="/auth/github"><img src="/ui/img/github.svg"><br>Github</a></li>
+		       <li><a href="/auth/reddit"><img src="/ui/img/reddit.svg"><br>Reddit</a></li>
 			</ul>
 		</div>
     </div>
