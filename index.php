@@ -44,8 +44,8 @@ require 'config.inc.php';
 
 
 /* OPAUTH*/
-define('OPAUTH_LIB_DIR', dirname(__FILE__).'/controllers/opauth/');
-define('CONF_FILE', dirname(__FILE__).'/controllers/opauth/opauth.conf.php');
+//define('OPAUTH_LIB_DIR', dirname(__FILE__).'/controllers/opauth/');
+//define('CONF_FILE', dirname(__FILE__).'/controllers/opauth/opauth.conf.php');
 
 
 // continuing F3...
@@ -157,8 +157,12 @@ $f3->route('GET @pending_quotes: /pending', function($f3) { require 'controllers
 
 $f3->route('GET /of/@author', function($f3) { require 'controllers/author-single.get.php'; });
 
-$f3->route('GET @auth_action: /auth/@action/*', function($f3){ require 'controllers/auth-action.get.php';});
+//$f3->route('GET @auth_action: /auth/@action/*', function($f3){ require 'controllers/auth-action.get.php';});
+//$f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});
+
+$f3->route('GET @auth: /auth', function($f3){ require 'controllers/hybridauth/index.php'; });
 $f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});
+
 
 $f3->route('GET @login: /login', function($f3) { require 'controllers/login.get.php'; });
 

@@ -81,7 +81,22 @@
 if(LOGGED_IN){
 ?>
 						<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-							<a href="#" id="user-avatar"  class="pure-menu-link"><img src="<?= $_SESSION['user']['image']; ?>" ></a>
+							<a href="#" id="user-avatar"  class="pure-menu-link">
+								<?php if(!empty($_SESSION['user']['image'])){
+								?>
+								<img src="<?= $_SESSION['user']['image']; ?>" >
+								<?	
+								} else if(!empty($_SESSION['user']['fullname'])){
+									?>
+									<strong><?= $_SESSION['user']['fullname'] ?></strong>
+									<?
+								} else{
+									?>
+									<strong>You</strong>
+									<?
+								}
+								?>
+								</a>
 							<ul class="pure-menu-children" >
 								<li class="pure-menu-item <?= ($current_url=='/of-mine') ? 'pure-menu-selected': '';?>"><a href="/of-mine" class="pure-menu-link">My quotes</a></li>
 								<li class="pure-menu-item <?= ($current_url=='/latest') ? 'pure-menu-selected': '';?>"><a href="<?php echo $latest_url;?>" id="latest-quotes" class="pure-menu-link">Latest</a></li>
@@ -114,3 +129,10 @@ if(LOGGED_IN){
 			</div>
 		</div>
 	</div>
+	
+	<?php
+	//echo '<!-- ';
+//	print_r($_SESSION);
+//	echo '-->';
+	
+	?>

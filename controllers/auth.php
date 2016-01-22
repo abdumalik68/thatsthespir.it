@@ -1,14 +1,8 @@
 <?php
 /* OPAUTH*/
 
-if (!file_exists(CONF_FILE)){
-	trigger_error('Config file missing at '.CONF_FILE, E_USER_ERROR);
-	exit();
-}
-require CONF_FILE;
 
-/**
- * Instantiate Opauth with the loaded config
- */
-require OPAUTH_LIB_DIR.'Opauth.php';
-$Opauth = new Opauth( $config);
+require_once( "hybridauth/Hybrid/Auth.php" );
+require_once( "hybridauth/Hybrid/Endpoint.php" );
+
+Hybrid_Endpoint::process();
