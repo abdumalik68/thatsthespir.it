@@ -1,7 +1,9 @@
 <?php
-global $db;
+global $db, $f3;
 
 header('Content-Type: text/xml; charset=utf-8');
+
+$format = $f3->get('PARAMS.format');
 
 $quote=new Spirit();
 $items = $quote->get('latest');
@@ -20,12 +22,16 @@ if(count($items)>0){
 	}
 
 }
-
-$rss = new RSS;
-$rss->title = "That's The Spirit!";
-$rss->url = WWWROOT.'/feed';
-$rss->description = $rss->title;
-$rss->date = $rss1[0]->date;
-$rss->items = $rss1;
-echo $rss->generate();
+if ($format !== 'json'){
+	$rss = new RSS;
+	$rss->title = "That's The Spirit!";
+	$rss->url = WWWROOT.'/feed';
+	$rss->description = $rss->title;
+	$rss->date = $rss1[0]->date;
+	$rss->items = $rss1;
+	echo $rss->generate();
+} else{
+	header('Content-Type: application/json');
+	echo json_encode($rss1);
+}
 exit;

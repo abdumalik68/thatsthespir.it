@@ -80,7 +80,8 @@ $cron=Cron::instance();
 $cron->log=TRUE;
 $cron->web=TRUE;
 //$cron->set('reddit','Evangelist->reddit','*/5 * * * *');
-$cron->set('reddit','Evangelist->reddit','@daily');
+//$cron->set('reddit','Evangelist->reddit','@daily');
+$cron->set('twitter','Evangelist->twitter','@hourly');
 
 
 // END CRON TASKS
@@ -117,6 +118,7 @@ if(isset($_GET['quote_id'])){
 
 /* ALL ROUTES */
 $f3->route('GET @home: /', function($f3) { require 'controllers/home.get.php'; });
+$f3->route('GET @twitter: /twitter/now', 'Evangelist->twitter');
 
 
 $f3->route('GET @reddit_callback: /reddit/callback', 'Evangelist->reddit');
@@ -124,6 +126,7 @@ $f3->route('GET|POST @reddit: /reddit', 'Evangelist->reddit');
 
 $f3->route('GET @api: /api', function($f3) { require 'controllers/api.get.php'; });
 
+$f3->route('GET @random: /random/@format', function($f3) { require 'controllers/random.get.php'; });
 $f3->route('GET @random: /random', function($f3) { require 'controllers/random.get.php'; });
 
 $f3->route('GET @latest: /latest', function($f3) { require 'controllers/latest.get.php'; });
@@ -134,6 +137,7 @@ $f3->route('GET @user_favourites: /of-mine', function($f3) { require 'controller
 $f3->route('GET @archive: /human-channels', function($f3) { require 'controllers/human-channels.get.php'; });
 
 $f3->route('GET @feed: /feed', function($f3) { require 'controllers/feed.get.php'; });
+$f3->route('GET @feed: /feed/@format', function($f3) { require 'controllers/feed.get.php'; });
 
 $f3->route('GET @feed_random: /feed_random', function($f3) { require 'controllers/feed_random.get.php'; });
 
