@@ -81,7 +81,7 @@ $cron->log=TRUE;
 $cron->web=TRUE;
 //$cron->set('reddit','Evangelist->reddit','*/5 * * * *');
 //$cron->set('reddit','Evangelist->reddit','@daily');
-$cron->set('twitter','Evangelist->twitter','@hourly');
+$cron->set('twitter','Evangelist->twitter','@daily');
 
 
 // END CRON TASKS
