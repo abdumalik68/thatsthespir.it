@@ -35,7 +35,7 @@
     h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
   })(document);
 </script>
-        <link rel="stylesheet" href="ui/css/main.css?v=1.0.42">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.43">
 		<link rel="alternate" title="RSS of That's The Spirit!" href="/feed" type="application/rss+xml">
 
         <!--[if lt IE 9]>
@@ -76,24 +76,19 @@
 			<div class="pure-u-1 pure-u-md-2-3 global-menu-wrapper">
 				<div class="pure-menu pure-menu-horizontal">
 					<ul id="global-menu" class="pure-menu-list">
-<?php
-
-if(LOGGED_IN){
-?>
+<?php if(LOGGED_IN) { ?>
 						<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
 							<a href="#" id="user-avatar"  class="pure-menu-link">
-								<?php if(!empty($_SESSION['user']['image'])){
-								?>
+								<?php if(!empty($_SESSION['user']['image'])){ ?>
 								<img src="<?= $_SESSION['user']['image']; ?>" >
-								<?	
-								} else if(!empty($_SESSION['user']['fullname'])){
+								<?php 
+									} else if(!empty($_SESSION['user']['fullname'])){
 									?>
 									<strong><?= $_SESSION['user']['fullname'] ?></strong>
-									<?
-								} else{
+									<?php								} else{
 									?>
 									<strong>You</strong>
-									<?
+									<?php
 								}
 								?>
 								</a>
@@ -129,10 +124,3 @@ if(LOGGED_IN){
 			</div>
 		</div>
 	</div>
-	
-	<?php
-	//echo '<!-- ';
-//	print_r($_SESSION);
-//	echo '-->';
-	
-	?>

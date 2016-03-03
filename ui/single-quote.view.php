@@ -1,11 +1,11 @@
 <?php
 
-	if(isset($tags) && !empty($tags) && strlen(trim($tags->name))>0){
-		?>
+if(isset($tags) && !empty($tags) && strlen(trim($tags->name))>0){
+?>
 		<h2 class="ui-title topline topic-title">On <?php echo html_entity_decode($tags->name) ; ?></h2>
-		<?
-	}
-	?>
+		<?php
+}
+?>
 <figure class="quote">
 	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source: '/quote/'.$quote->id;  ?>" >
 		<span class="guillemets"></span>
@@ -29,6 +29,9 @@ if($body_class!=='of-author'){
 $share_message = urlencode($quote->quote. "\n– ". $author->fullname );
 $tweet_version = urlencode(truncate($author->fullname. ': '.$quote->quote, 90));
 $permalink = WWWROOT.'/quote/view/' . $quote->id;
+
+$likers = implode(', ',explode(',',$quote->likers));
+
 ?>
 <p class="ui-title quote-meta">
 	<a href="<?php echo $permalink ?>">#<?php echo $quote->id?></a>
@@ -38,17 +41,17 @@ $permalink = WWWROOT.'/quote/view/' . $quote->id;
 	<a rel="nofollow" class="social twitter" href="http://twitter.com/share?text=<?php echo $tweet_version ?>&amp;url=<?php echo $permalink ?>&amp;hashtags=design_quote"><img src="/ui/img/twitter.svg" alt="share this quote on Twitter"></a>
 	<a rel="nofollow" class="social pinterest" href="https://pinterest.com/pin/create/button/?url=<?php echo $permalink ?>&amp;media=<?php echo $metatags['image'] ?>&amp;description=<?php echo $share_message ?>"><img src="/ui/img/pinterest.svg" alt="share this quote on Pinterest"></a>
 	<a rel="nofollow" class="social linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=<?php echo $permalink ?>&amp;title=<?php echo urlencode($author->fullname) ?>&amp;summary=<?php echo $share_message ?>&amp;source=<?php echo $permalink ?>" ><img src="/ui/img/linkedin.svg" alt="share this quote on LinkedIn"></a>
-	<a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a> 
-	
-	
-	<a rel="nofollow" class="social reddit" data-height="420" data-network="reddit" data-width-normal="540" data-width="845" href="http://reddit.com/submit?url=<?= $permalink ?>&amp;title=<?php echo $share_message ?>">
+	<a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>"><img src="/ui/img/googleplus.svg" alt="share this quote on Google Plus"></a>
+
+
+	<a rel="nofollow" class="social reddit" data-height="420" data-network="reddit" data-width-normal="540" data-width="845" href="http://reddit.com/submit?url=<?php echo $permalink ?>&amp;title=<?php echo $share_message ?>">
 		<img src="/ui/img/reddit.svg" width="19" height="15" alt="share this quote on LinkedIn">
 	</a>
-	
-	| 
-	<a rel="nofollow" class="social favourite <?php echo (LOGGED_IN && $quote->user_likes_it>0) ? 'liked':'' ?>" data-quote="<?php echo $quote->id; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/'.$quote->id : CURRENT_URI.'#login-ui'; ?>" title="Favourite this quote so you can easily find it later.">
+
+	|
+	<a rel="nofollow" class="social favourite <?php echo (LOGGED_IN && $quote->user_likes_it>0) ? 'liked':'' ?>" data-quote="<?php echo $quote->id; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/'.$quote->id : CURRENT_URI.'#login-ui'; ?>" title="Favourite this quote so you can easily find it later. Liked by: <?php echo strip_tags($likers) ?>">
 		<em>Save it ?</em>&nbsp;
-		<span class="total_likes"><?php echo $quote->total_likes ?></span>
+		<span class="total_likes" data-likers="<?php echo $likers ?>"><?php echo $quote->total_likes ?></span>
 		</a>
 
 
@@ -70,7 +73,7 @@ if(($user['role']==='admin')){
 ?>
 </p>
 
-</p>	
+</p>
 
 	</figcaption>
 </figure>

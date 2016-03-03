@@ -20,7 +20,7 @@ $f3 = require 'lib/base.php';
 if ((float)PCRE_VERSION<7.9)
 	trigger_error('PCRE version is out of date');
 // Load configuration
-$f3->config('config.ini');
+//$f3->config('config.ini');
 $f3->set('AUTOLOAD', 'classes/');
 /*
 
@@ -53,6 +53,8 @@ require 'config.inc.php';
 $f3->set('DEBUG', DEBUG);
 $f3->set('UPLOADS', UPLOADS);
 $f3->set('image_width', 100);
+
+$f3->set('UI', 'ui/');
 
 $metatags = array(
 	'title'=>"That's the spirit!",

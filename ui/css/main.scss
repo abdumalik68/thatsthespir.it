@@ -3,6 +3,7 @@ $lighter-grey: #EFEFEF;
 $light-grey: #979797;
 $black: #4A4A4A;
 $sans-serif: "jaf-bernino-sans",sans-serif;
+$red: #D0011B;
 //
 
 /* Adriane Lux Regular Font*/
@@ -658,7 +659,7 @@ text-align:center;}
 .autocomplete-suggestions { border: 1px solid $light-grey; background: #FFF; overflow: auto; }
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #F0F0F0; }
-.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; color:red; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; color:$red; }
 .autocomplete-group { padding: 2px 5px; }
 .autocomplete-group strong { display: block; border-bottom: 1px solid $black; }
 
@@ -787,7 +788,7 @@ body.of-author{
 		border: 1px solid;
 		border-radius: 10px;
 		background: white;
-		background-color:red;
+		background-color: $red;
 		border-color: white;
 		opacity:0;
 		-webkit-animation:pop-in 0.5s;
@@ -890,4 +891,3 @@ box-shadow: 0px 1px 18px 0px rgba(92,92,92,0.3);
 		}
 	}
 }
-	

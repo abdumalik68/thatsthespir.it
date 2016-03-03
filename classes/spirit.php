@@ -9,12 +9,12 @@ class Spirit {
 			$_SESSION['used_quotes']= array();
 		}
 		
-		$selected_query_base = 'SELECT q.id, q.id as quote_id, q.quote, q.source, q.status, q.creation_date, a.id as author_id, a.fullname,a.slug,a.photo,a.total,a.gender, tags_id, (SELECT group_concat(name) from tags as t where t.id=q.tags_id) as tags ';
+		$selected_query_base = 'SELECT q.id, q.id as quote_id, q.quote, q.source, q.status, q.creation_date, a.id as author_id, a.fullname,a.slug,a.photo,a.total,a.gender, tags_id, (SELECT group_concat(name) from tags as t where t.id=q.tags_id) as tags, (SELECT group_concat(fullname) FROM `favourites` LEFT JOIN users as u on u.email=favourites.user_email WHERE quote_id=q.id) as likers ';
 
 		if($_SESSION['logged_in']=='ok'){
 			$selected_query_base .= ', (SELECT COUNT(*) FROM favourites as f WHERE user_email="'.$_SESSION['user']['email'].'" AND f.quote_id=q.id ) as user_likes_it ';
 		}
-		$selected_query_base .= ' , (SELECT COUNT(*) FROM favourites as f WHERE f.quote_id=q.id ) as total_likes FROM quotes as q LEFT JOIN authors as a on q.author_id=a.id';
+		$selected_query_base .= ' , (SELECT COUNT(*) FROM favourites as f WHERE f.quote_id=q.id ) as total_likes FROM quotes as q LEFT JOIN authors as a on q.author_id=a.id ';
 
 
 		switch($what){
@@ -30,7 +30,7 @@ class Spirit {
 			break;
 
 		case 'popular':
-			$selected_query_base = 'SELECT quote, (SELECT COUNT(*) FROM `favourites` WHERE quote_id=q.id GROUP BY quote_id) as total_likes ';
+			$selected_query_base = 'SELECT quote, (SELECT COUNT(*) FROM `favourites` WHERE quote_id=q.id GROUP BY quote_id) as total_likes, (SELECT group_concat(fullname) FROM `favourites` LEFT JOIN users as u on u.email=favourites.user_email WHERE quote_id=q.id) as likers ';
 				if($_SESSION['logged_in']=='ok'){
 			$selected_query_base .= ', (SELECT COUNT(*) FROM favourites as f WHERE user_email="'.$_SESSION['user']['email'].'" AND f.quote_id=q.id ) as user_likes_it ';
 		}

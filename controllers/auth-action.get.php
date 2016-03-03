@@ -14,7 +14,7 @@ if(empty($provider_name)){
 try {
 
 	$config_file_path = dirname(__FILE__) .'/hybridauth/config.php';
-	require_once( dirname(__FILE__) ."/hybridauth/Hybrid/Auth.php" );
+	require_once dirname(__FILE__) ."/hybridauth/Hybrid/Auth.php";
 
 	$hybridauth = new Hybrid_Auth( $config_file_path );
 
@@ -38,11 +38,10 @@ try {
 		$new= true;
 	}
 	$user->email = (!empty($username)) ? $username : $user_profile->displayName ;
-	$user->fullname= $user_profile->displayName;
+	$user->fullname= (!empty($user_profile->displayName)) ?  $user_profile->displayName : preg_replace('/([^@]*).*/', '$1', $user->email);
 	$user->image= $user_profile->photoURL;
-	//$user->urls= json_encode($response['auth']['info']['urls']);
 	$user->password =$provider_name;
-	
+
 	$user->save();
 
 	if($new){
@@ -105,7 +104,7 @@ catch( Exception $e ){
 
 	$message = 'On '.date('d.m.Y at H:i:s').', an error occured:.'."\n---\n";
 	$message .= "email: ". $user->email . "\nname:".$user->fullname. "<pre>";
-	$message .= print_r($e,true);
+	$message .= print_r($e, true);
 	$message .="<br>\n---\nSee you,\n\nThe Spirit.";
 	$sent = $smtp->send($message, TRUE);
 }
