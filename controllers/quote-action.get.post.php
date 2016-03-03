@@ -89,7 +89,6 @@ case 'delete':
 	break;
 
 case 'view':
-	header_remove('X-Frame-Options');
 
 	$f3->set('quote', $quote);
 
