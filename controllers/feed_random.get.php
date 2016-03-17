@@ -18,7 +18,7 @@ if(is_object($item)){
 	$photo='';
 	$buttons_height=  16;
 	if(!empty($item->photo) && is_file($filename)){
-		$photo = '<div class="avatar" title="'.ucfirst($item->fullname). '" style="margin:1em auto;border-radius:50%;width:200px;height:200px;background-color:white;background-position: center center;background-repeat: no-repeat;background-size:cover;background-image: url('.WWWROOT.'/'.UPLOADS.$item->photo.'); background:url('.WWWROOT.'/'.UPLOADS.$item->photo.') center center / cover no-repeat ; -webkit-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);-moz-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);"></div>';
+		$photo = '<a href="'.$permalink.'" style="text-decoration:none;padding:0;margin:0;"><div class="avatar" title="'.ucfirst($item->fullname). '" style="margin:1em auto;border-radius:50%;width:200px;height:200px;background-color:white;background-position: center center;background-repeat: no-repeat;background-size:cover;background-image: url('.WWWROOT.'/'.UPLOADS.$item->photo.'); background:url('.WWWROOT.'/'.UPLOADS.$item->photo.') center center / cover no-repeat ; -webkit-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);-moz-box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);box-shadow: inset 0px 0px 45px 5px rgba(18,18,18,0.19);"></div></a>';
 	}
 	$description = '<div style="text-align:center">';
 	$description .= '<blockquote cite="'.$permalink.'" style="font-family:georgia, serif;font-size:32px;line-height:1.4">' . html_entity_decode($item->quote).'</blockquote>';
@@ -29,7 +29,7 @@ if(is_object($item)){
 			
 <a  style="display:inline-block;padding:10px;" href="//twitter.com/share?text='.$tweet_version .'&amp;url='. $permalink .'&amp;hashtags=design_quote"><img height="'.$buttons_height.'" src="'.WWWROOT.'/ui/img/twitter.png" alt="share this quote on Twitter"  style="height:'.$buttons_height.'px !important"></a>
 
-<a style="display:inline-block;padding:10px;" href="'.$permalink.'/favourite/'. $item->quote_id .'" title="New: you can now favourite this quote so you can easily find it later."><img height="'.$buttons_height.'" src="'.WWWROOT.'/ui/img/heart-red.png" alt="Save this quote" style="height:'.$buttons_height.'px !important" ><span style="color:#D0011B;font-size:10px;font-face:sans-serif;font-weight:lighter;text-decoration:none;line-height:1;display:inline-block;">NEW!</span></a>
+<a style="display:inline-block;padding:10px;" href="'.$permalink .'" title="New: you can now favourite this quote so you can easily find it later."><img height="'.$buttons_height.'" src="'.WWWROOT.'/ui/img/heart-red.png" alt="Save this quote" style="height:'.$buttons_height.'px !important" ><span style="color:#D0011B;font-size:10px;font-face:sans-serif;font-weight:lighter;text-decoration:none;line-height:1;display:inline-block;">NEW!</span></a>
 </p>
 			</div>';
 
