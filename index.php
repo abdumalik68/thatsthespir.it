@@ -20,35 +20,16 @@ $f3 = require 'lib/base.php';
 if ((float)PCRE_VERSION<7.9)
 	trigger_error('PCRE version is out of date');
 // Load configuration
-//$f3->config('config.ini');
+
 $f3->set('AUTOLOAD', 'classes/');
 /*
 
 		that's the spirit.
 
-		URLS:
-
-		/
-			=> homepage
-
-		/search/<keywords>
-			=> GET search form
-			=> POST search results
-
-
-	*/
+*/
 
 require 'functions.inc.php';
 require 'config.inc.php';
-
-
-
-/* OPAUTH*/
-//define('OPAUTH_LIB_DIR', dirname(__FILE__).'/controllers/opauth/');
-//define('CONF_FILE', dirname(__FILE__).'/controllers/opauth/opauth.conf.php');
-
-
-// continuing F3...
 
 $f3->set('DEBUG', DEBUG);
 $f3->set('UPLOADS', UPLOADS);
@@ -162,9 +143,6 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id', function($f3) { require
 $f3->route('GET @pending_quotes: /pending', function($f3) { require 'controllers/pending-quotes.get.php'; });
 
 $f3->route('GET /of/@author', function($f3) { require 'controllers/author-single.get.php'; });
-
-//$f3->route('GET @auth_action: /auth/@action/*', function($f3){ require 'controllers/auth-action.get.php';});
-//$f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});
 
 $f3->route('GET @auth: /auth', function($f3){ require 'controllers/hybridauth/index.php'; });
 $f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});

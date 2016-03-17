@@ -11,6 +11,7 @@ if($author->dry()){
 $quotes = new DB\SQL\Mapper($db, 'quotes');
 
 $quotes->total_likes = 'SELECT COUNT(*) FROM favourites WHERE quotes.id=favourites.quote_id';	
+$quotes->likers= 'SELECT group_concat(fullname) FROM `favourites` LEFT JOIN users as u on u.email=favourites.user_email WHERE quote_id=quotes.id';
 
 if(LOGGED_IN){
 	$quotes->user_likes_it = 'SELECT COUNT(*) FROM favourites WHERE favourites.quote_id=quotes.id AND user_email="'.$_SESSION['user']['email'].'"';	

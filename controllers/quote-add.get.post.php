@@ -29,7 +29,7 @@ if($_POST){
 	$f3->set('SESSION.author.id', $quote->author_id);
 
 	// Email to admin
-	$smtp = new SMTP ( 'smtp.gmail.com', 465, 'SSL', 'aplennevaux@gmail.com', 'iluvrocknroll' );
+	$smtp = new SMTP ( SMTP_HOST , SMTP_PORT, SMTP_PROTOCOL, SMTP_USER, SMTP_PASSWORD );
 
 	$smtp->set('From', '"pixeline" <alexandre@pixeline.be>');
 	$smtp->set('To', '<aplennevaux@gmail.com>');

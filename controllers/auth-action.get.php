@@ -2,9 +2,6 @@
 error_reporting(E_WARNING | E_ERROR);
 global $db;
 
-
-
-
 $provider_name = $f3->get('PARAMS.action');
 
 if(empty($provider_name)){
@@ -25,7 +22,7 @@ try {
 
 	$_SESSION['logged_in']= 'ok';
 
-	$username = $user_profile->email;
+	$username = trim($user_profile->email);
 	$f3->set('SESSION.logged_in', 'ok');
 
 
@@ -37,16 +34,18 @@ try {
 		$user->created= date('Y-m-d H:i:s');
 		$new= true;
 	}
-	$user->email = (!empty($username)) ? $username : $user_profile->displayName ;
 	$user->fullname= (!empty($user_profile->displayName)) ?  $user_profile->displayName : preg_replace('/([^@]*).*/', '$1', $user->email);
+	$user->email = (!empty($username)) ? $username : $user->fullname ;
+	$username= $user->email;
 	$user->image= $user_profile->photoURL;
 	$user->password =$provider_name;
-
 	$user->save();
-
+	$user = new DB\SQL\Mapper($db, 'users');
+	$user->load(array('email = :username LIMIT 0,1', ':username'=>$username));
+	
 	if($new){
 		// Email to admin
-		$smtp = new SMTP ( 'smtp.gmail.com', 465, 'SSL', 'aplennevaux@gmail.com', 'iluvrocknroll' );
+		$smtp = new SMTP ( SMTP_HOST , SMTP_PORT, SMTP_PROTOCOL, SMTP_USER, SMTP_PASSWORD );
 
 		$smtp->set('From', '"pixeline" <alexandre@pixeline.be>');
 		$smtp->set('To', '<aplennevaux@gmail.com>');
@@ -57,11 +56,10 @@ try {
 		$message .= "email: ". $user->email . "\nname:".$user->fullname;
 		$message .="\n---\nSee you,\n\nThe Spirit.";
 		$sent = $smtp->send($message, TRUE);
-
 	}
 
 	$f3->set('SESSION.logged_in', 'ok');
-	$f3->set('SESSION.user',  array('id'=> $user->id, 'email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role, 'image'=> $user->image, 'urls'=> json_decode($user->urls)));
+	$_SESSION['user'] = array('id'=> $user->id, 'email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role, 'image'=> $user->image, 'urls'=> json_decode($user->urls));
 
 	if(!empty($f3->get('SESSION.next_action'))){
 
@@ -95,7 +93,7 @@ catch( Exception $e ){
 	//header("Location: /login-error.php");
 	//echo '<pre>';
 	// var_dump($e);
-	$smtp = new SMTP ( 'smtp.gmail.com', 465, 'SSL', 'aplennevaux@gmail.com', 'iluvrocknroll' );
+	$smtp = new SMTP ( SMTP_HOST , SMTP_PORT, SMTP_PROTOCOL, SMTP_USER, SMTP_PASSWORD );
 
 	$smtp->set('From', '"pixeline" <alexandre@pixeline.be>');
 	$smtp->set('To', '<aplennevaux@gmail.com>');
