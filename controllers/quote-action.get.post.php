@@ -16,12 +16,12 @@ if (in_array($action, $restricted) && $f3->get('SESSION.logged_in') != 'ok'){
 // Fetch the quote data
 $quote=new DB\SQL\Mapper($db, 'quotes');
 if ($id) {
-	
-	$quote->total_likes = 'SELECT COUNT(*) FROM favourites WHERE quotes.id=favourites.quote_id';	
-	$quote->likers = 'SELECT group_concat(fullname) FROM `favourites` LEFT JOIN users as u on u.email=favourites.user_email WHERE quote_id=quotes.id';	
+
+	$quote->total_likes = 'SELECT COUNT(*) FROM favourites WHERE quotes.id=favourites.quote_id';
+	$quote->likers = 'SELECT group_concat(fullname) FROM `favourites` LEFT JOIN users as u on u.email=favourites.user_email WHERE quote_id=quotes.id';
 
 	if(LOGGED_IN){
-		$quote->user_likes_it = 'SELECT COUNT(*) FROM favourites WHERE favourites.quote_id=quotes.id AND user_email="'.$_SESSION['user']['email'].'"';	
+		$quote->user_likes_it = 'SELECT COUNT(*) FROM favourites WHERE favourites.quote_id=quotes.id AND user_email="'.$_SESSION['user']['email'].'"';
 	}
 	$quote->load(array('id=?', $id));
 }
@@ -106,7 +106,7 @@ case 'view':
 	$metatags['description'] = $quote->quote ." – ". $author->fullname;
 
 
-	
+
 	$f3->set('author', $author);
 	$f3->set('content', 'quote.view.php');
 
