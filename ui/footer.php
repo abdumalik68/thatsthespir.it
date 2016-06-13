@@ -19,10 +19,10 @@ if (!LOGGED_IN && CURRENT_URI != '/login'  ){
        <div class="modal-content">
 	       <p>To do that, you need to log in the Spirit! first via one of these services. It only takes a click and you're good to go.</p>
 	       <ul class="single-signon-providers">
-		       <li><a href="/auth/facebook<?php echo (SERVER !== 'live') ? 'test':''; ?>"><img src="/ui/img/facebook.svg"><br>Facebook</a></li>
-		       <li><a href="/auth/google"><img src="/ui/img/googleplus.svg"><br>Google</a></li>
-		       <li><a href="/auth/github"><img src="/ui/img/github.svg"><br>Github</a></li>
-		       <li><a href="/auth/reddit"><img src="/ui/img/reddit.svg"><br>Reddit</a></li>
+		       <li><a href="/auth/facebook<?php echo (SERVER !== 'live') ? 'test':''; ?>" class="no-underline"><img src="/ui/img/facebook.svg"><br>Facebook</a></li>
+		       <li><a href="/auth/google" class="no-underline"><img src="/ui/img/googleplus.svg"><br>Google</a></li>
+		       <li><a href="/auth/github" class="no-underline"><img src="/ui/img/github.svg"><br>Github</a></li>
+		       <li><a href="/auth/reddit" class="no-underline"><img src="/ui/img/reddit.svg"><br>Reddit</a></li>
 			</ul>
 		</div>
     </div>
@@ -48,6 +48,6 @@ if (!LOGGED_IN && CURRENT_URI != '/login'  ){
 }
 
 ?>
-	<script src="ui/js/min/main-min.js?v=1.0.215"></script>
+	<script src="ui/js/min/main-min.js?v=1.0.220"></script>
 	</body>
 </html>

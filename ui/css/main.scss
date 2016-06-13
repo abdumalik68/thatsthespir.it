@@ -2,8 +2,10 @@
 $lighter-grey: #EFEFEF;
 $light-grey: #979797;
 $black: #4A4A4A;
-$sans-serif: "jaf-bernino-sans",sans-serif;
 $red: #D0011B;
+$color-selection : lighten(#0000DD,50%);
+$sans-serif: "jaf-bernino-sans",sans-serif;
+
 //
 
 /* Adriane Lux Regular Font*/
@@ -25,13 +27,18 @@ $serif: 'Adriane Lux', serif;
 $serif: "adriane", Georgia, serif;
 
 
-/*****************************************************
+/*****************************************************/
 
+// purecss
+@import 'purecss.0.6.0';
 
-/* MAILCHIMP SIGNUP FORM CSS */
-
+// Elegant underlines
+@import 'underline';
+// Mailchimp
 @import 'mailchimp-form';
 
+// Modal window
+@import 'modal';
 
 
 /*
@@ -151,31 +158,42 @@ $serif: "adriane", Georgia, serif;
  -webkit-animation-timing-function: linear;
 }
 /******** End hover.css **/
-@import 'purecss.0.6.0';
+
 
 /* fixes to purecss */
 address{font-style: normal;}
 .pure-menu-link{
 	text-transform: none;
-	border-radius:10px;
+	border-radius:0;
+	padding:0;
+	margin:1em;
+	@include link-underline(white, $light-grey, $color-selection);
 	&:hover{
 		background:transparent;
-		text-decoration: underline;
+		//text-decoration: underline;
+		@include link-underline(white, $black, $color-selection);
 	}
 }
 
 .pure-menu-selected a{
-	text-decoration: underline;
+	//text-decoration: underline;
+	@include link-underline(white, $black, $color-selection);
 	color: $black;
 }
 
 .pure-menu-children{
 	border:1px solid $lighter-grey;
--webkit-box-shadow: 6px 7px 20px 1px rgba(0,0,0,0.08);
--moz-box-shadow: 6px 7px 20px 1px rgba(0,0,0,0.08);
-box-shadow: 6px 7px 20px 1px rgba(0,0,0,0.08);
+	-webkit-box-shadow: 6px 7px 20px 1px rgba(0,0,0,0.08);
+	-moz-box-shadow: 6px 7px 20px 1px rgba(0,0,0,0.08);
+	box-shadow: 6px 7px 20px 1px rgba(0,0,0,0.08);
+	li a{
+		background-size:0 !important;
+	}
 }
-@import 'modal';
+
+.no-underline{
+	background-size:0 !important;
+}
 
 
 html,body{
@@ -191,6 +209,15 @@ html, button, input, select, textarea,
 	font-family: $sans-serif;
 	font-size:16px;
 }
+
+
+a{
+	text-decoration: none;
+	@include link-underline(white, $black, $color-selection);
+}
+
+::-moz-selection { background: $color-selection; }
+::selection { background: $color-selection; }
 
 /* --- LAYOUT --- */
 
@@ -251,6 +278,10 @@ html, button, input, select, textarea,
 	color: $light-grey;
 	a{
 		color: $light-grey;
+		@include link-underline(white, $light-grey, $color-selection);
+		&:hover{
+			color:$black;
+		}
 	}
 }
 
@@ -309,7 +340,6 @@ html, button, input, select, textarea,
 #suggest-quote{
 	text-transform: none;
 	background: white;
-// 	background: linear-gradient(317deg, #dffaff, #f5ffe1, #fee3e3, #cdecc4);
 	color:$black;
 	border-radius:10px;
 	padding:1em 2em;
@@ -451,12 +481,6 @@ html, button, input, select, textarea,
 			}
 		}
 	}
-	li:hover ~ li, li:active ~ li, li:focus ~ li{
-/*
-		-webkit-transform: translateY(10px);
-		-transform: translateY(10px);
-*/
-	}
 }
 
 
@@ -466,7 +490,11 @@ html, button, input, select, textarea,
 	text-decoration: none;
 	text-transform: none;
 	font-family: $sans-serif;
-
+	background:none !important;
+	color:$light-grey;
+	&:hover{
+		color:black;
+	}
 }
 
 .ui-title{
@@ -536,14 +564,24 @@ figcaption{
 	padding-top:1em;
 	text-align: center;
 	a{
-		color:$black;
+		@include link-underline(white, $light-grey, $color-selection, 85%);
 	}
-
 	.author{
 		margin-top:.7em;
 		font-size:120%;
 		a{
-			text-decoration:none;
+			@include link-underline(white, $light-grey, $color-selection, 85%);
+			background-image: linear-gradient($lighter-grey, $lighter-grey);	
+			transition: background-image 1s ease;
+			&:hover{
+				background-image: linear-gradient($light-grey, $light-grey);
+				transition: background-image 1s ease;
+				color:black;
+			}
+			small.meta{
+				background-image: linear-gradient(white, white);
+
+			}
 		}
 	}
 }
@@ -570,7 +608,8 @@ text-align:center;}
 		text-decoration: none;
 		&:hover{
 			color:$black;
-			text-decoration: underline;
+			//text-decoration: underline;
+			@include link-underline(white, $black, $color-selection);
 		}
 	}
 	
@@ -586,18 +625,23 @@ text-align:center;}
 	display:inline-block;
 	text-align: center;
 	border-radius:3px;
+	border:1px solid transparent;
 	padding:0px 3px;
 	width:20px;
 	text-decoration:none;
+	transition: all ease 0.5s;
+	box-shadow: 0px 0px 4px 1px rgba(0,0,0,0.01);
 	img{
 		vertical-align: middle;
+		
 	}
-	&:hover{
-		background:white;
-	}
+	&:hover,
 	&:active{
-		@extend .glow;
+		background:white;
+		border:1px solid $lighter-grey;
+		box-shadow: 6px 6px 4px 4px rgba(0,0,0,0.4);
 	}
+
 	&.favourite{
 		background:transparent url('../img/heart-sprite.svg') 0 4px no-repeat;
 		em{display:none;}
@@ -726,7 +770,8 @@ margin-bottom:2em;
 	text-decoration: none;
 	color:$black;
 	&:hover{
-		text-decoration: underline;
+		//text-decoration: underline;
+		@include link-underline(white, $black, $color-selection);
 	}
 }
 

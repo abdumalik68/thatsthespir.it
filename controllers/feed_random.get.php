@@ -12,6 +12,7 @@ $item = $quote->get('random_unique_with_photo');
 $rss1 = array();
 if(is_object($item)){
 	$permalink = WWWROOT.'/quote/view/' . $item->quote_id;
+	$favourite_link = WWWROOT.'/quote/favourite/' . $item->quote_id;
 	$filename =$_SERVER['DOCUMENT_ROOT'].'/'.UPLOADS.$item->photo;
 	$share_message = urlencode($item->quote. "\n– ". $item->fullname );
 	$tweet_version = urlencode(truncate($item->fullname. ': '.$item->quote, 90));
@@ -29,7 +30,7 @@ if(is_object($item)){
 			
 <a  style="display:inline-block;padding:10px;" href="//twitter.com/share?text='.$tweet_version .'&amp;url='. $permalink .'&amp;hashtags=design_quote"><img height="'.$buttons_height.'" src="'.WWWROOT.'/ui/img/twitter.png" alt="share this quote on Twitter"  style="height:'.$buttons_height.'px !important"></a>
 
-<a style="display:inline-block;padding:10px;" href="'.$permalink .'" title="New: you can now favourite this quote so you can easily find it later."><img height="'.$buttons_height.'" src="'.WWWROOT.'/ui/img/heart-red.png" alt="Save this quote" style="height:'.$buttons_height.'px !important" ><span style="color:#D0011B;font-size:10px;font-face:sans-serif;font-weight:lighter;text-decoration:none;line-height:1;display:inline-block;">NEW!</span></a>
+<a style="display:inline-block;padding:10px;" href="'.$favourite_link .'" title="New: you can now favourite this quote so you can easily find it later."><img height="'.$buttons_height.'" src="'.WWWROOT.'/ui/img/heart-red.png" alt="Save this quote" style="height:'.$buttons_height.'px !important" ><span style="color:#D0011B;font-size:10px;font-face:sans-serif;font-weight:lighter;text-decoration:none;line-height:1;display:inline-block;">NEW!</span></a>
 </p>
 			</div>';
 

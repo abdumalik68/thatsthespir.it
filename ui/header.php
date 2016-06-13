@@ -35,7 +35,7 @@
     h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
   })(document);
 </script>
-        <link rel="stylesheet" href="ui/css/main.css?v=1.0.43">
+        <link rel="stylesheet" href="ui/css/main.css?v=1.0.46">
 		<link rel="alternate" title="RSS of That's The Spirit!" href="/feed" type="application/rss+xml">
 
         <!--[if lt IE 9]>
@@ -78,7 +78,7 @@
 					<ul id="global-menu" class="pure-menu-list">
 <?php if(LOGGED_IN) { ?>
 						<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-							<a href="#" id="user-avatar"  class="pure-menu-link">
+							<a href="#" id="user-avatar"  class="pure-menu-link no-underline">
 								<?php if(!empty($_SESSION['user']['image'])){ ?>
 								<img src="<?= $_SESSION['user']['image']; ?>" >
 								<?php 
@@ -93,7 +93,7 @@
 								?>
 								</a>
 							<ul class="pure-menu-children" >
-								<li class="pure-menu-item <?= ($current_url=='/of-mine') ? 'pure-menu-selected': '';?>"><a href="/of-mine" class="pure-menu-link">My quotes</a></li>
+								<li class="pure-menu-item <?= ($current_url=='/of-mine') ? 'pure-menu-selected': '';?>"><a href="/of-mine" class="pure-menu-link">My ♡ quotes</a></li>
 								<li class="pure-menu-item <?= ($current_url=='/latest') ? 'pure-menu-selected': '';?>"><a href="<?php echo $latest_url;?>" id="latest-quotes" class="pure-menu-link">Latest</a></li>
 <?php					
 	if ($user['role']==='admin'){ ?>

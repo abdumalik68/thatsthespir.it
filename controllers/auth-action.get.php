@@ -1,5 +1,5 @@
 <?php
-error_reporting(E_WARNING | E_ERROR);
+//error_reporting(E_WARNING | E_ERROR);
 global $db;
 
 $provider_name = $f3->get('PARAMS.action');
@@ -20,11 +20,9 @@ try {
 	// then grab the user profile
 	$user_profile = $adapter->getUserProfile();
 
-	$_SESSION['logged_in']= 'ok';
+
 
 	$username = trim($user_profile->email);
-	$f3->set('SESSION.logged_in', 'ok');
-
 
 	$user = new DB\SQL\Mapper($db, 'users');
 	$user->load(array('email = :username LIMIT 0,1', ':username'=>$username));
@@ -59,6 +57,8 @@ try {
 	}
 
 	$f3->set('SESSION.logged_in', 'ok');
+	$_SESSION['logged_in']= 'ok';
+	
 	$_SESSION['user'] = array('id'=> $user->id, 'email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role, 'image'=> $user->image, 'urls'=> json_decode($user->urls));
 
 	if(!empty($f3->get('SESSION.next_action'))){

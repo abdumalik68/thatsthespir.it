@@ -5,13 +5,14 @@ $action = $f3->get('PARAMS.action');
 $id = $f3->get('PARAMS.id');
 
 // Admin-restricted areas
-$restricted = array('edit', 'delete', 'validate');
+$restricted = array('edit', 'delete', 'validate', 'favourite');
 
 if (in_array($action, $restricted) && $f3->get('SESSION.logged_in') != 'ok'){
 	// User not logged in, redirect to login page.
 	$f3->set('SESSION.goto', '@quote_action(@id='.$id.',@action='.$action.')' ) ;
 	$f3->reroute('@login');
 }
+$f3->clear('SESSION.goto');
 
 // Fetch the quote data
 $quote=new DB\SQL\Mapper($db, 'quotes');
@@ -35,10 +36,6 @@ if($quote->dry()){
 $tags= new DB\SQL\Mapper($db, 'tags');
 $tags->load(array('id=?', $quote->tags_id));
 
-
-
-
-
 // Common to all actions
 $f3->set('tags', $tags);
 $f3->set('user', $f3->get('SESSION.user') );
@@ -48,10 +45,37 @@ $metatags['description'] = "$action quote $id:". $quote->quote;
 
 switch ($action){
 
+
+case 'favourite':
+
+	// save the quote
+
+	$fav = new DB\SQL\Mapper($db, 'favourites');
+	$fav->load(array('user_email = :username AND quote_id=:quote LIMIT 0,1', ':username'=>$_SESSION['user']['email'] , ':quote'=> $quote->id));
+		
+	if(!$fav->dry()){
+		$fav->erase();
+	}else{
+		$fav->quote_id =  $quote->id ;
+		$fav->user_email = $_SESSION['user']['email'];
+		$fav->save();
+	}
+
+	// Redirect to favourited quote url
+	$f3->reroute('@quote_action(action=view,id='.$quote->id.')');
+
+	break;
+
 case 'validate':
 
 	$quote->status='online';
 	$quote->save();
+
+	//!TODO: si on soumet une quote et qu'elle est acceptée, automatiquement la favoriser.
+	$user = $db->exec("SELECT email FROM users WHERE id='".$quote->submitted_by."'");
+	$db->exec('INSERT INTO favourites SET quote_id="'.$quote->id.'", user_email="'.$user[0]['email'].'"');
+
+	// Redirect to validated quote url
 	$f3->reroute('@quote_action(action=view,id='.$quote->id.')');
 	break;
 
@@ -120,7 +144,6 @@ default:
 
 $metatags['url']= WWWROOT.'/quote/'.$action.'/'.$id;
 
-$f3->set('SESSION.goto', $metatags['url']);
 
 $view=new View;
 $f3->set('metatags', $metatags);

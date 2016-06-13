@@ -43,7 +43,7 @@ class Spirit {
 
 		case 'user_favourites':
 		
-			$favs = $db->exec('SELECT GROUP_CONCAT(quote_id SEPARATOR ", ") favs FROM favourites WHERE user_email= ? ', $_SESSION['user']['email'] );
+			$favs = $db->exec('SELECT GROUP_CONCAT(DISTINCT quote_id SEPARATOR ", ") favs FROM favourites WHERE user_email= ? ', $_SESSION['user']['email'] );
 			$favs = $favs[0]['favs'];
 			if(!empty($favs)){
 			$sql = $selected_query_base.' LEFT JOIN favourites on favourites.quote_id=q.id WHERE status="online" AND q.id IN ('.$favs.') ORDER BY favourites.date_created DESC';
