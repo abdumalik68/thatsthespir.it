@@ -49,5 +49,6 @@ if (!LOGGED_IN && CURRENT_URI != '/login'  ){
 
 ?>
 	<script src="ui/js/min/main-min.js?v=1.0.220"></script>
+
 	</body>
 </html>

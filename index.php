@@ -47,7 +47,7 @@ $metatags = array(
 	'url' => WWWROOT);
 
 $db=new DB\SQL(
-	'mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME,
+	'mysql:host='.DB_HOST.';port=3306;dbname='.DB_NAME.';charset=utf8',
 	DB_USER,
 	DB_PASSWORD
 );
