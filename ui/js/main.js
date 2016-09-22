@@ -24,7 +24,7 @@ $('a.social:not(.favourite)').on('click', function(e) {
 	pop(url, 'pixeline_share', 'height=220,width=500');
 	var social_network = $(this).attr('class');
 	social_network=social_network.replace('social', '');
-	console.log(social_network);
+	//console.log(social_network);
 	e.preventDefault();
 	// Add Analytics Event Tracking: Social share
 	ga('send', {
@@ -136,7 +136,7 @@ $('.photo').each(function() {
 	var condition2 = ($('body.of-author').length && $this.data('photo') === 'none');
 	var condition3 = ($('body.home').length && $this.data('photo') === 'none');
 	var condition4 = ($('body.latest').length && $this.data('photo') === 'none');
-	console.log("fetch image? " + (condition1 || condition2 || condition3 || condition4));
+	// console.log("fetch image? " + (condition1 || condition2 || condition3 || condition4));
 	if (condition1 || condition2 || condition3 || condition4) {
 		var author_name = $this.data('author');
 		var apiKey = 'AIzaSyAYmkJ_zGi5di66aia-wjzslCaY3hpOd4A';
@@ -149,7 +149,7 @@ $('.photo').each(function() {
 					// Loop through our results, printing them to the page.
 					var url = imageSearch.items[0].link;
 					url = imageSearch.items[0].image.thumbnailLink;
-					console.log("image url " + url);
+					// console.log("image url " + url);
 					$this.css('background-image', 'url(' + url + ')');
 					$this.parents('figcaption').append('<p class="image-provided-by-google">"Best guess" image provided by <a target="_blank" href="https://www.google.com/search?q=' + author_name + '&es_sm=91&source=lnms&tbm=isch&sa=X&ei=okNEVJeuIMqwPLChgaAL&ved=0CAgQ_AUoAQ&biw=1279&bih=679#q=' + author_name + '&tbs=ic:gray,itp:face,islt:vga,isz:m&tbm=isch">Google Images</a></p>');
 				}
