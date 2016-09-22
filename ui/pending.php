@@ -19,7 +19,7 @@ if(count($pending_quotes)>0){
 
 ?>
 <p class="message no-pending-quote">No submitted quote to validate. Go and get some!</p>
-<?
+<?php
 }
 
 ?>

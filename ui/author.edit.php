@@ -3,15 +3,15 @@
 
 <?php
 if(isset($errors) && count($errors)>0){
-	?>
+?>
 	<div class="message">
 	<h2>Ooops!</h2>
-	<?php 
-		foreach($errors as $e){
-			echo $e;
-		}
+	<?php
+	foreach($errors as $e){
+		echo $e;
+	}
 	?></div>
-<?
+<?php
 }
 
 ?>
@@ -31,15 +31,15 @@ if(isset($errors) && count($errors)>0){
 	<?php if(strlen($post['photo'])>0){ ?>
 	<img src="<?php echo $upload_folder.'/'.$post['photo'] ?>" width="<?php echo $image_width; ?>">
 	<?php
-	}else{
-	?>
+}else{
+?>
 <small><a href="https://www.google.com/search?q=<?php echo urlencode($post['fullname']) ?>&es_sm=91&source=lnms&tbm=isch&sa=X&ei=okNEVJeuIMqwPLChgaAL&ved=0CAgQ_AUoAQ&biw=1279&bih=679&gws_rd=cr#q=<?php echo urlencode($post['fullname']) ?>&tbs=ic:gray,itp:face,islt:vga,isz:m&tbm=isch" target="_blank">Find one on Google Images</a></small><br>
 <?php
 }?>
 	<input type="submit" class="pure-button pure-button-primary"  value="Save">
     </form>
 <?php if (!empty($post['id'])){
-?><p>... or <a href="/of/<?php echo $post['slug']; ?>">just view this author</a></p>
+	?><p>... or <a href="/of/<?php echo $post['slug']; ?>">just view this author</a></p>
 
-<?
+<?php
 }?>

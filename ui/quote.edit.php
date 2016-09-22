@@ -9,25 +9,25 @@ if(!empty($message)){
 }
 ?>
 
-<label for="tags_id">What is this quote about?</label>	
+<label for="tags_id">What is this quote about?</label>
 <small>Please select the topic this quote is a great contribution to.</small>
 <?php
 if(count($tags)>0){
 	$tags_id = explode( ',' , $quote->tags_id);
-	?>
+?>
 
 	<select name="tags_id[]" id="tags_id" required>
 		<option>Select topics related to this quote</option>
 	<?php
 	foreach ($tags as $t){
-	$selected = ( in_array( $t['id'], $tags_id ) ) ? 'selected': '';
-		?>
-		<option value="<?php echo $t['id'];?>" <?php echo $selected ?>><?= html_entity_decode($t['name']);?></option>
-	<?php 
+		$selected = ( in_array( $t['id'], $tags_id ) ) ? 'selected': '';
+?>
+		<option value="<?php echo $t['id'];?>" <?php echo $selected ?>><?php echo html_entity_decode($t['name']);?></option>
+	<?php
 	}
-	?>
+?>
 	</select>
-	<?
+	<?php
 }?>
 
 <p>
