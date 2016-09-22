@@ -7,12 +7,12 @@ if ($quote['status']==='pending'){
 ?>
 	<p class="message">This quote has yet to be accepted into the Spirit.
 		<?php
-			if($user['role']==='admin'){
-				?>
+	if($user['role']==='admin'){
+?>
 				<a href="/quote/validate/<?php echo $quote['id'];?>/">Accept it now!</a>
-				<?
-			}
-			?>
+				<?php
+	}
+?>
 	</p>
 <?php
 }
@@ -22,7 +22,7 @@ if (!empty($_SESSION['message'])){
 <?php
 }
 ?>
-<?php 
+<?php
 $showLargeAvatar = true;
 include 'single-quote.view.php'; ?>
 </li>
@@ -30,4 +30,3 @@ include 'single-quote.view.php'; ?>
 </section>
 <?php
 unset($_SESSION['message']);
-

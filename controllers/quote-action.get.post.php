@@ -52,7 +52,7 @@ case 'favourite':
 
 	$fav = new DB\SQL\Mapper($db, 'favourites');
 	$fav->load(array('user_email = :username AND quote_id=:quote LIMIT 0,1', ':username'=>$_SESSION['user']['email'] , ':quote'=> $quote->id));
-		
+
 	if(!$fav->dry()){
 		$fav->erase();
 	}else{
@@ -129,13 +129,10 @@ case 'view':
 	$metatags['title'] = $quote->quote;
 	$metatags['description'] = $quote->quote ." – ". $author->fullname;
 
-
-
 	$f3->set('author', $author);
 	$f3->set('content', 'quote.view.php');
-
-
 	break;
+	
 default:
 
 	$f3->error(404);
@@ -149,3 +146,4 @@ $view=new View;
 $f3->set('metatags', $metatags);
 echo $view->render('layout.php');
 $f3->clear('SESSION.query');
+

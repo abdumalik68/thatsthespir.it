@@ -1,5 +1,6 @@
 <footer class="footer">
-<p><a href="/daily" title="Receive a daily quote from the Spirit in your mailbox">The Spirit! by email ?</a> - <a href="<?php echo $privacy_url ?>" title="In short: Google Analytics cookies, that's about it.">Privacy policy</a> - <a href="<?php echo $archive_url ?>" title="The Spirit! choses humans as channels. Also known as &lsquo;Authors&rsquo;">All Authors</a> - Made by some <a href="https://pixeline.be" title="Best Brussels web agency">web designer in Brussels</a>
+	<p>
+		<a href="/daily" title="Receive a daily quote from the Spirit in your mailbox">The Spirit! by email ?</a> - <a href="<?php echo $privacy_url ?>" title="In short: Google Analytics cookies, that's about it.">Privacy policy</a> - <a href="<?php echo $archive_url ?>" title="The Spirit! choses humans as channels. Also known as &lsquo;Authors&rsquo;">All Authors</a> - Made by some <a href="https://pixeline.be" title="Best Brussels web agency">web designer in Brussels</a>
 		<br><img src="ui/img/hand.svg" alt="V for Victory hand sign" class="hand">
 		</p>
 </footer>
@@ -49,6 +50,5 @@ if (!LOGGED_IN && CURRENT_URI != '/login'  ){
 
 ?>
 	<script src="ui/js/min/main-min.js?v=1.0.220"></script>
-
 	</body>
 </html>

@@ -30,7 +30,7 @@ $share_message = urlencode($quote->quote. "\n– ". $author->fullname );
 $tweet_version = urlencode(truncate($author->fullname. ': '.$quote->quote, 90));
 $permalink = WWWROOT.'/quote/view/' . $quote->id;
 
-$likers = implode(', ',explode(',',$quote->likers));
+$likers = implode(', ', explode(',', $quote->likers));
 
 ?>
 <p class="ui-title quote-meta">
