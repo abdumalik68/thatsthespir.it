@@ -44,7 +44,7 @@ $likers = implode(', ', explode(',', $quote->likers));
 	<a rel="nofollow" class="social googleplus" href="https://plus.google.com/share?url=<?php echo $permalink ?>" title="Share this quote on Google Plus"><img src="/ui/img/googleplus.svg" alt=""></a>
 
 
-	<a rel="nofollow" class="social reddit" data-height="420" data-network="reddit" data-width-normal="540" data-width="845" href="http://reddit.com/submit?url=<?php echo $permalink ?>&amp;title=<?php echo $share_message ?>" title="Share this quote on Reddit">
+	<a rel="nofollow" class="social reddit" data-height="420" data-network="reddit" data-width-normal="540" data-width="845" href="//www.reddit.com/submit?url=<?php echo $permalink ?>&amp;title=<?php echo $share_message ?>" href="//www.reddit.com/submit" title="Share this quote on Reddit">
 		<img src="/ui/img/reddit.svg" width="19" height="15" alt="">
 	</a>
 
