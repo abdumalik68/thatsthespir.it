@@ -1,21 +1,10 @@
 <?php
 session_start(); // ready to go!
-/*
 
-$now = time();
-if (isset($_SESSION['discard_after']) && $now > $_SESSION['discard_after']) {
-    // this session has worn out its welcome; kill it and start a brand new one
-    session_unset();
-    session_destroy();
-    session_start();
-}
-*/
-
-// either new or old, it should live at most for another hour
-//$_SESSION['discard_after'] = $now + (24*3600);
-
+require 'vendor/autoload.php';
 // Start FatFreeFramework
-$f3 = require 'lib/base.php';
+$f3 = Base::instance();
+
 
 if ((float)PCRE_VERSION<7.9)
 	trigger_error('PCRE version is out of date');
@@ -23,9 +12,7 @@ if ((float)PCRE_VERSION<7.9)
 
 $f3->set('AUTOLOAD', 'classes/');
 /*
-
 		that's the spirit.
-
 */
 
 require 'functions.inc.php';
