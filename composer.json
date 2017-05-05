@@ -1,18 +1,19 @@
 {
-	"name": "bcosca/fatfree",
-	"description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
-	"homepage": "http://fatfreeframework.com/",
-	"license": "GPL-3.0",
-	"require": {
-		"php": ">=5.3.6"
-	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/bcosca/fatfree"
-		}
-	],
-	"autoload": {
-		"files": ["lib/base.php"]
-	}
+    "name": "aplennevaux/thatsthespir.it",
+    "description": "That's The Spirit web app",
+    "type": "project",
+    "require": {
+	    "php": "^7.0",
+        "bcosca/fatfree": "^3.6",
+        "hybridauth/hybridauth": "^2.9",
+        "verot/class.upload.php": "^0.33.0",
+        "xfra35/f3-cron": "^1.1"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Plennevaux Alexandre",
+            "email": "alexandre@pixeline.be"
+        }
+    ]
 }

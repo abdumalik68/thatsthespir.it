@@ -8,3 +8,4 @@ tmp/*
 ui/config.codekit
 
 config.inc.php
+/vendor/
