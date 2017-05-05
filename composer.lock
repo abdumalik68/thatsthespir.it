@@ -71,16 +71,16 @@
         },
         {
             "name": "facebook/graph-sdk",
-            "version": "5.4.4",
+            "version": "5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-graph-sdk.git",
-                "reference": "5d0c4865e80e231d48a4571841bd018828fe58e1"
+                "reference": "93d7dc87e55a541d2e27d38f3aed40abbffdf6e1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/5d0c4865e80e231d48a4571841bd018828fe58e1",
-                "reference": "5d0c4865e80e231d48a4571841bd018828fe58e1",
+                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/93d7dc87e55a541d2e27d38f3aed40abbffdf6e1",
+                "reference": "93d7dc87e55a541d2e27d38f3aed40abbffdf6e1",
                 "shasum": ""
             },
             "require": {
@@ -125,26 +125,29 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2017-01-19 15:42:20"
+            "time": "2017-04-20 14:15:02"
         },
         {
             "name": "hybridauth/hybridauth",
-            "version": "v2.9.2",
+            "version": "v2.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridauth/hybridauth.git",
-                "reference": "955213a855fdb4c4e45cea7f7e4f8d2cb6c329fe"
+                "reference": "b842f3012c7b9e20a15b6f736c5261ab97037e0d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/955213a855fdb4c4e45cea7f7e4f8d2cb6c329fe",
-                "reference": "955213a855fdb4c4e45cea7f7e4f8d2cb6c329fe",
+                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/b842f3012c7b9e20a15b6f736c5261ab97037e0d",
+                "reference": "b842f3012c7b9e20a15b6f736c5261ab97037e0d",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
                 "facebook/graph-sdk": "^5.4",
                 "php": ">=5.2.0"
+            },
+            "require-dev": {
+                "squizlabs/php_codesniffer": "2.*"
             },
             "type": "library",
             "autoload": {
@@ -178,7 +181,7 @@
                 "twitter",
                 "yahoo"
             ],
-            "time": "2017-04-14 14:16:50"
+            "time": "2017-05-01 12:49:28"
         },
         {
             "name": "verot/class.upload.php",

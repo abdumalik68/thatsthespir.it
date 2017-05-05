@@ -1,26 +1,33 @@
 <?php
-//error_reporting(E_WARNING | E_ERROR);
+/*
+ini_set('display_errors',0);
+error_reporting(E_WARNING | E_ERROR);
+@session_start();
+*/
+
 global $db;
+$provider = $f3->get('PARAMS.action');
 
-$provider_name = $f3->get('PARAMS.action');
-
-if(empty($provider_name)){
+if(empty($provider)){
 	die("no provider");
 }
 
+$config = dirname(__FILE__) .'/../config.hybridauth.php';
+
 try {
 
-	$config_file_path = dirname(__FILE__) .'/hybridauth/config.php';
-	//require_once dirname(__FILE__) ."/hybridauth/Hybrid/Auth.php";
 
-	$hybridauth = new Hybrid_Auth( $config_file_path );
+	$hybridauth = new Hybrid_Auth( $config );
+
+	echo '<pre> YOLO: ';
+	print_r($hybridauth);
+	echo '</pre>';
 
 	// try to authenticate with the selected provider
-	$adapter = $hybridauth->authenticate( $provider_name );
+	$adapter = $hybridauth->authenticate( $provider );
+
 	// then grab the user profile
 	$user_profile = $adapter->getUserProfile();
-
-
 
 	$username = trim($user_profile->email);
 
@@ -36,11 +43,11 @@ try {
 	$user->email = (!empty($username)) ? $username : $user->fullname ;
 	$username= $user->email;
 	$user->image= $user_profile->photoURL;
-	$user->password =$provider_name;
+	$user->password =$provider;
 	$user->save();
 	$user = new DB\SQL\Mapper($db, 'users');
 	$user->load(array('email = :username LIMIT 0,1', ':username'=>$username));
-	
+
 	if($new){
 		// Email to admin
 		$smtp = new SMTP ( SMTP_HOST , SMTP_PORT, SMTP_PROTOCOL, SMTP_USER, SMTP_PASSWORD );
@@ -58,7 +65,7 @@ try {
 
 	$f3->set('SESSION.logged_in', 'ok');
 	$_SESSION['logged_in']= 'ok';
-	
+
 	$_SESSION['user'] = array('id'=> $user->id, 'email'=>$user->email, 'fullname'=>$user->fullname, 'role'=>$user->role, 'image'=> $user->image, 'urls'=> json_decode($user->urls));
 
 	if(!empty($f3->get('SESSION.next_action'))){
@@ -91,8 +98,12 @@ try {
 }
 catch( Exception $e ){
 	//header("Location: /login-error.php");
-	//echo '<pre>';
-	// var_dump($e);
+	/*
+	echo '<pre>';
+	print_r($e);
+	echo '</pre>';
+	exit;
+*/
 	$smtp = new SMTP ( SMTP_HOST , SMTP_PORT, SMTP_PROTOCOL, SMTP_USER, SMTP_PASSWORD );
 
 	$smtp->set('From', '"pixeline" <alexandre@pixeline.be>');

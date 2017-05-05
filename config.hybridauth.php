@@ -10,7 +10,7 @@
 // ----------------------------------------------------------------------------------------
 
 /*
-	
+
 	Facebook app:
 	 https://developers.facebook.com/apps/381323445386729/dashboard/
 
@@ -27,10 +27,9 @@
 	 Reddit app:
 	 https://www.reddit.com/prefs/apps/
 
-	
+
 */
-return
-array(
+return array(
 	"base_url" => WWWROOT."/auth",
 	"path_vendor"=> 'vendor',
 	"providers" => array(
@@ -45,16 +44,19 @@ array(
 			"keys" => array("id" => "381323445386729", "secret" => "70a7e4b4f18643bd5f44851ab637d845"),
 			"scope" => "email",
 			"trustForwarded" => false,
+
 			"wrapper"=> array(
 				"class"=>'Hybrid_Providers_Facebook',
 				"path"=> './vendor/hybridauth/hybridauth/hybridauth/Hybrid/thirdparty/Facebook/Facebook.php'
 			)
+
 		),
 		"Facebooktest" => array(
 			"enabled" => true,
 			"keys" => array("id" => "381324232053317", "secret" => "5b2f8e894723cc831f9d5c51e73f46d7"),
 			"scope" => "email",
 			"trustForwarded" => false,
+
 			"wrapper"=> array(
 				"class"=>'Hybrid_Providers_Facebooktest',
 				"path"=> './controllers/hybridauth/Hybrid/Providers/Facebooktest.php'
@@ -74,7 +76,11 @@ array(
 		'GitHub' => array(
 			"enabled" => true,
 			"scope"=>"user:email",
-			"keys" => array("id" => "44ccee421e44fbee93ce", "secret" => "d577497f887b5002e146ef03c14636b7113967b3"),
+			"keys" => ["id" => "44ccee421e44fbee93ce", "secret" => "d577497f887b5002e146ef03c14636b7113967b3"],
+			"wrapper"=> array(
+                "class"=>'Hybrid_Providers_GitHub',
+                "path"=> './vendor/hybridauth/hybridauth/additional-providers/hybridauth-github/Providers/GitHub.php'
+            )
 		)
 	),
 	// If you want to enable logging, set 'debug_mode' to true.
