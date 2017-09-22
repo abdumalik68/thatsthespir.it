@@ -129,16 +129,16 @@
         },
         {
             "name": "hybridauth/hybridauth",
-            "version": "v2.9.4",
+            "version": "v2.9.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridauth/hybridauth.git",
-                "reference": "b842f3012c7b9e20a15b6f736c5261ab97037e0d"
+                "reference": "4e95e9c4a9e85a6ce4735dbb3924715a0493981a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/b842f3012c7b9e20a15b6f736c5261ab97037e0d",
-                "reference": "b842f3012c7b9e20a15b6f736c5261ab97037e0d",
+                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/4e95e9c4a9e85a6ce4735dbb3924715a0493981a",
+                "reference": "4e95e9c4a9e85a6ce4735dbb3924715a0493981a",
                 "shasum": ""
             },
             "require": {
@@ -181,7 +181,7 @@
                 "twitter",
                 "yahoo"
             ],
-            "time": "2017-05-01 12:49:28"
+            "time": "2017-05-06 07:11:02"
         },
         {
             "name": "verot/class.upload.php",
