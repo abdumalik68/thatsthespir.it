@@ -135,9 +135,7 @@ $f3->route('GET @auth: /auth', function($f3){ require 'vendor/hybridauth/hybrida
 
 $f3->route('GET @auth_action: /auth/@action', function($f3){ require 'controllers/auth-action.get.php';});
 
-
 $f3->route('GET @login: /login', function($f3) { require 'controllers/login.get.php'; });
-
 $f3->route('POST /login', function($f3) { require 'controllers/login.post.php'; });
 
 $f3->route('GET @fix_totals: /fix-author-totals', function($f3){ require 'controllers/fix-author-totals.get.php'; });

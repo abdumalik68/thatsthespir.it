@@ -19,10 +19,6 @@ try {
 
 	$hybridauth = new Hybrid_Auth( $config );
 
-	echo '<pre> YOLO: ';
-	print_r($hybridauth);
-	echo '</pre>';
-
 	// try to authenticate with the selected provider
 	$adapter = $hybridauth->authenticate( $provider );
 
