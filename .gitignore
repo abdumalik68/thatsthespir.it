@@ -1,11 +1,14 @@
-app/core/config.php
+# Global
+.*.swp
 .DS_Store
-uploads/*
-tmp/*
-*.codekit
-*.codekit3
 
-ui/config.codekit
-
-config.inc.php
-/vendor/
+# Application
+web/app/composer.json
+web/app/vendor
+web/app/tmp
+data/db/mysql
+# PHPStorm
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/dictionaries
+make.log
