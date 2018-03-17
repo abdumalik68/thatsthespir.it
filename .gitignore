@@ -12,3 +12,4 @@ data/db/mysql
 .idea/**/tasks.xml
 .idea/dictionaries
 make.log
+web/app/vendor/
