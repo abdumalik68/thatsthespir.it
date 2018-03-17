@@ -33,21 +33,6 @@ if (!LOGGED_IN && CURRENT_URI != '/login') {
 }
 
 ?>
-
-<?php if (SERVER == 'dev') {
-/*
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
- */
-    ?>
-<script src="assets/js/jquery.1.10.2.min.js"></script>
-<script src="assets/js/jquery.autocomplete.min.js"></script>
-<script src="assets/js/headhesive.js"></script>
-<?php
-}
-
-?>
-	<script src="assets/js/min/main-min.js?v=1.0.221"></script>
+	<script src="/assets/js/main-min.js"></script>
 	</body>
 </html>

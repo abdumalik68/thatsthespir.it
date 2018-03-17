@@ -34,48 +34,49 @@
     h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
   })(document);
 </script>
-        <link rel="stylesheet" href="assets/css/main.css?v=1.0.46">
 		<link rel="alternate" title="RSS of That's The Spirit!" href="/feed" type="application/rss+xml">
-
-        <!--[if lt IE 9]>
-            <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-            <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
-        <![endif]-->
-
-		<link rel="apple-touch-icon" sizes="57x57" href="assets/img/icons/apple-touch-icon-57x57.png">
-		<link rel="apple-touch-icon" sizes="60x60" href="assets/img/icons/apple-touch-icon-60x60.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="assets/img/icons/apple-touch-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="76x76" href="assets/img/icons/apple-touch-icon-76x76.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="assets/img/icons/apple-touch-icon-114x114.png">
-		<link rel="apple-touch-icon" sizes="120x120" href="assets/img/icons/apple-touch-icon-120x120.png">
-		<link rel="apple-touch-icon" sizes="144x144" href="assets/img/icons/apple-touch-icon-144x144.png">
-		<link rel="apple-touch-icon" sizes="152x152" href="assets/img/icons/apple-touch-icon-152x152.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icons/apple-touch-icon-180x180.png">
-		<link rel="icon" type="image/png" href="assets/img/icons/favicon-32x32.png" sizes="32x32">
-		<link rel="icon" type="image/png" href="assets/img/icons/favicon-194x194.png" sizes="194x194">
-		<link rel="icon" type="image/png" href="assets/img/icons/favicon-96x96.png" sizes="96x96">
-		<link rel="icon" type="image/png" href="assets/img/icons/android-chrome-192x192.png" sizes="192x192">
-		<link rel="icon" type="image/png" href="assets/img/icons/favicon-16x16.png" sizes="16x16">
-		<link rel="manifest" href="assets/img/icons/manifest.json">
-		<link rel="shortcut icon" href="assets/img/icons/favicon.ico">
+		<link rel="apple-touch-icon" sizes="57x57" href="/assets/img/icons/apple-touch-icon-57x57.png">
+		<link rel="apple-touch-icon" sizes="60x60" href="/assets/img/icons/apple-touch-icon-60x60.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="/assets/img/icons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="76x76" href="/assets/img/icons/apple-touch-icon-76x76.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="/assets/img/icons/apple-touch-icon-114x114.png">
+		<link rel="apple-touch-icon" sizes="120x120" href="/assets/img/icons/apple-touch-icon-120x120.png">
+		<link rel="apple-touch-icon" sizes="144x144" href="/assets/img/icons/apple-touch-icon-144x144.png">
+		<link rel="apple-touch-icon" sizes="152x152" href="/assets/img/icons/apple-touch-icon-152x152.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/img/icons/apple-touch-icon-180x180.png">
+		<link rel="icon" type="image/png" href="/assets/img/icons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/assets/img/icons/favicon-194x194.png" sizes="194x194">
+		<link rel="icon" type="image/png" href="/assets/img/icons/favicon-96x96.png" sizes="96x96">
+		<link rel="icon" type="image/png" href="/assets/img/icons/android-chrome-192x192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/assets/img/icons/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/assets/img/icons/manifest.json">
+		<link rel="shortcut icon" href="/assets/img/icons/favicon.ico">
 		<meta name="msapplication-TileColor" content="#ffffff">
-		<meta name="msapplication-TileImage" content="assets/img/icons/mstile-144x144.png">
-		<meta name="msapplication-config" content="assets/img/icons/browserconfig.xml">
+		<meta name="msapplication-TileImage" content="/assets/img/icons/mstile-144x144.png">
+		<meta name="msapplication-config" content="/assets/img/icons/browserconfig.xml">
 		<meta name="theme-color" content="#ffffff">
-
+        <link rel="stylesheet" href="/assets/css/main.css?v=1.0.46">
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162823-28"></script>
+		<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'UA-162823-28');
+		</script>
     </head>
     <body class="<?php echo $body_class ?>">
 	<div class="header">
-		<div class="custom-wrapper pure-g" >
+		<div class="custom-wrapper pure-g" id="js-main-menu">
     		<div class="pure-u-1 pure-u-md-1-3">
     	    	<div class="pure-menu">
 					<a id="logo" class="pure-menu-heading custom-brand" href="/">That's the spirit! <br><small>Inspirational quotes for the creative soul.</small></a>
+					<a href="javascript:void(0)" class="custom-toggle" id="js-toggle"><s class="bar"></s><s class="bar"></s></a>
 				</div>
 			</div>
 			<div class="pure-u-1 pure-u-md-2-3 global-menu-wrapper">
-				<div class="pure-menu pure-menu-horizontal">
+				<div class="pure-menu pure-menu-horizontal js-custom-can-transform">
 					<ul id="global-menu" class="pure-menu-list">
-<?php if (LOGGED_IN) {?>
+						<?php if (LOGGED_IN) {?>
 						<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
 							<a href="#" id="user-avatar"  class="pure-menu-link no-underline">
 								<?php if (!empty($_SESSION['user']['image'])) {?>
@@ -98,28 +99,23 @@
 if ($user['role'] === 'admin') {?>
 						<li class="pure-menu-item"><a href="/fix-author-totals" class="pure-menu-link">Fix totals</a></li>
 						<li class="pure-menu-item" id="review-pending-quotes"><a href="<?=$pending_url?>" class="pure-menu-link">Review Pending quotes</a></li>
-<?php
+						<?php
 }
     ?>
-
-								<li class="pure-menu-item"><a href="/logout" class="pure-menu-link logout-link">Log out</a></li>
-							</ul>
-						</li>
-<?php
-}
-
-?>
-						<li class="pure-menu-item <?=($current_url == '/daily') ? 'pure-menu-selected' : '';?>" >
-							<a href="/daily" class="pure-menu-link badge-cta" title="Receive a daily quote from the Spirit in your mailbox">Daily <?php if (($current_url != '/daily') && (!isset($_COOKIE['badge-clicked']) || $_COOKIE['badge-clicked'] != '1')) {?><span class="badge" title="You (will) have new mail!">1</span><?php }?></a>
-						</li>
-						<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add' : CURRENT_URI . '#login-ui'; ?>" id="suggest-quotes" class="pure-menu-link" title="Do you know a great quote that's not already in The Spirit?">Suggest a quote</a></li>
-
-						<li class="pure-menu-item"><a href="/popular" id="popular-quotes" class="pure-menu-link" title="The Spirit's Twenty most popular quotes.">Favs chart</a></li>
-
-						<li class="pure-menu-item"><a href="/"  class="pure-menu-link" id="another-quote-button" title="Read a random quote">Another quote please</a></li>
-
+						<li class="pure-menu-item"><a href="/logout" class="pure-menu-link logout-link">Log out</a></li>
 					</ul>
-				</div>
-			</div>
+				</li>
+				<?php
+}
+?>
+				<li class="pure-menu-item <?=($current_url == '/daily') ? 'pure-menu-selected' : '';?>" >
+					<a href="/daily" class="pure-menu-link badge-cta underline" title="Receive a daily quote from the Spirit in your mailbox">Daily <?php if (($current_url != '/daily') && (!isset($_COOKIE['badge-clicked']) || $_COOKIE['badge-clicked'] != '1')) {?><span class="badge" title="You (will) have new mail!">1</span><?php }?></a>
+				</li>
+				<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add' : CURRENT_URI . '#login-ui'; ?>" id="suggest-quotes" class="pure-menu-link underline" title="Do you know a great quote that's not already in The Spirit?">Suggest a quote</a></li>
+				<li class="pure-menu-item"><a href="/popular" id="popular-quotes" class="pure-menu-link underline" title="The Spirit's Twenty most popular quotes.">Favs chart</a></li>
+				<li class="pure-menu-item"><a href="/"  class="pure-menu-link" id="another-quote-button" title="Read a random quote">Another quote please</a></li>
+			</ul>
 		</div>
 	</div>
+</div>
+</div>

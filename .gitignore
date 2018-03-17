@@ -13,3 +13,4 @@ data/db/mysql
 .idea/dictionaries
 make.log
 web/app/vendor/
+web/public/assets/vendors/

@@ -55,3 +55,52 @@ tfoot { font-style: italic; }
 caption { background: #fff; margin-bottom:2em; text-align:left; }
 thead {display: table-header-group;}
 img,tr {page-break-inside: avoid;} 
+.content-wrapper {
+  background: white;
+}
+section.search,
+section.all-authors,
+.quote-meta,
+#another-quote-button,
+#suggest-quote,
+footer,
+#awwwards,
+#global-menu {
+  display: none;
+}
+.latest-quotes-list,
+.content {
+  padding: 0;
+}
+#logo {
+  line-height: 1;
+  font-size: 11px;
+  small {
+    display: none;
+  }
+}
+figure.quote {
+  padding: 0
+}
+.quote {
+  margin: 1em auto;
+  max-width: 100%;
+}
+.photo {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+h2.topic-title,
+#logo,
+address.author,
+.image-provided-by-google {
+  color: $light-grey;
+  font-weight: 100;
+  font-family: $sans-serif;
+  * {
+    color: $light-grey !important;
+    font-weight: 100 !important;
+    font-family: $sans-serif;
+  }
+}

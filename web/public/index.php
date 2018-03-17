@@ -111,7 +111,7 @@ $f3->redirect('GET|HEAD /sitemap.xml', '/sitemap');
 
 $f3->route('POST @favourite: /favourite/@quote [ajax]', function ($f3) {include '../app/controllers/favourite.ajax.php';});
 
-$f3->route('GET @search: /search [ajax]', function ($f3) {include '../app/search.ajax.php';});
+$f3->route('GET @search: /search [ajax]', function ($f3) {include '../app/controllers/search.ajax.php';});
 
 $f3->route('GET|POST @author_edit: /author/@action/@slug', function ($f3) {include '../app/controllers/author-edit.get.post.php';});
 
