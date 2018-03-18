@@ -20,7 +20,7 @@ if (!LOGGED_IN && CURRENT_URI != '/login') {
        <div class="modal-content">
 	       <p>To do that, you need to log in the Spirit via one of these services. It only takes a click and you're good to go.</p>
 	       <ul class="single-signon-providers">
-		       <li><a href="/auth/facebook<?php echo (SERVER !== 'live') ? 'test' : ''; ?>" class="no-underline"><img src="/assets/img/facebook.svg"><br>Facebook</a></li>
+		       <li><a href="/auth/facebook<?php echo (ENV !== 'production') ? 'test' : ''; ?>" class="no-underline"><img src="/assets/img/facebook.svg"><br>Facebook</a></li>
 		       <li><a href="/auth/google" class="no-underline"><img src="/assets/img/googleplus.svg"><br>Google</a></li>
 		       <li><a href="/auth/github" class="no-underline"><img src="/assets/img/github.svg"><br>Github</a></li>
 		       <li><a href="/auth/reddit" class="no-underline"><img src="/assets/img/reddit.svg"><br>Reddit</a></li>

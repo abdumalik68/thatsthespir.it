@@ -25,7 +25,7 @@ switch ($_SERVER['HTTP_HOST']) {
 $f3->config(APP_PATH . $config_file);
 define('WWWROOT', $f3->WWWROOT);
 define('UPLOADS', $f3->UPLOADS);
-define('SERVER', $f3->SERVER);
+define('ENV', $f3->ENV);
 
 $f3->set('image_width', 100);
 
@@ -128,9 +128,13 @@ $f3->route('GET @pending_quotes: /pending', function ($f3) {include APP_PATH . '
 
 $f3->route('GET /of/@author', function ($f3) {include APP_PATH . '/controllers/author-single.get.php';});
 
-$f3->route('GET @auth: /auth', function ($f3) {include APP_PATH . '/vendor/hybridauth/hybridauth/hybridauth/index.php';});
+$f3->route('GET @auth: /auth', function ($f3) {
+    include APP_PATH . '/vendor/hybridauth/hybridauth/hybridauth/index.php';
+});
 
-$f3->route('GET @auth_action: /auth/@action', function ($f3) {include APP_PATH . '/controllers/auth-action.get.php';});
+$f3->route('GET @auth_action: /auth/@action', function ($f3) {
+    include APP_PATH . '/controllers/auth-action.get.php';
+});
 
 $f3->route('GET @login: /login', function ($f3) {include APP_PATH . '/controllers/login.get.php';});
 

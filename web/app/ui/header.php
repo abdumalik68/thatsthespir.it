@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title><?php echo truncate(htmlentities(strip_tags(html_entity_decode($metatags['title']))), 45); ?></title>
         <link rel="publisher" href="https://plus.google.com/u/0/b/109858177150611361742/+PixelineBe/"/>
-        <?php //include 'newrelic.tracking-speed.php'; ?>
         <meta name="description" content="<?php echo htmlentities(strip_tags(html_entity_decode($metatags['description']))); ?>">
 		<meta property="og:title" content="<?php echo htmlentities(strip_tags(html_entity_decode($metatags['title']))); ?>">
 		<meta property="og:site_name" content="<?php echo htmlentities(strip_tags(html_entity_decode($metatags['site_name']))); ?>">

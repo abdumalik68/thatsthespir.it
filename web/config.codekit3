@@ -323,13 +323,6 @@
 		"oAP": "\/app\/config.hybridauth.php",
 		"oF": 0
 		},
-	"\/app\/config.inc.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/app\/config.inc.php",
-		"oF": 0
-		},
 	"\/app\/config.ini": {
 		"cB": 0,
 		"ft": 8192,
@@ -433,6 +426,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/app\/controllers\/human-channels.get.php",
+		"oF": 0
+		},
+	"\/app\/controllers\/hybridauth\/Hybrid\/Facebooktest.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/controllers\/hybridauth\/Hybrid\/Facebooktest.php",
 		"oF": 0
 		},
 	"\/app\/controllers\/latest.get.php": {

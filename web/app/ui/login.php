@@ -8,7 +8,7 @@ $errors = (isset($_SESSION['errors'])) ? $_SESSION['errors'] : array();
 	<ul class="single-signon-providers">
 
 
-		<li><a href="/auth/facebook<?php echo (SERVER !== 'live') ? '-test' : ''; ?>"><img src="/assets/img/facebook.svg"><br>Facebook</a></li>
+		<li><a href="/auth/facebook<?php echo (ENV !== 'live') ? '-test' : ''; ?>"><img src="/assets/img/facebook.svg"><br>Facebook</a></li>
 		<li><a href="/auth/google"><img src="/assets/img/googleplus.svg"><br>Google</a></li>
 		<li><a href="/auth/github"><img src="/assets/img/github.svg"><br>Github</a></li>
 	</ul>
