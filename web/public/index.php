@@ -3,23 +3,30 @@
 define('APP_PATH', '../app');
 
 include APP_PATH . '/vendor/autoload.php';
+include APP_PATH . '/functions.inc.php';
 
 // Start FatFreeFramework
 $f3 = Base::instance();
 
 // Load configuration
 
-$f3->set('AUTOLOAD', 'classes/');
-/*
-that's the spirit.
- */
-include APP_PATH . '/functions.inc.php';
-include APP_PATH . '/config.inc.php';
-
 $f3->config(APP_PATH . '/config.ini');
+// Load additional configuration specific to the environment (dev or production)
 
-$f3->set('DEBUG', $f3->DEBUG);
-$f3->set('UPLOADS', UPLOADS);
+switch ($_SERVER['HTTP_HOST']) {
+    case 'thatsthespir.it':
+        $config_file = '/config.production.ini';
+        break;
+
+    default:
+        $config_file = '/config.dev.ini';
+        break;
+}
+$f3->config(APP_PATH . $config_file);
+define('WWWROOT', $f3->WWWROOT);
+define('UPLOADS', $f3->UPLOADS);
+define('SERVER', $f3->SERVER);
+
 $f3->set('image_width', 100);
 
 $metatags = array(
@@ -32,9 +39,9 @@ $metatags = array(
     'url' => WWWROOT);
 
 $db = new DB\SQL(
-    'mysql:host=' . DB_HOST . ';port=3306;dbname=' . DB_NAME . ';charset=utf8',
-    DB_USER,
-    DB_PASSWORD
+    'mysql:host=' . $f3->DB_HOST . ';port=3306;dbname=' . $f3->DB_NAME . ';charset=utf8',
+    $f3->DB_USER,
+    $f3->DB_PASSWORD
 );
 
 /*

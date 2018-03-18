@@ -309,6 +309,13 @@
 		"oAP": "\/app\/composer.lock",
 		"oF": 0
 		},
+	"\/app\/config.dev.ini": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/config.dev.ini",
+		"oF": 0
+		},
 	"\/app\/config.hybridauth.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -328,6 +335,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/app\/config.ini",
+		"oF": 0
+		},
+	"\/app\/config.production.ini": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/config.production.ini",
 		"oF": 0
 		},
 	"\/app\/controllers\/api.get.php": {
@@ -4449,6 +4463,20 @@
 		"oF": 0,
 		"opt": 0
 		},
+	"\/app\/vendor\/verot\/class.upload.php\/test\/foo.gdf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/vendor\/verot\/class.upload.php\/test\/foo.gdf",
+		"oF": 0
+		},
+	"\/app\/vendor\/verot\/class.upload.php\/test\/foo.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/vendor\/verot\/class.upload.php\/test\/foo.ttf",
+		"oF": 0
+		},
 	"\/app\/vendor\/verot\/class.upload.php\/test\/index.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -4620,6 +4648,13 @@
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
+		},
+	"\/public\/.htaccess": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/public\/.htaccess",
+		"oF": 0
 		},
 	"\/public\/assets\/css\/.sass-cache\/01ab52439749f8c8b950454b6a76b9349657c028\/_mailchimp-form.scssc": {
 		"cB": 0,
@@ -5711,26 +5746,6 @@
 		"sC": 0,
 		"tS": 0
 		},
-	"\/public\/assets\/js\/min\/jquery.hotkeys-min.js": {
-		"ft": 64,
-		"ma": 1,
-		"mi": 0,
-		"oA": 0,
-		"oAP": "\/public\/assets\/js\/min\/jquery.hotkeys-min-min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/public\/assets\/js\/min\/main-min.js": {
-		"ft": 64,
-		"ma": 1,
-		"mi": 0,
-		"oA": 0,
-		"oAP": "\/public\/assets\/js\/min\/main-min-min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
 	"\/public\/assets\/vendors\/css-modal\/.bower.json": {
 		"ft": 524288,
 		"oA": 2,
@@ -6086,7 +6101,7 @@
 		"ft": 64,
 		"ma": 1,
 		"mi": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/public\/assets\/vendors\/css-modal\/modal.js",
 		"oF": 0,
 		"sC": 0,
@@ -6427,7 +6442,7 @@
 		"ft": 64,
 		"ma": 1,
 		"mi": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/public\/assets\/vendors\/devbridge-autocomplete\/dist\/jquery.autocomplete.min.js",
 		"oF": 0,
 		"sC": 0,
@@ -6599,7 +6614,7 @@
 		"ft": 64,
 		"ma": 1,
 		"mi": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/public\/assets\/vendors\/Headhesive.js\/dist\/headhesive.min.js",
 		"oF": 0,
 		"sC": 0,
@@ -6715,7 +6730,7 @@
 		"ft": 64,
 		"ma": 1,
 		"mi": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/public\/assets\/vendors\/jquery\/dist\/jquery.min.js",
 		"oF": 0,
 		"sC": 0,

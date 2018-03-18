@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e26d44b8a92d148ba5fd673be3e548bd",
+    "content-hash": "2467c9b8a4d1deb1fc2419c274d6231e",
     "packages": [
         {
             "name": "bcosca/fatfree",
@@ -281,16 +281,16 @@
         },
         {
             "name": "verot/class.upload.php",
-            "version": "0.33",
+            "version": "0.34",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verot/class.upload.php.git",
-                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7"
+                "reference": "f3837ae88233d4da79f58aa47cda930290b0c6a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/79125bcdcd17fda24ce7ff681f2066ae42097ec7",
-                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7",
+                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/f3837ae88233d4da79f58aa47cda930290b0c6a8",
+                "reference": "f3837ae88233d4da79f58aa47cda930290b0c6a8",
                 "shasum": ""
             },
             "require": {
@@ -304,7 +304,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPLv2"
+                "GPL-2.0-only"
             ],
             "authors": [
                 {
@@ -318,7 +318,7 @@
                 "gd",
                 "upload"
             ],
-            "time": "2016-07-16T19:59:53+00:00"
+            "time": "2018-03-11T21:13:19+00:00"
         },
         {
             "name": "xfra35/f3-cron",
