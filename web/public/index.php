@@ -111,7 +111,7 @@ $f3->redirect('GET|HEAD /sitemap.xml', '/sitemap');
 
 $f3->route('POST @favourite: /favourite/@quote [ajax]', function ($f3) {include '../app/controllers/favourite.ajax.php';});
 
-$f3->route('GET @search: /search [ajax]', function ($f3) {include '../app/controllers/search.ajax.php';});
+$f3->route('GET /search [ajax]', function ($f3) {include '../app/controllers/search.ajax.php';});
 
 $f3->route('GET|POST @author_edit: /author/@action/@slug', function ($f3) {include '../app/controllers/author-edit.get.post.php';});
 
@@ -123,7 +123,7 @@ $f3->route('GET|POST @quote_action: /quote/@action/@id', function ($f3) {include
 
 $f3->route('GET @pending_quotes: /pending', function ($f3) {include '../app/controllers/pending-quotes.get.php';});
 
-$f3->route('GET /of/@author', function ($f3) {include '../app/author-single.get.php';});
+$f3->route('GET /of/@author', function ($f3) {include '../app/controllers/author-single.get.php';});
 
 $f3->route('GET @auth: /auth', function ($f3) {include '../app/vendor/hybridauth/hybridauth/hybridauth/index.php';});
 

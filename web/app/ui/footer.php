@@ -18,7 +18,7 @@ if (!LOGGED_IN && CURRENT_URI != '/login') {
 	<a href="<?=CURRENT_URI?>#!" class="modal-close" title="Click to close this." data-close="Close" data-dismiss="modal">?</a>
 	<div class="modal-inner">
        <div class="modal-content">
-	       <p>To do that, you need to log in the Spirit! first via one of these services. It only takes a click and you're good to go.</p>
+	       <p>To do that, you need to log in the Spirit via one of these services. It only takes a click and you're good to go.</p>
 	       <ul class="single-signon-providers">
 		       <li><a href="/auth/facebook<?php echo (SERVER !== 'live') ? 'test' : ''; ?>" class="no-underline"><img src="/assets/img/facebook.svg"><br>Facebook</a></li>
 		       <li><a href="/auth/google" class="no-underline"><img src="/assets/img/googleplus.svg"><br>Google</a></li>
