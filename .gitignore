@@ -14,3 +14,4 @@ data/db/mysql
 make.log
 web/app/vendor/
 web/public/assets/vendors/
+data/db
