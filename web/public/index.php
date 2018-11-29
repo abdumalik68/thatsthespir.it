@@ -33,9 +33,9 @@ $metatags = array(
     'title' => "That's the spirit!",
     'description' => 'Inspirational and motivational quotes for the creative soul.',
     'site_name' => 'That\'s The Spirit!',
-    'image' => WWWROOT . '/assets/img/tts-og-image.jpg',
-    'image:width' => 800,
-    'image:height' => 574,
+    'image' => WWWROOT . '/assets/img/tts-og-image.png',
+    'image:width' => 630,
+    'image:height' => 630,
     'url' => WWWROOT);
 
 $db = new DB\SQL(
