@@ -1,14 +1,21 @@
 <?php
+if( !is_logged_in()){
+    die("you need to be logged in.");
+    $f3->reroute('@quote_action(action=view,id=' . $quote->id . ')');
+    exit;
+}
+
+
 global $db, $metatags;
 
 $f3->set('user', $f3->get('SESSION.user'));
 $f3->set('body_class', "quote-add");
-$tags = $db->exec('SELECT * FROM tags ORDER By name ASC');
+$tags = $db->exec('SELECT * FROM tags ORDER By name ASC;');
 $f3->set('tags', $tags);
 
 $quote = new DB\SQL\Mapper($db, 'quotes');
 
-if ($_POST) {
+if (!empty($_POST)) {
     //overwrite with values just submitted
     $quote->copyFrom('POST');
     if (!isset($_POST['status'])) {
@@ -16,6 +23,7 @@ if ($_POST) {
     }
     $quote->tags_id = implode(',', $f3->get('POST.tags_id'));
     $quote->submitted_by = $_SESSION['user']['id'];
+    
     $quote->save();
 
     // lorsque ajout d'une quote, incrémenter le total de l'author
@@ -45,7 +53,7 @@ if ($_POST) {
     exit;
 }
 
-$authors = $db->exec('SELECT DISTINCT id, fullname, slug FROM authors ORDER BY slug ASC');
+$authors = $db->exec('SELECT DISTINCT id, fullname, slug FROM authors ORDER BY slug ASC;');
 
 $quote->author_id = $f3->get('SESSION.author.id');
 $quote->status = ($f3->get('SESSION.logged_in') != 'ok') ? 'pending' : 'online';
