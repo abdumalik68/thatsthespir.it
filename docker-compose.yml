@@ -20,7 +20,7 @@ services:
     
     php:
         container_name: tts-php
-        image: nanoninja/php-fpm:7.1
+        image: nanoninja/php-fpm
         restart: always
         volumes:
             - "./web:/var/www/html"
@@ -47,7 +47,7 @@ services:
 
     myadmin:
         env_file: docker.env
-        image: phpmyadmin/phpmyadmin:4.8.1
+        image: phpmyadmin/phpmyadmin:latest
         container_name: tts-phpmyadmin
         ports:
             - "8080:80"
