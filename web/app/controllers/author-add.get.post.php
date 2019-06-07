@@ -1,4 +1,11 @@
 <?php
+if( !is_logged_in()){
+    die("you need to be logged in.");
+    $f3->reroute('@login');
+    exit;
+}
+
+
 global $db, $metatags;
 $f3->set('user', $f3->get('SESSION.user') );
 

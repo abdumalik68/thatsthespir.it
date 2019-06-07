@@ -1,7 +1,7 @@
 <?php
 if( !is_logged_in()){
     die("you need to be logged in.");
-    $f3->reroute('@quote_action(action=view,id=' . $quote->id . ')');
+    $f3->reroute('@login');
     exit;
 }
 
