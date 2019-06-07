@@ -1,10 +1,8 @@
 <?php
-if( !is_logged_in()){
-    die("you need to be logged in.");
+if (!is_logged_in() && $f3->get('SESSION.logged_in') != 'ok') {
+    $f3->set('SESSION.goto', '@quote_add');
     $f3->reroute('@login');
-    exit;
 }
-
 
 global $db, $metatags;
 
@@ -23,7 +21,7 @@ if (!empty($_POST)) {
     }
     $quote->tags_id = implode(',', $f3->get('POST.tags_id'));
     $quote->submitted_by = $_SESSION['user']['id'];
-    
+
     $quote->save();
 
     // lorsque ajout d'une quote, incrémenter le total de l'author
@@ -54,7 +52,6 @@ if (!empty($_POST)) {
 }
 
 $authors = $db->exec('SELECT DISTINCT id, fullname, slug FROM authors ORDER BY slug ASC;');
-
 $quote->author_id = $f3->get('SESSION.author.id');
 $quote->status = ($f3->get('SESSION.logged_in') != 'ok') ? 'pending' : 'online';
 $f3->set('quote', $quote);
