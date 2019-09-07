@@ -36,7 +36,8 @@ $metatags = array(
     'image' => WWWROOT . '/assets/img/tts-og-image.png',
     'image:width' => 630,
     'image:height' => 630,
-    'url' => WWWROOT);
+    'url' => WWWROOT
+);
 
 $db = new DB\SQL(
     'mysql:host=' . $f3->DB_HOST . ';port=3306;dbname=' . $f3->DB_NAME . ';charset=utf8',
@@ -86,47 +87,99 @@ if (isset($_GET['quote_id'])) {
 
 /* ALL ROUTES */
 
-$f3->route('GET @home: /', function ($f3) {require APP_PATH . '/controllers/home.get.php';});
+$f3->route('GET @home: /', function ($f3) {
+    require APP_PATH . '/controllers/home.get.php';
+});
 $f3->route('GET @twitter: /twitter/now', 'Evangelist->twitter');
 
 $f3->route('GET @reddit_callback: /reddit/callback', 'Evangelist->reddit');
 $f3->route('GET|POST @reddit: /reddit', 'Evangelist->reddit');
 
-$f3->route('GET @api: /api', function ($f3) {require APP_PATH . '/controllers/api.get.php';});
+// API
+$f3->route('GET @api: /api', function ($f3) {
+    require APP_PATH . '/controllers/api.get.php';
+});
+$f3->route('GET @api: /api/random', function ($f3) {
+    require APP_PATH . '/controllers/api.get.php';
+});
+$f3->route('GET @api: /api/@id', function ($f3) {
+    require APP_PATH . '/controllers/api.get.php';
+});
+$f3->route('GET @api: /api/search/@string', function ($f3) {
+    require APP_PATH . '/controllers/api.get.php';
+});
 
-$f3->route('GET @random: /random/@format', function ($f3) {include APP_PATH . '/controllers/random.get.php';});
-$f3->route('GET @random: /random', function ($f3) {include APP_PATH . '/controllers/random.get.php';});
 
-$f3->route('GET @latest: /latest', function ($f3) {include APP_PATH . '/controllers/latest.get.php';});
-$f3->route('GET @popular: /popular', function ($f3) {include APP_PATH . '/controllers/popular.get.php';});
+//
+$f3->route('GET @random: /random/@format', function ($f3) {
+    include APP_PATH . '/controllers/random.get.php';
+});
+$f3->route('GET @random: /random', function ($f3) {
+    include APP_PATH . '/controllers/random.get.php';
+});
 
-$f3->route('GET @user_favourites: /of-mine', function ($f3) {include APP_PATH . '/controllers/user-favourites.get.php';});
+$f3->route('GET @latest: /latest', function ($f3) {
+    include APP_PATH . '/controllers/latest.get.php';
+});
+$f3->route('GET @popular: /popular', function ($f3) {
+    include APP_PATH . '/controllers/popular.get.php';
+});
 
-$f3->route('GET @archive: /human-channels', function ($f3) {include APP_PATH . '/controllers/human-channels.get.php';});
+$f3->route('GET @user_favourites: /of-mine', function ($f3) {
+    include APP_PATH . '/controllers/user-favourites.get.php';
+});
 
-$f3->route('GET @feed: /feed', function ($f3) {include APP_PATH . '/controllers/feed.get.php';});
-$f3->route('GET @feed: /feed/@format', function ($f3) {include APP_PATH . '/controllers/feed.get.php';});
+$f3->route('GET @archive: /human-channels', function ($f3) {
+    include APP_PATH . '/controllers/human-channels.get.php';
+});
 
-$f3->route('GET @feed_random: /feed_random', function ($f3) {include APP_PATH . '/controllers/feed_random.get.php';});
+$f3->route('GET @feed: /feed', function ($f3) {
+    include APP_PATH . '/controllers/feed.get.php';
+});
+$f3->route('GET @feed: /feed/@format', function ($f3) {
+    include APP_PATH . '/controllers/feed.get.php';
+});
 
-$f3->route('GET @sitemap: /sitemap', function ($f3) {include APP_PATH . '/controllers/sitemap.get.php';});
+$f3->route('GET @feed_random: /feed_random', function ($f3) {
+    include APP_PATH . '/controllers/feed_random.get.php';
+});
+
+$f3->route('GET @sitemap: /sitemap', function ($f3) {
+    include APP_PATH . '/controllers/sitemap.get.php';
+});
 $f3->redirect('GET|HEAD /sitemap.xml', '/sitemap');
 
-$f3->route('POST @favourite: /favourite/@quote [ajax]', function ($f3) {include APP_PATH . '/controllers/favourite.ajax.php';});
+$f3->route('POST @favourite: /favourite/@quote [ajax]', function ($f3) {
+    include APP_PATH . '/controllers/favourite.ajax.php';
+});
 
-$f3->route('GET /search [ajax]', function ($f3) {include APP_PATH . '/controllers/search.ajax.php';});
+$f3->route('GET /search [ajax]', function ($f3) {
+    include APP_PATH . '/controllers/search.ajax.php';
+});
 
-$f3->route('GET|POST @author_edit: /author/@action/@slug', function ($f3) {include APP_PATH . '/controllers/author-edit.get.post.php';});
+$f3->route('GET|POST @author_edit: /author/@action/@slug', function ($f3) {
+    include APP_PATH . '/controllers/author-edit.get.post.php';
+});
 
-$f3->route('GET|POST @author_add: /author/add', function ($f3) {include APP_PATH . '/controllers/author-add.get.post.php';});
+$f3->route('GET|POST @author_add: /author/add', function ($f3) {
+    include APP_PATH . '/controllers/author-add.get.post.php';
+});
 
-$f3->route('GET|POST @quote_add: /quote/add', function ($f3) {include APP_PATH . '/controllers/quote-add.get.post.php';});
+$f3->route('GET|POST @quote_add: /quote/add', function ($f3) {
+    include APP_PATH . '/controllers/quote-add.get.post.php';
+});
 
-$f3->route('GET|POST @quote_action: /quote/@action/@id', function ($f3) {include APP_PATH . '/controllers/quote-action.get.post.php';});
+$f3->route('GET|POST @quote_action: /quote/@action/@id', function ($f3) {
+    include APP_PATH . '/controllers/quote-action.get.post.php';
+});
 
-$f3->route('GET @pending_quotes: /pending', function ($f3) {include APP_PATH . '/controllers/pending-quotes.get.php';});
+$f3->route('GET @pending_quotes: /pending', function ($f3) {
+    include APP_PATH . '/controllers/pending-quotes.get.php';
+});
 
-$f3->route('GET /of/@author', function ($f3) {include APP_PATH . '/controllers/author-single.get.php';});
+$f3->route('GET /of/@author', function ($f3) {
+    include APP_PATH . '/controllers/author-single.get.php';
+});
 
 $f3->route('GET @auth: /auth', function ($f3) {
     include APP_PATH . '/vendor/hybridauth/hybridauth/hybridauth/index.php';
@@ -136,16 +189,28 @@ $f3->route('GET @auth_action: /auth/@action', function ($f3) {
     include APP_PATH . '/controllers/auth-action.get.php';
 });
 
-$f3->route('GET @login: /login', function ($f3) {include APP_PATH . '/controllers/login.get.php';});
+$f3->route('GET @login: /login', function ($f3) {
+    include APP_PATH . '/controllers/login.get.php';
+});
 
-$f3->route('POST /login', function ($f3) {include APP_PATH . '/ontrollers/login.post.php';});
+$f3->route('POST /login', function ($f3) {
+    include APP_PATH . '/ontrollers/login.post.php';
+});
 
-$f3->route('GET @fix_totals: /fix-author-totals', function ($f3) {include APP_PATH . '/controllers/fix-author-totals.get.php';});
+$f3->route('GET @fix_totals: /fix-author-totals', function ($f3) {
+    include APP_PATH . '/controllers/fix-author-totals.get.php';
+});
 
-$f3->route('GET @privacy_policy: /privacy-policy', function ($f3) {include APP_PATH . '/controllers/privacy-policy.get.php';});
+$f3->route('GET @privacy_policy: /privacy-policy', function ($f3) {
+    include APP_PATH . '/controllers/privacy-policy.get.php';
+});
 
-$f3->route('GET @mailinglist: /daily', function ($f3) {include APP_PATH . '/controllers/daily.get.php';});
-$f3->route('GET @thankyou: /thank-you-dear', function ($f3) {include APP_PATH . '/controllers/thank-you.get.php';});
+$f3->route('GET @mailinglist: /daily', function ($f3) {
+    include APP_PATH . '/controllers/daily.get.php';
+});
+$f3->route('GET @thankyou: /thank-you-dear', function ($f3) {
+    include APP_PATH . '/controllers/thank-you.get.php';
+});
 
 /*
 Redirect previous permalink scheme to current one.
@@ -154,7 +219,8 @@ $f3->route('GET|HEAD /@id', function ($f3) {
     $id = '/quote/view/' . $f3->get('PARAMS.id');
     $f3->reroute($id);
 });
-$f3->route('GET @logout: /logout',
+$f3->route(
+    'GET @logout: /logout',
     function ($f3) {
         $f3->clear('SESSION');
         $f3->reroute('/');
