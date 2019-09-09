@@ -3,21 +3,30 @@
 /*
  HELPER FUNCTIONS
 */
+function send_json($data)
+{
 
-function display_error($errors, $input){
-	if ( ($_REQUEST || $_FILES) && isset($errors[$input]) ){
+	header('Access-Control-Allow-Origin: *');
+	header('content-type: application/json; charset=utf-8');
+	echo json_encode($data);
+	//exit;
+}
+function display_error($errors, $input)
+{
+	if (($_REQUEST || $_FILES) && isset($errors[$input])) {
 		$message = '<ul class="errors">';
-		if(is_array($errors[$input])){
+		if (is_array($errors[$input])) {
 			$message = implode('<li>', $errors[$input]);
-		}else{
-			$message.='<li>'.$errors[$input];
+		} else {
+			$message .= '<li>' . $errors[$input];
 		}
-		return $message.'</li></ul>';
+		return $message . '</li></ul>';
 	}
 }
 
-function is_logged_in(){
-	return isset( $_SESSION['user']['id']) && !empty( $_SESSION['user']['id']) ;
+function is_logged_in()
+{
+	return isset($_SESSION['user']['id']) && !empty($_SESSION['user']['id']);
 }
 
 
@@ -25,23 +34,25 @@ function is_logged_in(){
 Create an excerpt
 source: http://www.internoetics.com/2010/01/04/php-function-to-truncate-text-into-a-preview-or-excerpt-with-trailing-dots/
 */
-function truncate($text, $numb=200) {
+function truncate($text, $numb = 200)
+{
 	if (strlen($text) > $numb) {
 		$text = substr($text, 0, $numb);
 		$text = substr($text, 0, strrpos($text, " "));
 		$etc = " ...";
-		$text = $text.$etc;
+		$text = $text . $etc;
 	}
 	return $text;
 }
 
 
-function pr($arr, $exit = false){
+function pr($arr, $exit = false)
+{
 	echo '<pre>';
 	print_r($arr);
 	echo '</pre>';
-	
-	if ($exit){
+
+	if ($exit) {
 		exit;
 	}
 }

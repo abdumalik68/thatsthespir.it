@@ -6,7 +6,8 @@
         "bcosca/fatfree-core": "^3.6",
         "hybridauth/hybridauth": "^3.0",
         "verot/class.upload.php": "^2.0",
-        "xfra35/f3-cron": "^1.2"
+        "xfra35/f3-cron": "^1.2",
+        "tracy/tracy": "^2.6"
     },
     "authors": [
         {

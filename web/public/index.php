@@ -2,11 +2,19 @@
 //require 'vendor/autoload.php';
 define('APP_PATH', '../app');
 
+
 include APP_PATH . '/vendor/autoload.php';
 include APP_PATH . '/functions.inc.php';
 
+
 // Start FatFreeFramework
 $f3 = Base::instance();
+
+use Tracy\Debugger;
+
+Debugger::$strictMode = true;
+Debugger::enable($f3->ENV, dirname(__DIR__) . '/public/logs');
+
 
 // Load configuration
 
@@ -36,26 +44,19 @@ $db = new DB\SQL(
     $f3->DB_PASSWORD
 );
 
-/*
-CRON TASKS
-Documentation: https://github.com/xfra35/f3-cron
- */
-
-// $cron = Cron::instance();
-// $cron->log = true;
-// $cron->web = true;
-// //$cron->set('reddit','Evangelist->reddit','*/5 * * * *');
-// //$cron->set('reddit','Evangelist->reddit','@daily');
-// $cron->set('twitter', 'Evangelist->twitter', '@daily');
-
-// END CRON TASKS
+// ERROR HANDLING
+$f3->set('ONERROR', function () use ($f3) {
+    Debugger::barDump($f3->get('ERROR'), 'ERROR');
+    $e = $f3->get('EXCEPTION');
+    // There isn't an exception when calling `Base->error()`.
+    if (!$e instanceof Throwable) {
+        $e = new Exception('HTTP ' . $f3->get('ERROR.code'));
+    }
+    Debugger::exceptionHandler($e);
+});
 
 $f3->set('upload_folder', $f3->get('UPLOADS'));
-$f3->set('query', $f3->get('SESSION.query'));
 
-if (!isset($_SESSION['used_quotes'])) {
-    $_SESSION['used_quotes'] = array();
-}
 
 // LOGGED_IN: Convenience Constant to check whether user is logged in.
 define('LOGGED_IN', ($f3->get('SESSION.logged_in') == 'ok'));
@@ -94,11 +95,9 @@ if (isset($_GET['quote_id'])) {
  * GET|POST /quote/suggest : suggest a quote
  */
 
-$f3->route('GET /', 'TheSpirit->get');
-$f3->map('/quote/@item', 'Quote');
-$f3->route('GET /quote/random', 'Quote->get_random');
-
-
+$f3->route('GET /', 'TheSpirit->get', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->map('/quote/@id', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /quote/random', 'Quote->get_random', (int) $f3->STATIC_CACHE_EXPIRATION);
 
 
 $f3->run();
