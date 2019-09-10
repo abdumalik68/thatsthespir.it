@@ -1,7 +1,6 @@
 # Global
 .*.swp
 .DS_Store
-
 # Application
 web/app/vendor
 web/app/tmp
