@@ -1,18 +1,19 @@
 {
-    "name": "pixeline/thatsthespirit",
-    "type": "project",
-    "require": {
-        "bcosca/fatfree": "^3.6",
-        "bcosca/fatfree-core": "^3.6",
-        "hybridauth/hybridauth": "^3.0",
-        "verot/class.upload.php": "^2.0",
-        "xfra35/f3-cron": "^1.2",
-        "tracy/tracy": "^2.6"
-    },
-    "authors": [
-        {
-            "name": "Alexandre Plennevaux",
-            "email": "alexandre@pixeline.be"
-        }
-    ]
+  "name": "pixeline/thatsthespirit",
+  "type": "project",
+  "require": {
+    "bcosca/fatfree": "^3.6",
+    "bcosca/fatfree-core": "^3.6",
+    "hybridauth/hybridauth": "^3.0",
+    "verot/class.upload.php": "^2.0",
+    "xfra35/f3-cron": "^1.2",
+    "tracy/tracy": "^2.6",
+    "wixel/gump": "dev-master"
+  },
+  "authors": [
+    {
+      "name": "Alexandre Plennevaux",
+      "email": "alexandre@pixeline.be"
+    }
+  ]
 }

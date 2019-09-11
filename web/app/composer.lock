@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58e627eeeb9323cfd99cb75e041a0043",
+    "content-hash": "b5864776bc25ea52f687a14642fd0d4a",
     "packages": [
         {
             "name": "bcosca/fatfree",
@@ -234,6 +234,44 @@
             "time": "2019-08-08T19:39:41+00:00"
         },
         {
+            "name": "wixel/gump",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Wixel/GUMP.git",
+                "reference": "6f7451eddcdca596495ce6883855e9c59d35e1e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Wixel/GUMP/zipball/6f7451eddcdca596495ce6883855e9c59d35e1e6",
+                "reference": "6f7451eddcdca596495ce6883855e9c59d35e1e6",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "gump.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Nieuwoudt",
+                    "homepage": "https://wixelhq.com"
+                },
+                {
+                    "name": "Filis Futsarov",
+                    "homepage": "https://filis.me"
+                }
+            ],
+            "description": "A fast, extensible & stand-alone PHP input validation class that allows you to validate any data",
+            "homepage": "https://wixelhq.com/",
+            "time": "2018-11-16T06:19:11+00:00"
+        },
+        {
             "name": "xfra35/f3-cron",
             "version": "v1.2.1",
             "source": {
@@ -274,7 +312,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "wixel/gump": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
