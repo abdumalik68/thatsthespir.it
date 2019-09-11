@@ -22,7 +22,7 @@ $f3->config(APP_PATH . '/config.ini');
 // Load additional configuration specific to the environment (dev or production)
 
 switch ($_SERVER['HTTP_HOST']) {
-    case 'thatsthespir.it':
+    case 'api.thatsthespir.it':
         $config_file = '/config.production.ini';
         break;
 
