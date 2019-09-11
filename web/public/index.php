@@ -12,7 +12,7 @@ $f3 = Base::instance();
 
 use Tracy\Debugger;
 
-Debugger::$strictMode = true;
+Debugger::$strictMode = false;
 Debugger::enable($f3->ENV, dirname(__DIR__) . '/public/logs');
 
 
