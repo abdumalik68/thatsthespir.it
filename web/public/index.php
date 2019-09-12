@@ -97,6 +97,7 @@ if (isset($_GET['quote_id'])) {
 
 $f3->route('GET /', 'TheSpirit->get', (int) $f3->STATIC_CACHE_EXPIRATION);
 $f3->map('/quote/@id', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->map('/author/@id', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);
 $f3->route('GET /quote/random', 'Quote->get_random', (int) $f3->STATIC_CACHE_EXPIRATION);
 // done, let's go!
 $f3->run();

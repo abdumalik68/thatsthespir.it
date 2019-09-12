@@ -11,6 +11,17 @@ function send_json($data)
 	echo json_encode($data);
 	//exit;
 }
+
+function create_slug($str, $delimiter = '-')
+{
+	/**
+	 * source: https://stackoverflow.com/questions/40641973/php-to-convert-string-to-slug
+	 */
+
+	$slug = strtolower(trim(preg_replace('/[\s-]+/', $delimiter, preg_replace('/[^A-Za-z0-9-]+/', $delimiter, preg_replace('/[&]/', 'and', preg_replace('/[\']/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $str))))), $delimiter));
+	return $slug;
+}
+
 function display_error($errors, $input)
 {
 	if (($_REQUEST || $_FILES) && isset($errors[$input])) {
