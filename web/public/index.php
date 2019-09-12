@@ -81,23 +81,31 @@ if (isset($_GET['quote_id'])) {
  *
  * GET /                   : Web Service presentation
  * GET /quote/random       : random quote
- * GET /quote/{id}         : get specific quote
- * DELETE /quote/{id}      : delete specific quote
- * PUT /quote              : Add quote
+ * GET /quote/{slug}         : get specific quote
+ * DELETE /quote/{slug}      : delete specific quote
+ * PUT /quote/{slug}         : Edit specific quote
+ * POST /quote             : Add quote
  * GET /quote/favourites   : top 20
  * GET /author             : all authors
- * GET /author/{id}        : get specific author
- * DELETE /author/{id}     : delete specific author
+ * GET /author/{slug}        : get specific author
+ * DELETE /author/{slug}     : delete specific author
  * PUT /author             : add author
  * GET /search/{string}    : search a quote or author
  * GET|POST /user/login    : user login
  * GET /user/logout        : user logout
- * GET|POST /quote/suggest : suggest a quote
  */
 
+// App-wide routes
 $f3->route('GET /', 'TheSpirit->get', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /rss/newsletter', 'TheSpirit->get_quote_for_newsletter', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /rss', 'TheSpirit->get_rss_feed', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /sitemap.xml', 'TheSpirit->get_xml_sitemap', (int) $f3->STATIC_CACHE_EXPIRATION);
+
+// Content routes
 $f3->map('/quote/@id', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
-$f3->map('/author/@id', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);
 $f3->route('GET /quote/random', 'Quote->get_random', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->map('/author/@id', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);
+
+
 // done, let's go!
 $f3->run();
