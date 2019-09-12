@@ -2,6 +2,7 @@
 
 ## Backend
 
+- prepend 'v1' to all routes.
 - use slug instead of ID
 - quote for Mailchimp
 - RSS Feed
@@ -12,3 +13,7 @@
 - User favourites
 - Suggest a quote feature
 - if author does not exist, make sure author is created before quote
+
+## Frontend
+
+connect react app using backend routes api.thatsthespir.it
