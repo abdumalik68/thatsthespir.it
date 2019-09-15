@@ -12,6 +12,18 @@ function send_json($data)
 	//exit;
 }
 
+function sanitize_for_sql($str)
+{
+	/** allow only a-z A-Z  0 to 9 and the comma, */
+	return preg_replace("/[^a-zA-Z0-9,]+/", "", $str);
+}
+
+function array_use_values_as_keys($array)
+{
+	return array_fill_keys($array, '');
+}
+
+
 function create_slug($str, $delimiter = '-')
 {
 	/**

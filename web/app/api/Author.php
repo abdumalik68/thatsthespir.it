@@ -9,6 +9,8 @@ class Author
     public $db;
     public $author;
     public $f3;
+    public $fields = '*';
+    public $fields_r = [];
 
     private $validation_rules = array(
         'fullname'  => 'required|min_len,3',
@@ -21,7 +23,17 @@ class Author
         'photo'     => 'trim',
         'gender'    => 'trim'
     );
-
+    public function beforeRoute(\Base $f3, $params)
+    {
+        // Allow remote ajax calls to this route.
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: *, Content-Type, Authorization, X-Requested-With, tokenrequest, token, token-request');
+        // Check if the resultset should be limited to specific columns.
+        if ($f3->exists('GET.fields') && !empty($f3->get('GET.fields'))) {
+            $this->fields = sanitize_for_sql($f3->get('GET.fields'));
+            $this->fields_r = explode(',', $this->fields);
+        }
+    }
     function __construct()
     {
         global $f3, $db;
@@ -44,7 +56,10 @@ class Author
             $f3->error(404, 'No record matching criteria');
         }
         $author = $this->author->cast();
-        $author['quotes'] = $this->get_quotes($f3, $params);
+
+        if (in_array('quotes', $this->fields_r)) {
+            $author['quotes'] = $this->get_quotes($f3, $params);
+        }
         send_json($author);
     }
     public function get_quotes($f3, $params)
@@ -171,5 +186,17 @@ class Author
                 send_json(array('code' => 200, 'message' => 'Author ' . $params['id'] . ' successfully deleted.'));
             }
         }
+    }
+
+    function get_all_authors($f3, $params)
+    {
+        if (in_array('quotes', $this->fields_r)) { }
+        $authors = $this->db->exec('SELECT * FROM authors WHERE total > 0 ORDER BY total DESC, slug ASC', NULL, $f3->DB_CACHE_EXPIRATION);
+        if (in_array('quotes', $this->fields_r)) {
+            foreach ($authors as $k => $v) {
+                $authors[$k]['quotes'] = $this->get_quotes($f3, $v);
+            }
+        }
+        send_json($authors);
     }
 }

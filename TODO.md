@@ -2,8 +2,7 @@
 
 ## Backend
 
-- prepend 'v1' to all routes.
-- use slug instead of ID
+- CRUD User
 - quote for Mailchimp
 - RSS Feed
 - XML Sitemap
@@ -13,6 +12,10 @@
 - User favourites
 - Suggest a quote feature
 - if author does not exist, make sure author is created before quote
+- Fix script:
+  - update all quote->slug
+  - recalculate all author->total
+- use slug instead of ID
 
 ## Frontend
 

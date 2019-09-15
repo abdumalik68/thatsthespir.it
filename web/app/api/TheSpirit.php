@@ -21,7 +21,7 @@ class TheSpirit
         /** List available content as an RSS Feed, in time DESC order */
     }
 
-    function get_quote_for_newsletter($f3, $params)
+    function get_random_quote_rss($f3, $params)
     {
         /** Get the least sent quote for the next "Morning Spirit!" newsletter */
     }

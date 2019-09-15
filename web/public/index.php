@@ -96,16 +96,16 @@ if (isset($_GET['quote_id'])) {
  */
 
 // App-wide routes
-$f3->route('GET /', 'TheSpirit->get', (int) $f3->STATIC_CACHE_EXPIRATION);
-$f3->route('GET /rss/newsletter', 'TheSpirit->get_quote_for_newsletter', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /v1', 'TheSpirit->get', (int) $f3->STATIC_CACHE_EXPIRATION);
 $f3->route('GET /rss', 'TheSpirit->get_rss_feed', (int) $f3->STATIC_CACHE_EXPIRATION);
 $f3->route('GET /sitemap.xml', 'TheSpirit->get_xml_sitemap', (int) $f3->STATIC_CACHE_EXPIRATION);
 
 // Content routes
-$f3->map('/quote/@id', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
-$f3->route('GET /quote/random', 'Quote->get_random', (int) $f3->STATIC_CACHE_EXPIRATION);
-$f3->map('/author/@id', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);
-
+$f3->map('/v1/quote/@id', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /v1/quote/random', 'Quote->get_random', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /v1/quote/random.xml', 'Quote->get_random', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->map('/v1/author/@id', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /v1/human-channels', 'Author->get_all_authors', (int) $f3->STATIC_CACHE_EXPIRATION);
 
 // done, let's go!
 $f3->run();
