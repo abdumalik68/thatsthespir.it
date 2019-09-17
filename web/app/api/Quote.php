@@ -153,7 +153,7 @@ class Quote
     function get_random($f3)
     {
         /** Random Quote */
-        $this->quote = new DB\SQL\Mapper($this->db, 'all_quotes_full', null, $this->f3->DB_CACHE_EXPIRATION);
+        $this->quote = new DB\SQL\Mapper($this->db, 'all_quotes_full', null, 0);
         $this->quote->load(
             array('status=?', "online"),
             array(
