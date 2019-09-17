@@ -6,7 +6,7 @@
  */
 class Quote
 {
-    protected $default_fields= ['body','fullname','slug','photo','author_slug','source','total'];
+    protected $default_fields = ['body', 'quote_id', 'fullname', 'slug', 'photo', 'author_slug', 'source', 'total'];
     public $quote;
     private $db;
     private $validation_rules = array(
@@ -43,6 +43,21 @@ class Quote
         if ($this->quote->dry()) {
             $f3->error(404, 'No record matching criteria');
         }
+
+        // Fix missing slugs
+        if (empty($this->quote->slug)) {
+            $quote = new DB\SQL\Mapper($this->db, 'quotes');
+            $quote->load(
+                array('id=?', $params['id']),
+                array(
+                    'limit' => 1
+                )
+            );
+            $this->quote->slug = $quote->slug = create_slug($quote->quote);
+            $quote->save();
+        }
+
+
         send_json($this->quote->cast());
     }
     function post($f3, $params)
@@ -163,6 +178,18 @@ class Quote
         );
         if ($this->quote->dry()) {
             $f3->error('No record matching criteria');
+        }
+        // Fix missing slugs by creating one and then saving it back in the db.
+        if (empty($this->quote->slug)) {
+            $quote = new DB\SQL\Mapper($this->db, 'quotes');
+            $quote->load(
+                array('id=?', $this->quote->quote_id),
+                array(
+                    'limit' => 1
+                )
+            );
+            $this->quote->slug = $quote->slug = create_slug($quote->quote);
+            $quote->save();
         }
         send_json($this->quote->cast());
     }
