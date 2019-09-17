@@ -6,7 +6,7 @@
  */
 class Quote
 {
-    protected $selected_fields = 'SELECT q.id, q.id as quote_id, q.quote, q.source, q.status, q.creation_date, a.id as author_id, a.fullname,a.slug,a.photo,a.total,a.gender, tags_id, (SELECT group_concat(name) from tags as t where t.id=q.tags_id) as tags, (SELECT group_concat(fullname) FROM `favourites` LEFT JOIN users as u on u.email=favourites.user_email WHERE quote_id=q.id) as likers ';
+    protected $default_fields= ['body','fullname','slug','photo','author_slug','source','total'];
     public $quote;
     private $db;
     private $validation_rules = array(
@@ -153,7 +153,7 @@ class Quote
     function get_random($f3)
     {
         /** Random Quote */
-        $this->quote = new DB\SQL\Mapper($this->db, 'all_quotes_full', null, 0);
+        $this->quote = new DB\SQL\Mapper($this->db, 'all_quotes_full', $this->default_fields, 0);
         $this->quote->load(
             array('status=?', "online"),
             array(
