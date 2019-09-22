@@ -106,6 +106,7 @@ $f3->route('GET /v1/quote/random', 'Quote->get_random');
 $f3->route('GET /v1/quote/random.xml', 'Quote->get_random');
 $f3->map('/v1/author/@id', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);
 $f3->route('GET /v1/human-channels', 'Author->get_all_authors', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /v1/quotes/search', 'Quotes->search');
 
 // done, let's go!
 $f3->run();
