@@ -39,9 +39,7 @@ class Quotes extends Quote
     function fixSlugs($f3)
     {
         $this->quote = new DB\SQL\Mapper($this->db, 'quotes');
-        $missing_slugs = $this->quote->find(
-            array('slug=?', "")
-        );
+        $missing_slugs = $this->quote->find('slug is NULL');
         if (empty($missing_slugs)) {
             die('All good: no empty slug.');
         }
