@@ -101,7 +101,7 @@ $f3->route('GET /rss', 'TheSpirit->get_rss_feed', (int) $f3->STATIC_CACHE_EXPIRA
 $f3->route('GET /sitemap.xml', 'TheSpirit->get_xml_sitemap', (int) $f3->STATIC_CACHE_EXPIRATION);
 
 // Content routes
-$f3->map('/v1/quote/@id', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->map('/v1/quote/@slug', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
 $f3->route('GET /v1/quote/random', 'Quote->get_random');
 $f3->route('GET /v1/quote/random.xml', 'Quote->get_random');
 $f3->map('/v1/author/@id', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);

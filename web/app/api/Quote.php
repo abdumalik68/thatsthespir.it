@@ -35,7 +35,7 @@ class Quote
         $this->quote = new DB\SQL\Mapper($this->db, 'all_quotes_full', null, $this->f3->DB_CACHE_EXPIRATION);
 
         $this->quote->load(
-            array('quote_id=?', $params['id']),
+            array('slug=?', $params['slug']),
             array(
                 'limit' => 1
             )
