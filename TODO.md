@@ -13,7 +13,7 @@
 - Suggest a quote feature
 - if author does not exist, make sure author is created before quote
 - Fix script:
-  - update all quote->slug
+  - [x] update all quote->slug
   - recalculate all author->total
 - use slug instead of ID
 
