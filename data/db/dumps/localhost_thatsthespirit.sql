@@ -1,27 +1,3 @@
-# ************************************************************
-# Sequel Pro SQL dump
-# Version 4541
-#
-# http://www.sequelpro.com/
-# https://github.com/sequelpro/sequelpro
-#
-# Hôte: 127.0.0.1 (MySQL 5.5.5-10.4.7-MariaDB-1:10.4.7+maria~bionic-log)
-# Base de données: thatsthespirit
-# Temps de génération: 2019-09-28 22:13:12 +0000
-# ************************************************************
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
-
-# Affichage de la table all_quotes_full
-# ------------------------------------------------------------
 
 DROP VIEW IF EXISTS `all_quotes_full`;
 
@@ -29,7 +5,7 @@ CREATE TABLE `all_quotes_full` (
    `quote_id` INT(11) NOT NULL DEFAULT '0',
    `body` TEXT NOT NULL,
    `source` VARCHAR(255) NOT NULL,
-   `creation_date` TIMESTAMP NOT NULL DEFAULT 'current_timestamp()',
+   `creation_date` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
    `status` SET('pending','online') NOT NULL DEFAULT 'online',
    `slug` VARCHAR(255) NULL DEFAULT NULL,
    `fullname` VARCHAR(200) NULL DEFAULT NULL,
@@ -485,7 +461,7 @@ CREATE TABLE `favourites` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_email` varchar(255) NOT NULL,
   `quote_id` int(11) NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_email`),
   KEY `quote_id` (`quote_id`)
@@ -708,7 +684,7 @@ CREATE TABLE `quotes` (
   `slug` varchar(255) DEFAULT NULL,
   `source` varchar(255) NOT NULL,
   `status` set('pending','online') CHARACTER SET latin1 NOT NULL DEFAULT 'online',
-  `creation_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `creation_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `submitted_by` int(11) NOT NULL DEFAULT 1,
   `last_sent` datetime DEFAULT NULL COMMENT 'Date last sent by daily mail',
   `last_post_on_reddit` datetime DEFAULT NULL,
