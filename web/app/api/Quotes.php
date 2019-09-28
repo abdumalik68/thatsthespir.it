@@ -43,6 +43,8 @@ class Quotes extends Quote
         if (empty($missing_slugs)) {
             die('All good: no empty slug.');
         }
+        pr($missing_slugs);
+        exit;
         // Fix missing slugs by creating one and then saving it back in the db.
         $quote = new DB\SQL\Mapper($this->db, 'quotes');
         foreach ($missing_slugs  as $q) {
