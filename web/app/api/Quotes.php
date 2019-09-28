@@ -35,4 +35,26 @@ class Quotes extends Quote
         $result = array("suggestions" => $result);
         send_json($result);
     }
+
+    function fixSlugs($f3)
+    {
+        $this->quote = new DB\SQL\Mapper($this->db, 'quotes');
+        $missing_slugs = $this->quote->find(
+            array('slug=?', "")
+        );
+        if (empty($missing_slugs)) {
+            die('All good: no empty slug.');
+        }
+        // Fix missing slugs by creating one and then saving it back in the db.
+        $quote = new DB\SQL\Mapper($this->db, 'quotes');
+        foreach ($missing_slugs  as $q) {
+            $quote->load(
+                array('id=?', $q->quote_id)
+            );
+            $quote->slug = create_slug($q->quote);
+            $quote->save();
+            echo "<br>slug created: " . $quote->slug;
+        }
+        echo '<p>Done!';
+    }
 }
