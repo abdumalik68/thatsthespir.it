@@ -47,7 +47,7 @@ class Author
     {
         /** Read Author */
         $this->author->load(
-            array('id=?', $params['id']),
+            array('slug=?', $params['slug']),
             array(
                 'limit' => 1
             )
