@@ -64,10 +64,10 @@ class Author
     }
     public function get_quotes($f3, $params)
     {
-        if (!isset($params['id']) || empty(trim($params['id']))) {
+        if (!isset($params['slug']) || empty(trim($params['slug']))) {
             return [];
         }
-        $quotes = $this->db->exec('SELECT * FROM all_quotes_full WHERE author_id=?', $params['id'], $f3->DB_CACHE_EXPIRATION);
+        $quotes = $this->db->exec('SELECT * FROM all_quotes_full WHERE author_slug=?', $params['slug'], $f3->DB_CACHE_EXPIRATION);
         return $quotes;
     }
 
@@ -90,13 +90,13 @@ class Author
         }
 
         $this->author->load(
-            array('id=?', $f3->get('POST.id')),
+            array('slug=?', $f3->get('POST.slug')),
             array(
                 'limit' => 1
             )
         );
         if ($this->author->dry()) {
-            $f3->error(404, 'Could not edit author ' . $params['id'] . ': it does not exist.');
+            $f3->error(404, 'Could not edit author ' . $params['slug'] . ': it does not exist.');
             exit;
         }
         $gump = new GUMP();
@@ -172,18 +172,18 @@ class Author
         /** Delete Author */
 
         $this->author->load(
-            array('id=?', $params['id']),
+            array('slug=?', $params['slug']),
             array(
                 'limit' => 1
             )
         );
         if ($this->author->dry()) {
-            $f3->error(404, 'Could not delete author ' . $params['id'] . ': it does not exist.');
+            $f3->error(404, 'Could not delete author ' . $params['slug'] . ': it does not exist.');
         } else {
             if (!$this->author->erase()) {
-                $f3->error(410, 'Author matching id: ' . $params['id'] . ' does not exist or was previously deleted.');
+                $f3->error(410, 'Author matching id: ' . $params['slug'] . ' does not exist or was previously deleted.');
             } else {
-                send_json(array('code' => 200, 'message' => 'Author ' . $params['id'] . ' successfully deleted.'));
+                send_json(array('code' => 200, 'message' => 'Author ' . $params['slug'] . ' successfully deleted.'));
             }
         }
     }
