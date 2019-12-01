@@ -28,7 +28,7 @@ class Authentication
             $provider = $f3->get('GET.provider');
         }
         try {
-
+            $hybridauth = new Hybridauth($this->get_config());
             $storage = new Session();
             /**
              * Hold information about provider when user clicks on Sign In.
@@ -44,16 +44,14 @@ class Authentication
              * the users back to Authorization callback URL (i.e., this script).
              */
             if ($provider = $storage->get('provider')) {
-                $hybridauth = new Hybridauth($this->get_config());
+
                 $adapter = $hybridauth->authenticate($provider);
-                // user authenticated, clear the storage.
-                $storage->set('provider', null);
+
                 // then grab the user profile
                 $user_profile = $adapter->getUserProfile();
-
                 // Find user in our Database...
                 $user = new DB\SQL\Mapper($this->db, 'users');
-                $user->load(array('email = :username LIMIT 0,1', ':username' => trim($user_profile->email)));
+                $user->load(array('email = :email LIMIT 0,1', ':email' => trim($user_profile->email)));
                 $new = false;
                 if ($user->dry()) {
                     // No existing user, let's create it...
@@ -61,11 +59,11 @@ class Authentication
                     $user->created = date('Y-m-d H:i:s');
                     $new = true;
                 }
-                $user->fullname = (!empty($user_profile->displayName)) ? $user_profile->displayName : preg_replace('/([^@]*).*/', '$1', $user->email);
-                $user->email = (!empty($username)) ? trim($user_profile->email) : $user->fullname;
-                $username = $user->email;
+                $username = preg_replace('/([^@]*).*/', '$1', $user->email);
+                $user->fullname = (!empty($user_profile->displayName)) ? $user_profile->displayName : $username;
+                $user->email = trim($user_profile->email);
                 $user->image = $user_profile->photoURL;
-                $user->password = $this->provider;
+                $user->password = $provider;
                 $user->save();
 
                 if ($new) {
@@ -82,7 +80,8 @@ class Authentication
                     $message .= "\n---\nSee you,\n\nThe Spirit.";
                     $smtp->send($message, true);
                 }
-
+                // user authenticated, clear the storage.
+                $storage->set('provider', null);
                 $f3->set('SESSION.logged_in', 'ok');
                 $_SESSION['user'] = array('id' => $user->id, 'email' => $user->email, 'fullname' => $user->fullname, 'role' => $user->role, 'image' => $user->image, 'urls' => json_decode($user->urls));
 
@@ -127,7 +126,6 @@ class Authentication
         } catch (Exception $e) {
 
             pr($e->getMessage());
-            pr($params);
             pr($_GET);
             exit;
             /** SSO did not work out... */
