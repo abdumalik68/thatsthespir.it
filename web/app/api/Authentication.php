@@ -12,35 +12,29 @@ use Hybridauth\Storage\Session;
 class Authentication
 {
     public $db;
-    public $f3;
-    public $provider;
 
-    function __construct(\Base $f3)
+    function __construct()
     {
         global $db;
         $this->db = $db;
-        $this->f3 = $f3;
-        if ($f3->exists('PARAMS.action')) {
-            $this->provider = $f3->get('PARAMS.action');
-        }
     }
 
-    function try(\Base $f3, $params)
+    function try(\Base $f3)
     {
         /**
          * Try authenticating the user via SSO
          */
-
-
+        if ($f3->exists('GET.provider')) {
+            $provider = $f3->get('GET.provider');
+        }
         try {
 
             $storage = new Session();
-            $hybridauth = new Hybridauth($this->get_config());
             /**
              * Hold information about provider when user clicks on Sign In.
              */
-            if (!empty($this->provider)) {
-                $storage->set('provider', $this->provider);
+            if (!empty($provider)) {
+                $storage->set('provider', $provider);
             }
             /**
              * When provider exists in the storage, try to authenticate user and clear storage.
@@ -50,11 +44,12 @@ class Authentication
              * the users back to Authorization callback URL (i.e., this script).
              */
             if ($provider = $storage->get('provider')) {
-                $hybridauth->authenticate($provider);
+                $hybridauth = new Hybridauth($this->get_config());
+                $adapter = $hybridauth->authenticate($provider);
                 // user authenticated, clear the storage.
                 $storage->set('provider', null);
                 // then grab the user profile
-                $user_profile = $hybridauth->getUserProfile();
+                $user_profile = $adapter->getUserProfile();
 
                 // Find user in our Database...
                 $user = new DB\SQL\Mapper($this->db, 'users');
@@ -85,16 +80,16 @@ class Authentication
                     $message = 'On ' . date('d.m.Y at H:i:s') . ', a new user registered, kind master.' . "\n---\n";
                     $message .= "email: " . $user->email . "\nname:" . $user->fullname;
                     $message .= "\n---\nSee you,\n\nThe Spirit.";
-                    $sent = $smtp->send($message, true);
+                    $smtp->send($message, true);
                 }
 
                 $f3->set('SESSION.logged_in', 'ok');
-                $_SESSION['logged_in'] = 'ok';
-
                 $_SESSION['user'] = array('id' => $user->id, 'email' => $user->email, 'fullname' => $user->fullname, 'role' => $user->role, 'image' => $user->image, 'urls' => json_decode($user->urls));
 
-                if (!empty($f3->get('SESSION.next_action'))) {
+                pr($_SESSION['user']);
+                exit;
 
+                if (!empty($f3->get('SESSION.next_action'))) {
                     switch ($f3->get('SESSION.next_action')) {
 
                         case 'like':
@@ -113,8 +108,9 @@ class Authentication
                 }
 
                 if (!empty($f3->get('SESSION.goto'))) {
-                    $f3->reroute($f3->get('SESSION.goto'));
+                    $goto = $f3->get('SESSION.goto');
                     $f3->clear('SESSION.goto');
+                    $f3->reroute($goto);
                 } else {
                     $f3->reroute('/');
                 }
@@ -147,7 +143,7 @@ class Authentication
             $message .= "email: " . $user->email . "\nname:" . $user->fullname . "<pre>";
             $message .= print_r($e, true);
             $message .= "<br>\n---\nSee you,\n\nThe Spirit.";
-            $sent = $smtp->send($message, true);
+            $smtp->send($message, true);
         }
     }
 
