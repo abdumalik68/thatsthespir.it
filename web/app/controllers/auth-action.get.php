@@ -85,7 +85,6 @@ try {
     if (!empty($f3->get('SESSION.goto'))) {
         $f3->reroute($f3->get('SESSION.goto'));
         $f3->clear('SESSION.goto');
-
     } else {
         $f3->reroute('/');
     }

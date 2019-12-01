@@ -3,5 +3,7 @@
     "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "terminal.integrated.fontFamily": "Dank Mono",
-    "terminal.integrated.fontSize": 14
+    "terminal.integrated.fontSize": 14,
+    "workbench.tree.indent": 25,
+    "editor.acceptSuggestionOnEnter": "off"
 }
