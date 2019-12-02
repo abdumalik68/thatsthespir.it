@@ -82,6 +82,10 @@ class Authentication
                 }
                 // user authenticated, clear the storage.
                 $storage->set('provider', null);
+                //Disconnect the adapter
+                $adapter->disconnect();
+
+                // Prepare exit...
                 $f3->set('SESSION.logged_in', 'ok');
                 $_SESSION['user'] = array('id' => $user->id, 'email' => $user->email, 'fullname' => $user->fullname, 'role' => $user->role, 'image' => $user->image, 'urls' => json_decode($user->urls));
 
@@ -174,12 +178,13 @@ class Authentication
                 'GitHub' => array(
                     "enabled" => true,
                     "scope" => "user:email",
-                    "keys" => ["id" => "44ccee421e44fbee93ce", "secret" => "d577497f887b5002e146ef03c14636b7113967b3"],
-                    "wrapper" => array(
-                        "class" => 'Hybrid_Providers_GitHub',
-                        "path" => APP_PATH . '/vendor/hybridauth/hybridauth/additional-providers/hybridauth-github/Providers/GitHub.php',
-
-                    ),
+                    "keys" => ["id" => "44ccee421e44fbee93ce", "secret" => "d577497f887b5002e146ef03c14636b7113967b3"]
+                ),
+                'GitHub' => array(
+                    // TEST FOR DEV
+                    "enabled" => false,
+                    "scope" => "user:email",
+                    "keys" => ["id" => "e0deb927c89b1e103ed8", "secret" => "31da88034db46138852942c71ddcaef77939838b"]
                 ),
             ),
             // If you want to enable logging, set 'debug_mode' to true.
