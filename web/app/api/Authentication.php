@@ -158,6 +158,7 @@ class Authentication
             "path_vendor" => 'vendor',
             "providers" => array(
                 "Google" => array(
+                    // Application: https://console.developers.google.com/apis/credentials?project=thats-the-spirit
                     "enabled" => true,
                     "keys" => array("id" => '673306183223-0ft3a8jd9icav8l0ida4rhtg0vn847g3.apps.googleusercontent.com', "secret" => 'ArQphOkW_M93XKWi0gWL6uRX'),
                     "access_type" => "online",
@@ -165,23 +166,36 @@ class Authentication
                 ),
 
                 "Reddit" => array(
-                    "enabled" => true,
+                    //  Application: https://www.reddit.com/prefs/apps
+                    "enabled" => false,
                     "keys" => array("id" => "aSr9-PBrMgpBWA", "secret" => "bpDpDGzPOYnEHIwH_vkjV92-BQI"),
                     "scope" => "identity",
                     "trustForwarded" => false,
                 ),
-                "Twitter" => array(
+                "Reddit" => array(
+                    // FOR TESTING
+                    //  Application: https://www.reddit.com/prefs/apps
                     "enabled" => true,
-                    "keys" => array("key" => "4GPxkkexLCBntwO9Lq879H9SD", "secret" => "flkYZYLTJLEo5nofHj98ClejMqjXeiFJZ1wuHOgxSKq08yfMIa"),
+                    "keys" => array("id" => "z9hZPSygm65iTg", "secret" => "jqC48aHoFtAVGLv_6YteNMNOivM"),
+                    "scope" => "identity",
+                    "trustForwarded" => false,
+                ),
+                "Twitter" => array(
+                    // Application: https://developer.twitter.com/en/apps/17060090
+                    "enabled" => true,
+                    "keys" => array("key" => "l8a8TAFMZo4O29SGxSSMxLE97", "secret" => "NteAKtNZT1Tkp7uaa4sVPKvcDaXAWRyaWh827UPnk6GqdbZtCD"),
                     "includeEmail" => true,
+
                 ),
                 'GitHub' => array(
+                    // Application: https://github.com/settings/applications/208551
                     "enabled" => true,
                     "scope" => "user:email",
                     "keys" => ["id" => "44ccee421e44fbee93ce", "secret" => "d577497f887b5002e146ef03c14636b7113967b3"]
                 ),
                 'GitHub' => array(
                     // TEST FOR DEV
+                    // Application: https://github.com/settings/applications/1181384
                     "enabled" => false,
                     "scope" => "user:email",
                     "keys" => ["id" => "e0deb927c89b1e103ed8", "secret" => "31da88034db46138852942c71ddcaef77939838b"]
