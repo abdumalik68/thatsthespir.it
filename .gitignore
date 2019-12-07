@@ -2,9 +2,14 @@
 .*.swp
 .DS_Store
 # Application
+web/public
+web/shared/uploads
 web/app/vendor
 web/app/tmp
+web/public/tmp
 data/db/mysql
+# react
+web/node_modules
 # PHPStorm
 .idea/**/workspace.xml
 .idea/**/tasks.xml

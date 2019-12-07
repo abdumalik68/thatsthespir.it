@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="15px" height="15px" viewBox="0 0 15 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>linkedin</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="social-icons" sketch:type="MSArtboardGroup" transform="translate(-124.000000, -10.000000)" fill="#979797">
+            <g id="linkedin" sketch:type="MSLayerGroup" transform="translate(124.000000, 10.000000)">
+                <path d="M3.36679872,6.21724894e-15 L3.36679872,10.1209943 L0.18791698,10.1209943 L0.18791698,8.34525953e-15 L3.36679872,8.34525953e-15 L3.36679872,6.21724894e-15 Z M1.7773437,11.5028452 C2.88588408,11.5028452 3.57585636,12.280024 3.57585636,13.2512728 C3.55519682,14.2443845 2.88588408,15 1.79837116,15 C0.710971441,15 -7.99360578e-15,14.2443845 -7.99360578e-15,13.2512728 C-7.99360578e-15,12.280024 0.689830781,11.5028452 1.75662755,11.5028452 L1.7772871,11.5028452 L1.7773437,11.5028452 Z" id="path28" sketch:type="MSShapeGroup" transform="translate(1.787928, 7.500000) scale(1, -1) translate(-1.787928, -7.500000) "></path>
+                <path d="M5.27777778,4.83514343 L8.45663122,4.83514343 L8.45663122,10.3814809 C8.45663122,10.6783122 8.47729077,10.9748496 8.56123079,11.18704 C8.79103288,11.7801148 9.31408734,12.3943499 10.1922596,12.3943499 C11.3425436,12.3943499 11.8026855,11.4835774 11.8026855,10.1484242 L11.8026855,4.83514343 L14.9812842,4.83514343 L14.9812842,10.5298965 C14.9812842,13.5804997 13.4129982,15 11.3215444,15 C9.6066322,15 8.85377565,14.0045864 8.43549056,13.3265767 L8.45671612,13.3265767 L8.45671612,14.7669433 L5.27786268,14.7669433 C5.31957799,13.8350105 5.27786268,4.83514343 5.27786268,4.83514343 L5.27777778,4.83514343 Z" id="path30" sketch:type="MSShapeGroup" transform="translate(10.129531, 9.917572) scale(1, -1) translate(-10.129531, -9.917572) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

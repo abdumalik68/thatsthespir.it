@@ -4,7 +4,12 @@ class TheSpirit
 {
     function get()
     {
-        echo "Presentation of the project";
+        require './index.html';
+    }
+
+    function get_api()
+    {
+        echo "Welcome to the Spirit! 's API";
     }
     function get_xml_sitemap($f3, $params)
     {

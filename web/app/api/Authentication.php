@@ -19,7 +19,7 @@ class Authentication
         $this->db = $db;
     }
 
-    function try(\Base $f3)
+    function login(\Base $f3)
     {
         /**
          * Try authenticating the user via SSO
@@ -35,6 +35,9 @@ class Authentication
              */
             if (!empty($provider)) {
                 $storage->set('provider', $provider);
+                if ($f3->exists('GET.redirectTo')) {
+                    $storage->set('redirectTo', $f3->get('GET.redirectTo'));
+                }
             }
             /**
              * When provider exists in the storage, try to authenticate user and clear storage.
@@ -90,6 +93,7 @@ class Authentication
                 $_SESSION['user'] = array('id' => $user->id, 'email' => $user->email, 'fullname' => $user->fullname, 'role' => $user->role, 'image' => $user->image, 'urls' => json_decode($user->urls));
 
                 pr($_SESSION['user']);
+                pr($storage->get('redirectTo'));
                 exit;
 
                 if (!empty($f3->get('SESSION.next_action'))) {
