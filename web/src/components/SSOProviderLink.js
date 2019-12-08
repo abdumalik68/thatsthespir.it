@@ -10,7 +10,7 @@ class SSOProviderLink extends React.Component {
     tryToLogin = () => {
         this.setState({ clicked: true });
 
-        const url = "http://localhost:8000/auth?provider=" + this.props.provider;
+        //const url = "http://localhost:8000/auth?provider=" + this.props.provider;
         // console.log(url, "url: ");
         axios
             .get(

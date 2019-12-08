@@ -14,7 +14,7 @@ function Quote({ showAuthor, quote }) {
                 <span className="pilcrow">|</span>
             </blockquote>
             {showAuthor ? <div className="author">
-                <div className="photo" style={photo ? { backgroundImage: `url(https://thatsthespir.it/uploads/${photo})` } : null} />
+                <div className="photo" style={photo ? { backgroundImage: `url(/uploads/${photo})` } : null} />
                 <address className="author">–&nbsp;
                     <a title={`All quotes by ${fullname}`} href={`/author/${author_slug}`} rel="author" className="authorName">
                         {fullname}<br />

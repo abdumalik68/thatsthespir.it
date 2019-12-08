@@ -1,6 +1,6 @@
 {
   "name": "thatsthespirit",
-  "homepage": "./",
+  "homepage": "http://localhost:8000/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && mv build public",
+    "build": "react-scripts build && cp -a ./build/. ./public/ && rm -rf ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
