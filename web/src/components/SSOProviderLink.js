@@ -24,7 +24,7 @@ class SSOProviderLink extends React.Component {
     render() {
         return (
             <a href={this.props.url} provider={this.props.provider} className="no-underline">
-                <img alt="" src={this.props.image} /><br />{this.props.label}
+                {this.props.children}<br />{this.props.label}
             </a>
         );
     }
