@@ -15,7 +15,7 @@ $f3->config(APP_PATH . '/config.ini');
 
 switch ($_SERVER['HTTP_HOST']) {
     case 'thatsthespir.it':
-    case 'beta.thatsthespir.it':
+    case 'next.thatsthespir.it':
         $config_file = '/config.production.ini';
         break;
 
