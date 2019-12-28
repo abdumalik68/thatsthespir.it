@@ -3,15 +3,11 @@
 .DS_Store
 
 # Application
-web/app/composer.json
+#web/app/composer.json
 web/app/vendor
 web/app/tmp
 data/db/mysql
 web/node_modules
-# PHPStorm
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/dictionaries
 make.log
 web/app/vendor/
 web/public/assets/vendors/
