@@ -27,7 +27,6 @@ $f3->config(APP_PATH . $config_file);
 define('WWWROOT', $f3->WWWROOT);
 define('UPLOADS', $f3->UPLOADS);
 define('ENV', $f3->ENV);
-
 $f3->set('image_width', 100);
 
 $metatags = array(
