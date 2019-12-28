@@ -2,9 +2,10 @@
 
 class TheSpirit
 {
-    function get()
+    function get($f3)
     {
-        require './index.html';
+        require '../build/index.html';
+        //$f3->reroute('../build/index.html', true);
     }
 
     function get_api()

@@ -2,8 +2,8 @@
 .*.swp
 .DS_Store
 # Application
-web/public
-web/shared/uploads
+web/build
+web/uploads
 web/app/vendor
 web/app/tmp
 web/public/tmp
@@ -15,3 +15,4 @@ web/node_modules
 .idea/**/tasks.xml
 .idea/dictionaries
 make.log
+.vscode

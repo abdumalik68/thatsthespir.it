@@ -15,10 +15,10 @@ class Modal extends React.Component {
                         <p>To do that, you need to log in the Spirit via one of these services. It only takes a click and you're good to go.</p>
                         <ul className="single-signon-providers">
                             <li>
-                                <SSOProviderLink url="http://localhost:8000/auth?provider=google&redirectTo=localhost:3000/newsletter" provider="google" label="Google"><GoogleIcon title="alt title for google icon"/></SSOProviderLink>
+                                <SSOProviderLink url="http://localhost:8000/auth?provider=google&redirectTo=localhost:3000/newsletter" provider="google" label="Google"><GoogleIcon title="alt title for google icon" /></SSOProviderLink>
                             </li>
                             <li>
-                                <SSOProviderLink provider="github" label="GitHub"><GitHubIcon/></SSOProviderLink>
+                                <SSOProviderLink provider="github" label="GitHub"><GitHubIcon /></SSOProviderLink>
                             </li>
                             <li>
                                 <SSOProviderLink provider="reddit" label="Reddit"><RedditIcon /></SSOProviderLink>
