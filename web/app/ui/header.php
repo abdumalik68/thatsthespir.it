@@ -137,6 +137,7 @@
 						</li>
 						<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add' : CURRENT_URI . '#login-ui'; ?>" id="suggest-quotes" class="pure-menu-link underline" title="Do you know a great quote that's not already in The Spirit?">Suggest a quote</a></li>
 						<li class="pure-menu-item"><a href="/popular" id="popular-quotes" class="pure-menu-link underline" title="The Spirit's Twenty most popular quotes.">Favs chart</a></li>
+
 					</ul>
 				</div>
 			</div>

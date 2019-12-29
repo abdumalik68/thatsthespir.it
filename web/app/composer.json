@@ -1,0 +1,17 @@
+{
+    "name": "aplennevaux/thatsthespir.it",
+    "description": "That's The Spirit web app",
+    "type": "project",
+    "require": {
+        "php": "^7.0",
+        "bcosca/fatfree": "^3.6",
+        "hybridauth/hybridauth": "^2.9",
+        "verot/class.upload.php": "*",
+        "xfra35/f3-cron": "*"
+    },
+    "license": "MIT",
+    "authors": [{
+        "name": "Plennevaux Alexandre",
+        "email": "alexandre@pixeline.be"
+    }]
+}
