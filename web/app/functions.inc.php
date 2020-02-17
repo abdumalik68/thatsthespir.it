@@ -16,6 +16,10 @@ function display_error($errors, $input){
 	}
 }
 
+function is_logged_in(){
+	return isset( $_SESSION['user']['id']) && !empty( $_SESSION['user']['id']) ;
+}
+
 
 /*
 Create an excerpt

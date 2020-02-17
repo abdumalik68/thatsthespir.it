@@ -7,7 +7,7 @@
 		"uuidString": "E0EF7F0C-72A4-486F-B9D2-FF506E9BA8A0"
 		}
 	],
-"creatorBuild": "26330",
+"creatorBuild": "26680",
 "files": {
 	"\/app\/classes\/evangelist.php": {
 		"cB": 0,
@@ -245,6 +245,7 @@
 	"\/app\/classes\/twitteroauth\/tests\/kitten.jpg": {
 		"ft": 16384,
 		"iS": 215694,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/app\/classes\/twitteroauth\/tests\/kitten.jpg",
 		"oF": 0,
@@ -309,6 +310,13 @@
 		"oAP": "\/app\/composer.lock",
 		"oF": 0
 		},
+	"\/app\/config.dev.ini": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/config.dev.ini",
+		"oF": 0
+		},
 	"\/app\/config.hybridauth.php": {
 		"cB": 0,
 		"ft": 8192,
@@ -316,18 +324,18 @@
 		"oAP": "\/app\/config.hybridauth.php",
 		"oF": 0
 		},
-	"\/app\/config.inc.php": {
-		"cB": 0,
-		"ft": 8192,
-		"oA": 0,
-		"oAP": "\/app\/config.inc.php",
-		"oF": 0
-		},
 	"\/app\/config.ini": {
 		"cB": 0,
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/app\/config.ini",
+		"oF": 0
+		},
+	"\/app\/config.production.ini": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/config.production.ini",
 		"oF": 0
 		},
 	"\/app\/controllers\/api.get.php": {
@@ -419,6 +427,13 @@
 		"ft": 8192,
 		"oA": 0,
 		"oAP": "\/app\/controllers\/human-channels.get.php",
+		"oF": 0
+		},
+	"\/app\/controllers\/hybridauth\/Hybrid\/Facebooktest.php": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/controllers\/hybridauth\/Hybrid\/Facebooktest.php",
 		"oF": 0
 		},
 	"\/app\/controllers\/latest.get.php": {
@@ -4449,6 +4464,20 @@
 		"oF": 0,
 		"opt": 0
 		},
+	"\/app\/vendor\/verot\/class.upload.php\/test\/foo.gdf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/vendor\/verot\/class.upload.php\/test\/foo.gdf",
+		"oF": 0
+		},
+	"\/app\/vendor\/verot\/class.upload.php\/test\/foo.ttf": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/app\/vendor\/verot\/class.upload.php\/test\/foo.ttf",
+		"oF": 0
+		},
 	"\/app\/vendor\/verot\/class.upload.php\/test\/index.html": {
 		"cB": 0,
 		"ft": 8192,
@@ -4474,6 +4503,7 @@
 	"\/app\/vendor\/verot\/class.upload.php\/test\/test.jpg": {
 		"ft": 16384,
 		"iS": 10694,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/app\/vendor\/verot\/class.upload.php\/test\/test.jpg",
 		"oF": 0,
@@ -4620,6 +4650,13 @@
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
+		},
+	"\/public\/.htaccess": {
+		"cB": 0,
+		"ft": 8192,
+		"oA": 0,
+		"oAP": "\/public\/.htaccess",
+		"oF": 0
 		},
 	"\/public\/assets\/css\/.sass-cache\/01ab52439749f8c8b950454b6a76b9349657c028\/_mailchimp-form.scssc": {
 		"cB": 0,
@@ -5034,6 +5071,7 @@
 	"\/public\/assets\/img\/how-to-favourite-a-quote-illustration.jpeg": {
 		"ft": 16384,
 		"iS": 40182,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/assets\/img\/how-to-favourite-a-quote-illustration.jpg",
 		"oF": 0,
@@ -5413,6 +5451,7 @@
 	"\/public\/assets\/img\/pope.jpg": {
 		"ft": 16384,
 		"iS": 119428,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/assets\/img\/pope.jpg",
 		"oF": 0,
@@ -5423,6 +5462,7 @@
 	"\/public\/assets\/img\/portrait.jpg": {
 		"ft": 16384,
 		"iS": 37961,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/assets\/img\/portrait.jpg",
 		"oF": 0,
@@ -5574,6 +5614,7 @@
 	"\/public\/assets\/img\/tts-og-cover-image.jpg": {
 		"ft": 16384,
 		"iS": 197677,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/assets\/img\/tts-og-cover-image.jpg",
 		"oF": 0,
@@ -5707,26 +5748,6 @@
 		"mi": 0,
 		"oA": 0,
 		"oAP": "\/public\/assets\/js\/main-min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/public\/assets\/js\/min\/jquery.hotkeys-min.js": {
-		"ft": 64,
-		"ma": 1,
-		"mi": 0,
-		"oA": 0,
-		"oAP": "\/public\/assets\/js\/min\/jquery.hotkeys-min-min.js",
-		"oF": 0,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/public\/assets\/js\/min\/main-min.js": {
-		"ft": 64,
-		"ma": 1,
-		"mi": 0,
-		"oA": 0,
-		"oAP": "\/public\/assets\/js\/min\/main-min-min.js",
 		"oF": 0,
 		"sC": 0,
 		"tS": 0
@@ -6086,7 +6107,7 @@
 		"ft": 64,
 		"ma": 1,
 		"mi": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/public\/assets\/vendors\/css-modal\/modal.js",
 		"oF": 0,
 		"sC": 0,
@@ -6255,6 +6276,7 @@
 	"\/public\/assets\/vendors\/css-modal\/test\/img\/cat-small.jpg": {
 		"ft": 16384,
 		"iS": 916,
+		"jF": 0,
 		"oA": 2,
 		"oAP": "\/public\/assets\/vendors\/css-modal\/test\/img\/cat-small.jpg",
 		"oF": 0,
@@ -6265,6 +6287,7 @@
 	"\/public\/assets\/vendors\/css-modal\/test\/img\/cat.jpg": {
 		"ft": 16384,
 		"iS": 237216,
+		"jF": 0,
 		"oA": 2,
 		"oAP": "\/public\/assets\/vendors\/css-modal\/test\/img\/cat.jpg",
 		"oF": 0,
@@ -6275,6 +6298,7 @@
 	"\/public\/assets\/vendors\/css-modal\/test\/img\/image.jpg": {
 		"ft": 16384,
 		"iS": 123995,
+		"jF": 0,
 		"oA": 2,
 		"oAP": "\/public\/assets\/vendors\/css-modal\/test\/img\/image.jpg",
 		"oF": 0,
@@ -6427,7 +6451,7 @@
 		"ft": 64,
 		"ma": 1,
 		"mi": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/public\/assets\/vendors\/devbridge-autocomplete\/dist\/jquery.autocomplete.min.js",
 		"oF": 0,
 		"sC": 0,
@@ -6599,7 +6623,7 @@
 		"ft": 64,
 		"ma": 1,
 		"mi": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/public\/assets\/vendors\/Headhesive.js\/dist\/headhesive.min.js",
 		"oF": 0,
 		"sC": 0,
@@ -6715,7 +6739,7 @@
 		"ft": 64,
 		"ma": 1,
 		"mi": 0,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/public\/assets\/vendors\/jquery\/dist\/jquery.min.js",
 		"oF": 0,
 		"sC": 0,
@@ -8044,6 +8068,7 @@
 	"\/public\/uploads\/130702_john_maeda2.jpg": {
 		"ft": 16384,
 		"iS": 69819,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/130702_john_maeda2.jpg",
 		"oF": 0,
@@ -8054,6 +8079,7 @@
 	"\/public\/uploads\/22charles_eames.jpg": {
 		"ft": 16384,
 		"iS": 27721,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/22charles_eames.jpg",
 		"oF": 0,
@@ -8064,6 +8090,7 @@
 	"\/public\/uploads\/2bookmark0403.jpg": {
 		"ft": 16384,
 		"iS": 88790,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/2bookmark0403.jpg",
 		"oF": 0,
@@ -8074,6 +8101,7 @@
 	"\/public\/uploads\/4-Frank-Chimero1.jpg": {
 		"ft": 16384,
 		"iS": 248142,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/4-Frank-Chimero1.jpg",
 		"oF": 0,
@@ -8084,6 +8112,7 @@
 	"\/public\/uploads\/439116.jpeg": {
 		"ft": 16384,
 		"iS": 40466,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/439116.jpg",
 		"oF": 0,
@@ -8094,6 +8123,7 @@
 	"\/public\/uploads\/600px-albert_einstein_head.jpg": {
 		"ft": 16384,
 		"iS": 35204,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/600px-albert_einstein_head.jpg",
 		"oF": 0,
@@ -8104,6 +8134,7 @@
 	"\/public\/uploads\/951px-Robert_L._Peters.jpg": {
 		"ft": 16384,
 		"iS": 122767,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/951px-Robert_L._Peters.jpg",
 		"oF": 0,
@@ -8125,6 +8156,7 @@
 	"\/public\/uploads\/adrian-forty-o.jpg": {
 		"ft": 16384,
 		"iS": 73701,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/adrian-forty-o.jpg",
 		"oF": 0,
@@ -8135,6 +8167,7 @@
 	"\/public\/uploads\/aldous.jpg": {
 		"ft": 16384,
 		"iS": 248006,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/aldous.jpg",
 		"oF": 0,
@@ -8145,6 +8178,7 @@
 	"\/public\/uploads\/AM_MMLead_t614.jpg": {
 		"ft": 16384,
 		"iS": 31038,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/AM_MMLead_t614.jpg",
 		"oF": 0,
@@ -8163,6 +8197,7 @@
 	"\/public\/uploads\/ayn-rand.jpg": {
 		"ft": 16384,
 		"iS": 110584,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/ayn-rand.jpg",
 		"oF": 0,
@@ -8173,6 +8208,7 @@
 	"\/public\/uploads\/Ayn-RandZ1.jpg": {
 		"ft": 16384,
 		"iS": 93880,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Ayn-RandZ1.jpg",
 		"oF": 0,
@@ -8183,6 +8219,7 @@
 	"\/public\/uploads\/Bill.jpg": {
 		"ft": 16384,
 		"iS": 275899,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Bill.jpg",
 		"oF": 0,
@@ -8190,7 +8227,7 @@
 		"opt": 0,
 		"q": 100
 		},
-	"\/public\/uploads\/CaptureZdÃcranZ2015-04-05Z00.15.22.png": {
+	"\/public\/uploads\/CaptureZdÃcranZ2015-04-05Z00.15.22.png": {
 		"ft": 32768,
 		"iS": 876353,
 		"oA": 0,
@@ -8201,7 +8238,7 @@
 		"oT": 1,
 		"q": 100
 		},
-	"\/public\/uploads\/CaptureZdÃcranZ2015-04-05Z00.15.22_1.png": {
+	"\/public\/uploads\/CaptureZdÃcranZ2015-04-05Z00.15.22_1.png": {
 		"ft": 32768,
 		"iS": 876353,
 		"oA": 0,
@@ -8212,7 +8249,7 @@
 		"oT": 1,
 		"q": 100
 		},
-	"\/public\/uploads\/CaptureZdÃcranZ2015-04-05Z20.41.22.png": {
+	"\/public\/uploads\/CaptureZdÃcranZ2015-04-05Z20.41.22.png": {
 		"ft": 32768,
 		"iS": 127693,
 		"oA": 0,
@@ -8223,7 +8260,7 @@
 		"oT": 1,
 		"q": 100
 		},
-	"\/public\/uploads\/CaptureZdÃcranZ2015-04-07Z17.14.30.png": {
+	"\/public\/uploads\/CaptureZdÃcranZ2015-04-07Z17.14.30.png": {
 		"ft": 32768,
 		"iS": 1106568,
 		"oA": 0,
@@ -8248,6 +8285,7 @@
 	"\/public\/uploads\/Carl-Jung.jpg": {
 		"ft": 16384,
 		"iS": 78960,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Carl-Jung.jpg",
 		"oF": 0,
@@ -8258,6 +8296,7 @@
 	"\/public\/uploads\/colin_peacoat-1899x1899.jpg": {
 		"ft": 16384,
 		"iS": 1076536,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/colin_peacoat-1899x1899.jpg",
 		"oF": 0,
@@ -8268,6 +8307,7 @@
 	"\/public\/uploads\/colm-tuite.jpeg": {
 		"ft": 16384,
 		"iS": 12302,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/colm-tuite.jpg",
 		"oF": 0,
@@ -8278,6 +8318,7 @@
 	"\/public\/uploads\/confucius589.jpg": {
 		"ft": 16384,
 		"iS": 86936,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/confucius589.jpg",
 		"oF": 0,
@@ -8296,6 +8337,7 @@
 	"\/public\/uploads\/daphen-rose-kingma.jpg": {
 		"ft": 16384,
 		"iS": 59618,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/daphen-rose-kingma.jpg",
 		"oF": 0,
@@ -8306,6 +8348,7 @@
 	"\/public\/uploads\/davislewis2-o.jpg": {
 		"ft": 16384,
 		"iS": 119142,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/davislewis2-o.jpg",
 		"oF": 0,
@@ -8327,6 +8370,7 @@
 	"\/public\/uploads\/Edison-in-1877-400pl.jpg": {
 		"ft": 16384,
 		"iS": 27012,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Edison-in-1877-400pl.jpg",
 		"oF": 0,
@@ -8348,6 +8392,7 @@
 	"\/public\/uploads\/Einstein_laughing.jpeg": {
 		"ft": 16384,
 		"iS": 33137,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Einstein_laughing.jpg",
 		"oF": 0,
@@ -8358,6 +8403,7 @@
 	"\/public\/uploads\/eric_adigard-300x300.jpg": {
 		"ft": 16384,
 		"iS": 30091,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/eric_adigard-300x300.jpg",
 		"oF": 0,
@@ -8398,6 +8444,7 @@
 	"\/public\/uploads\/greyscale_130702_john_maeda2.jpg": {
 		"ft": 16384,
 		"iS": 22345,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_130702_john_maeda2.jpg",
 		"oF": 0,
@@ -8408,6 +8455,7 @@
 	"\/public\/uploads\/greyscale_22charles_eames.jpg": {
 		"ft": 16384,
 		"iS": 26795,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_22charles_eames.jpg",
 		"oF": 0,
@@ -8418,6 +8466,7 @@
 	"\/public\/uploads\/greyscale_2bookmark0403.jpg": {
 		"ft": 16384,
 		"iS": 73501,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_2bookmark0403.jpg",
 		"oF": 0,
@@ -8428,6 +8477,7 @@
 	"\/public\/uploads\/greyscale_4-Frank-Chimero1.jpg": {
 		"ft": 16384,
 		"iS": 79591,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_4-Frank-Chimero1.jpg",
 		"oF": 0,
@@ -8438,6 +8488,7 @@
 	"\/public\/uploads\/greyscale_439116.jpeg": {
 		"ft": 16384,
 		"iS": 32222,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_439116.jpg",
 		"oF": 0,
@@ -8448,6 +8499,7 @@
 	"\/public\/uploads\/greyscale_600px-albert_einstein_head.jpg": {
 		"ft": 16384,
 		"iS": 40187,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_600px-albert_einstein_head.jpg",
 		"oF": 0,
@@ -8458,6 +8510,7 @@
 	"\/public\/uploads\/greyscale_951px-Robert_L._Peters.jpg": {
 		"ft": 16384,
 		"iS": 99184,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_951px-Robert_L._Peters.jpg",
 		"oF": 0,
@@ -8468,6 +8521,7 @@
 	"\/public\/uploads\/greyscale_adrian-forty-o.jpg": {
 		"ft": 16384,
 		"iS": 31122,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_adrian-forty-o.jpg",
 		"oF": 0,
@@ -8478,6 +8532,7 @@
 	"\/public\/uploads\/greyscale_aldous.jpg": {
 		"ft": 16384,
 		"iS": 66689,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_aldous.jpg",
 		"oF": 0,
@@ -8488,6 +8543,7 @@
 	"\/public\/uploads\/greyscale_AM_MMLead_t614.jpg": {
 		"ft": 16384,
 		"iS": 30490,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_AM_MMLead_t614.jpg",
 		"oF": 0,
@@ -8506,6 +8562,7 @@
 	"\/public\/uploads\/greyscale_ayn-rand.jpg": {
 		"ft": 16384,
 		"iS": 100858,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_ayn-rand.jpg",
 		"oF": 0,
@@ -8516,6 +8573,7 @@
 	"\/public\/uploads\/greyscale_Ayn-RandZ1.jpg": {
 		"ft": 16384,
 		"iS": 118499,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Ayn-RandZ1.jpg",
 		"oF": 0,
@@ -8526,6 +8584,7 @@
 	"\/public\/uploads\/greyscale_Bill.jpg": {
 		"ft": 16384,
 		"iS": 253549,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Bill.jpg",
 		"oF": 0,
@@ -8533,7 +8592,7 @@
 		"opt": 0,
 		"q": 100
 		},
-	"\/public\/uploads\/greyscale_CaptureZdÃcranZ2015-04-05Z00.15.22.png": {
+	"\/public\/uploads\/greyscale_CaptureZdÃcranZ2015-04-05Z00.15.22.png": {
 		"ft": 32768,
 		"iS": 335413,
 		"oA": 0,
@@ -8544,7 +8603,7 @@
 		"oT": 1,
 		"q": 100
 		},
-	"\/public\/uploads\/greyscale_CaptureZdÃcranZ2015-04-05Z00.15.22_1.png": {
+	"\/public\/uploads\/greyscale_CaptureZdÃcranZ2015-04-05Z00.15.22_1.png": {
 		"ft": 32768,
 		"iS": 335413,
 		"oA": 0,
@@ -8555,7 +8614,7 @@
 		"oT": 1,
 		"q": 100
 		},
-	"\/public\/uploads\/greyscale_CaptureZdÃcranZ2015-04-05Z20.41.22.png": {
+	"\/public\/uploads\/greyscale_CaptureZdÃcranZ2015-04-05Z20.41.22.png": {
 		"ft": 32768,
 		"iS": 115789,
 		"oA": 0,
@@ -8566,7 +8625,7 @@
 		"oT": 1,
 		"q": 100
 		},
-	"\/public\/uploads\/greyscale_CaptureZdÃcranZ2015-04-07Z17.14.30.png": {
+	"\/public\/uploads\/greyscale_CaptureZdÃcranZ2015-04-07Z17.14.30.png": {
 		"ft": 32768,
 		"iS": 481087,
 		"oA": 0,
@@ -8591,6 +8650,7 @@
 	"\/public\/uploads\/greyscale_Carl-Jung.jpg": {
 		"ft": 16384,
 		"iS": 34523,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Carl-Jung.jpg",
 		"oF": 0,
@@ -8601,6 +8661,7 @@
 	"\/public\/uploads\/greyscale_colin_peacoat-1899x1899.jpg": {
 		"ft": 16384,
 		"iS": 409072,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_colin_peacoat-1899x1899.jpg",
 		"oF": 0,
@@ -8611,6 +8672,7 @@
 	"\/public\/uploads\/greyscale_colm-tuite.jpeg": {
 		"ft": 16384,
 		"iS": 8925,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_colm-tuite.jpg",
 		"oF": 0,
@@ -8621,6 +8683,7 @@
 	"\/public\/uploads\/greyscale_confucius589.jpg": {
 		"ft": 16384,
 		"iS": 39650,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_confucius589.jpg",
 		"oF": 0,
@@ -8639,6 +8702,7 @@
 	"\/public\/uploads\/greyscale_daphen-rose-kingma.jpg": {
 		"ft": 16384,
 		"iS": 24768,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_daphen-rose-kingma.jpg",
 		"oF": 0,
@@ -8649,6 +8713,7 @@
 	"\/public\/uploads\/greyscale_davislewis2-o.jpg": {
 		"ft": 16384,
 		"iS": 56091,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_davislewis2-o.jpg",
 		"oF": 0,
@@ -8670,6 +8735,7 @@
 	"\/public\/uploads\/greyscale_Edison-in-1877-400pl.jpg": {
 		"ft": 16384,
 		"iS": 20952,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Edison-in-1877-400pl.jpg",
 		"oF": 0,
@@ -8691,6 +8757,7 @@
 	"\/public\/uploads\/greyscale_Einstein_laughing.jpeg": {
 		"ft": 16384,
 		"iS": 41821,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Einstein_laughing.jpg",
 		"oF": 0,
@@ -8701,6 +8768,7 @@
 	"\/public\/uploads\/greyscale_eric_adigard-300x300.jpg": {
 		"ft": 16384,
 		"iS": 27034,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_eric_adigard-300x300.jpg",
 		"oF": 0,
@@ -8741,6 +8809,7 @@
 	"\/public\/uploads\/greyscale_HenryZJames.jpg": {
 		"ft": 16384,
 		"iS": 266913,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_HenryZJames.jpg",
 		"oF": 0,
@@ -8751,6 +8820,7 @@
 	"\/public\/uploads\/greyscale_home-rumi.jpg": {
 		"ft": 16384,
 		"iS": 23813,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_home-rumi.jpg",
 		"oF": 0,
@@ -8772,6 +8842,7 @@
 	"\/public\/uploads\/greyscale_itzik999_pablo-picasso1381091876037.jpg": {
 		"ft": 16384,
 		"iS": 144013,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_itzik999_pablo-picasso1381091876037.jpg",
 		"oF": 0,
@@ -8782,6 +8853,7 @@
 	"\/public\/uploads\/greyscale_Jaguar.jpg": {
 		"ft": 16384,
 		"iS": 143628,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Jaguar.jpg",
 		"oF": 0,
@@ -8792,6 +8864,7 @@
 	"\/public\/uploads\/greyscale_james-goldsmith.jpg": {
 		"ft": 16384,
 		"iS": 19010,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_james-goldsmith.jpg",
 		"oF": 0,
@@ -8802,6 +8875,7 @@
 	"\/public\/uploads\/greyscale_jeffrey-veen.jpg": {
 		"ft": 16384,
 		"iS": 110102,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_jeffrey-veen.jpg",
 		"oF": 0,
@@ -8812,6 +8886,7 @@
 	"\/public\/uploads\/greyscale_John-Lennon.jpg": {
 		"ft": 16384,
 		"iS": 115685,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_John-Lennon.jpg",
 		"oF": 0,
@@ -8822,6 +8897,7 @@
 	"\/public\/uploads\/greyscale_john-muir.jpg": {
 		"ft": 16384,
 		"iS": 122934,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_john-muir.jpg",
 		"oF": 0,
@@ -8832,6 +8908,7 @@
 	"\/public\/uploads\/greyscale_julian-assange.jpg": {
 		"ft": 16384,
 		"iS": 61246,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_julian-assange.jpg",
 		"oF": 0,
@@ -8842,6 +8919,7 @@
 	"\/public\/uploads\/greyscale_ken-blanchard.jpeg": {
 		"ft": 16384,
 		"iS": 32316,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_ken-blanchard.jpg",
 		"oF": 0,
@@ -8852,6 +8930,7 @@
 	"\/public\/uploads\/greyscale_kevin-ashton.jpeg": {
 		"ft": 16384,
 		"iS": 125255,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_kevin-ashton.jpg",
 		"oF": 0,
@@ -8862,6 +8941,7 @@
 	"\/public\/uploads\/greyscale_kevinbarnett.jpg": {
 		"ft": 16384,
 		"iS": 28218,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_kevinbarnett.jpg",
 		"oF": 0,
@@ -8872,6 +8952,7 @@
 	"\/public\/uploads\/greyscale_luke-yoda.jpg": {
 		"ft": 16384,
 		"iS": 40016,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_luke-yoda.jpg",
 		"oF": 0,
@@ -8882,6 +8963,7 @@
 	"\/public\/uploads\/greyscale_maimonides.jpg": {
 		"ft": 16384,
 		"iS": 47904,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_maimonides.jpg",
 		"oF": 0,
@@ -8892,6 +8974,7 @@
 	"\/public\/uploads\/greyscale_marshall-mcluhan.jpg": {
 		"ft": 16384,
 		"iS": 43085,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_marshall-mcluhan.jpg",
 		"oF": 0,
@@ -8902,6 +8985,7 @@
 	"\/public\/uploads\/greyscale_MB-teaching.jpg": {
 		"ft": 16384,
 		"iS": 14571,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_MB-teaching.jpg",
 		"oF": 0,
@@ -8912,6 +8996,7 @@
 	"\/public\/uploads\/greyscale_milton_glaser.jpg": {
 		"ft": 16384,
 		"iS": 32452,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_milton_glaser.jpg",
 		"oF": 0,
@@ -8922,6 +9007,7 @@
 	"\/public\/uploads\/greyscale_miss-alabama.jpg": {
 		"ft": 16384,
 		"iS": 37789,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_miss-alabama.jpg",
 		"oF": 0,
@@ -8932,6 +9018,7 @@
 	"\/public\/uploads\/greyscale_Nelle_Harper_Lee-o.jpg": {
 		"ft": 16384,
 		"iS": 31112,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Nelle_Harper_Lee-o.jpg",
 		"oF": 0,
@@ -8942,6 +9029,7 @@
 	"\/public\/uploads\/greyscale_Nelle_Harper_Lee-o_1.jpg": {
 		"ft": 16384,
 		"iS": 31725,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Nelle_Harper_Lee-o_1.jpg",
 		"oF": 0,
@@ -8952,6 +9040,7 @@
 	"\/public\/uploads\/greyscale_Nicolas_Boileau_1.jpg": {
 		"ft": 16384,
 		"iS": 126581,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Nicolas_Boileau_1.jpg",
 		"oF": 0,
@@ -8962,6 +9051,7 @@
 	"\/public\/uploads\/greyscale_oscar4-wilde.jpg": {
 		"ft": 16384,
 		"iS": 25234,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_oscar4-wilde.jpg",
 		"oF": 0,
@@ -8972,6 +9062,7 @@
 	"\/public\/uploads\/greyscale_otl-aicher.jpg": {
 		"ft": 16384,
 		"iS": 47809,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_otl-aicher.jpg",
 		"oF": 0,
@@ -8982,6 +9073,7 @@
 	"\/public\/uploads\/greyscale_otl-aicher_1.jpg": {
 		"ft": 16384,
 		"iS": 52726,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_otl-aicher_1.jpg",
 		"oF": 0,
@@ -9025,6 +9117,7 @@
 	"\/public\/uploads\/greyscale_retr_AlanTuring.jpg": {
 		"ft": 16384,
 		"iS": 28261,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_retr_AlanTuring.jpg",
 		"oF": 0,
@@ -9035,6 +9128,7 @@
 	"\/public\/uploads\/greyscale_Samlevenson.jpg": {
 		"ft": 16384,
 		"iS": 53672,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Samlevenson.jpg",
 		"oF": 0,
@@ -9045,6 +9139,7 @@
 	"\/public\/uploads\/greyscale_seinfeld.jpg": {
 		"ft": 16384,
 		"iS": 14866,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_seinfeld.jpg",
 		"oF": 0,
@@ -9055,6 +9150,7 @@
 	"\/public\/uploads\/greyscale_Senecio2.jpg": {
 		"ft": 16384,
 		"iS": 83538,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Senecio2.jpg",
 		"oF": 0,
@@ -9065,6 +9161,7 @@
 	"\/public\/uploads\/greyscale_steinfeld.jpg": {
 		"ft": 16384,
 		"iS": 203800,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_steinfeld.jpg",
 		"oF": 0,
@@ -9075,6 +9172,7 @@
 	"\/public\/uploads\/greyscale_steinfeld_1.jpg": {
 		"ft": 16384,
 		"iS": 203800,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_steinfeld_1.jpg",
 		"oF": 0,
@@ -9085,6 +9183,7 @@
 	"\/public\/uploads\/greyscale_SteveRogers-o.jpg": {
 		"ft": 16384,
 		"iS": 16313,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_SteveRogers-o.jpg",
 		"oF": 0,
@@ -9095,6 +9194,7 @@
 	"\/public\/uploads\/greyscale_tad_profile02.jpg": {
 		"ft": 16384,
 		"iS": 60783,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_tad_profile02.jpg",
 		"oF": 0,
@@ -9116,6 +9216,7 @@
 	"\/public\/uploads\/greyscale_William-Gibson.jpg": {
 		"ft": 16384,
 		"iS": 12607,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_William-Gibson.jpg",
 		"oF": 0,
@@ -9137,6 +9238,7 @@
 	"\/public\/uploads\/greyscale_woody.jpg": {
 		"ft": 16384,
 		"iS": 125127,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_woody.jpg",
 		"oF": 0,
@@ -9158,6 +9260,7 @@
 	"\/public\/uploads\/greyscale_Xunzi.jpg": {
 		"ft": 16384,
 		"iS": 56335,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Xunzi.jpg",
 		"oF": 0,
@@ -9168,6 +9271,7 @@
 	"\/public\/uploads\/greyscale_Xunzi_1.jpg": {
 		"ft": 16384,
 		"iS": 56895,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_Xunzi_1.jpg",
 		"oF": 0,
@@ -9178,6 +9282,7 @@
 	"\/public\/uploads\/greyscale_young-steve-jobs-photo.jpg": {
 		"ft": 16384,
 		"iS": 83401,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_young-steve-jobs-photo.jpg",
 		"oF": 0,
@@ -9188,6 +9293,7 @@
 	"\/public\/uploads\/greyscale_young-steve-jobs-photo2.jpg": {
 		"ft": 16384,
 		"iS": 57426,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/greyscale_young-steve-jobs-photo2.jpg",
 		"oF": 0,
@@ -9198,6 +9304,7 @@
 	"\/public\/uploads\/hemmings_henryford.jpg": {
 		"ft": 16384,
 		"iS": 764466,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/hemmings_henryford.jpg",
 		"oF": 0,
@@ -9208,6 +9315,7 @@
 	"\/public\/uploads\/hemmings_henryford_1.jpg": {
 		"ft": 16384,
 		"iS": 764466,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/hemmings_henryford_1.jpg",
 		"oF": 0,
@@ -9218,6 +9326,7 @@
 	"\/public\/uploads\/hemmings_henryford_2.jpg": {
 		"ft": 16384,
 		"iS": 632697,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/hemmings_henryford_2.jpg",
 		"oF": 0,
@@ -9228,6 +9337,7 @@
 	"\/public\/uploads\/HenryZJames.jpg": {
 		"ft": 16384,
 		"iS": 202218,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/HenryZJames.jpg",
 		"oF": 0,
@@ -9238,6 +9348,7 @@
 	"\/public\/uploads\/home-rumi.jpg": {
 		"ft": 16384,
 		"iS": 26316,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/home-rumi.jpg",
 		"oF": 0,
@@ -9259,6 +9370,7 @@
 	"\/public\/uploads\/itzik999_pablo-picasso1381091876037.jpg": {
 		"ft": 16384,
 		"iS": 158794,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/itzik999_pablo-picasso1381091876037.jpg",
 		"oF": 0,
@@ -9269,6 +9381,7 @@
 	"\/public\/uploads\/Jaguar.jpg": {
 		"ft": 16384,
 		"iS": 791958,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Jaguar.jpg",
 		"oF": 0,
@@ -9279,6 +9392,7 @@
 	"\/public\/uploads\/james-goldsmith.jpg": {
 		"ft": 16384,
 		"iS": 13332,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/james-goldsmith.jpg",
 		"oF": 0,
@@ -9289,6 +9403,7 @@
 	"\/public\/uploads\/jeffrey-veen.jpg": {
 		"ft": 16384,
 		"iS": 131656,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/jeffrey-veen.jpg",
 		"oF": 0,
@@ -9299,6 +9414,7 @@
 	"\/public\/uploads\/John-Lennon.jpg": {
 		"ft": 16384,
 		"iS": 142387,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/John-Lennon.jpg",
 		"oF": 0,
@@ -9309,6 +9425,7 @@
 	"\/public\/uploads\/john-muir.jpg": {
 		"ft": 16384,
 		"iS": 208376,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/john-muir.jpg",
 		"oF": 0,
@@ -9319,6 +9436,7 @@
 	"\/public\/uploads\/julian-assange.jpg": {
 		"ft": 16384,
 		"iS": 45868,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/julian-assange.jpg",
 		"oF": 0,
@@ -9329,6 +9447,7 @@
 	"\/public\/uploads\/ken-blanchard.jpeg": {
 		"ft": 16384,
 		"iS": 30329,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/ken-blanchard.jpg",
 		"oF": 0,
@@ -9339,6 +9458,7 @@
 	"\/public\/uploads\/kevin-ashton.jpeg": {
 		"ft": 16384,
 		"iS": 147187,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/kevin-ashton.jpg",
 		"oF": 0,
@@ -9349,6 +9469,7 @@
 	"\/public\/uploads\/kevinbarnett.jpg": {
 		"ft": 16384,
 		"iS": 31831,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/kevinbarnett.jpg",
 		"oF": 0,
@@ -9359,6 +9480,7 @@
 	"\/public\/uploads\/luke-yoda.jpg": {
 		"ft": 16384,
 		"iS": 50068,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/luke-yoda.jpg",
 		"oF": 0,
@@ -9369,6 +9491,7 @@
 	"\/public\/uploads\/maimonides.jpg": {
 		"ft": 16384,
 		"iS": 216593,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/maimonides.jpg",
 		"oF": 0,
@@ -9379,6 +9502,7 @@
 	"\/public\/uploads\/marshall-mcluhan.jpg": {
 		"ft": 16384,
 		"iS": 33868,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/marshall-mcluhan.jpg",
 		"oF": 0,
@@ -9389,6 +9513,7 @@
 	"\/public\/uploads\/MB-teaching.jpg": {
 		"ft": 16384,
 		"iS": 63543,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/MB-teaching.jpg",
 		"oF": 0,
@@ -9399,6 +9524,7 @@
 	"\/public\/uploads\/milton_glaser.jpg": {
 		"ft": 16384,
 		"iS": 114879,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/milton_glaser.jpg",
 		"oF": 0,
@@ -9409,6 +9535,7 @@
 	"\/public\/uploads\/miss-alabama.jpg": {
 		"ft": 16384,
 		"iS": 44192,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/miss-alabama.jpg",
 		"oF": 0,
@@ -9419,6 +9546,7 @@
 	"\/public\/uploads\/Nelle_Harper_Lee-o.jpg": {
 		"ft": 16384,
 		"iS": 33374,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Nelle_Harper_Lee-o.jpg",
 		"oF": 0,
@@ -9429,6 +9557,7 @@
 	"\/public\/uploads\/Nelle_Harper_Lee-o_1.jpg": {
 		"ft": 16384,
 		"iS": 34120,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Nelle_Harper_Lee-o_1.jpg",
 		"oF": 0,
@@ -9439,6 +9568,7 @@
 	"\/public\/uploads\/Nicolas_Boileau_1.jpg": {
 		"ft": 16384,
 		"iS": 150063,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Nicolas_Boileau_1.jpg",
 		"oF": 0,
@@ -9449,6 +9579,7 @@
 	"\/public\/uploads\/oscar4-wilde.jpg": {
 		"ft": 16384,
 		"iS": 18508,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/oscar4-wilde.jpg",
 		"oF": 0,
@@ -9459,6 +9590,7 @@
 	"\/public\/uploads\/otl-aicher.jpg": {
 		"ft": 16384,
 		"iS": 46908,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/otl-aicher.jpg",
 		"oF": 0,
@@ -9469,6 +9601,7 @@
 	"\/public\/uploads\/otl-aicher_1.jpg": {
 		"ft": 16384,
 		"iS": 102667,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/otl-aicher_1.jpg",
 		"oF": 0,
@@ -9512,6 +9645,7 @@
 	"\/public\/uploads\/retr_AlanTuring.jpg": {
 		"ft": 16384,
 		"iS": 21515,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/retr_AlanTuring.jpg",
 		"oF": 0,
@@ -9522,6 +9656,7 @@
 	"\/public\/uploads\/Samlevenson.jpg": {
 		"ft": 16384,
 		"iS": 65123,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Samlevenson.jpg",
 		"oF": 0,
@@ -9532,6 +9667,7 @@
 	"\/public\/uploads\/seinfeld.jpg": {
 		"ft": 16384,
 		"iS": 32897,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/seinfeld.jpg",
 		"oF": 0,
@@ -9542,6 +9678,7 @@
 	"\/public\/uploads\/Senecio2.jpg": {
 		"ft": 16384,
 		"iS": 43821,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Senecio2.jpg",
 		"oF": 0,
@@ -9552,6 +9689,7 @@
 	"\/public\/uploads\/serval_batman.jpg": {
 		"ft": 16384,
 		"iS": 21666,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/serval_batman.jpg",
 		"oF": 0,
@@ -9562,6 +9700,7 @@
 	"\/public\/uploads\/steinfeld.jpg": {
 		"ft": 16384,
 		"iS": 235622,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/steinfeld.jpg",
 		"oF": 0,
@@ -9572,6 +9711,7 @@
 	"\/public\/uploads\/steinfeld_1.jpg": {
 		"ft": 16384,
 		"iS": 235622,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/steinfeld_1.jpg",
 		"oF": 0,
@@ -9582,6 +9722,7 @@
 	"\/public\/uploads\/SteveRogers-o.jpg": {
 		"ft": 16384,
 		"iS": 67048,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/SteveRogers-o.jpg",
 		"oF": 0,
@@ -9592,6 +9733,7 @@
 	"\/public\/uploads\/tad_profile02.jpg": {
 		"ft": 16384,
 		"iS": 92107,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/tad_profile02.jpg",
 		"oF": 0,
@@ -9624,6 +9766,7 @@
 	"\/public\/uploads\/William-Gibson.jpg": {
 		"ft": 16384,
 		"iS": 13291,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/William-Gibson.jpg",
 		"oF": 0,
@@ -9645,6 +9788,7 @@
 	"\/public\/uploads\/woody.jpg": {
 		"ft": 16384,
 		"iS": 170834,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/woody.jpg",
 		"oF": 0,
@@ -9666,6 +9810,7 @@
 	"\/public\/uploads\/Xunzi.jpg": {
 		"ft": 16384,
 		"iS": 86099,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Xunzi.jpg",
 		"oF": 0,
@@ -9676,6 +9821,7 @@
 	"\/public\/uploads\/Xunzi_1.jpg": {
 		"ft": 16384,
 		"iS": 111304,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/Xunzi_1.jpg",
 		"oF": 0,
@@ -9686,6 +9832,7 @@
 	"\/public\/uploads\/young-steve-jobs-photo.jpg": {
 		"ft": 16384,
 		"iS": 77313,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/young-steve-jobs-photo.jpg",
 		"oF": 0,
@@ -9696,6 +9843,7 @@
 	"\/public\/uploads\/young-steve-jobs-photo2.jpg": {
 		"ft": 16384,
 		"iS": 158991,
+		"jF": 0,
 		"oA": 0,
 		"oAP": "\/public\/uploads\/young-steve-jobs-photo2.jpg",
 		"oF": 0,
@@ -9712,7 +9860,8 @@
 	"creationDate": 543000457,
 	"displayValue": "That's The Spirit(docker)",
 	"displayValueWasSetByUser": 1,
-	"iconImageName": "meme-punDog"
+	"iconImageName": "\/public\/assets\/img\/icons\/apple-touch-icon-120x120.png",
+	"iconImageWasSetByUser": 0
 	},
 "projectSettings": {
 	"abortBuildOnError": 1,
@@ -11515,6 +11664,7 @@
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
 		"autoOutputPathStyle": 0,
+		"outputFormat": 0,
 		"quality": 100
 		},
 	"languageDefaultsJS": {

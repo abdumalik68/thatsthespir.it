@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e26d44b8a92d148ba5fd673be3e548bd",
+    "content-hash": "f1abac4a39b4d425ca19bd9845ba47ff",
     "packages": [
         {
             "name": "bcosca/fatfree",
-            "version": "3.6.3",
+            "version": "3.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcosca/fatfree.git",
-                "reference": "1d1fe8fee4ec868d9ce5f90973b722c9c2515428"
+                "reference": "a841d838e8f146486d85e4947fb92e2fa78fdeb8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcosca/fatfree/zipball/1d1fe8fee4ec868d9ce5f90973b722c9c2515428",
-                "reference": "1d1fe8fee4ec868d9ce5f90973b722c9c2515428",
+                "url": "https://api.github.com/repos/bcosca/fatfree/zipball/a841d838e8f146486d85e4947fb92e2fa78fdeb8",
+                "reference": "a841d838e8f146486d85e4947fb92e2fa78fdeb8",
                 "shasum": ""
             },
             "require": {
@@ -35,20 +35,20 @@
             ],
             "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
             "homepage": "http://fatfreeframework.com/",
-            "time": "2017-12-31T14:47:25+00:00"
+            "time": "2018-12-24T13:43:34+00:00"
         },
         {
             "name": "bcosca/fatfree-core",
-            "version": "3.6.3",
+            "version": "3.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcosca/fatfree-core.git",
-                "reference": "b35fe7ae88f6f3667c50c36563b50e5a1ec36bb1"
+                "reference": "c5aa056d2111e666e87f6129fe633c6a2aeeaae2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/b35fe7ae88f6f3667c50c36563b50e5a1ec36bb1",
-                "reference": "b35fe7ae88f6f3667c50c36563b50e5a1ec36bb1",
+                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/c5aa056d2111e666e87f6129fe633c6a2aeeaae2",
+                "reference": "c5aa056d2111e666e87f6129fe633c6a2aeeaae2",
                 "shasum": ""
             },
             "require": {
@@ -66,20 +66,20 @@
             ],
             "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
             "homepage": "http://fatfreeframework.com/",
-            "time": "2017-12-31T14:47:39+00:00"
+            "time": "2018-12-24T13:37:45+00:00"
         },
         {
             "name": "facebook/graph-sdk",
-            "version": "5.6.2",
+            "version": "5.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facebook/php-graph-sdk.git",
-                "reference": "030f8c5b9b1a6c09e71719fd638b66ea4daa2f10"
+                "reference": "2d8250638b33d73e7a87add65f47fabf91f8ad9b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/030f8c5b9b1a6c09e71719fd638b66ea4daa2f10",
-                "reference": "030f8c5b9b1a6c09e71719fd638b66ea4daa2f10",
+                "url": "https://api.github.com/repos/facebook/php-graph-sdk/zipball/2d8250638b33d73e7a87add65f47fabf91f8ad9b",
+                "reference": "2d8250638b33d73e7a87add65f47fabf91f8ad9b",
                 "shasum": ""
             },
             "require": {
@@ -124,20 +124,20 @@
                 "facebook",
                 "sdk"
             ],
-            "time": "2018-02-14T23:24:51+00:00"
+            "time": "2018-12-11T22:56:31+00:00"
         },
         {
             "name": "hybridauth/hybridauth",
-            "version": "v2.10.0",
+            "version": "v2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridauth/hybridauth.git",
-                "reference": "57f5a5bf677be6303cd23467e3d1d302f3f0777a"
+                "reference": "82cd9c0ca5bb907d694dc9813b8600b4246bf4af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/57f5a5bf677be6303cd23467e3d1d302f3f0777a",
-                "reference": "57f5a5bf677be6303cd23467e3d1d302f3f0777a",
+                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/82cd9c0ca5bb907d694dc9813b8600b4246bf4af",
+                "reference": "82cd9c0ca5bb907d694dc9813b8600b4246bf4af",
                 "shasum": ""
             },
             "require": {
@@ -181,20 +181,20 @@
                 "twitter",
                 "yahoo"
             ],
-            "time": "2017-11-29T17:29:38+00:00"
+            "time": "2019-03-25T16:11:24+00:00"
         },
         {
             "name": "paypal/rest-api-sdk-php",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paypal/PayPal-PHP-SDK.git",
-                "reference": "192e217beed14c8e75624e821fdc8ec51e2a21f5"
+                "reference": "72e2f2466975bf128a31e02b15110180f059fc04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/192e217beed14c8e75624e821fdc8ec51e2a21f5",
-                "reference": "192e217beed14c8e75624e821fdc8ec51e2a21f5",
+                "url": "https://api.github.com/repos/paypal/PayPal-PHP-SDK/zipball/72e2f2466975bf128a31e02b15110180f059fc04",
+                "reference": "72e2f2466975bf128a31e02b15110180f059fc04",
                 "shasum": ""
             },
             "require": {
@@ -230,20 +230,20 @@
                 "rest",
                 "sdk"
             ],
-            "time": "2017-11-13T19:21:59+00:00"
+            "time": "2019-01-04T20:04:25+00:00"
         },
         {
             "name": "psr/log",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
                 "shasum": ""
             },
             "require": {
@@ -277,20 +277,20 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2018-11-20T15:27:04+00:00"
         },
         {
             "name": "verot/class.upload.php",
-            "version": "0.33",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verot/class.upload.php.git",
-                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7"
+                "reference": "28de54ee2ba5a30609eae26d76a15979a94568f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/79125bcdcd17fda24ce7ff681f2066ae42097ec7",
-                "reference": "79125bcdcd17fda24ce7ff681f2066ae42097ec7",
+                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/28de54ee2ba5a30609eae26d76a15979a94568f1",
+                "reference": "28de54ee2ba5a30609eae26d76a15979a94568f1",
                 "shasum": ""
             },
             "require": {
@@ -304,7 +304,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPLv2"
+                "GPL-2.0-only"
             ],
             "authors": [
                 {
@@ -318,7 +318,7 @@
                 "gd",
                 "upload"
             ],
-            "time": "2016-07-16T19:59:53+00:00"
+            "time": "2019-04-03T12:45:51+00:00"
         },
         {
             "name": "xfra35/f3-cron",
@@ -361,7 +361,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "verot/class.upload.php": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
