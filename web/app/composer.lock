@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bcosca/fatfree",
-            "version": "3.7.0",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcosca/fatfree.git",
-                "reference": "7bd8c57fad088e0ec4983a029f248b785d5e0aab"
+                "reference": "495a97c9957a9edfbaea362927be6f3faa96fc52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcosca/fatfree/zipball/7bd8c57fad088e0ec4983a029f248b785d5e0aab",
-                "reference": "7bd8c57fad088e0ec4983a029f248b785d5e0aab",
+                "url": "https://api.github.com/repos/bcosca/fatfree/zipball/495a97c9957a9edfbaea362927be6f3faa96fc52",
+                "reference": "495a97c9957a9edfbaea362927be6f3faa96fc52",
                 "shasum": ""
             },
             "require": {
@@ -35,20 +35,20 @@
             ],
             "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
             "homepage": "http://fatfreeframework.com/",
-            "time": "2019-11-26T16:18:40+00:00"
+            "time": "2019-12-30T20:54:35+00:00"
         },
         {
             "name": "bcosca/fatfree-core",
-            "version": "3.7.0",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bcosca/fatfree-core.git",
-                "reference": "20245caf8bf6d70dcf669c75ed308d3b7d9f7927"
+                "reference": "64318caa00de4da0f558d2334dc70538bdbcd1ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/20245caf8bf6d70dcf669c75ed308d3b7d9f7927",
-                "reference": "20245caf8bf6d70dcf669c75ed308d3b7d9f7927",
+                "url": "https://api.github.com/repos/bcosca/fatfree-core/zipball/64318caa00de4da0f558d2334dc70538bdbcd1ad",
+                "reference": "64318caa00de4da0f558d2334dc70538bdbcd1ad",
                 "shasum": ""
             },
             "require": {
@@ -66,20 +66,20 @@
             ],
             "description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
             "homepage": "http://fatfreeframework.com/",
-            "time": "2019-11-26T11:58:06+00:00"
+            "time": "2019-12-30T20:49:06+00:00"
         },
         {
             "name": "hybridauth/hybridauth",
-            "version": "v3.0.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hybridauth/hybridauth.git",
-                "reference": "be337a4a79bdb3b0587c81e202e674b40b125bcb"
+                "reference": "020be6991e7ae9f1ffaabae6586245d2a9626273"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/be337a4a79bdb3b0587c81e202e674b40b125bcb",
-                "reference": "be337a4a79bdb3b0587c81e202e674b40b125bcb",
+                "url": "https://api.github.com/repos/hybridauth/hybridauth/zipball/020be6991e7ae9f1ffaabae6586245d2a9626273",
+                "reference": "020be6991e7ae9f1ffaabae6586245d2a9626273",
                 "shasum": ""
             },
             "require": {
@@ -123,20 +123,20 @@
                 "social",
                 "twitter"
             ],
-            "time": "2019-05-31T15:20:03+00:00"
+            "time": "2019-12-27T09:26:40+00:00"
         },
         {
             "name": "tracy/tracy",
-            "version": "v2.7.1",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tracy.git",
-                "reference": "16691cf8b609b238a9a3596ee2878183a91b6446"
+                "reference": "d28ebdf7ab8d88f231310aef1e8cce965ea0b2ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tracy/zipball/16691cf8b609b238a9a3596ee2878183a91b6446",
-                "reference": "16691cf8b609b238a9a3596ee2878183a91b6446",
+                "url": "https://api.github.com/repos/nette/tracy/zipball/d28ebdf7ab8d88f231310aef1e8cce965ea0b2ca",
+                "reference": "d28ebdf7ab8d88f231310aef1e8cce965ea0b2ca",
                 "shasum": ""
             },
             "require": {
@@ -151,6 +151,7 @@
                 "nette/di": "^3.0",
                 "nette/tester": "^2.2",
                 "nette/utils": "^3.0",
+                "phpstan/phpstan": "^0.12",
                 "psr/log": "^1.0"
             },
             "suggest": {
@@ -193,20 +194,20 @@
                 "nette",
                 "profiler"
             ],
-            "time": "2019-11-02T20:12:14+00:00"
+            "time": "2019-12-15T22:48:05+00:00"
         },
         {
             "name": "verot/class.upload.php",
-            "version": "2.0.3",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/verot/class.upload.php.git",
-                "reference": "339cc81b8fb25f0d94e24fd077e54d3a9da9ec93"
+                "reference": "bec90d3c3a1e60f9bf066c0595c90a3dc9c143e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/339cc81b8fb25f0d94e24fd077e54d3a9da9ec93",
-                "reference": "339cc81b8fb25f0d94e24fd077e54d3a9da9ec93",
+                "url": "https://api.github.com/repos/verot/class.upload.php/zipball/bec90d3c3a1e60f9bf066c0595c90a3dc9c143e0",
+                "reference": "bec90d3c3a1e60f9bf066c0595c90a3dc9c143e0",
                 "shasum": ""
             },
             "require": {
@@ -234,7 +235,7 @@
                 "gd",
                 "upload"
             ],
-            "time": "2019-10-10T12:24:48+00:00"
+            "time": "2020-01-12T21:16:22+00:00"
         },
         {
             "name": "wixel/gump",
@@ -242,13 +243,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wixel/GUMP.git",
-                "reference": "26de1a52d20fe9178d418c368ab4fefdb973e72c"
+                "reference": "8d344c2b4dfd290c5ce1532ffc86252d6c8a5ea2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wixel/GUMP/zipball/26de1a52d20fe9178d418c368ab4fefdb973e72c",
-                "reference": "26de1a52d20fe9178d418c368ab4fefdb973e72c",
+                "url": "https://api.github.com/repos/Wixel/GUMP/zipball/8d344c2b4dfd290c5ce1532ffc86252d6c8a5ea2",
+                "reference": "8d344c2b4dfd290c5ce1532ffc86252d6c8a5ea2",
                 "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^8"
             },
             "type": "library",
             "autoload": {
@@ -272,7 +276,7 @@
             ],
             "description": "A fast, extensible & stand-alone PHP input validation class that allows you to validate any data",
             "homepage": "https://wixelhq.com/",
-            "time": "2019-09-16T08:41:54+00:00"
+            "time": "2020-02-15T12:04:57+00:00"
         },
         {
             "name": "xfra35/f3-cron",

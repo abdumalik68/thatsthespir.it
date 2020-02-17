@@ -48,7 +48,6 @@ header("Access-Control-Allow-Origin: *");
 $f3->set('CORS.origin', '*');
 $f3->copy('HEADERS.Origin', 'CORS.origin');
 
-
 $db = new DB\SQL(
     'mysql:host=' . $f3->DB_HOST . ';port=3306;dbname=' . $f3->DB_NAME . ';charset=utf8',
     $f3->DB_USER,
