@@ -27,7 +27,7 @@ class Quote
         $this->f3 = $f3;
         $this->db = $db;
         $this->quote = new DB\SQL\Mapper($db, 'quotes', null, $this->f3->DB_CACHE_EXPIRATION);
-        $f3->set('CORS.origin', '*');
+        // $f3->set('CORS.origin', '*');
     }
 
     function get($f3, $params)

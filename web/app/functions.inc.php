@@ -6,7 +6,6 @@
 function send_json($data)
 {
 
-	header('Access-Control-Allow-Origin: *');
 	header('content-type: application/json; charset=utf-8');
 	echo json_encode($data);
 	//exit;
