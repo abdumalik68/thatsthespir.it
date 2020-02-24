@@ -106,22 +106,22 @@ if (isset($_GET['quote_id'])) {
 
 // App-wide routes
 $f3->route('GET /', 'TheSpirit->get', (int) $f3->STATIC_CACHE_EXPIRATION);
-$f3->route('GET /api/v1', 'TheSpirit->get_api', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /v1', 'TheSpirit->get_api', (int) $f3->STATIC_CACHE_EXPIRATION);
 //$f3->route('GET /rss', 'TheSpirit->get_rss_feed', (int) $f3->STATIC_CACHE_EXPIRATION);
 //$f3->route('GET /sitemap.xml', 'TheSpirit->get_xml_sitemap', (int) $f3->STATIC_CACHE_EXPIRATION);
 
 // Content routes
-$f3->map('/api/v1/quote/@slug', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
-$f3->map('/api/v1/author/@slug', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);
-$f3->route('GET /api/v1/quote/random', 'Quote->get_random');
-$f3->route('GET /api/v1/quote/random.xml', 'Quote->get_random');
-$f3->route('GET /api/v1/human-channels', 'Author->get_all_authors', (int) $f3->STATIC_CACHE_EXPIRATION);
-$f3->route('GET /api/v1/quotes/search', 'Quotes->search');
-// $f3->route('GET /api/v1/quotes/fix-slugs', 'Quotes->fixSlugs');
+$f3->map('/v1/quote/@slug', 'Quote', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->map('/v1/author/@slug', 'Author', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /v1/quote/random', 'Quote->get_random');
+$f3->route('GET /v1/quote/random.xml', 'Quote->get_random');
+$f3->route('GET /v1/human-channels', 'Author->get_all_authors', (int) $f3->STATIC_CACHE_EXPIRATION);
+$f3->route('GET /v1/quotes/search', 'Quotes->search');
+// $f3->route('GET /v1/quotes/fix-slugs', 'Quotes->fixSlugs');
 
-// auth
-// $f3->route('GET|POST /v1/user/logout', 'User->logout');
-$f3->route('GET|POST @auth_action: /auth', 'Authentication->login');
+// // auth
+// // $f3->route('GET|POST /v1/user/logout', 'User->logout');
+// $f3->route('GET|POST @auth_action: /auth', 'Authentication->login');
 
 // done, let's go!
 $f3->run();
