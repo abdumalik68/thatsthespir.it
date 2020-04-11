@@ -2,11 +2,20 @@
 
 # To do
 
-Latest to-do & roadmap [is on GitHub](https://github.com/pixeline/thatsthespirit-react/projects/1).
+Latest to-do & roadmap [is on GitHub](https://github.com/pixeline/thatsthespir.it/projects/1).
 
-## Nginx PHP MySQL [![Build Status](https://travis-ci.org/nanoninja/docker-nginx-php-mysql.svg?branch=master)](https://travis-ci.org/nanoninja/docker-nginx-php-mysql) [![GitHub version](https://badge.fury.io/gh/nanoninja%2Fdocker-nginx-php-mysql.svg)](https://badge.fury.io/gh/nanoninja%2Fdocker-nginx-php-mysql)
+## Hosting
+instance gandi pixeline03 (46.226.108.217)
+
+---
+
+
+## Architecture of this Repository
 
 Docker running Nginx, PHP-FPM, Composer, MySQL and PHPMyAdmin.
+
+Using [Nanoninja Docker-compose setup](https://travis-ci.org/nanoninja/docker-nginx-php-mysql.svg?branch=master)](https://travis-ci.org/nanoninja/docker-nginx-php-mysql) [![GitHub version](https://badge.fury.io/gh/nanoninja%2Fdocker-nginx-php-mysql.svg)](https://badge.fury.io/gh/nanoninja%2Fdocker-nginx-php-mysql)
+
 
 ## Overview
 
