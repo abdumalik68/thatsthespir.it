@@ -11,4 +11,4 @@ $slug = $quote->slug;
 $author = $quote->author_slug;
 
 
-$f3->reroute('@quote_action(@slug=' . $slug .  ',@author=' . $author . ')');
+$f3->reroute('@quote_action(@slug=' . $slug .  ',@author=' . $author . ')', true);
