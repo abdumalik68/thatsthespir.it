@@ -9,7 +9,7 @@ $quote = new Spirit();
 $item = $quote->get('random_unique_with_photo');
 $rss1 = array();
 if (is_object($item)) {
-    $permalink = WWWROOT . '/quote/view/' . $item->quote_id;
+    $permalink = WWWROOT . '/of/' . $item->author_slug . '/' . $item->slug;
     $favourite_link = WWWROOT . '/quote/favourite/' . $item->quote_id;
     $filename = $_SERVER['DOCUMENT_ROOT'] . UPLOADS . '/' . $item->photo;
     $share_message = urlencode($item->quote . "\n– " . $item->fullname);
@@ -33,11 +33,7 @@ if (is_object($item)) {
 			</div>';
 
     $rss1[] = (object) [
-        'title' => truncate($item->quote, 250)
-        , 'description' => $description
-        , 'url' => $permalink
-        , 'category' => $item->tags
-        , 'date' => date("r", strtotime("-2 hour")),
+        'title' => truncate($item->quote, 250), 'description' => $description, 'url' => $permalink, 'category' => $item->tags, 'date' => date("r", strtotime("-2 hour")),
     ];
 }
 header('Content-Type: text/xml; charset=utf-8');

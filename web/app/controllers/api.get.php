@@ -14,7 +14,7 @@ $author->load(array('id=?', $random->author_id));
 $_SESSION['used_quotes'][] = $random->id;
 $photo = (!empty($author->photo)) ? WWWROOT . '/uploads/' . $author->photo : '';
 
-$result = array('quote' => $random->quote, 'author' => $author->fullname, 'id' => $random->id, 'permalink' => WWWROOT . '/quote/view/' . $random->id, 'photo' => $photo, 'gender' => $author->gender, 'slug' => $author->slug, 'total_quotes' => $author->total);
+$result = array('quote' => $random->quote, 'author' => $author->fullname, 'id' => $random->id, 'permalink' => WWWROOT . '/of/' . $random->author_slug . '/' . $random->slug, 'photo' => $photo, 'gender' => $author->gender, 'slug' => $author->slug, 'total_quotes' => $author->total);
 
 header('Access-Control-Allow-Origin: *');
 header('content-type: application/json; charset=utf-8');

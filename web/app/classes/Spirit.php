@@ -54,7 +54,7 @@ class Spirit
                 break;
 
             case 'sitemap':
-                return $db->exec("SELECT CONCAT('/quote/view/',id) as url FROM quotes WHERE status='online' UNION SELECT CONCAT('/of/',slug) as url FROM authors");
+                return $db->exec("SELECT CONCAT('/of/',author_slug, '/',slug) as url FROM all_quotes_full WHERE status='online' UNION SELECT CONCAT('/of/',slug) as url FROM authors");
                 break;
 
             case 'author_chart':

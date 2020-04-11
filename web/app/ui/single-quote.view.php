@@ -46,7 +46,7 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 				</a>
 
 				|
-				<a rel="nofollow" class="social favourite <?php echo (LOGGED_IN && $quote->user_likes_it > 0) ? 'liked' : '' ?>" data-quote="<?php echo $quote->slug; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/' . $quote->slug : CURRENT_URI . '#login-ui'; ?>" title="Favourite this quote so you can easily find it later. <?php echo (!empty($likers)) ? 'Liked by: ' . strip_tags($likers) : ''; ?>">
+				<a rel="nofollow" class="social favourite <?php echo (LOGGED_IN && $quote->user_likes_it > 0) ? 'liked' : '' ?>" data-quote="<?php echo $quote->id; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/' . $quote->id : CURRENT_URI . '#login-ui'; ?>" title="Favourite this quote so you can easily find it later. <?php echo (!empty($likers)) ? 'Liked by: ' . strip_tags($likers) : ''; ?>">
 					<em>Save it ?</em>&nbsp;
 					<span class="total_likes" data-likers="<?php echo $likers ?>"><?php echo $quote->total_likes ?></span>
 				</a>
@@ -59,12 +59,12 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 					<?php
 					if (($quote->status == 'pending')) {
 					?>
-						| <a href="/quote/validate/<?php echo $quote->slug; ?>">Accept quote</a>
+						| <a href="/quote/validate/<?php echo $quote->id; ?>">Accept quote</a>
 					<?php
 					}
 					?>
-					| <a href="/quote/delete/<?php echo $quote->slug; ?>">X Delete quote</a>
-					| <a href="/quote/edit/<?php echo $quote->slug; ?>">Edit quote</a>
+					| <a href="/quote/delete/<?php echo $quote->id; ?>">X Delete quote</a>
+					| <a href="/quote/edit/<?php echo $quote->id; ?>">Edit quote</a>
 				<?php
 				}
 				?>
