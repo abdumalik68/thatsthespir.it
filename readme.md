@@ -2,7 +2,16 @@
 
 Docker running Nginx, PHP-FPM, Composer, MySQL and PHPMyAdmin.
 
-## Overview
+
+## Deployment
+
+hosting: pixeline03
+to deploy:  `git push production master`
+
+---
+
+
+## Local Setup
 
 1. [Install prerequisites](#install-prerequisites)
 
@@ -44,7 +53,7 @@ All requisites should be available for your distribution. The most important are
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Docker Compose](https://docs.docker.com/compose/install/)
 
-Check if `docker-compose` is already installed by entering the following command : 
+Check if `docker-compose` is already installed by entering the following command :
 
 ```sh
 which docker-compose
@@ -90,13 +99,13 @@ This project use the following ports :
 
 ## Clone the project
 
-To install [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), download it and install following the instructions : 
+To install [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git), download it and install following the instructions :
 
 ```sh
 git clone https://github.com/nanoninja/docker-nginx-php-mysql.git
 ```
 
-Go to the project directory : 
+Go to the project directory :
 
 ```sh
 cd docker-nginx-php-mysql
@@ -189,7 +198,7 @@ For a better integration of Docker to PHPStorm, use the [documentation](https://
 
 ## Run the application
 
-1. Copying the composer configuration file : 
+1. Copying the composer configuration file :
 
     ```sh
     cp web/app/composer.json.dist web/app/composer.json
@@ -241,7 +250,7 @@ When developing, you can use [Makefile](https://en.wikipedia.org/wiki/Make_(soft
 
 ### Examples
 
-Start the application : 
+Start the application :
 
 ```sh
 sudo make docker-start
