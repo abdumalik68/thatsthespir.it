@@ -157,18 +157,21 @@ $f3->route('GET|POST @author_add: /author/add', function ($f3) {
 $f3->route('GET|POST @quote_add: /quote/add', function ($f3) {
     include APP_PATH . '/controllers/quote-add.get.post.php';
 });
-
-$f3->route('GET|POST @quote_action: /quote/@action/@id', function ($f3) {
+$f3->route('GET /of/@author', function ($f3) {
+    include APP_PATH . '/controllers/author-single.get.php';
+});
+$f3->route('GET|POST @quote_action: /of/@author/@slug', function ($f3) {
     include APP_PATH . '/controllers/quote-action.get.post.php';
+});
+$f3->route('GET|POST @quote_action_id: /quote/@action/@id', function ($f3) {
+    include APP_PATH . '/controllers/redirectFromIdToSlug.php';
 });
 
 $f3->route('GET @pending_quotes: /pending', function ($f3) {
     include APP_PATH . '/controllers/pending-quotes.get.php';
 });
 
-$f3->route('GET /of/@author', function ($f3) {
-    include APP_PATH . '/controllers/author-single.get.php';
-});
+
 
 $f3->route('GET @auth: /auth', function ($f3) {
     include APP_PATH . '/vendor/hybridauth/hybridauth/hybridauth/index.php';
