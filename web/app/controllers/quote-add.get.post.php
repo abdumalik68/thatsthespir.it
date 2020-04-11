@@ -14,6 +14,8 @@ $f3->set('tags', $tags);
 $quote = new DB\SQL\Mapper($db, 'quotes');
 
 if (!empty($_POST)) {
+    $f3->set('POST.slug', create_slug($f3->get('POST.quote')));
+
     //overwrite with values just submitted
     $quote->copyFrom('POST');
     if (!isset($_POST['status'])) {
@@ -21,6 +23,7 @@ if (!empty($_POST)) {
     }
     $quote->tags_id = implode(',', $f3->get('POST.tags_id'));
     $quote->submitted_by = $_SESSION['user']['id'];
+    $f3->set('POST.slug', $f3->get('POST.quote'));
 
     $quote->save();
 

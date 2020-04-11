@@ -193,6 +193,13 @@ $f3->route('GET @fix_totals: /fix-author-totals', function ($f3) {
     include APP_PATH . '/controllers/fix-author-totals.get.php';
 });
 
+$f3->route('GET @fix_slugs: /fix-slugs', function ($f3) {
+    fixSlugs($f3);
+});
+
+
+
+
 $f3->route('GET @privacy_policy: /privacy-policy', function ($f3) {
     include APP_PATH . '/controllers/privacy-policy.get.php';
 });
