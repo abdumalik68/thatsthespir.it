@@ -1,13 +1,13 @@
 <?php
 
 if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
-	?>
+?>
 	<h2 class="ui-title topline topic-title">On <?php echo html_entity_decode($tags->name); ?></h2>
 <?php
 }
 ?>
 <figure class="quote">
-	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source : '/quote/' . $quote->id; ?>">
+	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source : '/quote/' . $quote->slug; ?>">
 		<span class="guillemets"></span>
 		<span class="the-quote"><?php echo (isset($quote->quote)) ? html_entity_decode($quote->quote) : ''; ?></span>
 		<span class="pilcrow">|</span>
@@ -16,7 +16,7 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 
 		<?php
 		if ($body_class !== 'of-author') {
-			?>
+		?>
 			<div class="photo <?php echo (!$showLargeAvatar) ? 'avatar-small' : ''; ?>" data-author="<?php echo $author->fullname; ?>" <?php echo (!empty($author->photo)) ? 'style="background-image: url(' . $upload_folder . '/' . $author->photo . ');"' : 'data-photo="none"'; ?> <?php echo ($author->gender == 'f') ? 'class="woman"' : '' ?>>&nbsp;</div>
 
 			<address class="author">– <a title="All quotes by <?php echo ucfirst($author->fullname); ?>" href="/of/<?php echo $author->slug; ?>" rel="author"><?php echo ucfirst($author->fullname); ?><br><small class="meta"><?php echo $author->total ?> quote<?php echo ((int) $author->total > 1) ? 's' : ''; ?></small></a></address>
@@ -28,7 +28,7 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 
 			$share_message = urlencode($quote->quote . "\n– " . $author->fullname);
 			$tweet_version = urlencode(truncate($author->fullname . ': ' . $quote->quote, 90));
-			$permalink = WWWROOT . '/quote/view/' . $quote->id;
+			$permalink = WWWROOT . '/of/' . $author->slug . '/' . $quote->slug;
 
 			$likers = implode(', ', explode(',', $quote->likers));
 
@@ -46,7 +46,7 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 				</a>
 
 				|
-				<a rel="nofollow" class="social favourite <?php echo (LOGGED_IN && $quote->user_likes_it > 0) ? 'liked' : '' ?>" data-quote="<?php echo $quote->id; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/' . $quote->id : CURRENT_URI . '#login-ui'; ?>" title="Favourite this quote so you can easily find it later. <?php echo (!empty($likers)) ? 'Liked by: ' . strip_tags($likers) : ''; ?>">
+				<a rel="nofollow" class="social favourite <?php echo (LOGGED_IN && $quote->user_likes_it > 0) ? 'liked' : '' ?>" data-quote="<?php echo $quote->slug; ?>" href="<?php echo (LOGGED_IN) ? '/favourite/' . $quote->slug : CURRENT_URI . '#login-ui'; ?>" title="Favourite this quote so you can easily find it later. <?php echo (!empty($likers)) ? 'Liked by: ' . strip_tags($likers) : ''; ?>">
 					<em>Save it ?</em>&nbsp;
 					<span class="total_likes" data-likers="<?php echo $likers ?>"><?php echo $quote->total_likes ?></span>
 				</a>
@@ -55,16 +55,16 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 				<?php if ($user['role'] === 'admin') { ?> <a href="/author/edit/<?php echo $author->slug ?>">Edit author</a> <?php } ?>
 				<?php
 				if (($user['role'] === 'admin')) {
+				?>
+					<?php
+					if (($quote->status == 'pending')) {
 					?>
+						| <a href="/quote/validate/<?php echo $quote->slug; ?>">Accept quote</a>
 					<?php
-						if (($quote->status == 'pending')) {
-							?>
-						| <a href="/quote/validate/<?php echo $quote->id; ?>">Accept quote</a>
-					<?php
-						}
-						?>
-					| <a href="/quote/delete/<?php echo $quote->id; ?>">X Delete quote</a>
-					| <a href="/quote/edit/<?php echo $quote->id; ?>">Edit quote</a>
+					}
+					?>
+					| <a href="/quote/delete/<?php echo $quote->slug; ?>">X Delete quote</a>
+					| <a href="/quote/edit/<?php echo $quote->slug; ?>">Edit quote</a>
 				<?php
 				}
 				?>

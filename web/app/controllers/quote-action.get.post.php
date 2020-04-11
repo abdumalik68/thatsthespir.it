@@ -3,6 +3,21 @@ global $db, $metatags;
 
 $action = $f3->get('PARAMS.action');
 $id = $f3->get('PARAMS.id');
+$slug = $f3->get('PARAMS.slug');
+
+
+$quote = new DB\SQL\Mapper($db, 'quotes');
+
+
+// To use the slug, find the id
+if (empty($action)) {
+    $action = 'view';
+}
+if (!empty($slug)) {
+    $quote->load(array('slug=?', $slug));
+    $id = $quote->id;
+}
+
 
 // Admin-restricted areas
 $restricted = array('edit', 'delete', 'validate', 'favourite');
@@ -14,8 +29,13 @@ if (in_array($action, $restricted) && $f3->get('SESSION.logged_in') != 'ok') {
 }
 $f3->clear('SESSION.goto');
 
+
+
+
+
+
+
 // Fetch the quote data
-$quote = new DB\SQL\Mapper($db, 'quotes');
 if ($id) {
 
     $quote->total_likes = 'SELECT COUNT(*) FROM favourites WHERE quotes.id=favourites.quote_id';
@@ -114,7 +134,6 @@ switch ($action) {
 
     case 'view':
 
-        $f3->set('quote', $quote);
 
         $author = new DB\SQL\Mapper($db, 'authors');
         $author->load(array('id=?', $quote->author_id));
@@ -128,7 +147,7 @@ switch ($action) {
         }
         $metatags['title'] = $quote->quote;
         $metatags['description'] = $quote->quote . " – " . $author->fullname;
-
+        $f3->set('quote', $quote);
         $f3->set('author', $author);
         $f3->set('content', 'quote.view.php');
         break;
