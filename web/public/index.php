@@ -171,8 +171,6 @@ $f3->route('GET @pending_quotes: /pending', function ($f3) {
     include APP_PATH . '/controllers/pending-quotes.get.php';
 });
 
-
-
 $f3->route('GET @auth: /auth', function ($f3) {
     include APP_PATH . '/vendor/hybridauth/hybridauth/hybridauth/index.php';
 });
@@ -197,9 +195,6 @@ $f3->route('GET @fix_slugs: /fix-slugs', function ($f3) {
     fixSlugs($f3);
 });
 
-
-
-
 $f3->route('GET @privacy_policy: /privacy-policy', function ($f3) {
     include APP_PATH . '/controllers/privacy-policy.get.php';
 });
@@ -211,13 +206,16 @@ $f3->route('GET @thankyou: /thank-you-dear', function ($f3) {
     include APP_PATH . '/controllers/thank-you.get.php';
 });
 
+$f3->route('GET @system: /system', function ($f3) {
+    pr(array_keys($f3->get('ROUTES')));
+    pr($f3->get('ROUTES'));
+});
+
+
 /*
 Redirect previous permalink scheme to current one.
  */
-$f3->route('GET|HEAD /@id', function ($f3) {
-    $id = '/quote/view/' . $f3->get('PARAMS.id');
-    $f3->reroute($id);
-});
+
 $f3->route(
     'GET @logout: /logout',
     function ($f3) {

@@ -15,7 +15,11 @@ if (empty($action)) {
 }
 if (!empty($slug)) {
     $quote->load(array('slug=?', $slug));
-    $id = $quote->id;
+    if ($quote->dry()) {
+        $f3->error(404);
+    } else {
+        $id = $quote->id;
+    }
 }
 
 
