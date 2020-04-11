@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<title><?php echo truncate(htmlentities(strip_tags(html_entity_decode($metatags['title']))), 45); ?></title>
 	<link rel="publisher" href="https://plus.google.com/u/0/b/109858177150611361742/+PixelineBe/" />
+	<link rel="canonical" href="<?php echo $metatags['url']; ?>">
 	<meta name="description" content="<?php echo htmlentities(strip_tags(html_entity_decode($metatags['description']))); ?>">
 	<meta property="og:title" content="<?php echo htmlentities(strip_tags(html_entity_decode($metatags['title']))); ?>">
 	<meta property="og:site_name" content="<?php echo htmlentities(strip_tags(html_entity_decode($metatags['site_name']))); ?>">
@@ -106,26 +107,26 @@
 									<?php if (!empty($_SESSION['user']['image'])) { ?>
 										<img src="<?= $_SESSION['user']['image']; ?>">
 									<?php
-										} else if (!empty($_SESSION['user']['fullname'])) {
-											?>
+									} else if (!empty($_SESSION['user']['fullname'])) {
+									?>
 										<strong><?= $_SESSION['user']['fullname'] ?></strong>
 									<?php	} else {
-											?>
+									?>
 										<strong>You</strong>
 									<?php
-										}
-										?>
+									}
+									?>
 								</a>
 								<ul class="pure-menu-children">
 									<li class="pure-menu-item <?= ($current_url == '/of-mine') ? 'pure-menu-selected' : ''; ?>"><a href="/of-mine" class="pure-menu-link">My ♡ quotes</a></li>
 									<li class="pure-menu-item <?= ($current_url == '/latest') ? 'pure-menu-selected' : ''; ?>"><a href="<?php echo $latest_url; ?>" id="latest-quotes" class="pure-menu-link">Latest</a></li>
 									<?php
-										if ($user['role'] === 'admin') { ?>
+									if ($user['role'] === 'admin') { ?>
 										<li class="pure-menu-item"><a href="/fix-author-totals" class="pure-menu-link">Fix totals</a></li>
 										<li class="pure-menu-item" id="review-pending-quotes"><a href="<?= $pending_url ?>" class="pure-menu-link">Review Pending quotes</a></li>
 									<?php
-										}
-										?>
+									}
+									?>
 									<li class="pure-menu-item"><a href="/logout" class="pure-menu-link logout-link">Log out</a></li>
 								</ul>
 							</li>

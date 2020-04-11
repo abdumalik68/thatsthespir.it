@@ -158,7 +158,7 @@ switch ($action) {
         break;
 }
 
-$metatags['url'] = WWWROOT . '/quote/' . $action . '/' . $id;
+$metatags['url'] = WWWROOT . '/of/' . $author->slug . '/' . $quote->slug;
 
 $view = new View;
 $f3->set('metatags', $metatags);
