@@ -103,7 +103,7 @@
 					<ul id="global-menu" class="pure-menu-list">
 						<?php if (LOGGED_IN) { ?>
 							<li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-								<a href="#" id="user-avatar" class="pure-menu-link no-underline">
+								<a href="javascript:void(0)" id="user-avatar" class="pure-menu-link no-underline">
 									<?php if (!empty($_SESSION['user']['image'])) { ?>
 										<img src="<?= $_SESSION['user']['image']; ?>">
 									<?php
@@ -138,6 +138,9 @@
 						</li>
 						<li class="pure-menu-item"><a href="<?php echo (LOGGED_IN) ? '/quote/add' : CURRENT_URI . '#login-ui'; ?>" id="suggest-quotes" class="pure-menu-link underline" title="Do you know a great quote that's not already in The Spirit?">Suggest a quote</a></li>
 						<li class="pure-menu-item"><a href="/popular" id="popular-quotes" class="pure-menu-link underline" title="The Spirit's Twenty most popular quotes.">Favs chart</a></li>
+						<li class="pure-menu-item">
+							<a href="/search" id="search-quotes" class="pure-menu-link search-icon" title="The Spirit's Twenty most popular quotes.">
+								<?php require '../public/assets/img/search.svg'; ?></a></li>
 
 					</ul>
 				</div>

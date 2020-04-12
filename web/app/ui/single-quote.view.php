@@ -7,7 +7,7 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 }
 ?>
 <figure class="quote">
-	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source : '/quote/' . $quote->slug; ?>">
+	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source : '/of/' . $author->slug; ?>">
 		<span class="guillemets"></span>
 		<span class="the-quote"><?php echo (isset($quote->quote)) ? html_entity_decode($quote->quote) : ''; ?></span>
 		<span class="pilcrow">|</span>
@@ -18,7 +18,6 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 		if ($body_class !== 'of-author') {
 		?>
 			<div class="photo <?php echo (!$showLargeAvatar) ? 'avatar-small' : ''; ?>" data-author="<?php echo $author->fullname; ?>" <?php echo (!empty($author->photo)) ? 'style="background-image: url(' . $upload_folder . '/' . $author->photo . ');"' : 'data-photo="none"'; ?> <?php echo ($author->gender == 'f') ? 'class="woman"' : '' ?>>&nbsp;</div>
-
 			<address class="author">– <a title="All quotes by <?php echo ucfirst($author->fullname); ?>" href="/of/<?php echo $author->slug; ?>" rel="author"><?php echo ucfirst($author->fullname); ?><br><small class="meta"><?php echo $author->total ?> quote<?php echo ((int) $author->total > 1) ? 's' : ''; ?></small></a></address>
 
 		<?php

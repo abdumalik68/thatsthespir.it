@@ -146,6 +146,10 @@ $f3->route('GET /search [ajax]', function ($f3) {
     include APP_PATH . '/controllers/search.ajax.php';
 });
 
+$f3->route('GET|POST @search: /search', function ($f3) {
+    include APP_PATH . '/controllers/search.callback.php';
+});
+
 $f3->route('GET|POST @author_edit: /author/@action/@slug', function ($f3) {
     include APP_PATH . '/controllers/author-edit.get.post.php';
 });
