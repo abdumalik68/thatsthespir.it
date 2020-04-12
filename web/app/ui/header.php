@@ -25,6 +25,21 @@
 	<meta name="msvalidate.01" content="84BB1D2AE4A4E377438FF21FDA9B95EF">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org/",
+			"@type": "WebSite",
+			"name": "That's The Spirit!",
+			"url": "https://thatsthespir.it",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "https://thatsthespir.it/search?query={search_term_string}",
+				"query-input": "required name=search_term_string"
+			}
+		}
+	</script>
+
+
 	<script>
 		(function(d) {
 			var config = {
