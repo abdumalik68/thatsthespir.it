@@ -6,6 +6,23 @@ if (isset($tags) && !empty($tags) && strlen(trim($tags->name)) > 0) {
 <?php
 }
 ?>
+
+<script type="application/ld+json">
+	{
+		"@context": "http://schema.org/",
+		"@type": "Quotation",
+		"accessMode": ["textual", "visual"],
+		"author": "<?php echo $author->fullname ?>",
+		"isFamilyFriendly": "True",
+		<?php echo (!empty($author->photo)) ? '"thumbnailUrl": "' . WWWROOT . $upload_folder . '/' . $author->photo . '",' . "\n\t\t" : '' ?> "spokenByCharacter": {
+			"@type": "Person",
+			"name": "<?php echo $author->fullname ?>"
+		},
+		"text": "<?php echo $quote->quote ?>"
+	}
+</script>
+
+
 <figure class="quote">
 	<blockquote cite="<?php echo (isset($quote->source)) ? $quote->source : '/of/' . $author->slug; ?>">
 		<span class="guillemets"></span>
