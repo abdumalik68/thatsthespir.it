@@ -5,7 +5,7 @@
     "require": {
         "php": "^7.0",
         "bcosca/fatfree": "*",
-        "hybridauth/hybridauth": "^2.9",
+        "hybridauth/hybridauth": "^3",
         "verot/class.upload.php": "*",
         "xfra35/f3-cron": "*"
     },

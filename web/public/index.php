@@ -171,12 +171,13 @@ $f3->route('GET @pending_quotes: /pending', function ($f3) {
     include APP_PATH . '/controllers/pending-quotes.get.php';
 });
 
-$f3->route('GET @auth: /auth', function ($f3) {
-    include APP_PATH . '/vendor/hybridauth/hybridauth/hybridauth/index.php';
+$f3->route('GET @auth: /auth/callback', function ($f3) {
+    include APP_PATH . '/controllers/auth.callback.php';
 });
 
 $f3->route('GET @auth_action: /auth/@action', function ($f3) {
-    include APP_PATH . '/controllers/auth-action.get.php';
+    include APP_PATH . '/controllers/auth.callback.php';
+    //include APP_PATH . '/controllers/auth-action.get.php';
 });
 
 $f3->route('GET @login: /login', function ($f3) {
@@ -184,7 +185,7 @@ $f3->route('GET @login: /login', function ($f3) {
 });
 
 $f3->route('POST /login', function ($f3) {
-    include APP_PATH . '/ontrollers/login.post.php';
+    include APP_PATH . '/controllers/login.post.php';
 });
 
 $f3->route('GET @fix_totals: /fix-author-totals', function ($f3) {

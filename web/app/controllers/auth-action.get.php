@@ -5,6 +5,11 @@ error_reporting(E_WARNING | E_ERROR);
 @session_start();
  */
 
+use Hybridauth\Hybridauth;
+use Hybridauth\Exception\Exception;
+use Hybridauth\HttpClient;
+use Hybridauth\Storage\Session;
+
 global $db;
 $provider = $f3->get('PARAMS.action');
 
@@ -16,7 +21,26 @@ $config = APP_PATH . '/config.hybridauth.php';
 
 try {
 
-    $hybridauth = new Hybrid_Auth($config);
+    $hybridauth = new Hybridauth($config);
+    $storage = new Session();
+    /**
+     * Hold information about provider when user clicks on Sign In.
+     */
+    if (isset($_GET['provider'])) {
+        $storage->set('provider', $_GET['provider']);
+    }
+    /**
+     * When provider exists in the storage, try to authenticate user and clear storage.
+     *
+     * When invoked, `authenticate()` will redirect users to provider login page where they
+     * will be asked to grant access to your application. If they do, provider will redirect
+     * the users back to Authorization callback URL (i.e., this script).
+     */
+    if ($provider = $storage->get('provider')) {
+        $hybridauth->authenticate($provider);
+        $storage->set('provider', null);
+    }
+
 
     // try to authenticate with the selected provider
     $adapter = $hybridauth->authenticate($provider);
@@ -85,7 +109,6 @@ try {
     if (!empty($f3->get('SESSION.goto'))) {
         $f3->reroute($f3->get('SESSION.goto'));
         $f3->clear('SESSION.goto');
-
     } else {
         $f3->reroute('/');
     }

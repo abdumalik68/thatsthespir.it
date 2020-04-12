@@ -26,7 +26,7 @@ $f3->set('tags', $tags);
 $f3->set('body_class', "home");
 $f3->set('content', 'home.php');
 
-$f3->set('SESSION.goto', WWWROOT . '/of' . $random->author_slug . '/' . $random->slug);
+$f3->set('SESSION.goto', WWWROOT . '/of/' . $random->author_slug . '/' . $random->slug);
 $f3->set('metatags', $metatags);
 $view = new View;
 echo $view->render('layout.php');
