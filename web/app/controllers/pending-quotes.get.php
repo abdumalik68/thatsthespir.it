@@ -7,8 +7,8 @@ if ($f3->get('SESSION.logged_in') != 'ok'){
 }
 $f3->set('user', $f3->get('SESSION.user') );
 $quote=new Spirit();
-$pending = (object)$quote->get('pending');
-$f3->set('pending_quotes', (object)$pending);
+$pending = $quote->get('pending');
+$f3->set('pending_quotes', $pending);
 $f3->set('body_class', "pending");
 $f3->set('content', 'pending.php');
 $view=new View;

@@ -22,7 +22,7 @@ class Spirit
                 break;
 
             case 'pending':
-                return $db->exec($selected_query_base . ' WHERE q.status="pending"  ORDER BY q.id DESC');
+                return (array) $db->exec($selected_query_base . ' WHERE q.status="pending"  ORDER BY q.id DESC');
                 break;
 
             case 'latest':
