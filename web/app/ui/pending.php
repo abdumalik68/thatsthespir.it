@@ -3,7 +3,7 @@
 
 <?php
 //print_r($pending_quotes);
-if(count($pending_quotes)>0){
+if(is_countable($pending_quotes) && 0<count($pending_quotes)){
 
 
 
