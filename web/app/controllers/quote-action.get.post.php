@@ -35,10 +35,6 @@ $f3->clear('SESSION.goto');
 
 
 
-
-
-
-
 // Fetch the quote data
 if ($id) {
 

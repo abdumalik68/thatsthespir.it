@@ -21,6 +21,10 @@ if (!empty($_POST)) {
     if (!isset($_POST['status'])) {
         $quote->status = 'pending';
     }
+    if ('admin' === $_SESSION['user']['role']){
+        $quote->status = 'online';
+
+    }
     $quote->tags_id = implode(',', $f3->get('POST.tags_id'));
     $quote->submitted_by = $_SESSION['user']['id'];
     $f3->set('POST.slug', $f3->get('POST.quote'));
@@ -49,8 +53,10 @@ if (!empty($_POST)) {
     $message .= $quote->quote . ' by ' . $author->fullname;
     $message .= "\n---\nReview it here: " . WWWROOT . $f3->alias('pending_quotes') . "\nSee you,\n\nThe Spirit.";
     $sent = $smtp->send($message, true);
+
+
     // Quote saved, redirecting...
-    $f3->reroute('@quote_action(action=view,id=' . $quote->id . ')');
+    $f3->reroute('@quote_action(action=view,author='.$author->slug.',slug=' . $quote->slug . ')');
     exit;
 }
 
