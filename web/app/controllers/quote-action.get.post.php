@@ -95,7 +95,7 @@ switch ($action) {
         $db->exec('INSERT INTO favourites SET quote_id="' . $quote->id . '", user_email="' . $user[0]['email'] . '"');
 
         // Redirect to validated quote url
-        $f3->reroute('@quote_action(action=view,id=' . $quote->id . ')');
+        $f3->reroute('@quote_action(action=view,slug=' . $quote->slug . ')');
         break;
 
     case 'edit':
