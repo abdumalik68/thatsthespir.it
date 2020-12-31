@@ -56,4 +56,23 @@ class Quotes extends Quote
         }
         echo '<p>Done!';
     }
+
+    function get_random($f3)
+    {
+        /** Random Quotes */
+        $amount = (isset($_GET['amount'])) ? $_GET['amount'] : 5;
+        $this->quotes = new DB\SQL\Mapper($this->db, 'all_quotes_full', [], 0);
+        $this->quotes->load(
+            array('status=?', "online"),
+            array(
+                'order' => 'RAND()',
+                'limit' => $amount
+            )
+        );
+        if ($this->quote->dry()) {
+            $f3->error('No record matching criteria');
+        }
+
+        send_json($this->quote->cast());
+    }
 }
