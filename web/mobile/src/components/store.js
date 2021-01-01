@@ -1,7 +1,7 @@
 import { readable } from 'svelte/store';
 
-const apiURL = "http://localhost:8000/api";
-//const apiURL = "https://api.thatsthespir.it/v1/quote/random";
+//const apiURL = "http://localhost:8000/api";
+const apiURL = "https://api.thatsthespir.it/v1/quotes/random";
 
 
 const getData = async () => {
