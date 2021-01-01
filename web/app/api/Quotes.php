@@ -72,7 +72,7 @@ class Quotes extends Quote
         if ($this->quotes->dry()) {
             $f3->error('No record matching criteria');
         }
-        echo $db->log();
+        echo $this->db->log();
         send_json($this->quotes->cast());
     }
 }
