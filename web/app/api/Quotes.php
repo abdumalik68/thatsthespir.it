@@ -60,7 +60,7 @@ class Quotes extends Quote
     function get_random($f3)
     {
         /** Random Quotes */
-        $amount = (isset($_GET['amount'])) ? $_GET['amount'] : 5;
+        $amount = (isset($_GET['amount'])) ? (int)$_GET['amount'] : 5;
         $this->quotes = new DB\SQL\Mapper($this->db, 'all_quotes_full', [], 0);
         $this->quotes->load(
             array('status=?', "online"),
@@ -69,10 +69,10 @@ class Quotes extends Quote
                 'limit' => $amount
             )
         );
-        if ($this->quote->dry()) {
+        if ($this->quotes->dry()) {
             $f3->error('No record matching criteria');
         }
 
-        send_json($this->quote->cast());
+        send_json($this->quotes->cast());
     }
 }
