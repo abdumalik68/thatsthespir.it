@@ -137,7 +137,7 @@ $f3->route('GET /v1/quote/random', 'Quote->get_random');
 $f3->route('GET /v1/quote/random.xml', 'Quote->get_random');
 $f3->route('GET /v1/human-channels', 'Author->get_all_authors', (int) $f3->STATIC_CACHE_EXPIRATION);
 $f3->route('GET /v1/quotes/search', 'Quotes->search');
-$f3->route('GET /v1/quotes/random', 'Quotes->random');
+$f3->route('GET /v1/quotes/random', 'Quotes->get_random');
 // $f3->route('GET /v1/quotes/fix-slugs', 'Quotes->fixSlugs');
 
 // // auth
