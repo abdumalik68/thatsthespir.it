@@ -62,11 +62,11 @@ class Quotes extends Quote
         /** Random Quotes */
         $amount = (isset($_GET['amount'])) ? (int)$_GET['amount'] : 5;
         $this->quotes = new DB\SQL\Mapper($this->db, 'all_quotes_full', [], 0);
-        $this->quotes->load(
+        $this->quotes->find(
             array('status=?', "online"),
             array(
                 'order' => 'RAND()',
-                'limit' => 5
+                'limit' => $amount
             )
         );
         if ($this->quotes->dry()) {
