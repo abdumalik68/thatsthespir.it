@@ -66,7 +66,7 @@ class Quotes extends Quote
             array('status=?', "online"),
             array(
                 'order' => 'RAND()',
-                'limit' => $amount
+                'limit' => 5
             )
         );
         if ($this->quotes->dry()) {
