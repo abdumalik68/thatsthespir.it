@@ -154,12 +154,14 @@ class Quote
     function get_random($f3)
     {
         /** Random Quote */
+        $amount = (isset($_GET['amount'])) ? $_GET['amount'] : 5;
+
         $this->quote = new DB\SQL\Mapper($this->db, 'all_quotes_full', [], 0);
         $this->quote->load(
             array('status=?', "online"),
             array(
                 'order' => 'RAND()',
-                'limit' => 1
+                'limit' => $amount
             )
         );
         if ($this->quote->dry()) {

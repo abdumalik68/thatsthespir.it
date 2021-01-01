@@ -121,6 +121,7 @@ if (isset($_GET['quote_id'])) {
  * GET /search/{string}    : search a quote or author
  * GET|POST /user/login    : user login
  * GET /user/logout        : user logout
+ * GET /quotes/random       : a few quotes
  */
 
 // App-wide routes
